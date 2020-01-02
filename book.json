@@ -1,4 +1,15 @@
 {
   "title": "演算法的分析與證明",
-  "plugins": ["katex"]
+  "plugins": [
+    "katex-plus",
+    "prism",
+    "-highlight"
+  ],
+  "pluginsConfig": {
+    "prism": {
+      "css": [
+        "prismjs/themes/prism-tomorrow.css"
+      ]
+    }
+  }
 }
