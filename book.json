@@ -3,13 +3,17 @@
   "plugins": [
     "katex-plus",
     "prism",
-    "-highlight"
+    "-highlight",
+    "ga"
   ],
   "pluginsConfig": {
     "prism": {
       "css": [
         "prismjs/themes/prism-tomorrow.css"
       ]
+    },
+    "ga": {
+      "token": "UA-68887724-4"
     }
   }
 }
