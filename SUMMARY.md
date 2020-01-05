@@ -5,3 +5,4 @@
   * [01/02 - 泡沫排序法](sorting/bubble-sort.md)
   * [01/03 - 雞尾酒排序法](sorting/cocktail-sort.md)
   * [01/04 - 逆序數對](sorting/inversions.md)
+  * [01/05 - 合併排序法](sorting/merge-sort.md)

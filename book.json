@@ -1,7 +1,7 @@
 {
   "title": "演算法的分析與證明",
   "plugins": [
-    "katex-plus",
+    "katex-plus-macro",
     "prism",
     "-highlight",
     "ga"
@@ -14,6 +14,13 @@
     },
     "ga": {
       "token": "UA-68887724-4"
+    },
+    "katex-plus-macro": {
+      "macros": {
+        "\\Inv": "\\mathrm{Inv}",
+        "\\floor": "\\left\\lfloor{#1}\\right\\rfloor",
+        "\\ceil": "\\left\\lceil{#1}\\right\\rceil"
+      }
     }
   }
 }
