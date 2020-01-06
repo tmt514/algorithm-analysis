@@ -9,7 +9,7 @@
 當然，關心理論的你，可能會發現，在實作合併兩個排好序的陣列時，總是得開一塊新的記憶體空間，然後把資料騰過去[^1]，然後合併完再騰寫回來。
 感覺很浪費記憶體啊。
 如果我們有辦法就地移動資料本身，不仰賴大量額外的記憶體的話，這類型的演算法通常被稱為**原地演算法（In-Place Algorithms）**。
-最嚴格的原地演算法定義，是規定只能使用**常數**數量的記憶體空間（用來存放註標、或某些計數器等等資料）。
+最嚴格的原地演算法定義，是規定只能使用**常數**[^4]數量的記憶體空間（用來存放註標、或某些計數器等等資料）。
 
 ### 性質 9
 
@@ -78,3 +78,4 @@ $$
 [^1]: 實作上如果資料本身很大，通常也可以對「註標」進行排序就好。這樣雖然可以避免搬移資料，但是在比較大小時會產生一些記憶體隨機存取的操作，可能會產生出很多 Cache Miss。
 [^2]: [Practical In-Place Mergesort, J. Katajianen, T. Pasanen, and J. Teuhola, Nordic Journal of Computing 1996.](https://pdfs.semanticscholar.org/9de9/2ae68f76c040c40fad4bb3aabb7146cb8c3d.pdf)
 [^3]: https://stackoverflow.com/questions/2571049/how-to-sort-in-place-using-the-merge-sort-algorithm
+[^4]: 這裡的「常數」要仰賴計算模型而定。一般來說為了支援隨機記憶體存取(RAM Model)，我們必須讓一單位的記憶體放得下對應資料的記憶體位址。也就是說，當輸入有 $n$ 筆資料時，原地演算法允許我們使用 $O(\log n)$-bit 的額外記憶體空間。
