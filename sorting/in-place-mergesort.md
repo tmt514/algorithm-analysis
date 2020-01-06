@@ -72,6 +72,14 @@ $$
 
 第三部分時間複雜度是 $O(n)$。所以全部加起來是 $O(n\log n)$，得證。
 
+-----
+
+## 後記
+
+從 KPT-之後，大部分的論文朝向幾個方向發展。大家關心的分析重點有幾個方向：把時間複雜度分拆成「比較次數」加上「資料移動次數」。
+比較次數雖然都是 $O(n\log n)$，但大家開始拼命壓前面的常數。而資料移動次數也有[不同方法](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.22.5514&rep=rep1&type=pdf)可以壓到 $O(n\log n/ \log\log n)$。
+此外，我們其實利用的分而治之的概念，偷偷榨出了不少暫存空間。如果我們回歸到最原本的問題：合併兩個已排序的序列，是否真的能在線性時間做到不使用額外空間呢？答案是可以的，但我想今天就在此打住吧。有興趣的朋友可以參考[這篇](https://academic.oup.com/comjnl/article/38/8/681/335248)。
+
 ### 參考資料
 
 * 清大韓永楷教授的 In-Place Algorithms 簡介投影片：http://www.cs.nthu.edu.tw/~wkhon/algo08-tutorials/tutorial1b.pdf
