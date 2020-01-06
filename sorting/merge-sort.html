@@ -61,6 +61,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="in-place-mergesort.html" />
+    
     
     <link rel="prev" href="inversions.html" />
     
@@ -104,7 +106,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="./">
+        <li class="chapter " data-level="1.2" data-path="../GLOSSARY.html">
+            
+                <a href="../GLOSSARY.html">
+            
+                    
+                    Glossary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="./">
             
                 <a href="./">
             
@@ -118,7 +133,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="bubble-sort.html">
+        <li class="chapter " data-level="1.3.1" data-path="bubble-sort.html">
             
                 <a href="bubble-sort.html">
             
@@ -131,7 +146,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="cocktail-sort.html">
+        <li class="chapter " data-level="1.3.2" data-path="cocktail-sort.html">
             
                 <a href="cocktail-sort.html">
             
@@ -144,7 +159,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="inversions.html">
+        <li class="chapter " data-level="1.3.3" data-path="inversions.html">
             
                 <a href="inversions.html">
             
@@ -157,12 +172,25 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.4" data-path="merge-sort.html">
+        <li class="chapter active" data-level="1.3.4" data-path="merge-sort.html">
             
                 <a href="merge-sort.html">
             
                     
                     01/05 - 合併排序法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="in-place-mergesort.html">
+            
+                <a href="in-place-mergesort.html">
+            
+                    
+                    01/06 - 原地演算法
             
                 </a>
             
@@ -288,7 +316,11 @@ T(n) \le T(n&apos;) = \Theta(n&apos; \log n&apos;) = \Theta(n\log n)\text{&#x300
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.801892em;"></span><span class="strut bottom" style="height:1.051892em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&#x2264;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2032;</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord">&#x398;</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2032;</span></span></span></span></span></span></span></span></span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2032;</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord">&#x398;</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mord text"><span class="mord cjk_fallback">&#x3002;</span></span></span></span></span></span></p>
 <hr>
 <p>&#x5408;&#x4F75;&#x6392;&#x5E8F;&#x6CD5;&#x5728;&#x5408;&#x4F75;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x6703;&#x9700;&#x8981;<strong>&#x8907;&#x88FD;</strong>&#x6B32;&#x6392;&#x5E8F;&#x7684;&#x8CC7;&#x6599;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5408;&#x4F75;&#x6392;&#x5E8F;&#x6CD5;&#x5728;&#x5BE6;&#x4F5C;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x4E00;&#x822C;&#x4F86;&#x8AAA;&#x6703;&#x4F54;&#x7528;&#x5230; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x398;</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\Theta(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord">&#x398;</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span> &#x7684;&#x984D;&#x5916;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#x3002;
-&#x6211;&#x5011;&#x6709;&#x8FA6;&#x6CD5;&#x7701;&#x4E0B;&#x984D;&#x5916;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x55CE;&#xFF1F;</p>
+&#x6211;&#x5011;&#x6709;&#x8FA6;&#x6CD5;&#x7701;&#x4E0B;&#x4E9B;&#x8A31;&#x984D;&#x5916;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x55CE;&#xFF1F;</p>
+<h3 id="&#x63A8;&#x85A6;&#x95B1;&#x8B80;">&#x63A8;&#x85A6;&#x95B1;&#x8B80;</h3>
+<ul>
+<li>&#x4E3B;&#x5B9A;&#x7406;&#x7684;&#x5929;&#x82B1;&#x677F;&#x5F62;&#x5F0F;&#xFF1A;<a href="https://fu-sheng-wang.blogspot.com/2016/11/algorithms14-master-theorem.html" target="_blank">https://fu-sheng-wang.blogspot.com/2016/11/algorithms14-master-theorem.html</a></li>
+</ul>
 
                                 
                                 </section>
@@ -316,10 +348,14 @@ T(n) \le T(n&apos;) = \Theta(n&apos; \log n&apos;) = \Theta(n\log n)\text{&#x300
 
             
                 
-                <a href="inversions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 01/04 - 逆序數對">
+                <a href="inversions.html" class="navigation navigation-prev " aria-label="Previous page: 01/04 - 逆序數對">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="in-place-mergesort.html" class="navigation navigation-next " aria-label="Next page: 01/06 - 原地演算法">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -328,7 +364,7 @@ T(n) \le T(n&apos;) = \Theta(n&apos; \log n&apos;) = \Theta(n\log n)\text{&#x300
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"01/05 - 合併排序法","level":"1.2.4","depth":2,"previous":{"title":"01/04 - 逆序數對","level":"1.2.3","depth":2,"path":"sorting/inversions.md","ref":"sorting/inversions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex-plus-macro","prism","-highlight","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"ga":{"configuration":"auto","token":"UA-68887724-4"},"katex-plus-macro":{"macros":{"\\Inv":"\\mathrm{Inv}","\\floor":"\\left\\lfloor{#1}\\right\\rfloor","\\ceil":"\\left\\lceil{#1}\\right\\rceil"}},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"演算法的分析與證明","gitbook":"*"},"file":{"path":"sorting/merge-sort.md","mtime":"2020-01-05T09:59:07.027Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-05T09:59:12.622Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"01/05 - 合併排序法","level":"1.3.4","depth":2,"next":{"title":"01/06 - 原地演算法","level":"1.3.5","depth":2,"path":"sorting/in-place-mergesort.md","ref":"sorting/in-place-mergesort.md","articles":[]},"previous":{"title":"01/04 - 逆序數對","level":"1.3.3","depth":2,"path":"sorting/inversions.md","ref":"sorting/inversions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex-plus-macro","prism","-highlight","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"ga":{"configuration":"auto","token":"UA-68887724-4"},"katex-plus-macro":{"macros":{"\\Inv":"\\mathrm{Inv}","\\floor":"\\left\\lfloor{#1}\\right\\rfloor","\\ceil":"\\left\\lceil{#1}\\right\\rceil"}},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"演算法的分析與證明","gitbook":"*"},"file":{"path":"sorting/merge-sort.md","mtime":"2020-01-05T10:06:32.170Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-06T05:44:12.281Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
