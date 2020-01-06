@@ -6,3 +6,4 @@
   * [01/03 - 雞尾酒排序法](sorting/cocktail-sort.md)
   * [01/04 - 逆序數對](sorting/inversions.md)
   * [01/05 - 合併排序法](sorting/merge-sort.md)
+  * [01/06 - 原地演算法](sorting/in-place-mergesort.md)
