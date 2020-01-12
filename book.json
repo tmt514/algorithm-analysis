@@ -17,6 +17,7 @@
     },
     "katex-plus-macro": {
       "macros": {
+        "\\E": "\\mathbb{E}",
         "\\Inv": "\\mathrm{Inv}",
         "\\floor": "\\left\\lfloor{#1}\\right\\rfloor",
         "\\ceil": "\\left\\lceil{#1}\\right\\rceil"
