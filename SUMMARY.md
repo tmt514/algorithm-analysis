@@ -11,3 +11,4 @@
   * [01/08 - 快速排序法](sorting/quick-sort.md)
   * [01/10 - 隨機快速排序法（一）](sorting/randomized-quicksort.md)
   * [01/12 - 隨機快速排序法（二）](sorting/randomized-quicksort2.md)
+  * [01/13 - 隨機快速排序法（三）](sorting/randomized-quicksort3.md)
