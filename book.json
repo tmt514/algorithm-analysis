@@ -23,5 +23,8 @@
         "\\ceil": "\\left\\lceil{#1}\\right\\rceil"
       }
     }
+  },
+  "styles": {
+    "website": "styles/website.css"
   }
 }
