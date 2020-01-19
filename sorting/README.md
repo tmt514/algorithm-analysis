@@ -50,11 +50,11 @@
 | van Emde Boas 樹 | $O(n\log\log M)$ | 空間複雜度 $O(M)$ |
 | X-fast 字母樹 | $O(n\log\log M)$ | 空間複雜度 $O(n\log M)$ |
 | Y-fast 字母樹 | $O(n\log\log M)$ | 空間複雜度 $O(n)$ |
-| Fusion Tree | $O(n\log n/\log\log n)$ | 允許隨機和除法可做到 $O(n\sqrt{\log n})$ |
+| Fusion Tree | $O(n\log n/\log\log n)$ | 允許隨機與除法可做到 $O(n\sqrt{\log n})$ |
 | Packed Sort | | |
 | Signature Sort | | |
-| Han-Thorup 整數排序 - 確定性 | $O(n\log \log n)$ | 空間複雜度與 $M$ 無關 |
-| Han-Thorup 整數排序 - 隨機 | 期望 $O(n\sqrt{\log \log n})$ | 空間複雜度與 $M$ 無關 |
+| Han-Thorup 整數排序 - 確定性 | $O(n\log \log n)$ | 空間複雜度 $O(n)$ |
+| Han-Thorup 整數排序 - 隨機 | 期望 $O(n\sqrt{\log \log n})$ | 空間複雜度 $O(n)$ |
 
 ### 推薦閱讀
 

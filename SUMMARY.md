@@ -14,3 +14,4 @@
   * [01/13 - 隨機快速排序法（三）](sorting/randomized-quicksort3.md)
   * [01/16 - 堆積排序法](sorting/heapsort.md)
   * [01/18 - 比較排序下界](sorting/comparison-based-sorting.md)
+  * [01/20 - 最少比較排序](sorting/minimum-comparison-sort.md)
