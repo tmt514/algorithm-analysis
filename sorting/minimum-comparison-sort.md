@@ -52,7 +52,7 @@ Lower bound 與 Upper bound 完美地合起來了不是嗎！
 
 從 $n=2...11$ 全部都是最佳解了！真正難纏的部分是 $n=12$，直到 1965 年 Mark Wells[^1] 率先撰寫程式列舉所有排序結構，證明了 $S(12) = 30$（有興趣的朋友可以參考 Knuth 的 TAOCP，第三卷）。這個結果證明了資訊理論下界不等於最少排序次數。
 
-Ford-Johnson 的合併插入排序法是否真的是最優的呢？可惜的是 1977 年 Manacher[^2] 否定了這件事情：他證明了存在無窮多個 $n$，使得最少排序次數比 $FJ(n)$ 嚴格來得小。最小的反例是在 $n=189$。
+Ford-Johnson 的合併插入排序法是否真的是最優的呢？可惜的是 1977 年 Manacher[^2] 否定了這件事情：他證明了存在無窮多個 $n$，使得最少排序次數比 $FJ(n)$ 嚴格來得小。目前已知最小的反例是在 $n=189$。
 
 -----
 
@@ -63,7 +63,7 @@ Ford-Johnson 的合併插入排序法是否真的是最優的呢？可惜的是 
 * 高德納教授（Knuth）的《The Art Of Computer Programming》第 5.3.1 節。
 * 《最少排序問題中 $S(15)$ 與 $S(19)$ 的解決》：http://fcst.ceaj.org/EN/abstract/abstract47.shtml
 * 13, 14, 22 個元素排序：https://link.springer.com/content/pdf/10.1007%2Fs00453-004-1100-7.pdf
-* FJ最高：https://www.sciencedirect.com/science/article/pii/S0020019006002742
+* $FJ(n)$ 在 $n<47$ 以前都是好的：https://www.sciencedirect.com/science/article/pii/S0020019006002742
 
 [^1]: Mark B. Wells, __Applications of a language for computing in combinatorics__, IFIP 1965.
 [^2]: Glenn K. Manacher, __The Ford-Johnson Sorting Algorithm Is Not Optimal__, 1979. https://dl.acm.org/doi/pdf/10.1145/322139.322145
