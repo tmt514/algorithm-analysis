@@ -115,7 +115,7 @@ $$
 
 然後 $F(n)$ 其實有封閉形式（Closed Form，俗稱公式解）：
 $$
-F(n) = n\ceil{\log_2 \frac{3}{4} n} + \floor{\frac13 2^{\log_2 6n}} + \floor{\frac12\log_2 6n}\text{。}
+F(n) = n\ceil{\log_2 \frac{3}{4} n} + \floor{\frac13 2^{\floor{\log_2 6n}}} + \floor{\frac12\log_2 6n}\text{。}
 $$
 
 最後，大家要多多刷牙喔 ^_<。
