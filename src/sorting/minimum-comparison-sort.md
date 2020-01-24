@@ -66,4 +66,5 @@ Ford-Johnson 的合併插入排序法是否真的是最優的呢？可惜的是 
 * $FJ(n)$ 在 $n<47$ 以前都是好的：https://www.sciencedirect.com/science/article/pii/S0020019006002742
 
 [^1]: Mark B. Wells, __Applications of a language for computing in combinatorics__, IFIP 1965.
+
 [^2]: Glenn K. Manacher, __The Ford-Johnson Sorting Algorithm Is Not Optimal__, 1979. https://dl.acm.org/doi/pdf/10.1145/322139.322145

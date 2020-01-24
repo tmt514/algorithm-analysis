@@ -122,7 +122,7 @@ $$
 
 -----
 
-合併插入排序法中間的分析，利用到了「如何從排序到一半的東西，利用盡量少比較次數完成排序」的特性。我們是否可以把這個概念推廣一下呢？排序到一半的東西，可以被表示成一個叫做**偏序集（Partial Ordered Set）**的東西。我們能否從偏序集獲得一些排序知識呢？
+合併插入排序法中間的分析，利用到了「如何從排序到一半的東西，利用盡量少比較次數完成排序」的特性。我們是否可以把這個概念推廣一下呢？排序到一半的東西，可以被表示成一個叫做 **偏序集（Partial Ordered Set）** 的東西。我們能否從偏序集獲得一些排序知識呢？
 
 ### 推薦閱讀
 
@@ -130,8 +130,13 @@ $$
 * Ford-Johnson 演算法當年的論文：https://www.jstor.org/stable/pdf/2308750.pdf
 
 [^1]: 感謝 a127 的告知與推薦！
+
 [^2]: Donald Knuth, _The Art of Computer Programming_, Volumn 3, Page 183-187.
+
 [^3]: Glenn K. Manacher, _The Ford-Johnson Sorting Algorithm Is Not Optimal_, 1979. https://dl.acm.org/doi/pdf/10.1145/322139.322145
+
 [^4]: T. D. Bui and Mai Thanh, _Significant improvements to the Ford-Johnson algorithm for sorting_, BIT 1985. https://link.springer.com/article/10.1007/BF01934989
+
 [^5]: 交大黃光明教授與 S. Lin（我查不到…）當年在貝爾實驗室發表的論文：F. K. Hwang and S. Lin, _A Simple Algorithm for Merging Two Disjoint Linearly Ordered Sets_, SIAM Journal of Computation, 1972. https://epubs.siam.org/doi/abs/10.1137/0201004
+
 [^6]: Marcin Peczarski, _The Ford–Johnson algorithm still unbeaten for less than 47 elements_, IPL 2007 February. https://www.sciencedirect.com/science/article/pii/S0020019006002742

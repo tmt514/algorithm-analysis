@@ -1,0 +1,16 @@
+[book]
+authors = ["tmt514"]
+multilingual = false
+src = "src"
+title = "演算法的分析與證明"
+
+[output.html]
+mathjax-support = true
+no-section-label = true
+additional-js = ["mathjax-config.js"]
+additional-css = ["styles/mdbook.css"]
+google-analytics = "UA-68887724-4"
+
+[preprocessor.mathjax_dollar_sign]
+command = "python3 mathjax-support.py"
+renderer = ["html", "epub"]
