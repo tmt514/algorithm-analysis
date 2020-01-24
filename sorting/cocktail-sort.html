@@ -1,468 +1,267 @@
-
 <!DOCTYPE HTML>
-<html lang="" >
+<html lang="en" class="sidebar-visible no-js">
     <head>
+        <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
+        <title>01/03 - 雞尾酒排序法 - 演算法的分析與證明</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>01/03 - 雞尾酒排序法 · 演算法的分析與證明</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        
-        
-        
-    
-    <link rel="stylesheet" href="../gitbook/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
 
-    
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex-plus-macro/katex.min.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="../styles/mdbook.css">
         
 
-    
-
-    
         
-        <link rel="stylesheet" href="../styles/website.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         
-    
-
-        
-    
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
-
-    
-    <link rel="next" href="inversions.html" />
-    
-    
-    <link rel="prev" href="bubble-sort.html" />
-    
-
     </head>
-    <body>
-        
-<div class="book">
-    <div class="book-summary">
-        
-            
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = "light";
+        </script>
 
-            
-                <nav role="navigation">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html" class="active">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
                 
-
-
-<ul class="summary">
-    
-    
-
-    
-
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="../">
-            
-                <a href="../">
-            
-                    
-                    2020 新計劃
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="../GLOSSARY.html">
-            
-                <a href="../GLOSSARY.html">
-            
-                    
-                    Glossary
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="./">
-            
-                <a href="./">
-            
-                    
-                    排序 Sorting
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1" data-path="bubble-sort.html">
-            
-                <a href="bubble-sort.html">
-            
-                    
-                    01/02 - 泡沫排序法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.3.2" data-path="cocktail-sort.html">
-            
-                <a href="cocktail-sort.html">
-            
-                    
-                    01/03 - 雞尾酒排序法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3" data-path="inversions.html">
-            
-                <a href="inversions.html">
-            
-                    
-                    01/04 - 逆序數對
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.4" data-path="merge-sort.html">
-            
-                <a href="merge-sort.html">
-            
-                    
-                    01/05 - 合併排序法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.5" data-path="in-place-mergesort.html">
-            
-                <a href="in-place-mergesort.html">
-            
-                    
-                    01/06 - 原地演算法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.6" data-path="quick-sort.html">
-            
-                <a href="quick-sort.html">
-            
-                    
-                    01/08 - 快速排序法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.7" data-path="randomized-quicksort.html">
-            
-                <a href="randomized-quicksort.html">
-            
-                    
-                    01/10 - 隨機快速排序法（一）
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.8" data-path="randomized-quicksort2.html">
-            
-                <a href="randomized-quicksort2.html">
-            
-                    
-                    01/12 - 隨機快速排序法（二）
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.9" data-path="randomized-quicksort3.html">
-            
-                <a href="randomized-quicksort3.html">
-            
-                    
-                    01/13 - 隨機快速排序法（三）
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.10" data-path="heapsort.html">
-            
-                <a href="heapsort.html">
-            
-                    
-                    01/16 - 堆積排序法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.11" data-path="comparison-based-sorting.html">
-            
-                <a href="comparison-based-sorting.html">
-            
-                    
-                    01/18 - 比較排序下界
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.12" data-path="minimum-comparison-sort.html">
-            
-                <a href="minimum-comparison-sort.html">
-            
-                    
-                    01/20 - 最少比較排序
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.13" data-path="merge-insertion-sort.html">
-            
-                <a href="merge-insertion-sort.html">
-            
-                    
-                    01/22 - 合併插入排序
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
-        </a>
-    </li>
-</ul>
-
-
-                </nav>
-            
-        
-    </div>
-
-    <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
-    
-
-    <!-- Title -->
-    <h1>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >01/03 - 雞尾酒排序法</a>
-    </h1>
-</div>
-
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
                             
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <h1 id="&#x96DE;&#x5C3E;&#x9152;&#x6392;&#x5E8F;&#x6CD5;">&#x96DE;&#x5C3E;&#x9152;&#x6392;&#x5E8F;&#x6CD5;</h1>
-<p>&#x6628;&#x5929;&#x6211;&#x5011;&#x4ECB;&#x7D39;&#x4E86;&#x6CE1;&#x6CAB;&#x6392;&#x5E8F;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x6CE1;&#x6CAB;&#x6392;&#x5E8F;&#x6CD5;&#x6700;&#x5DEE;&#x60C5;&#x5F62; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> &#x7684;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x771F;&#x7684;&#x662F;&#x7DCA;&#x7684;&#x55CE;&#xFF1F;
-&#x8B93;&#x6211;&#x5011;&#x770B;&#x770B;&#x4EE5;&#x4E0B;&#x4F8B;&#x5B50;&#x3002;</p>
-<h3 id="&#x5F15;&#x7406;-2">&#x5F15;&#x7406; 2</h3>
-<p>&#x5C0D;&#x65BC;&#x9019;&#x7D44;&#x8F38;&#x5165; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><msub><mi>a</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>&#x2026;</mo><mo separator="true">,</mo><msub><mi>a</mi><mi>n</mi></msub><mo>)</mo><mo>=</mo><mo>(</mo><mi>n</mi><mo separator="true">,</mo><mi>n</mi><mo>&#x2212;</mo><mn>1</mn><mo separator="true">,</mo><mo>&#x2026;</mo><mo separator="true">,</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">(a_1, a_2, \ldots, a_n) = (n, n-1, \ldots, 1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mopen">(</span><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="minner">&#x2026;</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">n</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="minner">&#x2026;</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>&#xFF0C;&#x6CE1;&#x6CAB;&#x6392;&#x5E8F;&#x6CD5;&#x57F7;&#x884C;&#x6642;&#x9593;&#x70BA; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x3A9;</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">\Omega(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base"><span class="mord">&#x3A9;</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>&#x3002;</p>
-<h3 id="&#x8B49;&#x660E;">&#x8B49;&#x660E;</h3>
-<p>&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x7531;&#x6578;&#x5B78;&#x6B78;&#x7D0D;&#x6CD5;&#x8B49;&#x5F97;&#xFF0C;&#x7B2C; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span> &#x6B21;&#x8FF4;&#x5708;&#x904E;&#x5F8C;&#xFF0C;&#x9663;&#x5217;&#x6703;&#x8B8A;&#x6210; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>n</mi><mo>&#x2212;</mo><mi>k</mi><mo separator="true">,</mo><mo>&#x2026;</mo><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mi>n</mi><mo>&#x2212;</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo separator="true">,</mo><mi>n</mi><mo>&#x2212;</mo><mi>k</mi><mo>+</mo><mn>2</mn><mo separator="true">,</mo><mo>&#x2026;</mo><mo separator="true">,</mo><mi>n</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[n-k, \ldots, 1, n-k+1, n-k+2, \ldots, n]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mopen">[</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="minner">&#x2026;</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="minner">&#x2026;</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">n</span><span class="mclose">]</span></span></span></span>&#x3002;
-&#x56E0;&#x6B64;&#xFF0C;&#x5728; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base"><span class="mord">1</span></span></span></span> &#x56DE;&#x5230;&#x6700;&#x524D;&#x9762;&#x4E4B;&#x524D;&#xFF0C;&#x90FD;&#x4E0D;&#x7B97;&#x6392;&#x597D;&#x9806;&#x5E8F;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8AAA;&#xFF0C;&#x6CE1;&#x6CAB;&#x6392;&#x5E8F;&#x6CD5;&#x6700;&#x5DEE;&#x57F7;&#x884C;&#x6642;&#x9593;&#x662F; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x398;</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">\Theta(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base"><span class="mord">&#x398;</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> &#x8DD1;&#x4E0D;&#x6389;&#x7684;&#x3002;</p>
-<h2 id="&#x96DE;&#x5C3E;&#x9152;&#x6392;&#x5E8F;&#x6CD5;-cocktail-sort">&#x96DE;&#x5C3E;&#x9152;&#x6392;&#x5E8F;&#x6CD5; Cocktail Sort</h2>
-<p>&#x5982;&#x679C;&#x8AAA;&#x7531;&#x524D;&#x5F80;&#x5F8C;&#xFF0C;&#x6C92;&#x6709;&#x8FA6;&#x6CD5;&#x5FEB;&#x901F;&#x5730;&#x628A;&#x8CC7;&#x6599;&#x6392;&#x597D;&#x9806;&#x5E8F;&#xFF0C;&#x90A3;&#x9EBC;&#x5982;&#x679C;&#x63DB;&#x500B;&#x65B9;&#x5F0F;&#x8DD1; for-loop&#xFF0C;&#x6709;&#x6C92;&#x6709;&#x8FA6;&#x6CD5;&#x8B8A;&#x5FEB;&#x5462;&#xFF1F;
-<a href="https://zh.wikipedia.org/wiki/%E9%9B%9E%E5%B0%BE%E9%85%92%E6%8E%92%E5%BA%8F" target="_blank">&#x96DE;&#x5C3E;&#x9152;&#x6392;&#x5E8F;&#x6CD5;</a>&#xFF0C;&#x5C31;&#x662F;&#x57FA;&#x65BC;&#x6CE1;&#x6CAB;&#x6392;&#x5E8F;&#x6CD5;&#x9032;&#x884C;&#x4FEE;&#x6539;&#x800C;&#x6210;&#x7684;&#x6392;&#x5E8F;&#x65B9;&#x6CD5;&#x3002;&#x5B83;&#x5F9E;&#x5DE6;&#x908A;&#x5237;&#x904E;&#x53BB;&#x518D;&#x5F9E;&#x53F3;&#x908A;&#x5237;&#x56DE;&#x4F86;&#xFF1A;&#x7B2C;&#x4E00;&#x6B21;&#x628A;&#x6700;&#x5927;&#x503C;&#x653E;&#x5230;&#x6700;&#x53F3;&#x908A;&#x53BB;&#x3001;&#x7136;&#x5F8C;&#x628A;&#x6700;&#x5C0F;&#x503C;&#x63A8;&#x5230;&#x6700;&#x5DE6;&#x908A;&#x3001;&#x518D;&#x628A;&#x6B21;&#x5927;&#x503C;&#x653E;&#x5230;&#x53F3;&#x908A;&#x3001;&#x518D;&#x628A;&#x6B21;&#x5C0F;&#x503C;&#x653E;&#x5230;&#x5DE6;&#x908A;&#x2026;&#x4F9D;&#x6B64;&#x985E;&#x63A8;&#x3002;
-&#x9019;&#x500B;&#x6F14;&#x7B97;&#x6CD5;&#x7684;&#x6B63;&#x78BA;&#x6027;&#x8B49;&#x660E;&#x8207;&#x6CE1;&#x6CAB;&#x6392;&#x5E8F;&#x6CD5;&#x76F8;&#x7576;&#x96F7;&#x540C;&#xFF0C;&#x56E0;&#x6B64;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x4E5F;&#x53EF;&#x4EE5;&#x63A8;&#x5F97;&#x70BA; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>&#x3002;
-&#x907A;&#x61BE;&#x7684;&#x662F;&#xFF0C;&#x5F15;&#x7406; 2 &#x7684;&#x4F8B;&#x5B50;&#x4E5F;&#x662F;&#x9019;&#x500B;&#x6F14;&#x7B97;&#x6CD5;&#x7684;&#x6700;&#x58DE;&#x8F38;&#x5165;&#x4E4B;&#x4E00;&#xFF1A;&#x5373;&#x5728;&#x6700;&#x58DE;&#x60C5;&#x5F62;&#x4E0B;&#x4ECD;&#x9700; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x398;</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">\Theta(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base"><span class="mord">&#x398;</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> &#x7684;&#x57F7;&#x884C;&#x6642;&#x9593;&#x3002;</p>
-<h2 id="&#x63D2;&#x5165;&#x6392;&#x5E8F;&#x6CD5;-insertion-sort">&#x63D2;&#x5165;&#x6392;&#x5E8F;&#x6CD5; Insertion Sort</h2>
-<p>&#x5982;&#x679C;&#x6BCF;&#x4E00;&#x6B21;&#x90FD;&#x7531;&#x53F3;&#x5F80;&#x5DE6;&#x628A;&#x8CC7;&#x6599;&#x5237;&#x56DE;&#x4F86;&#xFF0C;&#x7B2C; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span> &#x6B21;&#x628A; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>r</mi><mi>r</mi><mo>[</mo><mi>k</mi><mo>&#x2212;</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">arr[k-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit">a</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> &#x5F9E;&#x53F3;&#x908A;&#x5F80;&#x5DE6;&#x908A;&#x4E00;&#x76F4;&#x63A8;&#xFF0C;
-&#x90A3;&#x9EBC;&#x6982;&#x5FF5;&#x4E0A;&#x6703;&#x8B8A;&#x6210;&#xFF1A;&#x6BCF;&#x4E00;&#x6B21;&#x52A0;&#x5165;&#x4E00;&#x7B46;&#x65B0;&#x7684;&#x8CC7;&#x6599;&#x5F8C;&#xFF0C;&#x4E0D;&#x65B7;&#x5730;&#x5F80;&#x524D;&#x64E0;&#xFF0C;&#x63D2;&#x5165;&#x5230;&#x6B63;&#x78BA;&#x7684;&#x4F4D;&#x7F6E;&#x4E0A;&#x3002;&#x9019;&#x500B;&#x65B9;&#x6CD5;&#x4E5F;&#x53EF;&#x4EE5;&#x8996;&#x70BA;&#x6CE1;&#x6CAB;&#x6392;&#x5E8F;&#x6CD5;&#x7684;&#x4E00;&#x500B;&#x8B8A;&#x5F62;&#x3002;
-&#x800C;&#x4E8B;&#x5BE6;&#x4E0A;&#x9019;&#x500B;&#x65B9;&#x6CD5;&#x7121;&#x8AD6;&#x5728;&#x73FE;&#x884C;&#x7684; CPU &#x67B6;&#x69CB;&#x4E0B;&#x6216;&#x662F;&#x7406;&#x8AD6;&#x4E0A;&#xFF0C;&#x90FD;&#x4E0D;&#x6BD4;&#x6CE1;&#x6CAB;&#x6392;&#x5E8F;&#x6CD5;&#x4F86;&#x5F97;&#x5DEE;&#x3002;&#x56E0;&#x6B64;&#x8A31;&#x591A;&#x6559;&#x79D1;&#x66F8;&#x90FD;&#x6703;&#x9078;&#x64C7;&#x76F4;&#x63A5;&#x4ECB;&#x7D39;&#x63D2;&#x5165;&#x6392;&#x5E8F;&#x6CD5;&#x800C;&#x975E;&#x6C23;&#x6CE1;&#x6392;&#x5E8F;&#x6CD5;&#x3002;</p>
-<h3 id="&#x5F15;&#x7406;-3-1">&#x5F15;&#x7406; 3 <sup><a href="#fn_1" id="reffn_1">1</a></sup></h3>
-<p>&#x5982;&#x679C;&#x8F38;&#x5165;&#x7684;&#x8CC7;&#x6599;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E00;&#x7B46;&#x8CC7;&#x6599;&#x8DDD;&#x96E2;&#x5176;&#x6B63;&#x78BA;&#x7684;&#x4F4D;&#x7F6E;&#x7686;&#x4E0D;&#x8D85;&#x904E; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span> (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>&#x2265;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k\ge 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.83041em;vertical-align:-0.13597em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&#x2265;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord">1</span></span></span></span>)&#xFF0C;&#x90A3;&#x9EBC;&#x6CE1;&#x6CAB;&#x6392;&#x5E8F;&#x6CD5;&#x3001;&#x96DE;&#x5C3E;&#x9152;&#x6392;&#x5E8F;&#x6CD5;&#x3001;&#x4EE5;&#x53CA;&#x63D2;&#x5165;&#x6392;&#x5E8F;&#x6CD5;&#x6240;&#x9700;&#x8981;&#x7684;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x7686;&#x70BA; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>k</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(kn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>&#x3002;</p>
-<hr>
-<p>&#x6211;&#x5011;&#x6CE8;&#x610F;&#x5230;&#xFF0C;&#x7121;&#x8AD6;&#x662F;&#x6C23;&#x6CE1;&#x6392;&#x5E8F;&#x6CD5;&#x3001;&#x96DE;&#x5C3E;&#x9152;&#x6392;&#x5E8F;&#x6CD5;&#x3001;&#x6216;&#x662F;&#x63D2;&#x5165;&#x6392;&#x5E8F;&#x6CD5;&#xFF0C;&#x9019;&#x4E9B;&#x65B9;&#x6CD5;&#x5728;&#x66F4;&#x52D5;&#x8CC7;&#x6599;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x90FD;&#x53EA;&#x6703;&#x4EA4;&#x63DB;&#x76F8;&#x9130;&#x5169;&#x7B46;&#x8CC7;&#x6599;&#x3002;
-&#x800C;&#x6574;&#x9AD4;&#x7684;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#xFF0C;&#x4E5F;&#x81F3;&#x5C11;&#x662F;&#x300C;&#x4EA4;&#x63DB;&#x5169;&#x7B46;&#x8CC7;&#x6599;&#x300D;&#x9019;&#x500B;&#x52D5;&#x4F5C;&#x57F7;&#x884C;&#x7684;&#x6B21;&#x6578;&#x3002;
-&#x5C0D;&#x65BC;&#x4E00;&#x500B;&#x9663;&#x5217; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">A</span></span></span></span>&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5B9A;&#x7FA9;&#x53EA;&#x80FD;&#x4EA4;&#x63DB;&#x76F8;&#x9130;&#x5169;&#x7B46;&#x8CC7;&#x6599;&#x7684;&#x60C5;&#x5F62;&#x4E0B;&#xFF0C;&#x6B32;&#x5C07; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">A</span></span></span></span> &#x6392;&#x597D;&#x9806;&#x5E8F;&#x6700;&#x5C11;&#x9700;&#x8981;&#x7684;&#x4EA4;&#x63DB;&#x6B21;&#x6578;&#x3002;
-&#x9019;&#x500B;&#x6578;&#x503C;&#xFF0C;&#x6211;&#x5011;&#x628A;&#x5B83;&#x7A31;&#x4E4B;&#x70BA;&#x300C;&#x9006;&#x5E8F;&#x6578;&#x5C0D;(Inversions)&#x300D;&#x3002;</p>
-<!-- 如果更加推廣這個想法，我們不禁想問：對於一筆輸入，是否存在「最佳檢查順序」讓我們能夠順著這個順序交換資料，而且達到良好的時間複雜度呢？
-
-換句話說，對於一個輸入 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>[</mo><mn>1</mn><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi>n</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">A[1..n]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit">A</span><span class="mopen">[</span><span class="mord">1</span><span class="mord">.</span><span class="mord">.</span><span class="mord mathit">n</span><span class="mclose">]</span></span></span></span>，是否存在一個排列 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>σ</mi><mo>:</mo><mo>[</mo><mi>n</mi><mo>]</mo><mo>→</mo><mo>[</mo><mi>n</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">\sigma: [n]\to [n]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.03588em;">σ</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mopen">[</span><span class="mord mathit">n</span><span class="mclose">]</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mopen">[</span><span class="mord mathit">n</span><span class="mclose">]</span></span></span></span>，使得以下演算法能夠很有效率地將資料排好順序？
-
-* **while**(還沒有排好順序):
-  * **for** <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.65952em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">i</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord">1</span></span></span></span> to <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span></span></span></span>:
-    * 如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>σ</mi><mo>(</mo><mi>i</mi><mo>)</mo><mo>&gt;</mo><mi>σ</mi><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">\sigma(i) &gt; \sigma(i+1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord mathit" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>[</mo><mi>σ</mi><mo>(</mo><mi>i</mi><mo>)</mo><mo>]</mo><mo>&gt;</mo><mi>A</mi><mo>[</mo><mi>σ</mi><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>)</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">A[\sigma(i)] &gt; A[\sigma(i+1)]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit">A</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mclose">)</span><span class="mclose">]</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord mathit">A</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mclose">]</span></span></span></span> 恰有一者不成立，則交換 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>[</mo><mi>σ</mi><mo>(</mo><mi>i</mi><mo>)</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">A[\sigma(i)]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit">A</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mclose">)</span><span class="mclose">]</span></span></span></span> 與 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>[</mo><mi>σ</mi><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>)</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">A[\sigma(i+1)]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit">A</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mclose">]</span></span></span></span> 之值。 -->
-<blockquote id="fn_1">
-<sup>1</sup>. <a href="https://en.wikipedia.org/wiki/Cocktail_shaker_sort" target="_blank">&#x7DAD;&#x57FA;&#x767E;&#x79D1;</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
-</blockquote>
-
-                                
-                                </section>
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
                             
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
+                        </div>
 
+                        <h1 class="menu-title">演算法的分析與證明</h1> 
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
                         </div>
                     </div>
-                
-            </div>
+                </div>
 
-            
                 
-                <a href="bubble-sort.html" class="navigation navigation-prev " aria-label="Previous page: 01/02 - 泡沫排序法">
-                    <i class="fa fa-angle-left"></i>
-                </a>
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
                 
-                
-                <a href="inversions.html" class="navigation navigation-next " aria-label="Next page: 01/04 - 逆序數對">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
-        
-    </div>
 
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"01/03 - 雞尾酒排序法","level":"1.3.2","depth":2,"next":{"title":"01/04 - 逆序數對","level":"1.3.3","depth":2,"path":"sorting/inversions.md","ref":"sorting/inversions.md","articles":[]},"previous":{"title":"01/02 - 泡沫排序法","level":"1.3.1","depth":2,"path":"sorting/bubble-sort.md","ref":"sorting/bubble-sort.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex-plus-macro","prism","-highlight","ga","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"katex-plus-macro":{"macros":{"\\E":"\\mathbb{E}","\\Inv":"\\mathrm{Inv}","\\floor":"\\left\\lfloor{#1}\\right\\rfloor","\\ceil":"\\left\\lceil{#1}\\right\\rceil"}},"ga":{"configuration":"auto","token":"UA-68887724-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"演算法的分析與證明","gitbook":"*"},"file":{"path":"sorting/cocktail-sort.md","mtime":"2020-01-03T08:44:05.148Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-24T04:47:14.971Z"},"basePath":"..","book":{"language":""}});
-        });
-    </script>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#雞尾酒排序法" id="雞尾酒排序法"><h1>雞尾酒排序法</h1></a>
+<p>昨天我們介紹了泡沫排序法，但是，泡沫排序法最差情形 \(O(n^2)\) 的時間複雜度真的是緊的嗎？
+讓我們看看以下例子。</p>
+<a class="header" href="#引理-2" id="引理-2"><h3>引理 2</h3></a>
+<p>對於這組輸入 \((a_1, a_2, \ldots, a_n) = (n, n-1, \ldots, 1)\)，泡沫排序法執行時間為 \(\Omega(n^2)\)。</p>
+<a class="header" href="#證明" id="證明"><h3>證明</h3></a>
+<p>我們可以由數學歸納法證得，第 \(k\) 次迴圈過後，陣列會變成 \([n-k, \ldots, 1, n-k+1, n-k+2, \ldots, n]\)。
+因此，在 \(1\) 回到最前面之前，都不算排好順序。也就是說，泡沫排序法最差執行時間是 \(\Theta(n^2)\) 跑不掉的。</p>
+<a class="header" href="#雞尾酒排序法-cocktail-sort" id="雞尾酒排序法-cocktail-sort"><h2>雞尾酒排序法 Cocktail Sort</h2></a>
+<p>如果說由前往後，沒有辦法快速地把資料排好順序，那麼如果換個方式跑 for-loop，有沒有辦法變快呢？
+<a href="https://zh.wikipedia.org/wiki/%E9%9B%9E%E5%B0%BE%E9%85%92%E6%8E%92%E5%BA%8F">雞尾酒排序法</a>，就是基於泡沫排序法進行修改而成的排序方法。它從左邊刷過去再從右邊刷回來：第一次把最大值放到最右邊去、然後把最小值推到最左邊、再把次大值放到右邊、再把次小值放到左邊…依此類推。
+這個演算法的正確性證明與泡沫排序法相當雷同，因此時間複雜度也可以推得為 \(O(n^2)\)。
+遺憾的是，引理 2 的例子也是這個演算法的最壞輸入之一：即在最壞情形下仍需 \(\Theta(n^2)\) 的執行時間。</p>
+<a class="header" href="#插入排序法-insertion-sort" id="插入排序法-insertion-sort"><h2>插入排序法 Insertion Sort</h2></a>
+<p>如果每一次都由右往左把資料刷回來，第 \(k\) 次把 \(arr[k-1]\) 從右邊往左邊一直推，
+那麼概念上會變成：每一次加入一筆新的資料後，不斷地往前擠，插入到正確的位置上。這個方法也可以視為泡沫排序法的一個變形。
+而事實上這個方法無論在現行的 CPU 架構下或是理論上，都不比泡沫排序法來得差。因此許多教科書都會選擇直接介紹插入排序法而非氣泡排序法。</p>
+<a class="header" href="#引理-3-sup-classfootnote-referencea-href11asup" id="引理-3-sup-classfootnote-referencea-href11asup"><h3>引理 3 <sup class="footnote-reference"><a href="#1">1</a></sup></h3></a>
+<p>如果輸入的資料中，每一筆資料距離其正確的位置皆不超過 \(k\) (\(k\ge 1\))，那麼泡沫排序法、雞尾酒排序法、以及插入排序法所需要的時間複雜度皆為 \(O(kn)\)。</p>
+<hr />
+<p>我們注意到，無論是氣泡排序法、雞尾酒排序法、或是插入排序法，這些方法在更動資料的時候，都只會交換相鄰兩筆資料。
+而整體的時間複雜度，也至少是「交換兩筆資料」這個動作執行的次數。
+對於一個陣列 \(A\)，我們可以定義只能交換相鄰兩筆資料的情形下，欲將 \(A\) 排好順序最少需要的交換次數。
+這個數值，我們把它稱之為「逆序數對(Inversions)」。</p>
+<!-- 如果更加推廣這個想法，我們不禁想問：對於一筆輸入，是否存在「最佳檢查順序」讓我們能夠順著這個順序交換資料，而且達到良好的時間複雜度呢？
+<p>換句話說，對於一個輸入 \(A[1..n]\)，是否存在一個排列 \(\sigma: [n]\to [n]\)，使得以下演算法能夠很有效率地將資料排好順序？</p>
+<ul>
+<li><strong>while</strong>(還沒有排好順序):
+<ul>
+<li><strong>for</strong> \(i=1\) to \(n-1\):
+<ul>
+<li>如果 \(\sigma(i) &gt; \sigma(i+1)\) 和 \(A[\sigma(i)] &gt; A[\sigma(i+1)]\) 恰有一者不成立，則交換 \(A[\sigma(i)]\) 與 \(A[\sigma(i+1)]\) 之值。 --&gt;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p><a href="https://en.wikipedia.org/wiki/Cocktail_shaker_sort">維基百科</a></p>
 </div>
 
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../sorting/bubble-sort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../sorting/inversions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../sorting/bubble-sort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../sorting/inversions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
         
-    <script src="../gitbook/gitbook.js"></script>
-    <script src="../gitbook/theme.js"></script>
-    
+
         
-        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-68887724-4', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
         
-    
+
         
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+
         
-    
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
         
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
         
-    
+        <script type="text/javascript" src="../mathjax-config.js"></script>
         
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+
         
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
 
     </body>
 </html>
-

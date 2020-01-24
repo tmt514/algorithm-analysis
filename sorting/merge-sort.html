@@ -1,507 +1,301 @@
-
 <!DOCTYPE HTML>
-<html lang="" >
+<html lang="en" class="sidebar-visible no-js">
     <head>
+        <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
+        <title>01/05 - 合併排序法 - 演算法的分析與證明</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>01/05 - 合併排序法 · 演算法的分析與證明</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        
-        
-        
-    
-    <link rel="stylesheet" href="../gitbook/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
 
-    
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex-plus-macro/katex.min.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="../styles/mdbook.css">
         
 
-    
-
-    
         
-        <link rel="stylesheet" href="../styles/website.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         
-    
-
-        
-    
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
-
-    
-    <link rel="next" href="in-place-mergesort.html" />
-    
-    
-    <link rel="prev" href="inversions.html" />
-    
-
     </head>
-    <body>
-        
-<div class="book">
-    <div class="book-summary">
-        
-            
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = "light";
+        </script>
 
-            
-                <nav role="navigation">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html" class="active">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
                 
-
-
-<ul class="summary">
-    
-    
-
-    
-
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="../">
-            
-                <a href="../">
-            
-                    
-                    2020 新計劃
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="../GLOSSARY.html">
-            
-                <a href="../GLOSSARY.html">
-            
-                    
-                    Glossary
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="./">
-            
-                <a href="./">
-            
-                    
-                    排序 Sorting
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1" data-path="bubble-sort.html">
-            
-                <a href="bubble-sort.html">
-            
-                    
-                    01/02 - 泡沫排序法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2" data-path="cocktail-sort.html">
-            
-                <a href="cocktail-sort.html">
-            
-                    
-                    01/03 - 雞尾酒排序法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3" data-path="inversions.html">
-            
-                <a href="inversions.html">
-            
-                    
-                    01/04 - 逆序數對
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.3.4" data-path="merge-sort.html">
-            
-                <a href="merge-sort.html">
-            
-                    
-                    01/05 - 合併排序法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.5" data-path="in-place-mergesort.html">
-            
-                <a href="in-place-mergesort.html">
-            
-                    
-                    01/06 - 原地演算法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.6" data-path="quick-sort.html">
-            
-                <a href="quick-sort.html">
-            
-                    
-                    01/08 - 快速排序法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.7" data-path="randomized-quicksort.html">
-            
-                <a href="randomized-quicksort.html">
-            
-                    
-                    01/10 - 隨機快速排序法（一）
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.8" data-path="randomized-quicksort2.html">
-            
-                <a href="randomized-quicksort2.html">
-            
-                    
-                    01/12 - 隨機快速排序法（二）
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.9" data-path="randomized-quicksort3.html">
-            
-                <a href="randomized-quicksort3.html">
-            
-                    
-                    01/13 - 隨機快速排序法（三）
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.10" data-path="heapsort.html">
-            
-                <a href="heapsort.html">
-            
-                    
-                    01/16 - 堆積排序法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.11" data-path="comparison-based-sorting.html">
-            
-                <a href="comparison-based-sorting.html">
-            
-                    
-                    01/18 - 比較排序下界
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.12" data-path="minimum-comparison-sort.html">
-            
-                <a href="minimum-comparison-sort.html">
-            
-                    
-                    01/20 - 最少比較排序
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.13" data-path="merge-insertion-sort.html">
-            
-                <a href="merge-insertion-sort.html">
-            
-                    
-                    01/22 - 合併插入排序
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
-        </a>
-    </li>
-</ul>
-
-
-                </nav>
-            
-        
-    </div>
-
-    <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
-    
-
-    <!-- Title -->
-    <h1>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >01/05 - 合併排序法</a>
-    </h1>
-</div>
-
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
                             
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <h1 id="&#x5408;&#x4F75;&#x6392;&#x5E8F;&#x6CD5;">&#x5408;&#x4F75;&#x6392;&#x5E8F;&#x6CD5;</h1>
-<p>&#x5982;&#x679C;&#x6211;&#x5011;&#x4E0D;&#x9650;&#x5236;&#x6BCF;&#x6B21;&#x90FD;&#x4EA4;&#x63DB;&#x76F8;&#x9130;&#x5169;&#x500B;&#x6578;&#x5B57;&#x7684;&#x8A71;&#xFF0C;&#x986F;&#x7136;&#x5B58;&#x5728;&#x8457;&#x7406;&#x8AD6;&#x4E0A;&#x6709;&#x66F4;&#x6709;&#x6548;&#x7387;&#x7684;&#x6392;&#x5E8F;&#x6F14;&#x7B97;&#x6CD5;&#x3002;</p>
-<p>&#x5206;&#x800C;&#x6CBB;&#x4E4B;&#xFF08;Divide and Conquer&#xFF09;&#x662F;&#x91CD;&#x8981;&#x7684;&#x89E3;&#x984C;&#x65B9;&#x6CD5;&#x4E4B;&#x4E00;&#xFF1A;&#x6211;&#x5011;&#x5C07;&#x4E00;&#x500B;&#x5927;&#x554F;&#x984C;&#x62C6;&#x89E3;&#x6210;&#x8A31;&#x591A;&#x5C0F;&#x554F;&#x984C;&#x3001;&#x500B;&#x500B;&#x64CA;&#x7834;&#x4EE5;&#x5F8C;&#x518D;&#x628A;&#x5B83;&#x5011;&#x7D44;&#x5408;&#x56DE;&#x4F86;&#x3002;
-&#x5982;&#x679C;&#x6211;&#x5011;&#x5C07;&#x5206;&#x800C;&#x6CBB;&#x4E4B;&#x6CD5;&#x61C9;&#x7528;&#x5728;&#x6392;&#x5E8F;&#x554F;&#x984C;&#x7576;&#x4E2D;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x4FD7;&#x7A31;&#x5408;&#x4F75;&#x6392;&#x5E8F;&#x6CD5;&#xFF08;Merge Sort&#xFF09;&#x7684;&#x6F14;&#x7B97;&#x6CD5;&#xFF1A;</p>
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">演算法的分析與證明</h1> 
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#合併排序法" id="合併排序法"><h1>合併排序法</h1></a>
+<p>如果我們不限制每次都交換相鄰兩個數字的話，顯然存在著理論上有更有效率的排序演算法。</p>
+<p>分而治之（Divide and Conquer）是重要的解題方法之一：我們將一個大問題拆解成許多小問題、個個擊破以後再把它們組合回來。
+如果我們將分而治之法應用在排序問題當中，就可以得到俗稱合併排序法（Merge Sort）的演算法：</p>
 <ul>
-<li>&#x5047;&#x8A2D;&#x6B32;&#x6392;&#x5E8F; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>[</mo><mn>0</mn><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi>n</mi><mo>&#x2212;</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">A[0..n-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit">A</span><span class="mopen">[</span><span class="mord">0</span><span class="mord">.</span><span class="mord">.</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>&#x3002;<ol>
-<li>&#x628A;&#x8F38;&#x5165;&#x7684;&#x8CC7;&#x6599;&#x62C6;&#x6210;&#x5DEE;&#x4E0D;&#x591A;&#x76F8;&#x7B49;&#x7684;&#x5169;&#x534A;&#xFF1A;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi><mo>=</mo><mi>A</mi><mo>[</mo><mn>0</mn><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>&#x230A;</mo><mfrac><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></mfrac><mo>&#x230B;</mo><mo>&#x2212;</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">L=A[0..\lfloor\frac{n}{2}\rfloor-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.095em;vertical-align:-0.345em;"></span><span class="base"><span class="mord mathit">L</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord mathit">A</span><span class="mopen">[</span><span class="mord">0</span><span class="mord">.</span><span class="mord">.</span><span class="mopen">&#x230A;</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.695392em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.15em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.2em;"><svg width="400em" height="0.2em" viewbox="0 0 400000 200" preserveaspectratio="xMinYMin slice"><path d="M0 80H400000 v40H0z M0 80H400000 v40H0z"/></svg></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">&#x230B;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>&#x3001;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi><mo>=</mo><mi>A</mi><mo>[</mo><mo>&#x230A;</mo><mfrac><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></mfrac><mo>&#x230B;</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi>n</mi><mo>&#x2212;</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">R=A[\lfloor\frac{n}{2}\rfloor..n-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.095em;vertical-align:-0.345em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.00773em;">R</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord mathit">A</span><span class="mopen">[</span><span class="mopen">&#x230A;</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.695392em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.15em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.2em;"><svg width="400em" height="0.2em" viewbox="0 0 400000 200" preserveaspectratio="xMinYMin slice"><path d="M0 80H400000 v40H0z M0 80H400000 v40H0z"/></svg></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">&#x230B;</span><span class="mord">.</span><span class="mord">.</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>&#x3002;</li>
-<li>&#x547C;&#x53EB;&#x905E;&#x8FF4;&#x5C07;&#x5169;&#x908A;&#x5206;&#x5225;&#x6392;&#x5E8F;&#x3002;</li>
-<li>&#x5047;&#x8A2D; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">L</span></span></span></span> &#x8207; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.00773em;">R</span></span></span></span> &#x5DF2;&#x7D93;&#x5404;&#x81EA;&#x6392;&#x597D;&#x9806;&#x5E8F;&#xFF0C;&#x5C07; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">L</span></span></span></span> &#x8207; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.00773em;">R</span></span></span></span> &#x5408;&#x4F75;&#x56DE;&#x5B8C;&#x6574;&#x7684;&#x3001;&#x6392;&#x597D;&#x9806;&#x5E8F;&#x7684;&#x8CC7;&#x6599;&#x9663;&#x5217; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">A</span></span></span></span>&#x3002;</li>
+<li>假設欲排序 \(A[0..n-1]\)。
+<ol>
+<li>把輸入的資料拆成差不多相等的兩半：\(L=A[0..\lfloor\frac{n}{2}\rfloor-1]\)、\(R=A[\lfloor\frac{n}{2}\rfloor..n-1]\)。</li>
+<li>呼叫遞迴將兩邊分別排序。</li>
+<li>假設 \(L\) 與 \(R\) 已經各自排好順序，將 \(L\) 與 \(R\) 合併回完整的、排好順序的資料陣列 \(A\)。</li>
 </ol>
 </li>
 </ul>
-<p>&#x5BE6;&#x4F5C;&#x4E0A;&#x5927;&#x6982;&#x9577;&#x5F97;&#x50CF;&#x9019;&#x6A23;&#xFF1A;</p>
-<pre class="language-"><code class="lang-cpp"><span class="token keyword">void</span> <span class="token function">MergeSort</span><span class="token punctuation">(</span>data_t <span class="token operator">*</span>A<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// &#x53EA;&#x5269;&#x4E00;&#x500B;&#x5143;&#x7D20;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x6574;&#x500B;&#x9663;&#x5217;&#x5C31;&#x5DF2;&#x7D93;&#x6392;&#x597D;&#x9806;&#x5E8F;&#x5566;&#x3002;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
-  <span class="token comment">// Divide &amp; Conquer &#x7684;&#x5404;&#x81EA;&#x905E;&#x8FF4;&#x90E8;&#x5206;&#x3002;</span>
-  <span class="token function">MergeSort</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> n<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">MergeSort</span><span class="token punctuation">(</span>A <span class="token operator">+</span> n<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span> n <span class="token operator">-</span> n<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token comment">// Combine: &#x9019;&#x908A;&#x662F;&#x4EFF;&#x6548; C++ STL &#x7684; std::merge() &#x683C;&#x5F0F;&#x3002;</span>
-  <span class="token function">Merge</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> A <span class="token operator">+</span> n<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span> A <span class="token operator">+</span> n<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span> A <span class="token operator">+</span> n<span class="token punctuation">,</span> A<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<p>實作上大概長得像這樣：</p>
+<pre><code class="language-cpp">void MergeSort(data_t *A, int n) {
+  // 只剩一個元素的時候，整個陣列就已經排好順序啦。
+  if (n &lt;= 1) return;
+  // Divide &amp; Conquer 的各自遞迴部分。
+  MergeSort(A, n/2);
+  MergeSort(A + n/2, n - n/2);
+  // Combine: 這邊是仿效 C++ STL 的 std::merge() 格式。
+  Merge(A, A + n/2, A + n/2, A + n, A);
+}
 </code></pre>
-<h2 id="&#x5408;&#x4F75;&#x5169;&#x500B;&#x5E8F;&#x5217;">&#x5408;&#x4F75;&#x5169;&#x500B;&#x5E8F;&#x5217;</h2>
-<p>&#x8981;&#x600E;&#x9EBC;&#x5C07;&#x5169;&#x500B;&#x6392;&#x597D;&#x9806;&#x5E8F;&#x7684;&#x5E8F;&#x5217;&#x5408;&#x4F75;&#x8D77;&#x4F86;&#x5462;&#xFF1F;&#x4E00;&#x500B;&#x7C21;&#x55AE;&#x7684;&#x60F3;&#x6CD5;&#x662F;&#xFF1A;&#x6BCF;&#x4E00;&#x6B21;&#x8003;&#x616E;&#x5169;&#x500B;&#x5E8F;&#x5217;&#x76EE;&#x524D;&#x7684;&#x6392;&#x982D;&#xFF0C;&#x628A;&#x6BD4;&#x8F03;&#x5C0F;&#x7684;&#x90A3;&#x500B;&#x62C9;&#x51FA;&#x4F86;&#xFF0C;&#x6700;&#x7D42;&#x63A5;&#x6210;&#x4E00;&#x4E32;&#x3002;
-&#x5982;&#x679C;&#x7528; linked list &#x6216; vector &#x5BEB;&#x8D77;&#x4F86;&#x5927;&#x6982;&#x50CF;&#x9019;&#x6A23;&#xFF1A;</p>
-<pre class="language-"><code class="lang-cpp"><span class="token keyword">void</span> <span class="token function">Merge</span><span class="token punctuation">(</span>data_t <span class="token operator">*</span>L_start<span class="token punctuation">,</span> data_t <span class="token operator">*</span>L_end<span class="token punctuation">,</span>
-           data_t <span class="token operator">*</span>R_start<span class="token punctuation">,</span> data_t <span class="token operator">*</span>R_end<span class="token punctuation">,</span> data_t <span class="token operator">*</span>Output<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  vector<span class="token operator">&lt;</span>data_t<span class="token operator">&gt;</span> tmp<span class="token punctuation">;</span>
-  data_t <span class="token operator">*</span>L_ptr <span class="token operator">=</span> L_start<span class="token punctuation">,</span> <span class="token operator">*</span>R_ptr <span class="token operator">=</span> R_start<span class="token punctuation">;</span>
-  <span class="token keyword">while</span> <span class="token punctuation">(</span>L_ptr <span class="token operator">!=</span> L_end <span class="token operator">||</span> R_ptr <span class="token operator">!=</span> R_end<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">// &#x628A;&#x6BD4;&#x8F03;&#x5C0F;&#x7684;&#x90A3;&#x7B46;&#x8CC7;&#x6599;&#x8907;&#x88FD;&#x5230; vector &#x88E1;&#x9762;&#x3002;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>L_ptr <span class="token operator">!=</span> L_end <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>R_ptr <span class="token operator">==</span> R_end <span class="token operator">||</span> <span class="token operator">*</span>L_ptr <span class="token operator">&lt;</span> <span class="token operator">*</span>R_ptr<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// (**)</span>
-      tmp<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token operator">*</span>L_ptr<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">else</span>
-      tmp<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token operator">*</span>R_ptr<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token comment">// &#x518D;&#x628A;&#x5408;&#x4F75;&#x597D;&#x7684;&#x8CC7;&#x6599;&#x6284;&#x56DE;&#x53BB;&#x3002;</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">auto</span> <span class="token operator">&amp;</span>data <span class="token operator">:</span> tmp<span class="token punctuation">)</span> <span class="token operator">*</span>Output<span class="token operator">++</span> <span class="token operator">=</span> data<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<a class="header" href="#合併兩個序列" id="合併兩個序列"><h2>合併兩個序列</h2></a>
+<p>要怎麼將兩個排好順序的序列合併起來呢？一個簡單的想法是：每一次考慮兩個序列目前的排頭，把比較小的那個拉出來，最終接成一串。
+如果用 linked list 或 vector 寫起來大概像這樣：</p>
+<pre><code class="language-cpp">void Merge(data_t *L_start, data_t *L_end,
+           data_t *R_start, data_t *R_end, data_t *Output) {
+  vector&lt;data_t&gt; tmp;
+  data_t *L_ptr = L_start, *R_ptr = R_start;
+  while (L_ptr != L_end || R_ptr != R_end) {
+    // 把比較小的那筆資料複製到 vector 裡面。
+    if (L_ptr != L_end &amp;&amp; (R_ptr == R_end || *L_ptr &lt; *R_ptr))  // (**)
+      tmp.push_back(*L_ptr++);
+    else
+      tmp.push_back(*R_ptr++);
+  }
+  // 再把合併好的資料抄回去。
+  for (const auto &amp;data : tmp) *Output++ = data;
+}
 </code></pre>
-<p>&#x4E0D;&#x96E3;&#x767C;&#x73FE;&#xFF0C;&#x7531;&#x65BC;&#x5169;&#x500B;&#x6307;&#x6A19; <code>*L_ptr</code> &#x548C; <code>*R_ptr</code> &#x4E0D;&#x65B7;&#x905E;&#x589E;&#xFF0C;&#x800C;&#x4E14;&#x6BCF;&#x6B21;&#x8FF4;&#x5708;<strong>&#x6070;&#x597D;</strong>&#x6709;&#x4E00;&#x8005;&#x524D;&#x9032;&#x4E00;&#x683C;&#x3002;
-&#x56E0;&#x6B64;&#x6574;&#x500B; <code>Merge()</code> &#x7684;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x662F;&#x7DDA;&#x6027;&#x7684; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x398;</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\Theta(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord">&#x398;</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>&#x3002;
-&#x6B63;&#x78BA;&#x6027;&#x4F86;&#x81EA;&#x65BC;&#x5C0D;&#x6392;&#x5E8F;&#x8CC7;&#x6599;&#x7684;&#x5047;&#x8A2D;&#x3001;&#x4EE5;&#x53CA;&#x6BCF;&#x4E00;&#x6B21;&#x6211;&#x5011;&#x90FD;&#x62C9;&#x6BD4;&#x8F03;&#x5C0F;&#x7684;&#x6392;&#x982D;&#x51FA;&#x4F86;&#xFF0C;&#x9019;&#x500B;&#x6392;&#x982D;&#x5FC5;&#x5B9A;&#x662F;&#x5269;&#x4E0B;&#x6240;&#x6709;&#x9084;&#x6C92;&#x88AB;&#x6392;&#x9032;&#x4F86;&#x7684;&#x8CC7;&#x6599;&#x4E2D;&#xFF0C;&#x6700;&#x5C0F;&#x7684;&#x4E00;&#x500B;&#x3002;</p>
-<p>&#x8FD1;&#x5E7E;&#x5E74;&#x9019;&#x500B;&#x5408;&#x4F75;&#x5169;&#x500B;&#x5E8F;&#x5217;&#x7684;&#x65B9;&#x6CD5;&#x5DF2;&#x7D93;&#x88AB;&#x6B78;&#x985E;&#x6210;&#x4E00;&#x7A2E;&#x53EB;&#x505A; Two Pointers &#x7684;&#x6280;&#x5DE7;&#x3002;&#x7576;&#x7136;&#x9019;&#x500B;&#x6280;&#x5DE7;&#x7576;&#x521D;&#x662F;&#x7528;&#x4F86;&#x63CF;&#x8FF0;<a href="https://en.wikipedia.org/wiki/Cycle_detection" target="_blank">&#x9F9C;&#x5154;&#x8CFD;&#x8DD1;&#x65B9;&#x6CD5;</a>&#xFF08;&#x9019;&#x500B;&#x7528;&#x4F86;&#x627E; Linked List &#x5C3E;&#x5708;&#x65B9;&#x6CD5;&#x6211;&#x5011;&#x4EE5;&#x5F8C;&#x518D;&#x804A;&#xFF09;&#xFF0C;&#x4F46;&#x5DF2;&#x7D93;&#x88AB;&#x63A8;&#x5EE3;&#x6210;&#x6CDB;&#x6307;&#x300C;&#x53EA;&#x8981;&#x7DAD;&#x8B77;&#x5169;&#x500B;&#x8A3B;&#x6A19;&#xFF0C;&#x9019;&#x5169;&#x500B;&#x8A3B;&#x6A19;&#x53EA;&#x6703;&#x5F80;&#x55AE;&#x65B9;&#x5411;&#x79FB;&#x52D5;&#x300D;&#x7684;&#x6F14;&#x7B97;&#x6CD5;&#x3002;</p>
-<h2 id="&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x7684;&#x5206;&#x6790;">&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x7684;&#x5206;&#x6790;</h2>
-<p>&#x7531;&#x65BC;&#x6BCF;&#x4E00;&#x6B21;&#x7684;&#x8CC7;&#x6599;&#x642C;&#x79FB;&#xFF0C;&#x5927;&#x81F4;&#x53EF;&#x4EE5;&#x5C0D;&#x61C9;&#x5230; (**) &#x8655;&#x7684;&#x6BD4;&#x8F03;&#xFF0C;&#x56E0;&#x6B64;&#x5408;&#x4F75;&#x6392;&#x5E8F;&#x6CD5;&#x6240;&#x9700;&#x8981;&#x7684;&#x6642;&#x9593;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x7528;&#x300C;&#x5169;&#x5169;&#x6BD4;&#x8F03;&#x6B21;&#x6578;&#x300D;&#x4EE3;&#x8868;&#x4E4B;&#x3002;
-&#x73FE;&#x5728;&#x6211;&#x5011;&#x4F86;&#x8B49;&#x660E;&#x5408;&#x4F75;&#x6392;&#x5E8F;&#x6CD5;&#x7684;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x662F; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>&#x2061;</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>&#x3002;</p>
-<h3 id="&#x5F15;&#x7406;-8">&#x5F15;&#x7406; 8</h3>
-<p>&#x4EE4; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">T(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span> &#x8868;&#x793A;&#x4EE5;&#x5408;&#x4F75;&#x6392;&#x5E8F;&#x6CD5;&#x6392;&#x5E8F; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">n</span></span></span></span> &#x500B;&#x6578;&#x5B57;&#x6642;&#xFF0C;&#x6240;&#x9700;&#x8981;&#x9032;&#x884C;&#x7684;&#x6BD4;&#x8F03;&#x6B21;&#x6578;&#x3002;&#x5247; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>&#x2061;</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">T(n) = O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>&#x3002;</p>
-<h3 id="&#x8B49;&#x660E;">&#x8B49;&#x660E;</h3>
-<p>&#x9996;&#x5148;&#xFF0C;&#x7576; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">n</span></span></span></span> &#x662F; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base"><span class="mord">2</span></span></span></span> &#x7684;&#x51AA;&#x6B21;&#xFF08;&#x5373; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">n</span></span></span></span> &#x5F62;&#x5982; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">2^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.849108em;"></span><span class="strut bottom" style="height:0.849108em;vertical-align:0em;"></span><span class="base"><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span></span></span> &#x6642;&#xFF09;&#xFF0C;&#x5169;&#x500B;&#x5B50;&#x554F;&#x984C;&#x7684;&#x5927;&#x5C0F;&#x90FD;&#x662F; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">n/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit">n</span><span class="mord">/</span><span class="mord">2</span></span></span></span>&#x3002;&#x6B64;&#x6642;&#x6211;&#x5011;&#x6709;&#xFF1A;</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mrow><mo fence="true">{</mo><mtable><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>0</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mtext>&#xA0;if&#xA0;</mtext><mi>n</mi><mo>&#x2264;</mo><mn>1</mn><mo separator="true">,</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>2</mn><mi>T</mi><mo>(</mo><mfrac><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></mfrac><mo>)</mo><mo>+</mo><mi>n</mi><mo>&#x2212;</mo><mn>1</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mtext>&#xA0;if&#xA0;</mtext><mi>n</mi><mo>&gt;</mo><mn>1</mn><mi mathvariant="normal">.</mi></mrow></mstyle></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+<p>不難發現，由於兩個指標 <code>*L_ptr</code> 和 <code>*R_ptr</code> 不斷遞增，而且每次迴圈<strong>恰好</strong>有一者前進一格。
+因此整個 <code>Merge()</code> 的時間複雜度是線性的 \(\Theta(n)\)。
+正確性來自於對排序資料的假設、以及每一次我們都拉比較小的排頭出來，這個排頭必定是剩下所有還沒被排進來的資料中，最小的一個。</p>
+<p>近幾年這個合併兩個序列的方法已經被歸類成一種叫做 Two Pointers 的技巧。當然這個技巧當初是用來描述<a href="https://en.wikipedia.org/wiki/Cycle_detection">龜兔賽跑方法</a>（這個用來找 Linked List 尾圈方法我們以後再聊），但已經被推廣成泛指「只要維護兩個註標，這兩個註標只會往單方向移動」的演算法。</p>
+<a class="header" href="#時間複雜度的分析" id="時間複雜度的分析"><h2>時間複雜度的分析</h2></a>
+<p>由於每一次的資料搬移，大致可以對應到 (**) 處的比較，因此合併排序法所需要的時間，我們可以用「兩兩比較次數」代表之。
+現在我們來證明合併排序法的時間複雜度是 \(O(n\log n)\)。</p>
+<a class="header" href="#引理-8" id="引理-8"><h3>引理 8</h3></a>
+<p>令 \(T(n)\) 表示以合併排序法排序 \(n\) 個數字時，所需要進行的比較次數。則 \(T(n) = O(n\log n)\)。</p>
+<a class="header" href="#證明" id="證明"><h3>證明</h3></a>
+<p>首先，當 \(n\) 是 \(2\) 的冪次（即 \(n\) 形如 \(2^k\) 時），兩個子問題的大小都是 \(n/2\)。此時我們有：</p>
+<p>\[
 T(n) = \begin{cases} 0 &amp; \text{ if } n\le 1, \\
 2T(\frac{n}{2}) + n-1 &amp; \text{ if } n &gt; 1. \end{cases}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.75em;"></span><span class="strut bottom" style="height:3.0000299999999998em;vertical-align:-1.25003em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">0</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.695392em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.15em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.2em;"><svg width="400em" height="0.2em" viewbox="0 0 400000 200" preserveaspectratio="xMinYMin slice"><path d="M0 80H400000 v40H0z M0 80H400000 v40H0z"/></svg></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord text"><span class="mord">&#xA0;if&#xA0;</span></span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&#x2264;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord">1</span><span class="mpunct">,</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord text"><span class="mord">&#xA0;if&#xA0;</span></span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord">1</span><span class="mord">.</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-<p>&#x7136;&#x5F8C;&#x6839;&#x64DA;<a href="https://zh.wikipedia.org/zh-tw/%E4%B8%BB%E5%AE%9A%E7%90%86" target="_blank">&#x4E3B;&#x5B9A;&#x7406;&#xFF08;Master Theorem&#xFF09;</a>&#x6216;&#x662F;&#x6578;&#x5B78;&#x6B78;&#x7D0D;&#x6CD5;&#xFF0C;&#x4E0D;&#x96E3;&#x5F97;&#x51FA; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi mathvariant="normal">&#x398;</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>&#x2061;</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">T(n) = \Theta(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord">&#x398;</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span> &#x7684;&#x7D50;&#x8AD6;&#x3002;</p>
-<p>&#x7576; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">n</span></span></span></span> &#x4E0D;&#x662F; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base"><span class="mord">2</span></span></span></span> &#x7684;&#x51AA;&#x6B21;&#x6642;&#xFF08;&#x9019;&#x5F88;&#x91CD;&#x8981;&#xFF01;&#xFF09;&#x4E0A;&#x9762;&#x9019;&#x500B;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x7684;&#x905E;&#x8FF4;&#x5F0F;&#x5176;&#x5BE6;&#x4E0D;&#x5168;&#x7136;&#x6B63;&#x78BA;&#x3002;
-&#x4E8B;&#x5BE6;&#x4E0A;&#xFF0C;&#x905E;&#x8FF4;&#x5F0F;&#x61C9;&#x8A72;&#x662F;&#x9019;&#x6A23;&#x624D;&#x5C0D;&#xFF1A;</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>T</mi><mo>(</mo><mrow><mo fence="true">&#x230A;</mo><mrow><mfrac><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></mfrac></mrow><mo fence="true">&#x230B;</mo></mrow><mo>)</mo><mo>+</mo><mi>T</mi><mo>(</mo><mrow><mo fence="true">&#x2308;</mo><mrow><mfrac><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></mfrac></mrow><mo fence="true">&#x2309;</mo></mrow><mo>)</mo><mo>+</mo><mi>n</mi><mo>&#x2212;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+\]</p>
+<p>然後根據<a href="https://zh.wikipedia.org/zh-tw/%E4%B8%BB%E5%AE%9A%E7%90%86">主定理（Master Theorem）</a>或是數學歸納法，不難得出 \(T(n) = \Theta(n\log n)\) 的結論。</p>
+<p>當 \(n\) 不是 \(2\) 的冪次時（這很重要！）上面這個時間複雜度的遞迴式其實不全然正確。
+事實上，遞迴式應該是這樣才對：</p>
+<p>\[
 T(n) = T(\floor{\frac{n}{2}}) + T(\ceil{\frac{n}{2}}) + n-1
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.15em;"></span><span class="strut bottom" style="height:1.8359999999999999em;vertical-align:-0.686em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size2">&#x230A;</span></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.10756em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.15em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.2em;"><svg width="400em" height="0.2em" viewbox="0 0 400000 200" preserveaspectratio="xMinYMin slice"><path d="M0 80H400000 v40H0z M0 80H400000 v40H0z"/></svg></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathit">n</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size2">&#x230B;</span></span></span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size2">&#x2308;</span></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.10756em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.15em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.2em;"><svg width="400em" height="0.2em" viewbox="0 0 400000 200" preserveaspectratio="xMinYMin slice"><path d="M0 80H400000 v40H0z M0 80H400000 v40H0z"/></svg></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathit">n</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size2">&#x2309;</span></span></span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span></span></span></span></span></p>
-<p>&#x597D;&#x52A0;&#x5728;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x6578;&#x5B78;&#x6B78;&#x7D0D;&#x6CD5;&#x8B49;&#x660E;&#x51FA; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">T(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span> &#x662F;&#x905E;&#x589E;&#x7684;&#x3002;&#x63DB;&#x53E5;&#x8A71;&#x8AAA;&#xFF0C;&#x4EE4; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>n</mi><mo mathvariant="normal">&#x2032;</mo></msup><mo>=</mo><msup><mn>2</mn><mrow><mo fence="true">&#x2308;</mo><mrow><mi>log</mi><mo>&#x2061;</mo><mi>n</mi></mrow><mo fence="true">&#x2309;</mo></mrow></msup></mrow><annotation encoding="application/x-tex">n&apos; = 2^{\ceil{\log n}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8879999999999999em;"></span><span class="strut bottom" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="base"><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2032;</span></span></span></span></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="minner mtight"><span class="mopen mtight delimcenter" style="top:0em;"><span class="mtight">&#x2308;</span></span><span class="mord mtight"><span class="mop mtight">lo<span style="margin-right:0.01389em;">g</span></span><span class="mord rule mtight" style="margin-right:0.19516666666666668em;"></span><span class="mord mathit mtight">n</span></span><span class="mclose mtight delimcenter" style="top:0em;"><span class="mtight">&#x2309;</span></span></span></span></span></span></span></span></span></span></span></span></span></span>&#xFF0C;&#x5229;&#x7528; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>&#x2264;</mo><msup><mi>n</mi><mo mathvariant="normal">&#x2032;</mo></msup><mo>&lt;</mo><mn>2</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">n \le n&apos; &lt; 2n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.751892em;"></span><span class="strut bottom" style="height:0.887862em;vertical-align:-0.13597em;"></span><span class="base"><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&#x2264;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2032;</span></span></span></span></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord">2</span><span class="mord mathit">n</span></span></span></span>&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5F97;&#x5230;</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>&#x2264;</mo><mi>T</mi><mo>(</mo><msup><mi>n</mi><mo mathvariant="normal">&#x2032;</mo></msup><mo>)</mo><mo>=</mo><mi mathvariant="normal">&#x398;</mi><mo>(</mo><msup><mi>n</mi><mo mathvariant="normal">&#x2032;</mo></msup><mi>log</mi><mo>&#x2061;</mo><msup><mi>n</mi><mo mathvariant="normal">&#x2032;</mo></msup><mo>)</mo><mo>=</mo><mi mathvariant="normal">&#x398;</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>&#x2061;</mo><mi>n</mi><mo>)</mo><mtext>&#x3002;</mtext></mrow><annotation encoding="application/x-tex">
-T(n) \le T(n&apos;) = \Theta(n&apos; \log n&apos;) = \Theta(n\log n)\text{&#x3002;}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.801892em;"></span><span class="strut bottom" style="height:1.051892em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&#x2264;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2032;</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord">&#x398;</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2032;</span></span></span></span></span></span></span></span></span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2032;</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord">&#x398;</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mord text"><span class="mord cjk_fallback">&#x3002;</span></span></span></span></span></span></p>
-<hr>
-<p>&#x5408;&#x4F75;&#x6392;&#x5E8F;&#x6CD5;&#x5728;&#x5408;&#x4F75;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x6703;&#x9700;&#x8981;<strong>&#x8907;&#x88FD;</strong>&#x6B32;&#x6392;&#x5E8F;&#x7684;&#x8CC7;&#x6599;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5408;&#x4F75;&#x6392;&#x5E8F;&#x6CD5;&#x5728;&#x5BE6;&#x4F5C;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x4E00;&#x822C;&#x4F86;&#x8AAA;&#x6703;&#x4F54;&#x7528;&#x5230; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x398;</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\Theta(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord">&#x398;</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span> &#x7684;&#x984D;&#x5916;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#x3002;
-&#x6211;&#x5011;&#x6709;&#x8FA6;&#x6CD5;&#x7701;&#x4E0B;&#x4E9B;&#x8A31;&#x984D;&#x5916;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x55CE;&#xFF1F;</p>
-<h3 id="&#x63A8;&#x85A6;&#x95B1;&#x8B80;">&#x63A8;&#x85A6;&#x95B1;&#x8B80;</h3>
+\]</p>
+<p>好加在，我們可以利用數學歸納法證明出 \(T(n)\) 是遞增的。換句話說，令 \(n' = 2^{\ceil{\log n}}\)，利用 \(n \le n' &lt; 2n\)，我們可以得到</p>
+<p>\[
+T(n) \le T(n') = \Theta(n' \log n') = \Theta(n\log n)\text{。}
+\]</p>
+<hr />
+<p>合併排序法在合併的時候，會需要<strong>複製</strong>欲排序的資料。因此，合併排序法在實作的時候，一般來說會佔用到 \(\Theta(n)\) 的額外記憶體空間。
+我們有辦法省下些許額外的記憶體嗎？</p>
+<a class="header" href="#推薦閱讀" id="推薦閱讀"><h3>推薦閱讀</h3></a>
 <ul>
-<li>&#x4E3B;&#x5B9A;&#x7406;&#x7684;&#x5929;&#x82B1;&#x677F;&#x5F62;&#x5F0F;&#xFF1A;<a href="https://fu-sheng-wang.blogspot.com/2016/11/algorithms14-master-theorem.html" target="_blank">https://fu-sheng-wang.blogspot.com/2016/11/algorithms14-master-theorem.html</a></li>
+<li>主定理的天花板形式：https://fu-sheng-wang.blogspot.com/2016/11/algorithms14-master-theorem.html</li>
 </ul>
 
-                                
-                                </section>
-                            
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
+                    </main>
 
-                        </div>
-                    </div>
-                
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../sorting/inversions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../sorting/in-place-mergesort.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
             </div>
 
-            
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                <a href="inversions.html" class="navigation navigation-prev " aria-label="Previous page: 01/04 - 逆序數對">
-                    <i class="fa fa-angle-left"></i>
-                </a>
+                    <a href="../sorting/inversions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
-                
-                <a href="in-place-mergesort.html" class="navigation navigation-next " aria-label="Next page: 01/06 - 原地演算法">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
-        
-    </div>
 
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"01/05 - 合併排序法","level":"1.3.4","depth":2,"next":{"title":"01/06 - 原地演算法","level":"1.3.5","depth":2,"path":"sorting/in-place-mergesort.md","ref":"sorting/in-place-mergesort.md","articles":[]},"previous":{"title":"01/04 - 逆序數對","level":"1.3.3","depth":2,"path":"sorting/inversions.md","ref":"sorting/inversions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex-plus-macro","prism","-highlight","ga","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"katex-plus-macro":{"macros":{"\\E":"\\mathbb{E}","\\Inv":"\\mathrm{Inv}","\\floor":"\\left\\lfloor{#1}\\right\\rfloor","\\ceil":"\\left\\lceil{#1}\\right\\rceil"}},"ga":{"configuration":"auto","token":"UA-68887724-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"演算法的分析與證明","gitbook":"*"},"file":{"path":"sorting/merge-sort.md","mtime":"2020-01-08T09:37:16.773Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-24T04:47:14.971Z"},"basePath":"..","book":{"language":""}});
-        });
-    </script>
-</div>
+                
+                    <a href="../sorting/in-place-mergesort.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
 
         
-    <script src="../gitbook/gitbook.js"></script>
-    <script src="../gitbook/theme.js"></script>
-    
+
         
-        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-68887724-4', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
         
-    
+
         
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+
         
-    
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
         
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
         
-    
+        <script type="text/javascript" src="../mathjax-config.js"></script>
         
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+
         
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
 
     </body>
 </html>
-

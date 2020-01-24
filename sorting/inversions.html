@@ -1,559 +1,286 @@
-
 <!DOCTYPE HTML>
-<html lang="" >
+<html lang="en" class="sidebar-visible no-js">
     <head>
+        <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
+        <title>01/04 - 逆序數對 - 演算法的分析與證明</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>01/04 - 逆序數對 · 演算法的分析與證明</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        
-        
-        
-    
-    <link rel="stylesheet" href="../gitbook/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
 
-    
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex-plus-macro/katex.min.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="../styles/mdbook.css">
         
 
-    
-
-    
         
-        <link rel="stylesheet" href="../styles/website.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         
-    
-
-        
-    
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
-
-    
-    <link rel="next" href="merge-sort.html" />
-    
-    
-    <link rel="prev" href="cocktail-sort.html" />
-    
-
     </head>
-    <body>
-        
-<div class="book">
-    <div class="book-summary">
-        
-            
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = "light";
+        </script>
 
-            
-                <nav role="navigation">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html" class="active">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
                 
-
-
-<ul class="summary">
-    
-    
-
-    
-
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="../">
-            
-                <a href="../">
-            
-                    
-                    2020 新計劃
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="../GLOSSARY.html">
-            
-                <a href="../GLOSSARY.html">
-            
-                    
-                    Glossary
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="./">
-            
-                <a href="./">
-            
-                    
-                    排序 Sorting
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1" data-path="bubble-sort.html">
-            
-                <a href="bubble-sort.html">
-            
-                    
-                    01/02 - 泡沫排序法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2" data-path="cocktail-sort.html">
-            
-                <a href="cocktail-sort.html">
-            
-                    
-                    01/03 - 雞尾酒排序法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.3.3" data-path="inversions.html">
-            
-                <a href="inversions.html">
-            
-                    
-                    01/04 - 逆序數對
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.4" data-path="merge-sort.html">
-            
-                <a href="merge-sort.html">
-            
-                    
-                    01/05 - 合併排序法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.5" data-path="in-place-mergesort.html">
-            
-                <a href="in-place-mergesort.html">
-            
-                    
-                    01/06 - 原地演算法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.6" data-path="quick-sort.html">
-            
-                <a href="quick-sort.html">
-            
-                    
-                    01/08 - 快速排序法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.7" data-path="randomized-quicksort.html">
-            
-                <a href="randomized-quicksort.html">
-            
-                    
-                    01/10 - 隨機快速排序法（一）
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.8" data-path="randomized-quicksort2.html">
-            
-                <a href="randomized-quicksort2.html">
-            
-                    
-                    01/12 - 隨機快速排序法（二）
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.9" data-path="randomized-quicksort3.html">
-            
-                <a href="randomized-quicksort3.html">
-            
-                    
-                    01/13 - 隨機快速排序法（三）
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.10" data-path="heapsort.html">
-            
-                <a href="heapsort.html">
-            
-                    
-                    01/16 - 堆積排序法
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.11" data-path="comparison-based-sorting.html">
-            
-                <a href="comparison-based-sorting.html">
-            
-                    
-                    01/18 - 比較排序下界
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.12" data-path="minimum-comparison-sort.html">
-            
-                <a href="minimum-comparison-sort.html">
-            
-                    
-                    01/20 - 最少比較排序
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.13" data-path="merge-insertion-sort.html">
-            
-                <a href="merge-insertion-sort.html">
-            
-                    
-                    01/22 - 合併插入排序
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
-        </a>
-    </li>
-</ul>
-
-
-                </nav>
-            
-        
-    </div>
-
-    <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
-    
-
-    <!-- Title -->
-    <h1>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >01/04 - 逆序數對</a>
-    </h1>
-</div>
-
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
                             
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <h1 id="&#x9006;&#x5E8F;&#x6578;&#x5C0D;">&#x9006;&#x5E8F;&#x6578;&#x5C0D;</h1>
-<h3 id="&#x5B9A;&#x7FA9;">&#x5B9A;&#x7FA9;</h3>
-<p>&#x7D66;&#x5B9A;&#x4E00;&#x500B;&#x5E8F;&#x5217; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>=</mo><mo>(</mo><msub><mi>a</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>&#x2026;</mo><mo separator="true">,</mo><msub><mi>a</mi><mi>n</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">A=(a_1, a_2, \ldots, a_n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit">A</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="minner">&#x2026;</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">n</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mclose">)</span></span></span></span>&#x3002;&#x6211;&#x5011;&#x8AAA;&#x4E00;&#x500B;&#x6578;&#x5C0D; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(i, j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mopen">(</span><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>&#x2264;</mo><mi>i</mi><mo>&lt;</mo><mi>j</mi><mo>&#x2264;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1\le i &lt; j\le n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="base"><span class="mord">1</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&#x2264;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord mathit">i</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&#x2264;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord mathit">n</span></span></span></span> &#x662F;&#x4E00;&#x500B;&#x5B83;&#x7684;<strong>&#x9006;&#x5E8F;&#x6578;&#x5C0D; (Inversion)</strong>&#xFF0C;&#x82E5; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>&gt;</mo><msub><mi>a</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">a_i &gt; a_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.5391em;"></span><span class="strut bottom" style="height:0.8252079999999999em;vertical-align:-0.286108em;"></span><span class="base"><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"></span></span></span></span></span></span></span></span>&#x3002;
-&#x800C;&#x6EFF;&#x8DB3;&#x689D;&#x4EF6;&#x7684;&#x6578;&#x5C0D;&#x7E3D;&#x6578;&#xFF0C;&#x6211;&#x5011;&#x5BEB;&#x4F5C; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">v</mi></mrow><mo>(</mo><mi>A</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\mathrm{Inv}(A)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord"><span class="mord mathrm">I</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">v</span></span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span></span></span></span>&#x3002;</p>
-<hr>
-<p>&#x6709;&#x4E86;&#x9019;&#x500B;&#x5B9A;&#x7FA9;&#x4EE5;&#x5F8C;&#xFF0C;&#x6211;&#x5011;&#x5C31;&#x53EF;&#x4EE5;&#x8A0E;&#x8AD6;&#x7576;&#x6211;&#x5011;&#x9650;&#x5236;&#x300C;&#x6BCF;&#x6B21;&#x53EA;&#x80FD;&#x4EA4;&#x63DB;&#x76F8;&#x9130;&#x5169;&#x6578;&#x300D;&#x7684;&#x6392;&#x5E8F;&#x65B9;&#x6CD5;&#x7684;&#x6548;&#x7387;&#x4E86;&#xFF01;</p>
-<h3 id="&#x5F15;&#x7406;-4">&#x5F15;&#x7406; 4</h3>
-<p>&#x6CE1;&#x6CAB;&#x6392;&#x5E8F;&#x6CD5;&#x3001;&#x96DE;&#x5C3E;&#x9152;&#x6392;&#x5E8F;&#x6CD5;&#x3001;&#x8207;&#x63D2;&#x5165;&#x6392;&#x5E8F;&#x6CD5;&#x7576;&#x4E2D;&#xFF0C;&#x4EA4;&#x63DB;&#x6578;&#x5C0D;&#x7684;&#x6B21;&#x6578;&#x7686;&#x76F8;&#x540C;&#xFF0C;&#x800C;&#x4E14;&#x6070;&#x597D;&#x662F; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">v</mi></mrow><mo>(</mo><mi>A</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\mathrm{Inv}(A)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord"><span class="mord mathrm">I</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">v</span></span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span></span></span></span>&#x3002;</p>
-<h3 id="&#x8B49;&#x660E;">&#x8B49;&#x660E;</h3>
-<p>&#x7531;&#x65BC;&#x4EA4;&#x63DB;&#x7684;&#x65B9;&#x5F0F;&#x90FD;&#x662F;&#x50C5;&#x4EA4;&#x63DB;&#x76F8;&#x9130;&#x5169;&#x500B;&#x6578;&#x5B57;&#xFF0C;&#x800C;&#x4E14;&#x50C5;&#x6709;&#x5728; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>&gt;</mo><msub><mi>a</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">a_i &gt; a_{i+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.5391em;"></span><span class="strut bottom" style="height:0.747431em;vertical-align:-0.208331em;"></span><span class="base"><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"></span></span></span></span></span></span></span></span> &#x7684;&#x6642;&#x5019;&#x624D;&#x4EA4;&#x63DB;&#x7684;&#x3002;&#x56E0;&#x6B64;&#x6BCF;&#x4E00;&#x6B21;&#x4EA4;&#x63DB;&#x5F8C;&#x9006;&#x5E8F;&#x6578;&#x5C0D;&#x7E3D;&#x6578;&#x6070;&#x597D;&#x6E1B; 1&#x3002;
-&#x6B64;&#x5916;&#xFF0C;&#x9006;&#x5E8F;&#x6578;&#x5C0D;&#x6578;&#x91CF;&#x70BA;&#x96F6;&#xFF0C;&#x7B49;&#x50F9;&#x65BC;&#x5E8F;&#x5217;&#x5DF2;&#x6392;&#x597D;&#x5E8F;&#x3002;&#x6545;&#x5F97;&#x8B49;&#x3002;</p>
-<h3 id="&#x4FC2;&#x7406;-5">&#x4FC2;&#x7406; 5</h3>
-<p>&#x63D2;&#x5165;&#x6392;&#x5E8F;&#x6CD5;&#x7684;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x70BA; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>+</mo><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">v</mi></mrow><mo>(</mo><mi>A</mi><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n + \mathrm{Inv}(A))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathrm">I</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">v</span></span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>&#x3002;&#xFF08;&#x8B49;&#x660E;&#x7565;&#xFF09;</p>
-<h3 id="&#x4FC2;&#x7406;-6">&#x4FC2;&#x7406; 6</h3>
-<p>&#x5B58;&#x5728;&#x4E00;&#x7B46;&#x8F38;&#x5165;&#xFF0C;&#x4F7F;&#x5F97;&#x6CE1;&#x6CAB;&#x6392;&#x5E8F;&#x6CD5;&#x7684;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x70BA; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3C9;</mi><mo>(</mo><mi>n</mi><mo>+</mo><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">v</mi></mrow><mo>(</mo><mi>A</mi><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">\omega(n + \mathrm{Inv}(A))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.03588em;">&#x3C9;</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathrm">I</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">v</span></span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>&#x3002;
-&#x5373;&#xFF0C;&#x5C0D;&#x65BC;&#x8A72;&#x8F38;&#x5165;&#xFF0C;&#x6CE1;&#x6CAB;&#x6392;&#x5E8F;&#x6CD5;&#x9700;&#x8981; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x398;</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">\Theta(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base"><span class="mord">&#x398;</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> &#x7684;&#x6642;&#x9593;&#xFF0C;&#x4F46;&#x662F; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">v</mi></mrow><mo>(</mo><mi>A</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\mathrm{Inv}(A)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord"><span class="mord mathrm">I</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">v</span></span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span></span></span></span> &#x5F88;&#x5C0F;&#xFF0C;&#x5728;&#x672C;&#x4F8B;&#x4E2D; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">v</mi></mrow><mo>(</mo><mi>A</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\mathrm{Inv}(A) = O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord"><span class="mord mathrm">I</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">v</span></span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>&#x3002;</p>
-<h3 id="&#x8B49;&#x660E;">&#x8B49;&#x660E;</h3>
-<p>&#x8A72;&#x8F38;&#x5165;&#x70BA; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mn>2</mn><mo separator="true">,</mo><mn>3</mn><mo separator="true">,</mo><mo>&#x2026;</mo><mo separator="true">,</mo><mi>n</mi><mo separator="true">,</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">(2, 3, \ldots, n, 1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mopen">(</span><span class="mord">2</span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="minner">&#x2026;</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">n</span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>&#xFF0C;&#x6B64;&#x6642;&#x8981;&#x628A; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base"><span class="mord">1</span></span></span></span> &#x6162;&#x6162;&#x6643;&#x5230;&#x6700;&#x524D;&#x9762;&#xFF0C;&#x9700;&#x8981;&#x6B77;&#x7D93; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>&#x2212;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span></span></span></span> &#x6B21; while &#x8FF4;&#x5708;&#x3002;
-&#x6CE8;&#x610F;&#x5230;&#x9019;&#x500B;&#x4F8B;&#x5B50;&#x5728;&#x96DE;&#x5C3E;&#x9152;&#x6392;&#x5E8F;&#x6CD5;&#x7576;&#x4E2D;&#xFF0C;&#x4ECD;&#x662F;&#x6709;&#x6548;&#x7387;&#x7684;&#x3002;</p>
-<h3 id="&#x4FC2;&#x7406;-7">&#x4FC2;&#x7406; 7</h3>
-<ol>
-<li>&#x6CE1;&#x6CAB;&#x6392;&#x5E8F;&#x6CD5;&#x7684;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x70BA; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>+</mo><mi>n</mi><mo>&#x22C5;</mo><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">v</mi></mrow><mo>(</mo><mi>A</mi><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n + n\cdot \mathrm{Inv}(A))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x22C5;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathrm">I</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">v</span></span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>&#xFF0C;&#x800C;&#x4E14;&#x5B58;&#x5728;&#x4E00;&#x4E9B;&#x8F38;&#x5165;&#x7B26;&#x5408;&#x9019;&#x500B;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x3002;</li>
-<li>&#x96DE;&#x5C3E;&#x9152;&#x6392;&#x5E8F;&#x6CD5;&#x7684;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x70BA; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>+</mo><mi>n</mi><mo>&#x22C5;</mo><msqrt><mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">v</mi></mrow><mo>(</mo><mi>A</mi><mo>)</mo></mrow></msqrt><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n + n\cdot \sqrt{\mathrm{Inv}(A)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.935em;"></span><span class="strut bottom" style="height:1.24em;vertical-align:-0.30499999999999994em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x22C5;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord mathrm">I</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">v</span></span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span></span></span><span style="top:-2.8950000000000005em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg width="400em" height="1.28em" viewbox="0 0 400000 1296" preserveaspectratio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119c34,79.3,68.167,
-158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120c340,-704.7,510.7,-1060.3,512,-1067
-c4.7,-7.3,11,-11,19,-11H40000v40H1012.3s-271.3,567,-271.3,567c-38.7,80.7,-84,
-175,-136,283c-52,108,-89.167,185.3,-111.5,232c-22.3,46.7,-33.8,70.3,-34.5,71
-c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1s-109,-253,-109,-253c-72.7,-168,-109.3,
--252,-110,-252c-10.7,8,-22,16.7,-34,26c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26
-s76,-59,76,-59s76,-60,76,-60z M1001 80H40000v40H1012z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.30499999999999994em;"></span></span></span></span><span class="mclose">)</span></span></span></span>&#xFF0C;&#x800C;&#x4E14;&#x5B58;&#x5728;&#x4E00;&#x4E9B;&#x8F38;&#x5165;&#x7B26;&#x5408;&#x9019;&#x500B;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x3002;</li>
-</ol>
-<h3 id="&#x8B49;&#x660E;">&#x8B49;&#x660E;</h3>
-<p>&#x7B2C;&#x4E00;&#x90E8;&#x5206;&#x9084;&#x7B97;&#x55AE;&#x7D14;&#xFF1A;&#x6BCF;&#x4E00;&#x6B21; for-loop &#x4E4B;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x6709; swap &#x5C31;&#x6703;&#x8B93;&#x9006;&#x5E8F;&#x6578;&#x5C0D;&#x7684;&#x6578;&#x91CF;&#x6E1B;&#x5C11; 1&#x3002;
-&#x56E0;&#x6B64;&#x6CE1;&#x6CAB;&#x6392;&#x5E8F;&#x6CD5;&#x4E2D; while &#x8FF4;&#x5708;&#x7684;&#x57F7;&#x884C;&#x6B21;&#x6578;&#x81F3;&#x591A;&#x662F; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">v</mi></mrow><mo>(</mo><mi>A</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\mathrm{Inv}(A)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord"><span class="mord mathrm">I</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">v</span></span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span></span></span></span> &#x6B21;&#x3002;&#x7531;&#x4FC2;&#x7406; 6 &#x4E5F;&#x53EF;&#x4EE5;&#x5F97;&#x77E5;&#x9019;&#x500B;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x662F;&#x7DCA;&#x7684;&#x3002;</p>
-<p>&#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#x6BD4;&#x8F03;&#x6709;&#x610F;&#x601D;&#xFF0C;&#x800C;&#x4E14;&#x8B49;&#x660E;&#x4E5F;&#x76F8;&#x5C0D;&#x8907;&#x96DC;&#x4E00;&#x4E9B;&#x3002;&#x6CE8;&#x610F;&#x5230;&#x6BCF;&#x6B21;&#x5F9E;&#x5DE6;&#x5F80;&#x53F3;&#x908A;&#x7684; for-loop&#xFF0C;&#x62FF;&#x4F86;&#x6BD4;&#x8F03;&#x7684; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">A[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit">A</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mclose">]</span></span></span></span> &#x662F;&#x6703;&#x8D8A;&#x4F86;&#x8D8A;&#x5927;&#x7684;&#x3002;
-&#x6211;&#x5011;&#x5B9A;&#x7FA9;&#x300C;&#x4E0A;&#x65B9;&#x968E;&#x68AF;&#x300D;&#x70BA;&#x4E00;&#x500B;&#x8A3B;&#x6A19;&#x5E8F;&#x5217; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>=</mo><msub><mi>u</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>u</mi><mn>2</mn></msub><mo>&lt;</mo><mo>&#x2026;</mo><mo>&lt;</mo><msub><mi>u</mi><mi>x</mi></msub><mo>&#x2264;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 = u_1 &lt; u_2 &lt; \ldots &lt; u_x\le n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.79444em;vertical-align:-0.15em;"></span><span class="base"><span class="mord">1</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="minner">&#x2026;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">x</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&#x2264;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord mathit">n</span></span></span></span>&#xFF0C;&#x4EE3;&#x8868;&#x6BCF;&#x6B21;&#x7531;&#x5DE6;&#x5F80;&#x53F3;&#x908A;&#x770B;&#x5230;&#x7684;&#x8D8A;&#x4F86;&#x8D8A;&#x5927;&#x7684;&#x7576;&#x524D;&#x6975;&#x5927;&#x503C;&#x5011;&#x3002;
-&#x4E0D;&#x96E3;&#x767C;&#x73FE;&#x5728;&#x6B64;&#x968E;&#x6BB5;&#x7684; swap &#x6B21;&#x6578;&#x6070;&#x597D;&#x5C31;&#x662F; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>&#x2212;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">n-x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.58333em;"></span><span class="strut bottom" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit">x</span></span></span></span> &#x6B21;&#x3002;
-&#x540C;&#x7406;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5B9A;&#x7FA9;&#x300C;&#x4E0B;&#x65B9;&#x968E;&#x68AF;&#x300D;&#x70BA;&#x53E6;&#x4E00;&#x500B;&#x8A3B;&#x6A19;&#x5E8F;&#x5217; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>&#x2264;</mo><msub><mi>d</mi><mi>y</mi></msub><mo>&lt;</mo><msub><mi>d</mi><mrow><mi>y</mi><mo>&#x2212;</mo><mn>1</mn></mrow></msub><mo>&lt;</mo><mo>&#x2026;</mo><mo>&lt;</mo><msub><mi>d</mi><mn>1</mn></msub><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 \le d_y &lt; d_{y-1} &lt; \ldots &lt; d_1 = n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="base"><span class="mord">1</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&#x2264;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight" style="margin-right:0.03588em;">y</span><span class="mbin mtight">&#x2212;</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="minner">&#x2026;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord mathit">n</span></span></span></span>&#xFF0C;&#x4EE3;&#x8868;&#x6BCF;&#x6B21;&#x5F9E;&#x53F3;&#x5F80;&#x5DE6;&#x770B;&#x5230;&#x7684;&#x8D8A;&#x4F86;&#x8D8A;&#x5C0F;&#x7684;&#x6975;&#x5C0F;&#x503C;&#x5011;&#x3002;
-&#x7531;&#x65BC;&#x662F;&#x96DE;&#x5C3E;&#x9152;&#x6392;&#x5E8F;&#x6CD5;&#xFF0C;&#x5F9E;&#x53F3;&#x5F80;&#x5DE6;&#x5237;&#x7684; swap &#x6B21;&#x6578;&#x4E5F;&#x6070;&#x597D;&#x662F; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>&#x2212;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">n-y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.58333em;"></span><span class="strut bottom" style="height:0.7777700000000001em;vertical-align:-0.19444em;"></span><span class="base"><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit" style="margin-right:0.03588em;">y</span></span></span></span> &#x6B21;&#x3002;</p>
-<p>&#x6211;&#x5011;&#x7684;&#x76EE;&#x6A19;&#xFF0C;&#x662F;&#x8981;&#x8B49;&#x660E;&#x6BCF;&#x6CE2;&#x64CD;&#x4F5C;&#x4EE5;&#x5F8C;&#xFF0C;&#x9006;&#x5E8F;&#x6578;&#x5C0D;&#x7E3D;&#x6578;&#x81F3;&#x5C11;&#x6703;&#x964D; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">v</mi></mrow><mo>(</mo><mi>A</mi><mo>)</mo></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{\mathrm{Inv}(A)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.935em;"></span><span class="strut bottom" style="height:1.24em;vertical-align:-0.30499999999999994em;"></span><span class="base"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord mathrm">I</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">v</span></span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span></span></span><span style="top:-2.8950000000000005em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg width="400em" height="1.28em" viewbox="0 0 400000 1296" preserveaspectratio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119c34,79.3,68.167,
-158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120c340,-704.7,510.7,-1060.3,512,-1067
-c4.7,-7.3,11,-11,19,-11H40000v40H1012.3s-271.3,567,-271.3,567c-38.7,80.7,-84,
-175,-136,283c-52,108,-89.167,185.3,-111.5,232c-22.3,46.7,-33.8,70.3,-34.5,71
-c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1s-109,-253,-109,-253c-72.7,-168,-109.3,
--252,-110,-252c-10.7,8,-22,16.7,-34,26c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26
-s76,-59,76,-59s76,-60,76,-60z M1001 80H40000v40H1012z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.30499999999999994em;"></span></span></span></span></span></span></span> &#x9019;&#x9EBC;&#x591A;&#x3002;
-&#x7531;&#x6B64;&#x53EF;&#x4EE5;&#x63A8;&#x5F97;&#x81F3;&#x591A; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msqrt><mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">v</mi></mrow><mo>(</mo><mi>A</mi><mo>)</mo></mrow></msqrt><mo>)</mo></mrow><annotation encoding="application/x-tex">O(\sqrt{\mathrm{Inv}(A)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.935em;"></span><span class="strut bottom" style="height:1.24em;vertical-align:-0.30499999999999994em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord mathrm">I</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">v</span></span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span></span></span><span style="top:-2.8950000000000005em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg width="400em" height="1.28em" viewbox="0 0 400000 1296" preserveaspectratio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119c34,79.3,68.167,
-158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120c340,-704.7,510.7,-1060.3,512,-1067
-c4.7,-7.3,11,-11,19,-11H40000v40H1012.3s-271.3,567,-271.3,567c-38.7,80.7,-84,
-175,-136,283c-52,108,-89.167,185.3,-111.5,232c-22.3,46.7,-33.8,70.3,-34.5,71
-c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1s-109,-253,-109,-253c-72.7,-168,-109.3,
--252,-110,-252c-10.7,8,-22,16.7,-34,26c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26
-s76,-59,76,-59s76,-60,76,-60z M1001 80H40000v40H1012z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.30499999999999994em;"></span></span></span></span><span class="mclose">)</span></span></span></span> &#x6B21;&#x8FF4;&#x5708;&#x5C31;&#x53EF;&#x4EE5;&#x628A;&#x6240;&#x6709;&#x6578;&#x503C;&#x6392;&#x597D;&#x9806;&#x5E8F;&#x4E86;&#x3002;
-&#x5982;&#x679C; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>&#x2212;</mo><mi>x</mi><mo>=</mo><mi mathvariant="normal">&#x3A9;</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">n-x=\Omega(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit">x</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord">&#x3A9;</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span> &#x6216; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>&#x2212;</mo><mi>y</mi><mo>=</mo><mi mathvariant="normal">&#x3A9;</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">n-y=\Omega(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord">&#x3A9;</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>&#xFF0C;&#x90A3;&#x9EBC;&#x986F;&#x7136; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>=</mo><mi mathvariant="normal">&#x3A9;</mi><mo>(</mo><msqrt><mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">v</mi></mrow><mo>(</mo><mi>A</mi><mo>)</mo></mrow></msqrt><mo>)</mo></mrow><annotation encoding="application/x-tex">n = \Omega(\sqrt{\mathrm{Inv}(A)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.935em;"></span><span class="strut bottom" style="height:1.24em;vertical-align:-0.30499999999999994em;"></span><span class="base"><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord">&#x3A9;</span><span class="mopen">(</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord mathrm">I</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">v</span></span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span></span></span><span style="top:-2.8950000000000005em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg width="400em" height="1.28em" viewbox="0 0 400000 1296" preserveaspectratio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119c34,79.3,68.167,
-158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120c340,-704.7,510.7,-1060.3,512,-1067
-c4.7,-7.3,11,-11,19,-11H40000v40H1012.3s-271.3,567,-271.3,567c-38.7,80.7,-84,
-175,-136,283c-52,108,-89.167,185.3,-111.5,232c-22.3,46.7,-33.8,70.3,-34.5,71
-c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1s-109,-253,-109,-253c-72.7,-168,-109.3,
--252,-110,-252c-10.7,8,-22,16.7,-34,26c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26
-s76,-59,76,-59s76,-60,76,-60z M1001 80H40000v40H1012z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.30499999999999994em;"></span></span></span></span><span class="mclose">)</span></span></span></span>&#x3002;</p>
-<p>&#x6211;&#x5011;&#x73FE;&#x5728;&#x4F86;&#x7814;&#x7A76;&#x9006;&#x5E8F;&#x6578;&#x5C0D;&#x7E3D;&#x6578;&#x8207; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>&#x2212;</mo><mi>x</mi><mo separator="true">,</mo><mi>n</mi><mo>&#x2212;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">n-x, n-y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.58333em;"></span><span class="strut bottom" style="height:0.7777700000000001em;vertical-align:-0.19444em;"></span><span class="base"><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit">x</span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit" style="margin-right:0.03588em;">y</span></span></span></span> &#x4E4B;&#x9593;&#x7684;&#x95DC;&#x4FC2;&#x3002;&#x6211;&#x5011;&#x5BA3;&#x7A31;</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">v</mi></mrow><mo>(</mo><mi>A</mi><mo>)</mo><mo>&#x2264;</mo><mo>(</mo><mi>n</mi><mo>&#x2212;</mo><mi>x</mi><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mi>n</mi><mo>&#x2212;</mo><mi>y</mi><mo>)</mo><mo>(</mo><mi>n</mi><mo>&#x2212;</mo><mi>x</mi><mo>)</mo><mo>+</mo><mo>(</mo><mi>n</mi><mo>&#x2212;</mo><mi>y</mi><msup><mo>)</mo><mn>2</mn></msup><mo>&#x2264;</mo><mo>(</mo><mo>(</mo><mi>n</mi><mo>&#x2212;</mo><mi>x</mi><mo>)</mo><mo>+</mo><mo>(</mo><mi>n</mi><mo>&#x2212;</mo><mi>y</mi><mo>)</mo><msup><mo>)</mo><mn>2</mn></msup><mtext>&#x3002;</mtext></mrow><annotation encoding="application/x-tex">
-\mathrm{Inv}(A) \le (n-x)^2 + (n-y)(n-x) + (n-y)^2 \le ((n-x) + (n-y))^2\text{&#x3002;}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8641079999999999em;"></span><span class="strut bottom" style="height:1.1141079999999999em;vertical-align:-0.25em;"></span><span class="base"><span class="mord"><span class="mord mathrm">I</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">v</span></span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&#x2264;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit">x</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&#x2264;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mopen">(</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord text"><span class="mord cjk_fallback">&#x3002;</span></span></span></span></span></span>
-&#x7531;&#x4E0A;&#x5F0F;&#x53EF;&#x77E5;&#xFF0C;&#x4E00;&#x500B; while-loop &#x5167;&#x4F86;&#x56DE;&#x5237;&#x904E;&#x4E00;&#x6B21;&#x4E4B;&#x5F8C;&#xFF0C;&#x767C;&#x751F;&#x7684;&#x7F6E;&#x63DB;&#x6B21;&#x6578; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>n</mi><mo>&#x2212;</mo><mi>x</mi><mo>)</mo><mo>+</mo><mo>(</mo><mi>n</mi><mo>&#x2212;</mo><mi>y</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(n-x)+(n-y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span> &#x6B21;&#x81F3;&#x5C11;&#x6709; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">v</mi></mrow><mo>(</mo><mi>A</mi><mo>)</mo></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{\mathrm{Inv}(A)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.935em;"></span><span class="strut bottom" style="height:1.24em;vertical-align:-0.30499999999999994em;"></span><span class="base"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord mathrm">I</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">v</span></span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span></span></span><span style="top:-2.8950000000000005em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg width="400em" height="1.28em" viewbox="0 0 400000 1296" preserveaspectratio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119c34,79.3,68.167,
-158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120c340,-704.7,510.7,-1060.3,512,-1067
-c4.7,-7.3,11,-11,19,-11H40000v40H1012.3s-271.3,567,-271.3,567c-38.7,80.7,-84,
-175,-136,283c-52,108,-89.167,185.3,-111.5,232c-22.3,46.7,-33.8,70.3,-34.5,71
-c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1s-109,-253,-109,-253c-72.7,-168,-109.3,
--252,-110,-252c-10.7,8,-22,16.7,-34,26c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26
-s76,-59,76,-59s76,-60,76,-60z M1001 80H40000v40H1012z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.30499999999999994em;"></span></span></span></span></span></span></span> &#x9019;&#x9EBC;&#x591A;&#x6B21;&#xFF01;</p>
-<p>&#x8981;&#x600E;&#x9EBC;&#x8B49;&#x660E;&#x4E0A;&#x9762;&#x9019;&#x500B;&#x5F0F;&#x5B50;&#x5462;&#xFF1F;&#x9996;&#x5148;&#x53EF;&#x4EE5;&#x5C07;&#x6240;&#x6709;&#x7684;&#x9006;&#x5E8F;&#x6578;&#x5C0D;&#x5206;&#x6210;&#xFF1A;(1) &#x5169;&#x500B;&#x8A3B;&#x6A19;&#x90FD;&#x4E0D;&#x5728;&#x4E0A;&#x65B9;&#x968E;&#x68AF;&#xFF1B;(2) &#x5169;&#x500B;&#x8A3B;&#x6A19;&#x90FD;&#x4E0D;&#x5728;&#x4E0B;&#x65B9;&#x968E;&#x68AF;&#xFF1B;&#x6216; (3) &#x4E00;&#x500B;&#x8A3B;&#x6A19;&#x5728;&#x4E0A;&#x65B9;&#x968E;&#x68AF;&#x3001;&#x53E6;&#x4E00;&#x500B;&#x8A3B;&#x6A19;&#x5728;&#x4E0B;&#x65B9;&#x968E;&#x68AF;&#x3002;
-&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x4E0D;&#x53EF;&#x80FD;&#x6709;&#x5169;&#x500B;&#x8A3B;&#x6A19;&#x5728;&#x4E0A;&#x65B9;&#x968E;&#x68AF;&#xFF08;&#x6216;&#x4E0B;&#x65B9;&#x968E;&#x68AF;&#xFF09;&#x7684;&#x60C5;&#x5F62;&#x2014;&#x2014;&#x56E0;&#x70BA;&#x968E;&#x68AF;&#x672C;&#x8EAB;&#x5C31;&#x4E0D;&#x6703;&#x51FA;&#x73FE;&#x9006;&#x5E8F;&#x6578;&#x5C0D;&#x3002;
-&#x6B64;&#x5916;&#xFF0C;&#x4E5F;&#x4E0D;&#x53EF;&#x80FD;&#x6709;&#x4E00;&#x500B;&#x8A3B;&#x6A19;&#x540C;&#x6642;&#x51FA;&#x73FE;&#x5728;&#x4E0A;&#x65B9;&#x968E;&#x68AF;&#x8207;&#x4E0B;&#x65B9;&#x968E;&#x68AF;&#x3001;&#x4E26;&#x4E14;&#x53E6;&#x4E00;&#x500B;&#x8A3B;&#x6A19;&#x540C;&#x6642;&#x4E0D;&#x51FA;&#x73FE;&#x5728;&#x968E;&#x68AF;&#x4E0A;&#x2014;&#x2014;&#x9019;&#x662F;&#x56E0;&#x70BA;&#xFF0C;&#x82E5;&#x4E00;&#x500B;&#x8A3B;&#x6A19;&#x540C;&#x5C6C;&#x65BC;&#x4E0A;&#x4E0B;&#x968E;&#x68AF;&#x7684;&#x8A71;&#xFF0C;&#x4E0D;&#x53EF;&#x80FD;&#x7522;&#x751F;&#x8207;&#x4E4B;&#x76F8;&#x95DC;&#x7684;&#x9006;&#x5E8F;&#x6578;&#x5C0D;&#x3002;
-&#x56E0;&#x6B64;&#xFF0C;(1) &#x53EF;&#x4EE5;&#x5F97;&#x51FA; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>n</mi><mo>&#x2212;</mo><mi>x</mi><msup><mo>)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(n-x)^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base"><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit">x</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>&#xFF0C;(2) &#x53EF;&#x4EE5;&#x5F97;&#x51FA; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>n</mi><mo>&#x2212;</mo><mi>y</mi><msup><mo>)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(n-y)^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base"><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>&#xFF0C;(3) &#x7531;&#x65BC;&#x8A3B;&#x6A19;&#x4E0D;&#x80FD;&#x540C;&#x6642;&#x51FA;&#x73FE;&#x5728;&#x5169;&#x968E;&#x68AF;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x4E0A;&#x754C; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>n</mi><mo>&#x2212;</mo><mi>y</mi><mo>)</mo><mo>(</mo><mi>n</mi><mo>&#x2212;</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(n-y)(n-x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit">x</span><span class="mclose">)</span></span></span></span>&#x3002;</p>
-<p>&#x8003;&#x616E;&#x51FD;&#x6578; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>k</mi><mo>)</mo><mo>=</mo><mi>k</mi><mo>&#x2212;</mo><msqrt><mrow><mi>k</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">f(k) = k-\sqrt{k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.93222em;"></span><span class="strut bottom" style="height:1.18222em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.93222em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span><span style="top:-2.89222em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width="400em" height="1.08em" viewbox="0 0 400000 1080" preserveaspectratio="xMinYMin slice"><path d="M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
--10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
--50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
-35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
--221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
-s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
-s-65,47,-65,47z M834 80H400000v40H845z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.10777999999999999em;"></span></span></span></span></span></span></span>&#xFF0C;&#x6211;&#x5011;&#x60F3;&#x8981;&#x77E5;&#x9053;&#x7684;&#x5C31;&#x662F;&#x8FED;&#x4EE3;&#x591A;&#x5C11;&#x6B21;&#x4EE5;&#x5F8C;&#xFF0C;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mo>&#x22EF;</mo><mi>f</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>k</mi><mo>)</mo><mo>)</mo><mo>&#x22EF;</mo><mspace width="0.16667em"></mspace><mo>)</mo></mrow><annotation encoding="application/x-tex">f(\cdots f(f(k))\cdots)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="minner">&#x22EF;</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="minner">&#x22EF;</span><span class="mspace thinspace"></span><span class="mclose">)</span></span></span></span> &#x7684;&#x503C;&#x6703;&#x8B8A;&#x5F97;&#x5920;&#x5C0F;&#x3002;
-&#x4EE4; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>=</mo><msup><mi>t</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">k=t^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>&#x3002;
-&#x7531;&#x65BC; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>t</mi><mn>2</mn></msup><mo>&#x2212;</mo><mi>t</mi><mo>&#x2265;</mo><mo>(</mo><mi>t</mi><mo>&#x2212;</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">t^2-t \ge (t-1)^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base"><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit">t</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&#x2265;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mopen">(</span><span class="mord mathit">t</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>&#x3002;
-&#x6CE8;&#x610F;&#x5230;&#x8FED;&#x4EE3;&#x5169;&#x6B21;&#x4EE5;&#x5F8C; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>k</mi><mo>)</mo><mo>)</mo><mo>=</mo><mi>k</mi><mo>&#x2212;</mo><msqrt><mrow><mi>k</mi></mrow></msqrt><mo>&#x2212;</mo><msqrt><mrow><mi>k</mi><mo>&#x2212;</mo><msqrt><mrow><mi>k</mi></mrow></msqrt></mrow></msqrt><mo>&#x2264;</mo><msup><mi>t</mi><mn>2</mn></msup><mo>&#x2212;</mo><mi>t</mi><mo>&#x2212;</mo><mo>(</mo><mi>t</mi><mo>&#x2212;</mo><mn>1</mn><mo>)</mo><mo>=</mo><mo>(</mo><mi>t</mi><mo>&#x2212;</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">f(f(k)) = k-\sqrt{k}-\sqrt{k-\sqrt{k}} \le t^2 - t - (t-1) = (t-1)^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.09722em;"></span><span class="strut bottom" style="height:1.34722em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.93222em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span><span style="top:-2.89222em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width="400em" height="1.08em" viewbox="0 0 400000 1080" preserveaspectratio="xMinYMin slice"><path d="M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
--10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
--50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
-35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
--221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
-s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
-s-65,47,-65,47z M834 80H400000v40H845z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.10777999999999999em;"></span></span></span></span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.09722em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.93222em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span><span style="top:-2.89222em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width="400em" height="1.08em" viewbox="0 0 400000 1080" preserveaspectratio="xMinYMin slice"><path d="M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
--10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
--50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
-35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
--221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
-s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
-s-65,47,-65,47z M834 80H400000v40H845z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.10777999999999999em;"></span></span></span></span></span></span><span style="top:-3.05722em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg width="400em" height="1.28em" viewbox="0 0 400000 1296" preserveaspectratio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119c34,79.3,68.167,
-158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120c340,-704.7,510.7,-1060.3,512,-1067
-c4.7,-7.3,11,-11,19,-11H40000v40H1012.3s-271.3,567,-271.3,567c-38.7,80.7,-84,
-175,-136,283c-52,108,-89.167,185.3,-111.5,232c-22.3,46.7,-33.8,70.3,-34.5,71
-c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1s-109,-253,-109,-253c-72.7,-168,-109.3,
--252,-110,-252c-10.7,8,-22,16.7,-34,26c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26
-s76,-59,76,-59s76,-60,76,-60z M1001 80H40000v40H1012z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.1427799999999999em;"></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&#x2264;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit">t</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord mathit">t</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mopen">(</span><span class="mord mathit">t</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>&#x3002;
-&#x56E0;&#x6B64;&#xFF0C;&#x53EA;&#x8981;&#x8FED;&#x4EE3; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>t</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">t</span><span class="mclose">)</span></span></span></span> &#x6B21;&#x4EE5;&#x5F8C;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x56DE;&#x5230;&#x5E38;&#x6578;&#x56C9;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x9700;&#x8981;&#x7684; while-loop &#x8FED;&#x4EE3;&#x6B21;&#x6578;&#x81F3;&#x591A;&#x53EA;&#x8981; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msqrt><mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">v</mi></mrow><mo>(</mo><mi>A</mi><mo>)</mo></mrow></msqrt><mo>)</mo></mrow><annotation encoding="application/x-tex">O(\sqrt{\mathrm{Inv}(A)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.935em;"></span><span class="strut bottom" style="height:1.24em;vertical-align:-0.30499999999999994em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord mathrm">I</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">v</span></span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span></span></span><span style="top:-2.8950000000000005em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg width="400em" height="1.28em" viewbox="0 0 400000 1296" preserveaspectratio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119c34,79.3,68.167,
-158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120c340,-704.7,510.7,-1060.3,512,-1067
-c4.7,-7.3,11,-11,19,-11H40000v40H1012.3s-271.3,567,-271.3,567c-38.7,80.7,-84,
-175,-136,283c-52,108,-89.167,185.3,-111.5,232c-22.3,46.7,-33.8,70.3,-34.5,71
-c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1s-109,-253,-109,-253c-72.7,-168,-109.3,
--252,-110,-252c-10.7,8,-22,16.7,-34,26c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26
-s76,-59,76,-59s76,-60,76,-60z M1001 80H40000v40H1012z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.30499999999999994em;"></span></span></span></span><span class="mclose">)</span></span></span></span> &#x6B21;&#x3002;</p>
-<hr>
-<p>&#x4EC0;&#x9EBC;&#x6A23;&#x7684;&#x8F38;&#x5165;&#x9700;&#x8981;&#x8B93;&#x96DE;&#x5C3E;&#x9152;&#x6392;&#x5E8F;&#x6CD5;&#x82B1;&#x5230; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x398;</mi><mo>(</mo><mi>n</mi><mo>+</mo><mi>n</mi><msqrt><mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">v</mi></mrow><mo>(</mo><mi>A</mi><mo>)</mo></mrow></msqrt><mo>)</mo></mrow><annotation encoding="application/x-tex">\Theta(n+n\sqrt{\mathrm{Inv}(A)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.935em;"></span><span class="strut bottom" style="height:1.24em;vertical-align:-0.30499999999999994em;"></span><span class="base"><span class="mord">&#x398;</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit">n</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord mathrm">I</span><span class="mord mathrm">n</span><span class="mord mathrm" style="margin-right:0.01389em;">v</span></span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span></span></span><span style="top:-2.8950000000000005em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg width="400em" height="1.28em" viewbox="0 0 400000 1296" preserveaspectratio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119c34,79.3,68.167,
-158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120c340,-704.7,510.7,-1060.3,512,-1067
-c4.7,-7.3,11,-11,19,-11H40000v40H1012.3s-271.3,567,-271.3,567c-38.7,80.7,-84,
-175,-136,283c-52,108,-89.167,185.3,-111.5,232c-22.3,46.7,-33.8,70.3,-34.5,71
-c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1s-109,-253,-109,-253c-72.7,-168,-109.3,
--252,-110,-252c-10.7,8,-22,16.7,-34,26c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26
-s76,-59,76,-59s76,-60,76,-60z M1001 80H40000v40H1012z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.30499999999999994em;"></span></span></span></span><span class="mclose">)</span></span></span></span> &#x9019;&#x9EBC;&#x4E45;&#x5462;&#xFF1F;
-&#x53EF;&#x4EE5;&#x8A66;&#x8A66;&#x770B;&#x628A; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base"><span class="mord">1</span></span></span></span> &#x5230; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">n</span></span></span></span> &#x4F9D;&#x5E8F;&#x6392;&#x597D;&#xFF0C;&#x7136;&#x5F8C;&#x628A;&#x524D; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span> &#x500B;&#x6578;&#x5B57;&#x53CD;&#x8F49;&#x904E;&#x4F86;&#xFF0C;&#x4F60;&#x5C31;&#x6703;&#x5F97;&#x5230;&#x4E00;&#x500B;&#x9006;&#x5E8F;&#x6578;&#x5C0D;&#x500B;&#x6578;&#x70BA; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>(</mo><mi>k</mi><mo>&#x2212;</mo><mn>1</mn><mo>)</mo><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">k(k-1)/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord">/</span><span class="mord">2</span></span></span></span>&#x3001;&#x800C;&#x4E14;&#x6642;&#x9593;&#x8907;&#x96DC;&#x5EA6;&#x662F; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>k</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nk)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mclose">)</span></span></span></span> &#x7684;&#x7D50;&#x8AD6;&#x4E86;&#x3002;</p>
-<h2 id="&#x5C0F;&#x7D50;&#x8AD6;">&#x5C0F;&#x7D50;&#x8AD6;</h2>
-<p>&#x6211;&#x5011;&#x4ECA;&#x5929;&#x900F;&#x904E;&#x9006;&#x5E8F;&#x6578;&#x5C0D;&#x7684;&#x65B9;&#x6CD5;&#x4F86;&#x5206;&#x6790;&#x6C23;&#x6CE1;&#x6392;&#x5E8F;&#x6CD5;&#x3001;&#x96DE;&#x5C3E;&#x9152;&#x6392;&#x5E8F;&#x6CD5;&#x4EE5;&#x53CA;&#x63D2;&#x5165;&#x6392;&#x5E8F;&#x6CD5;&#x7684;&#x512A;&#x52A3;&#x3002;</p>
-<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;">&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Inversion_(discrete_mathematics" target="_blank">https://en.wikipedia.org/wiki/Inversion_(discrete_mathematics</a>)</li>
-<li><a href="https://math.stackexchange.com/questions/2998546/sort-an-array-given-the-number-of-inversions" target="_blank">https://math.stackexchange.com/questions/2998546/sort-an-array-given-the-number-of-inversions</a></li>
-</ul>
-
-                                
-                                </section>
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
                             
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
+                        </div>
 
+                        <h1 class="menu-title">演算法的分析與證明</h1> 
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
                         </div>
                     </div>
+                </div>
+
                 
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#逆序數對" id="逆序數對"><h1>逆序數對</h1></a>
+<a class="header" href="#定義" id="定義"><h3>定義</h3></a>
+<p>給定一個序列 \(A=(a_1, a_2, \ldots, a_n)\)。我們說一個數對 \((i, j)\), \(1\le i &lt; j\le n\) 是一個它的<strong>逆序數對 (Inversion)</strong>，若 \(a_i &gt; a_j\)。
+而滿足條件的數對總數，我們寫作 \(\mathrm{Inv}(A)\)。</p>
+<hr />
+<p>有了這個定義以後，我們就可以討論當我們限制「每次只能交換相鄰兩數」的排序方法的效率了！</p>
+<a class="header" href="#引理-4" id="引理-4"><h3>引理 4</h3></a>
+<p>泡沫排序法、雞尾酒排序法、與插入排序法當中，交換數對的次數皆相同，而且恰好是 \(\mathrm{Inv}(A)\)。</p>
+<a class="header" href="#證明" id="證明"><h3>證明</h3></a>
+<p>由於交換的方式都是僅交換相鄰兩個數字，而且僅有在 \(a_i &gt; a_{i+1}\) 的時候才交換的。因此每一次交換後逆序數對總數恰好減 1。
+此外，逆序數對數量為零，等價於序列已排好序。故得證。</p>
+<a class="header" href="#係理-5" id="係理-5"><h3>係理 5</h3></a>
+<p>插入排序法的時間複雜度為 \(O(n + \mathrm{Inv}(A))\)。（證明略）</p>
+<a class="header" href="#係理-6" id="係理-6"><h3>係理 6</h3></a>
+<p>存在一筆輸入，使得泡沫排序法的時間複雜度為 \(\omega(n + \mathrm{Inv}(A))\)。
+即，對於該輸入，泡沫排序法需要 \(\Theta(n^2)\) 的時間，但是 \(\mathrm{Inv}(A)\) 很小，在本例中 \(\mathrm{Inv}(A) = O(n)\)。</p>
+<a class="header" href="#證明-1" id="證明-1"><h3>證明</h3></a>
+<p>該輸入為 \((2, 3, \ldots, n, 1)\)，此時要把 \(1\) 慢慢晃到最前面，需要歷經 \(n-1\) 次 while 迴圈。
+注意到這個例子在雞尾酒排序法當中，仍是有效率的。</p>
+<a class="header" href="#係理-7" id="係理-7"><h3>係理 7</h3></a>
+<ol>
+<li>泡沫排序法的時間複雜度為 \(O(n + n\cdot \mathrm{Inv}(A))\)，而且存在一些輸入符合這個時間複雜度。</li>
+<li>雞尾酒排序法的時間複雜度為 \(O(n + n\cdot \sqrt{\mathrm{Inv}(A)})\)，而且存在一些輸入符合這個時間複雜度。</li>
+</ol>
+<a class="header" href="#證明-2" id="證明-2"><h3>證明</h3></a>
+<p>第一部分還算單純：每一次 for-loop 之中，如果有 swap 就會讓逆序數對的數量減少 1。
+因此泡沫排序法中 while 迴圈的執行次數至多是 \(\mathrm{Inv}(A)\) 次。由係理 6 也可以得知這個時間複雜度是緊的。</p>
+<p>第二部分比較有意思，而且證明也相對複雜一些。注意到每次從左往右邊的 for-loop，拿來比較的 \(A[i]\) 是會越來越大的。
+我們定義「上方階梯」為一個註標序列 \(1 = u_1 &lt; u_2 &lt; \ldots &lt; u_x\le n\)，代表每次由左往右邊看到的越來越大的當前極大值們。
+不難發現在此階段的 swap 次數恰好就是 \(n-x\) 次。
+同理我們可以定義「下方階梯」為另一個註標序列 \(1 \le d_y &lt; d_{y-1} &lt; \ldots &lt; d_1 = n\)，代表每次從右往左看到的越來越小的極小值們。
+由於是雞尾酒排序法，從右往左刷的 swap 次數也恰好是 \(n-y\) 次。</p>
+<p>我們的目標，是要證明每波操作以後，逆序數對總數至少會降 \(\sqrt{\mathrm{Inv}(A)}\) 這麼多。
+由此可以推得至多 \(O(\sqrt{\mathrm{Inv}(A)})\) 次迴圈就可以把所有數值排好順序了。
+如果 \(n-x=\Omega(n)\) 或 \(n-y=\Omega(n)\)，那麼顯然 \(n = \Omega(\sqrt{\mathrm{Inv}(A)})\)。</p>
+<p>我們現在來研究逆序數對總數與 \(n-x, n-y\) 之間的關係。我們宣稱</p>
+<p>\[
+\mathrm{Inv}(A) \le (n-x)^2 + (n-y)(n-x) + (n-y)^2 \le ((n-x) + (n-y))^2\text{。}
+\]
+由上式可知，一個 while-loop 內來回刷過一次之後，發生的置換次數 \((n-x)+(n-y)\) 次至少有 \(\sqrt{\mathrm{Inv}(A)}\) 這麼多次！</p>
+<p>要怎麼證明上面這個式子呢？首先可以將所有的逆序數對分成：(1) 兩個註標都不在上方階梯；(2) 兩個註標都不在下方階梯；或 (3) 一個註標在上方階梯、另一個註標在下方階梯。
+要注意的是，不可能有兩個註標在上方階梯（或下方階梯）的情形——因為階梯本身就不會出現逆序數對。
+此外，也不可能有一個註標同時出現在上方階梯與下方階梯、並且另一個註標同時不出現在階梯上——這是因為，若一個註標同屬於上下階梯的話，不可能產生與之相關的逆序數對。
+因此，(1) 可以得出 \((n-x)^2\)，(2) 可以得出 \((n-y)^2\)，(3) 由於註標不能同時出現在兩階梯，因此可以得到上界 \((n-y)(n-x)\)。</p>
+<p>考慮函數 \(f(k) = k-\sqrt{k}\)，我們想要知道的就是迭代多少次以後，\(f(\cdots f(f(k))\cdots)\) 的值會變得夠小。
+令 \(k=t^2\)。
+由於 \(t^2-t \ge (t-1)^2\)。
+注意到迭代兩次以後 \(f(f(k)) = k-\sqrt{k}-\sqrt{k-\sqrt{k}} \le t^2 - t - (t-1) = (t-1)^2\)。
+因此，只要迭代 \(O(t)\) 次以後，就可以回到常數囉。因此，需要的 while-loop 迭代次數至多只要 \(O(\sqrt{\mathrm{Inv}(A)})\) 次。</p>
+<hr />
+<p>什麼樣的輸入需要讓雞尾酒排序法花到 \(\Theta(n+n\sqrt{\mathrm{Inv}(A)})\) 這麼久呢？
+可以試試看把 \(1\) 到 \(n\) 依序排好，然後把前 \(k\) 個數字反轉過來，你就會得到一個逆序數對個數為 \(k(k-1)/2\)、而且時間複雜度是 \(O(nk)\) 的結論了。</p>
+<a class="header" href="#小結論" id="小結論"><h2>小結論</h2></a>
+<p>我們今天透過逆序數對的方法來分析氣泡排序法、雞尾酒排序法以及插入排序法的優劣。</p>
+<a class="header" href="#參考資料" id="參考資料"><h3>參考資料</h3></a>
+<ul>
+<li>https://en.wikipedia.org/wiki/Inversion_(discrete_mathematics)</li>
+<li>https://math.stackexchange.com/questions/2998546/sort-an-array-given-the-number-of-inversions</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../sorting/cocktail-sort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../sorting/merge-sort.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
             </div>
 
-            
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                <a href="cocktail-sort.html" class="navigation navigation-prev " aria-label="Previous page: 01/03 - 雞尾酒排序法">
-                    <i class="fa fa-angle-left"></i>
-                </a>
+                    <a href="../sorting/cocktail-sort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
-                
-                <a href="merge-sort.html" class="navigation navigation-next " aria-label="Next page: 01/05 - 合併排序法">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
-        
-    </div>
 
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"01/04 - 逆序數對","level":"1.3.3","depth":2,"next":{"title":"01/05 - 合併排序法","level":"1.3.4","depth":2,"path":"sorting/merge-sort.md","ref":"sorting/merge-sort.md","articles":[]},"previous":{"title":"01/03 - 雞尾酒排序法","level":"1.3.2","depth":2,"path":"sorting/cocktail-sort.md","ref":"sorting/cocktail-sort.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex-plus-macro","prism","-highlight","ga","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"katex-plus-macro":{"macros":{"\\E":"\\mathbb{E}","\\Inv":"\\mathrm{Inv}","\\floor":"\\left\\lfloor{#1}\\right\\rfloor","\\ceil":"\\left\\lceil{#1}\\right\\rceil"}},"ga":{"configuration":"auto","token":"UA-68887724-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"演算法的分析與證明","gitbook":"*"},"file":{"path":"sorting/inversions.md","mtime":"2020-01-04T17:47:47.078Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-24T04:47:14.971Z"},"basePath":"..","book":{"language":""}});
-        });
-    </script>
-</div>
+                
+                    <a href="../sorting/merge-sort.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
 
         
-    <script src="../gitbook/gitbook.js"></script>
-    <script src="../gitbook/theme.js"></script>
-    
+
         
-        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-68887724-4', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
         
-    
+
         
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+
         
-    
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
         
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
         
-    
+        <script type="text/javascript" src="../mathjax-config.js"></script>
         
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+
         
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
 
     </body>
 </html>
-

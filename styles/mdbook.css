@@ -1,0 +1,5 @@
+.content p {
+  line-height: 1.7;
+  text-align: justify;
+  text-justify:inter-ideograph;
+}
