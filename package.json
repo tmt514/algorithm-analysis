@@ -8,10 +8,10 @@
   ],
   "license": "CC-SA-BY",
   "scripts": {
-    "build": "gitbook build",
-    "serve": "gitbook serve",
+    "build": "mdbook build",
+    "serve": "mdbook serve",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gh-pages -d _book -b gh-pages"
+    "deploy": "gh-pages -d book -b gh-pages"
   },
   "devDependencies": {
     "gh-pages": "^2.1.1"
