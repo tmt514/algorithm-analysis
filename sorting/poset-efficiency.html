@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>01/08 - 快速排序法 - 演算法的分析與證明</title>
+        <title>01/25 - 偏序集排序（一） - 演算法的分析與證明</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -80,7 +80,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html" class="active">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li></ol></li></ol>
+            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html" class="active">01/25 - 偏序集排序（一）</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -145,87 +145,64 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#快速排序法" id="快速排序法"><h1>快速排序法</h1></a>
-<p>另一個利用分而治之達成的排序方法，是快速排序法（Quick Sort）。</p>
-<p>如果我們能將輸入的數值分成兩組，並且保證某一組的所有數字都不超過另一組的所有數字。
-那麼，把這兩組數字分別遞迴下去排序，再接起來就可以了。
-通常分組的方法是透過指定衛兵（pivot）的形式，比衛兵小的放一堆、比衛兵大的放另一堆。</p>
-<p>分組的方法非常多種，這裡的寫法是直接指定<strong>第一個數字為 pivot</strong>，然後逐一掃過所有元素。
-如果一個元素比 pivot 大的話，就把它換到最後面，否則就跟 pivot 交換（放到左邊）。
-咦？如果有跟衛兵相同的怎麼辦？基本上我們必須排除與衛兵相同的資料值，所以遞迴的時候必須要把小於、等於、大於這三種情況分清楚。</p>
-<pre><code class="language-cpp">void QuickSort(data_t *A, int n) {
-  if (n &lt;= 1) return;
-  int pivot_pos = 0;
-  int right_boundary = n - 1;
-  int now = 1;
-  // 把資料分成小於、等於、大於 pivot 等三堆。
-  while (now &lt;= right_boundary) {
-    if (A[now] &lt; A[pivot_pos]) {
-      swap(A[now++], A[pivot_pos++]);
-    } else if (A[now] == A[pivot_pos]) {
-      ++now;
-    } else {
-      swap(A[now], A[right_boundary--]);
-    }
-  }
-  QuickSort(A, pivot_pos); // 嚴格小於 pivot 的元素們。
-  QuickSort(A + now, n - now); // 嚴格大於 pivot 的元素們。
-}
-</code></pre>
-<a class="header" href="#最差時間複雜度" id="最差時間複雜度"><h2>最差時間複雜度</h2></a>
-<a class="header" href="#引理-12" id="引理-12"><h3>引理 12</h3></a>
-<p>快速排序法的時間複雜度為 \(O(n^2)\)。</p>
-<a class="header" href="#證明" id="證明"><h3>證明</h3></a>
-<p>注意到，對於任何一筆資料，在所有 QuickSort 函式的呼叫中最多只有一次會被當作 pivot 拿來比較。
-而 QuickSort 的執行時間正比於：\(n\le 1\) 情形的遞迴呼叫次數、以及拿 pivot 出來跟別人比較的總次數。
-前者是 \(O(n)\) 次函式呼叫，後者每個元素至多被拿來當作一次 pivot，每次 pivot 至多會跟 \(O(n)\) 個元素進行比較。
-因此時間複雜度為 \(O(n^2)\)。</p>
-<p>另一方面，考慮 \((n, n-1, n-2, \ldots, 1)\) 這個逆序的序列。每一次遞迴都會把最大的數字推到最右邊，因此每一層遞迴要處理的資料量依序為 \(n, n-1, \ldots, 1\)。這樣加起來就是 \(\Theta(n^2)\)。</p>
-<a class="header" href="#快速排序法不是原地演算法" id="快速排序法不是原地演算法"><h3>快速排序法不是原地演算法</h3></a>
-<p>雖然上面把資料分堆的部分，看起來只需要 \(O(1)\) 的記憶體空間。但遞迴呼叫會在使用呼叫堆疊（Call Stack），在最糟情形下仍會使用 \(O(n)\) 的額外記憶體空間。相當慘烈。此外，要把快速排序法改成非遞迴的形式，其實就有點痛苦了，不像是合併排序法那樣可以輕易地變成 bottom-up 的迭代形式。</p>
-<a class="header" href="#Ďurian-快速排序法" id="Ďurian-快速排序法"><h2>Ďurian 快速排序法</h2></a>
-<p>一般來說，把一個遞迴函式無腦改成非遞迴函式，最簡單的方式就是手動模擬呼叫堆疊的行為。
-但事實上，今天來跟大家分享一個捷克學生 Branislav Ďurian 在 1986 年提出的改編版快速排序法。
-其核心想法是利用 pivot 當作擋板，找出目前遞迴到的子問題邊界。這麼一來，就不需要使用堆疊來存放邊界了！</p>
-<p><img src="./in-place-quicksort1.png" alt="" /></p>
-<p>上圖示意著原本的快速排序法的遞迴呼叫過程，其中 L 和 R 表示的是當下的子問題邊界、而藍色和紅色底的兩條代表著兩次遞迴所選取的 pivot。
-大家可以想想看，如果不知道邊界的情形下（或者，只記得剛才處理的子問題邊界），要怎麼找回 pivot。
-如果是已分派好的 pivot，其實扮演著<strong>樞紐</strong>的功能：在它左邊的元素都比較小、在它右邊的元素都比較大。
-所以其實可以用線性時間掃過去，花費 \(O(n)\) 的時間來找出樞紐。（要做到線性時間+常數額外記憶體需要一點點挑戰性，朋友們不妨思考看看）
-不過這麼一來，就算我們在「遞迴的底層」（資料規模很小的子問題）仍然需要花費 \(O(n)\) 的時間找出樞紐，沒什麼效率。</p>
-<p>相反地，如果我們只花 \(O(R-L)\) 的時間找出下一個要處理的子問題，整體的時間就不會變了！
-改變目前遞迴子問題的情況只有兩種：一個是往下遞迴（比 pivot 小的那一組數字）、另一個是在遞迴結束後，需要移動到上一層（或上好幾層）的比 pivot 大的那一組數字。第一種情形相當好處理，在往下遞迴之前你已經有目前 pivot 的位置了！</p>
-<p>難就難在第二種情形。一個子問題搞定以後，如果要繼續排序，下一個要搞定的子問題總是會粘著目前子問題的右界。
-換句話說，我們其實已經知道下一個要處理的子問題左界在哪裡了！
-要怎麼做到還原右邊界這件事呢？Ďurian 提出了一個絕妙的方法：在向下遞迴之前，偷偷把<font color='red'><strong>前一層的 pivot</strong> 換到目前 pivot 右邊</font>。
-以下圖為例，我們把藍色 pivot 調到紅色 pivot 右邊！</p>
-<p><img src="./in-place-quicksort2.png" alt="" /></p>
-<p>當我們做完右圖的 \([L, R]\) 子問題以後，要怎麼還原藍色 pivot 的正確位置呢？
-由於已知藍色 pivot 的位置，這時候就變得相當單純了！我們就拿著這個藍色 pivot 往右邊刷，刷到第一個不比它小的數字就停下來。
-這麼一來就可以準確還原右界了！而且不需要任何堆疊或額外的記憶體空間！</p>
+                        <a class="header" href="#偏序集排序一" id="偏序集排序一"><h1>偏序集排序（一）</h1></a>
+<p>在比較排序的過程中，我們不斷地詢問某兩筆資料之間的大小關係。
+到目前為止，我們知道，從資訊理論的角度來看，若採用兩兩資料比較的方式逐漸取得訊息，
+從一個「完全不知道訊息之間大小關係」，與「知曉任兩筆資料之間的大小關係」，
+至少要經過 \(\ceil{\log n!}\) 次詢問。</p>
+<p>如果我們想要證明更嚴謹的排序次數下界（比方說最小反例 \(S(12) &gt; 29\)）。我們必須要考慮所有的排序方法：證明任何一種排序方法都無法在 29 次比較之內得到 12 筆資料的完整排序。
+但是，演算法顯然有無窮多種（想像一下：若我們將演算法以 C 語言實作，雖然都是排序 12 筆資料，但是有無窮多種寫法可以正確地排序這 12 種資料。）
+在只關心比較次數的情況下，我們是否有辦法系統性地描述「訊息逐漸揭露」的過程呢？</p>
+<p>要理解這個問題，讓我們從定義<strong>偏序集（Partially Ordered Sets）</strong> 開始吧！</p>
+<!-- 今天來簡單介紹**偏序集（Partially Ordered Sets）**、**線性延伸（Linear Extension）**、以及由 Frank Hwang 與 Shen Lin 定義的**排序效率（Efficiency）**。
+以圖論語言來說明的話，我們今天想介紹的是**有向無環圖（Directed Acyclic Graph）**、**拓撲順序（Topological Order）**、以及基於這兩個觀念定義出來的排序效率。 -->
+<a class="header" href="#偏序集-poset" id="偏序集-poset"><h2>偏序集 Poset</h2></a>
+<p>首先，我們不妨假設任何兩筆輸入的資料都不相同，而且所有資料存在一個全序排列（Total Order），也就是說，隨意選取任何兩筆資料 \(x\) 和 \(y\)，必定有 \(x &lt; y\) 或者 \(x &gt; y\)。</p>
+<p>假設某個演算法今天對於 \(n\) 筆資料，抓了其中兩筆資料 \(x_1, x_2\) 來比較大小，獲得了 \(x_1 &lt; x_2\) 這樣的資訊。於是呢，我們可以從 \(x_1\) 到 \(x_2\) 畫一個箭頭 \(x_1\to x_2\)。這些資料與資料之間的關聯，形成一個偏序集 Partially Ordered Set，通常我們會簡稱 Poset。
+這個集合，就相當於我們目前「已知」的所有資訊。一個超級粗略的估計如下：\(n\) 個元素的 Poset 至多有 \(2^{n^2-n}\) 種<sup class="footnote-reference"><a href="#1">1</a></sup>，因為這個集合當中、任何兩個元素之間的關係要嘛可以出現、要嘛不能出現。
+由於我們今天舉的例子是 \(n=12\)，讓我先把 \(n=12\) 筆資料的 Poset 數量列出來提供參考：\(414864951055853499\)。總之是個有限的數字！</p>
+<p>要如何找出排序 \(n=12\) 筆資料的最小排序方法數呢？我們可以利用 <strong>動態規劃</strong> 的概念來解它！
+對於任何一個偏序集 \(P\)，定義 \(dp(P)\) 表示完成排序尚需要的最少比較次數。
+不難發現，一開始我們掌握的資訊量是一個空的偏序集 \(P_\emptyset\)，所求的最少比較次數 \(S(12) = dp(P_\emptyset)\)。</p>
+<p>假設我們現在手上有個偏序集 \(P_0\)，第一步該做什麼呢？我們可以選擇任何兩筆資料 \(x_i, x_j\) 進行比較。無論獲得什麼結果，我們會得到另一個偏序集 \(P_1 = P_0(x_i \lessgtr x_j)\)。注意到，如果 \(x_i\) 與 \(x_j\) 在 \(P_0\) 之中不存在任何關聯，那麼新的偏序集的大小必定大於原本的 \(|P_1\mid  &gt; \mid P_0\mid \)。
+如果我們事先計算好，對所有 \(i, j\)，到底產生出來的偏序集，其最糟情形下會需要幾次比較。選取最小的那組 \((i, j)\) 就可以了！寫成遞迴關係會變成：</p>
+<p>\[
+dp(P_0) = 1 + \min_{i, j} \left( \max\{dp(P_0(x_i &lt; x_j)), dp(P_0(x_i &gt; x_j))\} \right)
+\]</p>
+<p>對於 \(n=12\) 筆資料而言，我們就獲得一個 \(n^2\times 414864951055853499\) 時間複雜度的動態規劃演算法了！真是好棒棒。這個數字可能有點大，如果我們只考慮<strong>同構（Isomorphic）</strong> 的偏序集，那這個數字可以降到 \(n^2\times 1104891746\)，感覺變得可以負擔了。在這邊「同構」是這樣定義的：把輸入的資料 ID 隨意亂序置換以後，產生的所有偏序集都會被視為同構。顯然這些偏序集距離完全排好順序所需要的比較次數都相同，一旦計算出其中一個偏序集的 \(dp\) 值，就等同於計算出了所有其他同構的偏序集的 \(dp\) 值。</p>
+<a class="header" href="#有向無環圖-directed-acyclic-graph" id="有向無環圖-directed-acyclic-graph"><h2>有向無環圖 Directed Acyclic Graph</h2></a>
+<p>在我們要討論的主題中，偏序集與有向無環圖（Directed Acyclic Graph, DAG）其實有著非常相似的概念：
+我們可以利用 DAG 來表達一個 Poset \(P\)，考慮一個圖 \(G_P\)，其頂點集合就是所有的 \(n\) 筆資料 \(x_1, x_2, \ldots, x_n\)。只要在 Poset 裡面 \(x_i &lt; x_j\)，我們就加上一條 \(x_i\to x_j\) 的有向邊（arc）。</p>
+<p>如果這 \(n\) 筆資料是完全排序的，那麼對應到的圖 \(G_P\) 會是一個完全圖、而且它唯一的<strong>拓撲排序 Topological Order</strong> 就是把所有資料排序後的結果。
+藉由圖論，我們可以舉一個 \(n=5\) 的例子，把上面的動態規劃解釋得更美觀一點～</p>
+<p><img src="./poset-efficiency0.png" alt="" /></p>
 <hr />
-<p>快速排序法的最差情形是 \(O(n^2)\)，乍看之下很沒有效率啊。
-但其實這個演算法相當有用啊，不致於這麼差吧──大家平常在說的快速排序法可以做到 \(O(n\log n)\) 是怎麼一回事？</p>
-<a class="header" href="#參考資料" id="參考資料"><h3>參考資料</h3></a>
+<p>明天來繼續講偏序集與完全排序之間的更多關係！</p>
+<!-- 
+-----
+<p>如果給定了部分資料之間的大小關係 \(P\)，顯然存在一些偏序集無法在恰好 \(\ceil{\log e(P)}\) 次比較之內排好所有資料的順序。那麼，我們能否退而求其次，如同大多數 \(O(n\log n)\) 的排序演算法，允許常數倍數的誤差，在 \(O(\ceil{\log e(P)})\) 次之內排好順序呢？</p>
+<a class="header" href="#備註" id="備註"><h3>備註</h3></a>
+<p>Linear Extension 在紡織科學裡面會被翻譯成直線伸長唷…</p>
+<p><img src="./poset-efficiency1.png" alt="" /> --&gt;</p>
+<a class="header" href="#延伸閱讀" id="延伸閱讀"><h3>延伸閱讀</h3></a>
 <ul>
-<li>郭至軒的（厲害而詳盡的）筆記：https://blog.kuoe0.tw/posts/2013/03/15/sort-about-quick-sort/</li>
-<li>非遞迴、不堆疊的快速排序法：https://link.springer.com/chapter/10.1007/BFb0016252</li>
+<li><a href="https://luciuschang.wordpress.com/2016/10/24/%E6%95%B8%E5%AD%B8%E5%A6%82%E4%BD%95%E5%AE%9A%E7%BE%A9%E3%80%8C%E9%97%9C%E4%BF%82%E3%80%8D/">張志鴻教授：數學如何定義「關係」</a></li>
 </ul>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>\(n\) 筆資料的偏序集計數 OEIS A001035: https://oeis.org/A001035
+<sup class="footnote-reference"><a href="#2">2</a></sup>: 把同構的偏序集收起來以後的計數 OEIS A000112: https://oeis.org/A000112</p>
+</div>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../sorting/in-place-mergesort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../sorting/merge-insertion-sort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="../sorting/randomized-quicksort.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -235,15 +212,11 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../sorting/in-place-mergesort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../sorting/merge-insertion-sort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a href="../sorting/randomized-quicksort.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 
