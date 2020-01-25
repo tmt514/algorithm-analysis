@@ -192,7 +192,50 @@ dp(P_0) = 1 + \min_{i, j} \left( \max\{dp(P_0(x_i &lt; x_j)), dp(P_0(x_i &gt; x_
 <p>\(n\) 筆資料的偏序集計數 OEIS A001035: https://oeis.org/A001035
 <sup class="footnote-reference"><a href="#2">2</a></sup>: 把同構的偏序集收起來以後的計數 OEIS A000112: https://oeis.org/A000112</p>
 </div>
-
+<!--
+\tikzset{n/.style={inner sep=0, minimum size=4pt, circle, fill=black}}
+dp\left(
+\tikz[baseline={([yshift=-.5ex]current bounding box.center)}, scale=0.7, thick]{
+\node[n](A) at (0, 0) {};
+\node[n](B) at (1, 0) {};
+\node[n](C) at (2, 0) {};
+\node[n](D) at (0.5, -0.7) {};
+\node[n](E) at (1.5, -0.7) {};
+\draw (A) edge[-latex] (B);
+\draw (B) edge[-latex] (C);
+\draw (E) edge[-latex] (C);
+}
+\right)
+= 
+1 + \max\left\{
+dp\left(
+\tikz[baseline={([yshift=-.5ex]current bounding box.center)}, scale=0.7, thick]{
+\node[n](A) at (0, 0) {};
+\node[n](B) at (1, 0) {};
+\node[n](C) at (2, 0) {};
+\node[n](D) at (0.5, -0.7) {};
+\node[n](E) at (1.5, -0.7) {};
+\draw (A) edge[-latex] (B);
+\draw (B) edge[-latex] (C);
+\draw (E) edge[-latex] (C);
+\draw (D) edge[-latex, color=red] (B);
+}
+\right),
+dp\left(
+\tikz[baseline={([yshift=-.5ex]current bounding box.center)}, scale=0.7, thick]{
+\node[n](A) at (0, 0) {};
+\node[n](B) at (1, 0) {};
+\node[n](C) at (2, 0) {};
+\node[n](D) at (1.5, +0.7) {};
+\node[n](E) at (1.5, -0.7) {};
+\draw (A) edge[-latex] (B);
+\draw (B) edge[-latex] (C);
+\draw (E) edge[-latex] (C);
+\draw (B) edge[-latex, color=blue] (D);
+}
+\right)
+\right\}
+-->
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

@@ -843,7 +843,7 @@ Lower bound 與 Upper bound 完美地合起來了不是嗎！
 換句話說，若先不考慮把演算法實作出來後真正的時間複雜度，我們只關心「比較次數」的話，是否<strong>總是</strong>存在一種排序的演算法，在最壞情形下只需要恰好 \(\ceil{\log n!}\) 次比較就能夠排好序呢？</p>
 <p>答案是否定的。但是在描述最小反例之前，我們不妨先想想看，究竟可以設計出怎麼樣的演算法，其所需的比較次數與 \(\ceil{\log n!}\) 足夠接近：</p>
 <a class="header" href="#引理-20" id="引理-20"><h2>引理 20</h2></a>
-<p>存在一種比較排序法，使得排好 \(n\) 筆資料至多需要 \(\ceil{\log 2} + \ceil{\log 3} + \cdots + \ceil{\log n}\) 次排序。</p>
+<p>存在一種比較排序法，使得排好 \(n\) 筆資料至多需要 \(\ceil{\log 2} + \ceil{\log 3} + \cdots + \ceil{\log n}\) 次比較。</p>
 <a class="header" href="#引理-20-的證明" id="引理-20-的證明"><h3>引理 20 的證明</h3></a>
 <p>上面這個式子給我們很大的提示：我們只要稍微修改一下<strong>插入排序法</strong>，每一次加入一個數字。但是在加入的時候，我們不從當前序列末端一路比較過來；相反地，我們使用定理 19 提到的<strong>二分搜尋法</strong>，把資料插入目前排好序的序列就可以了。
 我們不需要擔心資料搬移所花費的時間，反正資料的搬移在這個比較次數至上的計算模型裡面是免費的！</p>
@@ -1039,7 +1039,50 @@ dp(P_0) = 1 + \min_{i, j} \left( \max\{dp(P_0(x_i &lt; x_j)), dp(P_0(x_i &gt; x_
 <p>\(n\) 筆資料的偏序集計數 OEIS A001035: https://oeis.org/A001035
 <sup class="footnote-reference"><a href="#2">2</a></sup>: 把同構的偏序集收起來以後的計數 OEIS A000112: https://oeis.org/A000112</p>
 </div>
-
+<!--
+\tikzset{n/.style={inner sep=0, minimum size=4pt, circle, fill=black}}
+dp\left(
+\tikz[baseline={([yshift=-.5ex]current bounding box.center)}, scale=0.7, thick]{
+\node[n](A) at (0, 0) {};
+\node[n](B) at (1, 0) {};
+\node[n](C) at (2, 0) {};
+\node[n](D) at (0.5, -0.7) {};
+\node[n](E) at (1.5, -0.7) {};
+\draw (A) edge[-latex] (B);
+\draw (B) edge[-latex] (C);
+\draw (E) edge[-latex] (C);
+}
+\right)
+= 
+1 + \max\left\{
+dp\left(
+\tikz[baseline={([yshift=-.5ex]current bounding box.center)}, scale=0.7, thick]{
+\node[n](A) at (0, 0) {};
+\node[n](B) at (1, 0) {};
+\node[n](C) at (2, 0) {};
+\node[n](D) at (0.5, -0.7) {};
+\node[n](E) at (1.5, -0.7) {};
+\draw (A) edge[-latex] (B);
+\draw (B) edge[-latex] (C);
+\draw (E) edge[-latex] (C);
+\draw (D) edge[-latex, color=red] (B);
+}
+\right),
+dp\left(
+\tikz[baseline={([yshift=-.5ex]current bounding box.center)}, scale=0.7, thick]{
+\node[n](A) at (0, 0) {};
+\node[n](B) at (1, 0) {};
+\node[n](C) at (2, 0) {};
+\node[n](D) at (1.5, +0.7) {};
+\node[n](E) at (1.5, -0.7) {};
+\draw (A) edge[-latex] (B);
+\draw (B) edge[-latex] (C);
+\draw (E) edge[-latex] (C);
+\draw (B) edge[-latex, color=blue] (D);
+}
+\right)
+\right\}
+-->
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
