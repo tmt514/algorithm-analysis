@@ -11,7 +11,7 @@ Lower bound 與 Upper bound 完美地合起來了不是嗎！
 
 ## 引理 20
 
-存在一種比較排序法，使得排好 $n$ 筆資料至多需要 $\ceil{\log 2} + \ceil{\log 3} + \cdots + \ceil{\log n}$ 次排序。
+存在一種比較排序法，使得排好 $n$ 筆資料至多需要 $\ceil{\log 2} + \ceil{\log 3} + \cdots + \ceil{\log n}$ 次比較。
 
 ### 引理 20 的證明
 

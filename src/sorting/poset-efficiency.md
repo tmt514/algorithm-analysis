@@ -50,20 +50,56 @@ $$
 
 明天來繼續講偏序集與完全排序之間的更多關係！
 
-<!-- 
------
-
-如果給定了部分資料之間的大小關係 $P$，顯然存在一些偏序集無法在恰好 $\ceil{\log e(P)}$ 次比較之內排好所有資料的順序。那麼，我們能否退而求其次，如同大多數 $O(n\log n)$ 的排序演算法，允許常數倍數的誤差，在 $O(\ceil{\log e(P)})$ 次之內排好順序呢？
-
-### 備註
-
-Linear Extension 在紡織科學裡面會被翻譯成直線伸長唷…
-
-![](./poset-efficiency1.png) -->
-
 ### 延伸閱讀
 
 * [張志鴻教授：數學如何定義「關係」](https://luciuschang.wordpress.com/2016/10/24/%E6%95%B8%E5%AD%B8%E5%A6%82%E4%BD%95%E5%AE%9A%E7%BE%A9%E3%80%8C%E9%97%9C%E4%BF%82%E3%80%8D/)
 
 [^1]: $n$ 筆資料的偏序集計數 OEIS A001035: https://oeis.org/A001035
 [^2]: 把同構的偏序集收起來以後的計數 OEIS A000112: https://oeis.org/A000112
+
+
+
+<!--
+\tikzset{n/.style={inner sep=0, minimum size=4pt, circle, fill=black}}
+dp\left(
+\tikz[baseline={([yshift=-.5ex]current bounding box.center)}, scale=0.7, thick]{
+\node[n](A) at (0, 0) {};
+\node[n](B) at (1, 0) {};
+\node[n](C) at (2, 0) {};
+\node[n](D) at (0.5, -0.7) {};
+\node[n](E) at (1.5, -0.7) {};
+\draw (A) edge[-latex] (B);
+\draw (B) edge[-latex] (C);
+\draw (E) edge[-latex] (C);
+}
+\right)
+= 
+1 + \max\left\{
+dp\left(
+\tikz[baseline={([yshift=-.5ex]current bounding box.center)}, scale=0.7, thick]{
+\node[n](A) at (0, 0) {};
+\node[n](B) at (1, 0) {};
+\node[n](C) at (2, 0) {};
+\node[n](D) at (0.5, -0.7) {};
+\node[n](E) at (1.5, -0.7) {};
+\draw (A) edge[-latex] (B);
+\draw (B) edge[-latex] (C);
+\draw (E) edge[-latex] (C);
+\draw (D) edge[-latex, color=red] (B);
+}
+\right),
+dp\left(
+\tikz[baseline={([yshift=-.5ex]current bounding box.center)}, scale=0.7, thick]{
+\node[n](A) at (0, 0) {};
+\node[n](B) at (1, 0) {};
+\node[n](C) at (2, 0) {};
+\node[n](D) at (1.5, +0.7) {};
+\node[n](E) at (1.5, -0.7) {};
+\draw (A) edge[-latex] (B);
+\draw (B) edge[-latex] (C);
+\draw (E) edge[-latex] (C);
+\draw (B) edge[-latex, color=blue] (D);
+}
+\right)
+\right\}
+-->

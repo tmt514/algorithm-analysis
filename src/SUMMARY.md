@@ -17,3 +17,4 @@
   * [01/20 - 最少比較排序](sorting/minimum-comparison-sort.md)
   * [01/22 - 合併插入排序](sorting/merge-insertion-sort.md)
   * [01/25 - 偏序集排序（一）](sorting/poset-efficiency.md)
+  * [01/26 - 偏序集排序（二）](sorting/linear-extensions.md)
