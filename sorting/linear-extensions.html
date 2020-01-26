@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>01/12 - 隨機快速排序法（二） - 演算法的分析與證明</title>
+        <title>01/26 - 偏序集排序（二） - 演算法的分析與證明</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -80,7 +80,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html" class="active">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li></ol></li></ol>
+            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html" class="active">01/26 - 偏序集排序（二）</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -145,82 +145,65 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#隨機快速排序法-2" id="隨機快速排序法-2"><h1>隨機快速排序法 2</h1></a>
-<p>今天我們來看看不使用遞迴方法，直接用機率方法分析隨機快速排序的另一個證明吧。
-首先讓我們快速回顧一下定理 13。</p>
-<a class="header" href="#定理-13" id="定理-13"><h2>定理 13</h2></a>
-<p>假設 <code>RandomPermute</code> 可以均勻地產生隨機排列，那麼隨機快速排序法的期望時間複雜度為 \(O(n\log n)\)。</p>
-<a class="header" href="#在證明開始之前" id="在證明開始之前"><h3>在證明開始之前</h3></a>
-<p>讓我們來回憶一下機率名詞。有一種隨機變數，其值只有 0 或 1，代表我們關心的事件出現與否。
-而該變數值等於 1 的機率，自然地對應到事件出現的機率。
-這樣的隨機變數被稱為<strong>指示隨機變數（Indicator random variable）</strong>。</p>
-<p>大家一定還記得，快速排序法的時間複雜度（在一般的實作之下）與資料之間的「兩兩比較次數」呈現正比。
-如果我們站在全局視角，關心「任兩個元素被拿來比較」的情形，在快速排序法會不會發生，那麼資料之間的兩兩比較總次數 \(X\)，便可以被拆成任兩筆特定資料被比較的次數 \(X = \sum_{1\le i &lt; j \le n} X_{ij}\)，其中我們用 \(X_{ij}\) 來表示排序完成後，應排在第 \(i\) 位置的資料與第 \(j\) 位置的資料的「是否在演算法執行期間被比較過」的指示隨機變數。</p>
-<p>然後！我們就可以利用期望值的可加性，把所有隨機變數拆開來～輕鬆寫出快速排序法的期望時間複雜度：</p>
-<p>\(\E[X] = \sum_{1\le i &lt; j \le n} \E[X_{ij}]\text{。}\)</p>
-<a class="header" href="#證明二兩兩比較次數的期望值" id="證明二兩兩比較次數的期望值"><h3>證明二：兩兩比較次數的期望值</h3></a>
-<p>這麼分析有個好處：我們可以分別計算出 \(\E[X_{ij}]\) 的值。
-比起追蹤整個演算法執行時 \(n\) 個物件之間，直接將主力放在某兩個特定的資料上，分析起來可能簡單得多。
-在分析開始之前，我們可以試想想看這個值可能會是多少？如果 \(i=1, j=n\)，那麼這兩個數字被直接拿來比較的機率其實相當低。
-而這是因為，如果被選中的 pivot 在排序上介於 \(i\) 與 \(j\) 之間的話，顯然 \(i\) 與 \(j\) 會被分派到兩個不同的子問題下去遞迴，自此便無緣相見了。</p>
-<p>此外，值得一提的是，在快速排序法進行中，如果有兩筆資料 \(i\) 和 \(j\) 被拿來比較，想必其中一者必定為 pivot。</p>
-<p>有了以上的觀察以後，我們現在來說說要證明的敘述：</p>
-<a class="header" href="#引理-14" id="引理-14"><h4>引理 14</h4></a>
-<p>對於所有的 \(1\le i &lt; j \le n\)，都有 \(\E[X_{ij}] = \frac{2}{j-i+1}\)。</p>
-<a class="header" href="#證明" id="證明"><h4>證明</h4></a>
-<p>我們可以偷偷對 \(n\) 用<strong>數學歸納法</strong>來證明這件事情。</p>
-<ul>
-<li>Base Case: 當 \(n=2\) 的時候，唯一有意義的 \(i, j\) 是 \(i=1, j=2\)。顯然無論如何這兩筆資料都會比較到，因此 \(\E[X_{12}] = 1 = \frac{2}{2-1+1}\) 滿足條件。</li>
-<li>Inductive Case: 當 \(n&gt;2\) 的時候，執行一步快速排序法，根據 pivot 的位置 \(p\) 會產生三種情形：
-<ul>
-<li>pivot 剛好選中 \(i\) 或 \(j\)（事件發生的機率為 \(\frac{2}{n}\)）：此時這兩筆資料必定<strong>會</strong>被比較到。即 \(X_{ij}=1\)。</li>
-<li>pivot 滿足 \(p\in [i+1, j-1]\)（事件發生的機率為 \(\frac{j-i-1}{n}\)）：此時兩筆資料必定<strong>不會</strong>被比較。即 \(X_{ij}=0\)。</li>
-<li>pivot 滿足 \(p &lt; i\) 或 \(p &gt; j\)（事件發生的機率為 \(1-\frac{j-i+1}{n}\)）：此時 \(i\) 和 \(j\) 會不會被比較到，取決於遞迴呼叫的子問題。在此情形底下，無論子問題的規模有多大，\(i\) 和 \(j\) 總是被分到同一邊。假設這兩筆資料在子問題中的排序位置是 \(i'\) 和 \(j'\)，顯然有 \(j'-i' = j-i\)。
-根據歸納假設，此時這兩個數字被比較到的機率恰好等於 \(\frac{2}{j'-i'+1} = \frac{2}{j-i+1}\)。</li>
-</ul>
-</li>
-</ul>
-<p>於是乎，我們可將三種情形加起來，得到 \(X_{ij}\) 的期望值：</p>
-<p>\[
-\begin{aligned}
-\E[X_{ij}] &amp;= \frac{2}{n}\cdot 1 + \frac{j-i-1}{n} \cdot 0 + \left( 1 - \frac{j-i+1}{n} \right) \cdot \frac{2}{j-i+1}\\
-&amp;= {\color{red}{\frac{2}{n}}} + \frac{2}{j-i+1} {\color{red}{- \frac{j-i+1}{n}\cdot  \frac{2}{j-i+1} }} \\
-&amp;= \frac{2}{j-i+1}
-\end{aligned}
+                        <a class="header" href="#偏序集排序二" id="偏序集排序二"><h1>偏序集排序（二）</h1></a>
+<p>對於一個偏序集 \(P\)，我們可以利用動態規劃的方法，找出從 \(P\) 的狀態開始排序，到完整排序時，最壞情形下，至少需要幾次比較。
+可惜的是，這個方法需要跑遍所有可能的 \(n\) 個點的偏序集，而這個數量是隨著 \(n\) 越大而呈現指數級別成長的<sup class="footnote-reference"><a href="#1">1</a></sup>。</p>
+<a class="header" href="#線性延伸-linear-extensions" id="線性延伸-linear-extensions"><h2>線性延伸 Linear Extensions</h2></a>
+<p>有沒有更有效的方法來提早排除某些「需要太多次比較」的偏序集呢？
+其實是可以的，給定一個偏序集 \(P\)，對於任何一個所有資料 \(x_1, x_2, \ldots, x_n\) 的全排列 \(\sigma\)，我們說 \(\sigma\) 是 \(P\) 的一個<strong>線性延伸（Linear Extension）</strong>，若且唯若對於任兩筆資料 \(x_i\) 與 \(x_j\)，一旦在 \(P\) 上面 \(x_i &lt; x_j\) \(\implies\) 在 \(\sigma\) 之中 \(x_i\) 出現在 \(x_j\) 前面。
+如果我們用圖論的語言來描述的話，其實滿足條件的 \(\sigma\) 就會是 \(P\) 所對應的有向無環圖 \(G_P\) 上頭的一個拓撲排序。</p>
+<p>我們用 \(e(P)\) 來表示偏序集上面的線性延伸數量，當我們寫成 \(e(G)\) 的時候，也代表著一個有向圖 \(G\) 中拓撲排序的方法數。兩者定義雖然不太一樣，在這裡我們不妨就混著使用了。
+舉例而言，如果 \(P_{\rm{total}}\) 是一個全序集，那麼它有唯一的線性延伸，因此 \(e(P_{\rm{total}}) = 1\)。如果 \(P_\emptyset\) 是空序集，那麼任何一個排列都會是 \(P_\emptyset\) 的線性延伸，此時 \(e(P_\emptyset) = n!\)。</p>
+<p>還記得資訊理論給出的複雜度下界嗎？同樣的方法在這邊也適用！</p>
+<a class="header" href="#性質-23" id="性質-23"><h3>性質 23</h3></a>
+<p>對於一個偏序集 \(P\)，進行兩兩比較方式排序，至少需要 \(\ceil{\log e(P)}\) 次比較。</p>
+<a class="header" href="#排序效率-efficiency" id="排序效率-efficiency"><h2>排序效率 Efficiency</h2></a>
+<p>從一個 \(n\) 個點的偏序集 \(P\) 開始，假設我們把 \(x_i\) 與 \(x_j\) 拿來互相比較，比完以後會得到 \(P_&lt; := P(x_i &lt; x_j)\)、或是 \(P_&gt; := P(x_i &gt; x_j)\) 這兩種可能。
+顯然對於所有 \(P\) 的線性延伸，都會恰好是 \(P_&lt;\) 或 \(P_&gt;\) 的線性延伸，於是我們有
+\[
+\label{eq}
+e(P) = e(P_&lt;) + e(P_&gt;)\text{。} \tag{*}
 \]</p>
-<p>有了引理 14 以後，我們就可以開心地把所有的 \(i, j\) 對應到的期望值加起來，也就得到了快速排序法的期望時間複雜度了！</p>
-<p>\[
-\begin{aligned}
-\E[X] &amp;= \sum_{1\le i &lt; j \le n} \E[X_{ij}]\\
-&amp;= \sum_{1\le i &lt; j \le n} \frac{2}{j-i+1}\\
-&amp;= \sum_{\ell=1}^{n-1}\sum_{i=1}^{n-\ell} \frac{2}{\ell+1} &amp; &amp; (\text{變數變換：} j = i+\ell ) \\
-&amp;= \sum_{\ell=1}^{n-1} \frac{2(n-\ell)}{\ell+1} \\
-&amp;\le 2n\left( \frac{1}{2}+\frac{1}{3} + \cdots + \frac{1}{n} \right)\\
-&amp;= O(n\log n)  &amp; &amp; (\text{括弧部分是調和級數所以大約是} \ln n = O(\log n)) \\
-\end{aligned}
+<p>如果 \(e(P_&lt;) \neq e(P_&gt;)\)，那麼邪惡的生測資者會設計測試資料，讓你落入線性延伸數量比較大的那種情形，然後你就會「讓剛才花費的 1 次比較，得不到 1 bit 的資訊量」。換句話說，我們想像中可能會出現「效率流失」的情形。
+Knuth 的書中<sup class="footnote-reference"><a href="#2">2</a></sup>寫道：黃光明教授(Frank Hwang) 與 Shen Lin 定義了<strong>排序效率（Efficiency）</strong>：假設從一個空序集經過了 \(k\) 次詢問後，得到一個偏序集 \(P\)。那麼我們定義其排序效率 Efficiency 為
+\[ E(P) = \frac{n!}{2^k e(P)} \]
+這個式子可以解釋為：理論上經過 \(k\) 次比較，我們應該要能將 \(n!\) 種排序可能縮小至 \(1/2^k\) 倍數，但事實上剩存的排列數 \(e(P)\) 可能仍然比 \(n!/2^k\) 來得大。我們就用這個數值來量化到底到目前為止的 \(k\) 次比較有沒有效率。</p>
+<p>從上面打星號的 \(\eqref{eq}\) 來看，我們知道經過一次比較後，比較糟的那個情形，其排序效率不超過當前的排序效率：
+\[
+E(P) \ge \min\{ E(P_&gt;), E(P_&lt;) \}
 \]</p>
-<hr />
-<p>說到底我們還是偷偷用了數學歸納法呀...明天我們來看第三種證明！
-保證（希望啦，如果沒想錯的話）沒有數學歸納法！</p>
-<a class="header" href="#參考資料" id="參考資料"><h3>參考資料</h3></a>
-<ul>
-<li>關於機率論中，更嚴謹的 indicator function / indicator random variable 定義可以參考蔡宗翰的隨筆：https://ch-hsieh.blogspot.com/2012/07/indicator-function.html</li>
-</ul>
+<p>這個定義可以怎麼幫助我們理解排序呢？假設我們的目標，是要在 \(7\) 次比較之內，排列 \(n=5\) 筆資料。此時我們可以事先估計在 \(7\) 次比較之後，得到全序集當下的排序效率：
+\[
+E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
+\]
+這告訴我們什麼？在任何的情況下，我們不應該讓排序效率降低至 \(&lt;\frac{15}{16}\)。換句話說，在選擇下一個要拿來比較的 \(x_i, x_j\) 的時候，我們只需要考慮那些「得出排序結果後，效率仍保持在 \(\ge 15/16\) 的那些 \((x_i, x_j)\) 配對」。</p>
+<p>如果不存在這樣的配對，我們便證明了不存在任何基於比較的排序法，能夠在 \(7\) 次之內完成排序。（事實上可以做到 \(7\) 次比較，請參考前幾日的<a href="./minimum-comparison-sort.html">最少比較排序</a>）</p>
+<p>這個工具可以幫助我們排除 \(n=12\) 的時候需要進行的動態規劃狀態數！
+根據 Knuth 書中的解釋，經過一連串更深入的分析──我們需要兩件事情：
+一、只需要考慮所有連通的、不超過 \(n=12\) 個點的圖 \(G\)，然後每一次比較要嘛在圖上加一條邊、要嘛把兩個圖用一條邊合併起來。二、找到一個方式估計出 \(e(P)\) 的值（顯然無法有效率地直接計算它），其排除效率小於 \(12!/2^{29} \approx 0.89221\) 的偏序集就可以從昨天提到的 1104891746 降到 1649 了！</p>
+<p>(tl; dr) 最後的結論就是，在展開所有排序效率 \(\ge 0.89221\) 的搜索狀態時，我們始終無法達到全序集。因此可以證得 \(S(12) &gt; 29\)，由 Ford-Johnson 演算法可得知 \(F(12)=30\)。因此得證 \(S(12)=30\)。</p>
+<!--
+如果給定了部分資料之間的大小關係 \\(P\\)，顯然存在一些偏序集無法在恰好 \\(\ceil{\log e(P)}\\) 次比較之內排好所有資料的順序。那麼，我們能否退而求其次，如同大多數 \\(O(n\log n)\\) 的排序演算法，允許常數倍數的誤差，在 \\(O(\ceil{\log e(P)})\\) 次之內排好順序呢？ -->
+<a class="header" href="#備註" id="備註"><h3>備註</h3></a>
+<p>Linear Extension 在紡織科學裡面會被翻譯成直線伸長唷…</p>
+<p><img src="./poset-efficiency1.png" alt="" /></p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>可以用 \(n\) 個點的無標號、無方向但有根樹來作下界估計，根據 <a href="https://oeis.org/A000081">OEIS A000081</a>，這個數字至少是 \(0.440\times 2.956^{n} \times n^{-5/2}\)，成長迅速。</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>Donald Knuth, <em>The Art of Computer Programming</em>, Volumn 3, Page 188-190.</p>
+</div>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../sorting/randomized-quicksort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../sorting/poset-efficiency.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="../sorting/randomized-quicksort3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -230,15 +213,11 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../sorting/randomized-quicksort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../sorting/poset-efficiency.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a href="../sorting/randomized-quicksort3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 
