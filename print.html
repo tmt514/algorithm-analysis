@@ -80,7 +80,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="index.html">2020 新計劃</a></li><li><a href="GLOSSARY.html">Glossary</a></li><li><a href="sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li></ol></li></ol>
+            <ol class="chapter"><li><a href="index.html">2020 新計劃</a></li><li><a href="GLOSSARY.html">Glossary</a></li><li><a href="sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -1005,8 +1005,8 @@ F(n) = n\ceil{\log_2 \frac{3}{4} n} + \floor{\frac13 2^{\floor{\log_2 6n}}} + \f
 以圖論語言來說明的話，我們今天想介紹的是**有向無環圖（Directed Acyclic Graph）**、**拓撲順序（Topological Order）**、以及基於這兩個觀念定義出來的排序效率。 -->
 <a class="header" href="#偏序集-poset" id="偏序集-poset"><h2>偏序集 Poset</h2></a>
 <p>首先，我們不妨假設任何兩筆輸入的資料都不相同，而且所有資料存在一個全序排列（Total Order），也就是說，隨意選取任何兩筆資料 \(x\) 和 \(y\)，必定有 \(x &lt; y\) 或者 \(x &gt; y\)。</p>
-<p>假設某個演算法今天對於 \(n\) 筆資料，抓了其中兩筆資料 \(x_1, x_2\) 來比較大小，獲得了 \(x_1 &lt; x_2\) 這樣的資訊。於是呢，我們可以從 \(x_1\) 到 \(x_2\) 畫一個箭頭 \(x_1\to x_2\)。這些資料與資料之間的關聯，形成一個偏序集 Partially Ordered Set，通常我們會簡稱 Poset。
-這個集合，就相當於我們目前「已知」的所有資訊。一個超級粗略的估計如下：\(n\) 個元素的 Poset 至多有 \(2^{n^2-n}\) 種<sup class="footnote-reference"><a href="#1">1</a></sup>，因為這個集合當中、任何兩個元素之間的關係要嘛可以出現、要嘛不能出現。
+<p>假設某個演算法今天對於 \(n\) 筆資料，抓了其中兩筆資料 \(x_1, x_2\) 來比較大小，獲得了 \(x_1 &lt; x_2\) 這樣的資訊。於是呢，我們可以從 \(x_1\) 到 \(x_2\) 畫一個箭頭 \(x_1\to x_2\)。這些資料與資料之間的關聯，形成一個偏序集 Partially Ordered Set，通常我們會簡稱 Poset，以 \((P, &lt;)\) 表示。
+這個偏序集，就相當於我們目前「已知」的所有資訊。一個超級粗略的估計如下：\(n\) 個元素的 Poset 至多有 \(2^{n^2-n}\) 種<sup class="footnote-reference"><a href="#1">1</a></sup>，因為這個集合當中、任何兩個元素之間的關係要嘛可以出現、要嘛不能出現。
 由於我們今天舉的例子是 \(n=12\)，讓我先把 \(n=12\) 筆資料的 Poset 數量列出來提供參考：\(414864951055853499\)。總之是個有限的數字！</p>
 <p>要如何找出排序 \(n=12\) 筆資料的最小排序方法數呢？我們可以利用 <strong>動態規劃</strong> 的概念來解它！
 對於任何一個偏序集 \(P\)，定義 \(dp(P)\) 表示完成排序尚需要的最少比較次數。
@@ -1030,8 +1030,10 @@ dp(P_0) = 1 + \min_{i, j} \left( \max\{dp(P_0(x_i &lt; x_j)), dp(P_0(x_i &gt; x_
 <li><a href="https://luciuschang.wordpress.com/2016/10/24/%E6%95%B8%E5%AD%B8%E5%A6%82%E4%BD%95%E5%AE%9A%E7%BE%A9%E3%80%8C%E9%97%9C%E4%BF%82%E3%80%8D/">張志鴻教授：數學如何定義「關係」</a></li>
 </ul>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>\(n\) 筆資料的偏序集計數 OEIS A001035: https://oeis.org/A001035
-<sup class="footnote-reference"><a href="#2">2</a></sup>: 把同構的偏序集收起來以後的計數 OEIS A000112: https://oeis.org/A000112</p>
+<p>\(n\) 筆資料的偏序集計數 OEIS A001035: https://oeis.org/A001035</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>把同構的偏序集收起來以後的計數 OEIS A000112: https://oeis.org/A000112</p>
 </div>
 <!--
 \tikzset{n/.style={inner sep=0, minimum size=4pt, circle, fill=black}}
@@ -1096,7 +1098,7 @@ dp\left(
 e(P) = e(P_&lt;) + e(P_&gt;)\text{。} \tag{*}
 \]</p>
 <p>如果 \(e(P_&lt;) \neq e(P_&gt;)\)，那麼邪惡的生測資者會設計測試資料，讓你落入線性延伸數量比較大的那種情形，然後你就會「讓剛才花費的 1 次比較，得不到 1 bit 的資訊量」。換句話說，我們想像中可能會出現「效率流失」的情形。
-Knuth 的書中<sup class="footnote-reference"><a href="#2">2</a></sup>寫道：黃光明教授(Frank Hwang) 與 Shen Lin 定義了<strong>排序效率（Efficiency）</strong>：假設從一個空序集經過了 \(k\) 次詢問後，得到一個偏序集 \(P\)。那麼我們定義其排序效率 Efficiency 為
+Knuth 的書中<sup class="footnote-reference"><a href="#2">2</a></sup>寫道：黃光明教授(Frank Hwang) 與林甡(Shen Lin) 定義了<strong>排序效率（Efficiency）</strong>：假設從一個空序集經過了 \(k\) 次詢問後，得到一個偏序集 \(P\)。那麼我們定義其排序效率 Efficiency 為
 \[ E(P) = \frac{n!}{2^k e(P)} \]
 這個式子可以解釋為：理論上經過 \(k\) 次比較，我們應該要能將 \(n!\) 種排序可能縮小至 \(1/2^k\) 倍數，但事實上剩存的排列數 \(e(P)\) 可能仍然比 \(n!/2^k\) 來得大。我們就用這個數值來量化到底到目前為止的 \(k\) 次比較有沒有效率。</p>
 <p>從上面打星號的 \(\eqref{eq}\) 來看，我們知道經過一次比較後，比較糟的那個情形，其排序效率不超過當前的排序效率：
@@ -1120,11 +1122,64 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 <a class="header" href="#備註-1" id="備註-1"><h3>備註</h3></a>
 <p>Linear Extension 在紡織科學裡面會被翻譯成直線伸長唷…</p>
 <p><img src="./poset-efficiency1.png" alt="" /></p>
+<a class="header" href="#延伸閱讀-1" id="延伸閱讀-1"><h3>延伸閱讀</h3></a>
+<ul>
+<li><a href="https://web.math.sinica.edu.tw/math_media/d381/38103.pdf">黃光明教授：我與數學研究的第一次邂逅</a></li>
+</ul>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>可以用 \(n\) 個點的無標號、無方向但有根樹來作下界估計，根據 <a href="https://oeis.org/A000081">OEIS A000081</a>，這個數字至少是 \(0.440\times 2.956^{n} \times n^{-5/2}\)，成長迅速。</p>
 </div>
 <div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
 <p>Donald Knuth, <em>The Art of Computer Programming</em>, Volumn 3, Page 188-190.</p>
+</div>
+<a class="header" href="#偏序集排序三" id="偏序集排序三"><h1>偏序集排序（三）</h1></a>
+<p>今天的目標是要試圖找出，計算一個偏序集 \((P, &lt;)\) 上面線性延伸數量 \(e(P)\) 的估計。
+如果有好辦法得到近似值，就可以拿它來計算排序效率、甚至可以用它來判斷每一次要比較哪兩個元素比較好。</p>
+<a class="header" href="#順序多-order-polytope" id="順序多-order-polytope"><h2>順序多 Order Polytope</h2></a>
+<p>今天的主角是一個在 \(n\) 維空間中的多胞形：\(\mathcal{O}(P)\)。
+更精確地說，它是一個被包含在 \(n\) 維空間中單位立方體內的一個多胞形。
+我們不妨假設 \(P\) 這個集合的元素有 \(x_1, x_2, \ldots, x_n\)。
+而任何一個 \(P\) 的線性延伸 \(\sigma\) 可以表示成一個註標 \(\{1, 2, \ldots, n\}\) 的一個排列
+\((\sigma(1), \sigma(2), \ldots, \sigma(n))\)，使得 \(x_{\sigma(i)} &lt; x_{\sigma(j)}\) \(\implies\) \(i &lt; j\)。（由於是偏序集，逆命題並不一定成立。）</p>
+<p>這個多胞形 \(\mathcal{O}(P)\) 的定義是這樣的：</p>
+<p>\[
+\mathcal{O}(P) = \{ (z_1, z_2, \ldots, z_n) \ \mid \ z_i &lt; z_j \text{ whenever } x_i &lt; x_j \text{ in } P \}
+\]</p>
+<a class="header" href="#定理-24" id="定理-24"><h3>定理 24</h3></a>
+<p>\(\mathcal{O}(P)\) 是一個凸多胞形，而且其體積恰好等於 \(e(P)/n!\)。</p>
+<a class="header" href="#證明-15" id="證明-15"><h3>證明</h3></a>
+<p>要證明 \(\mathcal{O}(P)\) 是凸多胞形，只需要說明對任何兩個 \(\mathcal{O}(P)\) 裡面的點 \(z, z'\)，其連線中點 \((z+z')/2\) 仍然落在 \(\mathcal{O}(P)\) 裡面即可。根據定義，每一個點都會滿足至少一個對應的 \(P\) 的線性延伸。假設 \(z\) 對應的是 \(\sigma\)、\(z'\) 對應的是 \(\sigma'\)，顯然對於所有 \(P\) 中的大小順序 \(x_i &lt; x_j\)，都有 \(z_{\sigma^{-1}(i)} \le z_{\sigma^{-1}(j)}\)、且 \(z'_{\sigma^{-1}(i)} \le z'_{\sigma^{-1}(j)}\)。因此加起來除以 \(2\) 以後，將所有座標值由小到大排列得到的新的排列 \(\sigma''\) 仍然是 \(P\) 的一個線性延伸。</p>
+<p>關於體積的部分，我們考慮任何一個線性延伸 \(\sigma\)。由單一線性延伸定義出來的多胞形，它會是一個<strong>單純形（Simplex）</strong>。這邊定義出來的單純形，經過座標置換以後，可以發現其體積總是等價於以下這個單純形的體積：</p>
+<p>\[
+\Delta_*^n := \{(z_1, z_2, \ldots, z_n)\in \mathbb{R}^n \ \mid \ 0 \le z_1 \le z_2 \le \cdots \le z_n \le 1\}
+\]</p>
+<p>這個體積是多少呢？你可以用積分方法求出、也可以用對稱方法求出：總共有 \(n!\) 種排列、每一個排列定義出來的單純形，體積都相同，而且它們全部聯集起來恰好組成 \([0, 1]^n\subset \mathbb{R}^n\) 的小方塊，也就是說他們體積總和恰好等於 \(1\)。於是，\(\mathcal{O}(P)\) 的體積就恰好等於 \(1\) 啦～
+<span style="float:right">\(\square\)</span></p>
+<p>我們之前隱約提及，要計算 \(e(P)\) 的精確值是困難的。而這也等價於，要精確計算出 \(\mathcal{O}(P)\) 的體積，也是困難的。
+幸虧，1989 年的時候 Dyer, Frieze, 與 Kannan<sup class="footnote-reference"><a href="#1">1</a></sup><sup class="footnote-reference"><a href="#3">2</a></sup> 提出了一個多項式隨機演算法，能夠有效率地計算出近似值。但他們的方法都是基於 random walk 的，基本的想法是從任何一個 linear extension 開始，利用 random walk 依照某個特定機率分布交換某兩個沒有關聯的元素。後面的分析就精彩了，這邊先暫時留給有興趣的朋友閱讀吧，有機會我會再補上證明的。</p>
+<p>最後我們再描述一個關於凸多胞形的性質。</p>
+<a class="header" href="#ehrhart-多項式" id="ehrhart-多項式"><h2>Ehrhart 多項式</h2></a>
+<p>法國數學家 <a href="https://en.wikipedia.org/wiki/Eug%C3%A8ne_Ehrhart">Eugène Ehrhart</a> 在中學教了十多年的書以後，在六十歲的時候終於獲得了博士學位。在那之前，他於 1962 年提出了皮克公式（Pick's Theorem）的 \(N\) 維加強版：<a href="https://en.wikipedia.org/wiki/Ehrhart_polynomial">Ehrhart Polynomial</a>。</p>
+<p>故事是這樣的：假設我們有一個 \(N\) 維度的多胞形 \(P\)，如果把每一個座標軸都伸長 \(k\) 倍，那基本上體積也會跟著放大 \(k^N\) 倍，對吧？如果這時候我們計較的是這個被放大的多胞形 \(kP\)，其邊界或內部的「整數座標點」的數量 \(L(P, k)\)。Ehrhart 證明出了它會形成一個關於 \(k\) 的 \(N\) 次多項式！</p>
+<p>不意外地，\(L(P, k)\) 的首項係數（最高次項 \(k^N\) 的係數）就會是這個多胞形真正的體積。
+這個 Ehrhart 給我們有趣的證明技巧：如果我們要證明兩個多胞形體積相同，我們可以透過證明其 Ehrhart 相等的手法來證明其體積相等。</p>
+<hr />
+<p>明天我們來介紹另一種比較平易近人的、計算出 \(e(P)\) 近似值的方式。
+這個方式是透過 1986 年 Richard P. Stanley<sup class="footnote-reference"><a href="#2">3</a></sup> 提出的趣味觀察，把這個順序多胞形與另一個直鏈和多胞形（Chain Polytope，暫譯直鏈和多胞形) 連結在一起，進而從解另一個多胞形上的凸函數優化（Convex Optimization）來達到計算近似 \(e(P)\) 的目的。</p>
+<a class="header" href="#延伸閱讀-2" id="延伸閱讀-2"><h3>延伸閱讀</h3></a>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Order_polytope">維基百科：Order Polytope</a></li>
+<li>https://www.math.sci.hokudai.ac.jp/~wakate/mcyr/2016/pdf/TSUCHIYA.pdf</li>
+<li><a href="https://ccjou.wordpress.com/2013/05/20/%E5%A4%9A%E8%83%9E%E5%BD%A2/">線代啟示錄：多胞形</a></li>
+</ul>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Martin Dyer, Alan Frieze, and Ravi Kannan, _A Random Polynomial Time Algorithm for Approximating the Volume of Convex Bodies. <a href="https://www.math.cmu.edu/%7Eaf1p/Texfiles/oldvolume.pdf">https://www.math.cmu.edu/~af1p/Texfiles/oldvolume.pdf</a></p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">3</sup>
+<p>Richard P. Stanley, <em>Two Poset Polytopes</em>, 1986. <a href="http://dedekind.mit.edu/%7Erstan/pubs/pubfiles/66.pdf">http://dedekind.mit.edu/~rstan/pubs/pubfiles/66.pdf</a></p>
+</div>
+<div class="footnote-definition" id="3"><sup class="footnote-definition-label">2</sup>
+<p>Graham Brightwell and Peter Winkler, <em>Counting Linear Extensions</em>, 1991. <a href="https://link.springer.com/content/pdf/10.1007/BF00383444.pdf">https://link.springer.com/content/pdf/10.1007/BF00383444.pdf</a></p>
 </div>
 
                     </main>

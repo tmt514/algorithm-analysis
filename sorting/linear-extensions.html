@@ -80,7 +80,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html" class="active">01/26 - 偏序集排序（二）</a></li></ol></li></ol>
+            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html" class="active">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -165,7 +165,7 @@
 e(P) = e(P_&lt;) + e(P_&gt;)\text{。} \tag{*}
 \]</p>
 <p>如果 \(e(P_&lt;) \neq e(P_&gt;)\)，那麼邪惡的生測資者會設計測試資料，讓你落入線性延伸數量比較大的那種情形，然後你就會「讓剛才花費的 1 次比較，得不到 1 bit 的資訊量」。換句話說，我們想像中可能會出現「效率流失」的情形。
-Knuth 的書中<sup class="footnote-reference"><a href="#2">2</a></sup>寫道：黃光明教授(Frank Hwang) 與 Shen Lin 定義了<strong>排序效率（Efficiency）</strong>：假設從一個空序集經過了 \(k\) 次詢問後，得到一個偏序集 \(P\)。那麼我們定義其排序效率 Efficiency 為
+Knuth 的書中<sup class="footnote-reference"><a href="#2">2</a></sup>寫道：黃光明教授(Frank Hwang) 與林甡(Shen Lin) 定義了<strong>排序效率（Efficiency）</strong>：假設從一個空序集經過了 \(k\) 次詢問後，得到一個偏序集 \(P\)。那麼我們定義其排序效率 Efficiency 為
 \[ E(P) = \frac{n!}{2^k e(P)} \]
 這個式子可以解釋為：理論上經過 \(k\) 次比較，我們應該要能將 \(n!\) 種排序可能縮小至 \(1/2^k\) 倍數，但事實上剩存的排列數 \(e(P)\) 可能仍然比 \(n!/2^k\) 來得大。我們就用這個數值來量化到底到目前為止的 \(k\) 次比較有沒有效率。</p>
 <p>從上面打星號的 \(\eqref{eq}\) 來看，我們知道經過一次比較後，比較糟的那個情形，其排序效率不超過當前的排序效率：
@@ -189,6 +189,10 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 <a class="header" href="#備註" id="備註"><h3>備註</h3></a>
 <p>Linear Extension 在紡織科學裡面會被翻譯成直線伸長唷…</p>
 <p><img src="./poset-efficiency1.png" alt="" /></p>
+<a class="header" href="#延伸閱讀" id="延伸閱讀"><h3>延伸閱讀</h3></a>
+<ul>
+<li><a href="https://web.math.sinica.edu.tw/math_media/d381/38103.pdf">黃光明教授：我與數學研究的第一次邂逅</a></li>
+</ul>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>可以用 \(n\) 個點的無標號、無方向但有根樹來作下界估計，根據 <a href="https://oeis.org/A000081">OEIS A000081</a>，這個數字至少是 \(0.440\times 2.956^{n} \times n^{-5/2}\)，成長迅速。</p>
 </div>
@@ -207,6 +211,10 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
                         
 
                         
+                            <a rel="next" href="../sorting/order-polytope-and-ehrhart-polynomial.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -220,6 +228,10 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
                     </a>
                 
 
+                
+                    <a href="../sorting/order-polytope-and-ehrhart-polynomial.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                 
             </nav>
 
