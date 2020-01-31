@@ -19,3 +19,4 @@
   * [01/25 - 偏序集排序（一）](sorting/poset-efficiency.md)
   * [01/26 - 偏序集排序（二）](sorting/linear-extensions.md)
   * [01/27 - 偏序集排序（三）](sorting/order-polytope-and-ehrhart-polynomial.md)
+  * [02/01 - 偏序集排序（四）](sorting/chain-polytope-and-graph-entropy.md)

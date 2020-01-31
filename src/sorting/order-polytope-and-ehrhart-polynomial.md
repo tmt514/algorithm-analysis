@@ -57,6 +57,7 @@ $$
 
 * [維基百科：Order Polytope](https://en.wikipedia.org/wiki/Order_polytope)
 * https://www.math.sci.hokudai.ac.jp/~wakate/mcyr/2016/pdf/TSUCHIYA.pdf
+* https://math.dartmouth.edu/~pw/M100W11/seth.pdf
 * [線代啟示錄：多胞形](https://ccjou.wordpress.com/2013/05/20/%E5%A4%9A%E8%83%9E%E5%BD%A2/)
 
 [^1]: Martin Dyer, Alan Frieze, and Ravi Kannan, _A Random Polynomial Time Algorithm for Approximating the Volume of Convex Bodies. [https://www.math.cmu.edu/~af1p/Texfiles/oldvolume.pdf](https://www.math.cmu.edu/~af1p/Texfiles/oldvolume.pdf)
