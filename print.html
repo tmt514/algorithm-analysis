@@ -80,7 +80,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="index.html">2020 新計劃</a></li><li><a href="GLOSSARY.html">Glossary</a></li><li><a href="sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li></ol></li></ol>
+            <ol class="chapter"><li><a href="index.html">2020 新計劃</a></li><li><a href="GLOSSARY.html">Glossary</a></li><li><a href="sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -569,14 +569,16 @@ T(n) \le T(n') = \Theta(n' \log n') = \Theta(n\log n)\text{。}
 </ul>
 <a class="header" href="#隨機快速排序法" id="隨機快速排序法"><h1>隨機快速排序法</h1></a>
 <p>如果我們允許演算法使用隨機數產生器，那麼快速排序法會變得更有效率！</p>
-<!-- ## 隨機演算法
-<p>一般的確定性（deterministic）演算法 \(\mathcal{A}(x)\)，可以把它看成一個函數，其參數就是輸入的資料。
-而一個使用隨機數產生器的演算法 \(\mathcal{A}(x, r)\)，我們可以把隨機數產生器的內容 \(r\) 當作「額外的輸入參數」。
+<!--
+## 隨機演算法
+一般的確定性（deterministic）演算法 \\(\mathcal{A}(x)\\)，可以把它看成一個函數，其參數就是輸入的資料。
+而一個使用隨機數產生器的演算法 \\(\mathcal{A}(x, r)\\)，我們可以把隨機數產生器的內容 \\(r\\) 當作「額外的輸入參數」。
 當演算法需要使用新的隨機數字的時候，就從這個額外的輸入抓取新的數字來使用。
-通常在討論隨機演算法的時候，我們會假設產生出來的隨機數字 \(r\) 的每一個位元（或每一個數值，依照計算模型而定）都是均勻分布的。</p>
-<a class="header" href="#期望複雜度" id="期望複雜度"><h2>期望複雜度</h2></a>
-<p>在考慮使用隨機數產生器的時候，我們自然不會過於在意某幾個造成演算法執行時間過久的隨機數值。
-而此時演算法的執行時間 \(T(n)\)，就會變成一個隨機變數。分析的時候，我們傾向於找出這個隨機演算法的 --&gt;</p>
+通常在討論隨機演算法的時候，我們會假設產生出來的隨機數字 \\(r\\) 的每一個位元（或每一個數值，依照計算模型而定）都是均勻分布的。
+## 期望複雜度
+在考慮使用隨機數產生器的時候，我們自然不會過於在意某幾個造成演算法執行時間過久的隨機數值。
+而此時演算法的執行時間 \\(T(n)\\)，就會變成一個隨機變數。分析的時候，我們傾向於找出這個隨機演算法的
+-->
 <p>而引入隨機的方法很簡單：我們只要在快速排序法開始之前，隨機排列原本的輸入序列即可！</p>
 <pre><code class="language-cpp">void RandomizedQuickSort(data_t *A, int n) {
   RandomPermute(A, n); // 隨機排列輸入的數值。
@@ -1117,8 +1119,6 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 <p>(tl; dr) 最後的結論就是，在展開所有排序效率 \(\ge 0.89221\) 的搜索狀態時，我們始終無法達到全序集。因此可以證得 \(S(12) &gt; 29\)，由 Ford-Johnson 演算法可得知 \(F(12)=30\)。因此得證 \(S(12)=30\)。</p>
 <hr />
 <p>如果給定了偏序集 \(P\)，雖然無法精準計算出所有的線性延伸數量 \(e(P)\)，我們有沒有其他方式來得出 \(e(P)\) 的估計呢？</p>
-<!--  
-如果給定了部分資料之間的大小關係 \\(P\\)，顯然存在一些偏序集無法在恰好 \\(\ceil{\log e(P)}\\) 次比較之內排好所有資料的順序。那麼，我們能否退而求其次，如同大多數使用 \\(O(n\log n)\\) 次比較的排序演算法，允許常數倍數的誤差，在 \\(O(\ceil{\log e(P)})\\) 次比較之內排好順序呢？ -->
 <a class="header" href="#備註-1" id="備註-1"><h3>備註</h3></a>
 <p>Linear Extension 在紡織科學裡面會被翻譯成直線伸長唷…</p>
 <p><img src="./poset-efficiency1.png" alt="" /></p>
@@ -1243,6 +1243,60 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 <p>明天我們來看看這個 \(G(P)\) 的補圖 \(\overline{G(P)}\) <strong>不可比圖（incomparability graph）</strong>，他對於 \(e(P)\) 的估計有什麼厲害的幫助吧！</p>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Richard P. Stanley, <em>Two Poset Polytopes</em>, 1986. <a href="http://dedekind.mit.edu/%7Erstan/pubs/pubfiles/66.pdf">http://dedekind.mit.edu/~rstan/pubs/pubfiles/66.pdf</a></p>
+</div>
+<a class="header" href="#偏序集排序五" id="偏序集排序五"><h1>偏序集排序（五）</h1></a>
+<p>前一次我們提到了，從一個偏序集 \((P, &lt;)\) 定義出來的直鏈和多胞形（Chain Polytope）\(\mathcal{C}(P)\)，其體積與順序多胞形（Order Polytope）\(\mathcal{O}(P)\) 相等，且剛好等於 \(e(P) / n!\)。</p>
+<p>但是計算一個任意多胞形的確切體積，是困難的。幸好，如果我們只需要估計 \(e(P)\) 的值（甚至可以放寬條件、只需要估計 \(\log e(P)\) 的值就行了），不需要計算出整個多胞形的確切體積。</p>
+<a class="header" href="#利用長方體估算體積" id="利用長方體估算體積"><h2>利用長方體估算體積</h2></a>
+<p>能夠簡單計算體積的形狀，大概就是長方體了吧。
+透過觀察，我們發現，對於任何一個直鏈和多胞形內的點 \(z=(z_1, z_2, \ldots, z_n) \in\mathcal{C}(P)\)，都可以定義出一個長方體，其兩個對角點剛好分別是原點 \((0, 0, \ldots, 0)\) 以及 \(z\)。
+換句話說，這個長方體
+\[
+\text{Box}(z) = [0, z_1]\times [0, z_2]\times \cdots \times [0, z_n]\subset \mathcal{C}(P)
+\]</p>
+<p>\(\text{Box}(z)\) 的體積，顯然可以直接寫出來：\(z_1z_2\cdots z_n\)。既然長方體的體積如此好算，那麼我們試圖找出 \(\mathcal{C}(P)\) 內部最大的長方體，用它來估計 \(e(P)\) 的值，應該很有希望。於是，我們可以寫下一個最佳化問題：</p>
+<p>\[
+\begin{aligned}
+\text{maximize }\ \ &amp; z_1z_2\cdots z_n\\
+\text{subject to }\ \ &amp; z\in \mathcal{C}(P)
+\end{aligned}
+\]</p>
+<p>這個問題，乍看之下有點棘手，理由是，目前我們能夠輕鬆解決的問題，大多是線性規劃、或是凸函數最佳化等等。
+而上述題目，有兩個地方跟我們平常解的最佳化問題有些出入：其一是目標函數，全部乘在一起了看起來有點麻煩；其二是變數條件，\(\mathcal{C}(P)\) 雖然是個多胞形，能夠被許多線性條件表示。
+但是， \(\mathcal{C}(P)\) 的定義並非如 \(\mathcal{O}(P)\) 一般可以單純以 \(z_i \le z_j \ \ \forall x_i, x_j\in P, x_i &lt; x_j\) 的條件來表示之。
+最直接的寫法──枚舉所有最大獨立集，並設定所有參與獨立集裡面的變數總和不超過 1 ──可能會需要指數級別數量的線性不等式。</p>
+<p>不過呢，如果我們把目標函數取個 \(-\log\)，然後除個 \(n\) 平均一下，就可以讓目標函數變成凸函數啦～於是第一個問題變得可解一些：</p>
+<p>\[
+\begin{aligned}
+\text{minimize }\ \ &amp; H(z) := -\frac{1}{n}\sum_{i=1}^n \log z_i \\
+\text{subject to }\ \ &amp; z\in \mathcal{C}(P)
+\end{aligned}
+\]</p>
+<p>（備註：上面的 \(1/n\) 並不影響最佳化的解，加上去是因為這個東西根本一臉資訊理論中的熵 entropy 的定義，為了保持定義的一致性加上去的。）
+要解決第二個問題，我們其實可以利用 membership oracle 的觀念：拿來解線性規劃的工具，如橢球法（Ellipsoid Method）與內點法（Interior Point Method），都只需要判斷「目前某個點是否滿足指定條件」的工具就行了。也就是說，我們可以透過兩個多胞形之間的轉換 \(\varphi^{-1}\)，將欲判斷 membership 的點從 \(\mathcal{C}(P)\) 換到 \(\mathcal{O}(P)\) 去檢查（或等價地、乾脆直接在 poset 上面作一次動態規劃），就可以在 \(O(n^2)\) 時間內判斷欲查詢的點是否在 \(\mathcal{C}(P)\) 內部囉。</p>
+<p>於是，我們可以套用凸函數最佳化的大刀，幫助我們找出直鏈和多胞形內部最大的長方體<sup class="footnote-reference"><a href="#1">1</a></sup>。
+假設這個最佳化問題的解是 \(z^*\)，對應到的長方體體積為 \(\text{vol}(\text{Box}(z^*)) = 2^{-nH(z^*)}\)。為了方便起見，我們暫且把這個體積記作 \(2^{-nH(P)}\)。於是呢，可以得出以下結論：</p>
+<a class="header" href="#引理-26" id="引理-26"><h3>引理 26</h3></a>
+<p>\[
+2^{-nH(P)} \le e(P)/n!
+\]</p>
+<p>整理一下可得</p>
+<p>\[
+\log e(P) + nH(P) \ge \log n!
+\]</p>
+<p>這告訴我們什麼呢？當這個解 \(nH(P)\) 的值越小的時候，\(\log e(P)\) 越大（存在更多的線性延伸）。等價地地，若 \(\log e(P)\) 很小（只有少許的線性延伸），那麼 \(nH(P)\) 保證很大。
+說到這裡，筆者不禁捫心自問，原本不是想估計 \(e(P)\) 的值嗎？為什麼我們可以只關心 \(\log e(P)\)？</p>
+<a class="header" href="#主題偏序集排序" id="主題偏序集排序"><h2>主題──偏序集排序</h2></a>
+<p>原因是這樣的：如果給定了部分資料之間的大小關係 \(P\)，顯然從前些日子提到的 \(S(12)&gt;29\) 來看，存在一些偏序集無法在恰好 \(\ceil{\log e(P)}\) 次比較之內排好所有資料的順序。那麼，我們想知道的是，能否退而求其次，如同大多數使用 \(O(n\log n)\) 次比較的排序演算法，允許常數倍數的誤差，在 \(O(\log e(P))\) 次比較之內排好順序呢？</p>
+<p>也就是說，如果這個偏序集 \(P\) 已經幾乎排好序了，有沒有比 \(\Theta(n\log n)\) 使用更少次數的排序演算法，可以正確地利用少少的 \(O(\log e(P))\) 次比較，從而達到正確排序呢？
+答案是有的<sup class="footnote-reference"><a href="#2">2</a></sup>，我們可以利用這幾天討論過的觀念，一步一步邁向 \(O(\log e(P))\) 的偏序集排序。我們甚至還不需要真的用大刀解凸函數最佳化問題，只需要觀念就可以了。</p>
+<p>一個有趣的暖身是這樣的：從上面的引理 26，我們可以得到一個超簡單 \(O(\log n\cdot \log e(P))\) 的偏序集排序演算法。大家也不妨猜猜看！這個我們明天講～</p>
+<hr />
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>至於大刀該怎麼用比較正確，詳情以後再談好了…。</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>Jean Cardinal, Samuel Fiorini, Gwenaël Joret, Raphaël M. Jungers, J. Ian Munro, <em>Sorting under Partial Information (without the Ellipsoid Algorithm)</em>, Combinatorica 33, 655–697 (2013). https://doi.org/10.1007/s00493-013-2821-5, <a href="https://arxiv.org/pdf/0911.0086.pdf">ArXiv</a>.</p>
 </div>
 
                     </main>
