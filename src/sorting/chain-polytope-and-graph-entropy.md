@@ -79,7 +79,7 @@ $$
 
 這個直鏈和多胞形有什麼好處呢？它其實有另一個等價的定義：如果我們從偏序集 $P$ 當中，任何兩個可以比較的元素對，都建立一條邊，我們會得到一個無向圖 $G(P)$。$G(P)$ 也被稱為 $P$ 的**可比較圖（Comparability Graph）**。
 
-而 $\mathcal{C}(P)$ 呢，它會恰好等於所有 $G(P)$ 上面「最大獨立集（stable set, independent set）」所對應到的單位向量，與原點形成的凸組合（convex combination）空間。
+而 $\mathcal{C}(P)$ 呢，它會恰好等於所有 $G(P)$ 上面所有「獨立集（stable set, independent set）」所對應到的單位向量，與原點形成的凸組合（convex combination）空間。
 
 明天我們來看看這個 $G(P)$ 的補圖 $\overline{G(P)}$ **不可比圖（incomparability graph）**，他對於 $e(P)$ 的估計有什麼厲害的幫助吧！
 

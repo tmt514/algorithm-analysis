@@ -21,4 +21,4 @@
   * [01/27 - 偏序集排序（三）](sorting/order-polytope-and-ehrhart-polynomial.md)
   * [02/01 - 偏序集排序（四）](sorting/chain-polytope-and-graph-entropy.md)
   * [02/03 - 偏序集排序（五）](sorting/poset-sort5.md)
-  
+  * [02/07 - 偏序集排序（六）](sorting/poset-sort6.md)
