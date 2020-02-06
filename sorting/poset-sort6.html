@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>02/03 - 偏序集排序（五） - 演算法的分析與證明</title>
+        <title>02/07 - 偏序集排序（六） - 演算法的分析與證明</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -80,7 +80,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="../sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="../sorting/poset-sort5.html" class="active">02/03 - 偏序集排序（五）</a></li><li><a href="../sorting/poset-sort6.html">02/07 - 偏序集排序（六）</a></li></ol></li></ol>
+            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="../sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="../sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="../sorting/poset-sort6.html" class="active">02/07 - 偏序集排序（六）</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -145,75 +145,106 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#偏序集排序五" id="偏序集排序五"><h1>偏序集排序（五）</h1></a>
-<p>前一次我們提到了，從一個偏序集 \((P, &lt;)\) 定義出來的直鏈和多胞形（Chain Polytope）\(\mathcal{C}(P)\)，其體積與順序多胞形（Order Polytope）\(\mathcal{O}(P)\) 相等，且剛好等於 \(e(P) / n!\)。</p>
-<p>但是計算一個任意多胞形的確切體積，是困難的。幸好，如果我們只需要估計 \(e(P)\) 的值（甚至可以放寬條件、只需要估計 \(\log e(P)\) 的值就行了），不需要計算出整個多胞形的確切體積。</p>
-<a class="header" href="#利用長方體估算體積" id="利用長方體估算體積"><h2>利用長方體估算體積</h2></a>
-<p>能夠簡單計算體積的形狀，大概就是長方體了吧。
-透過觀察，我們發現，對於任何一個直鏈和多胞形內的點 \(z=(z_1, z_2, \ldots, z_n) \in\mathcal{C}(P)\)，都可以定義出一個長方體，其兩個對角點剛好分別是原點 \((0, 0, \ldots, 0)\) 以及 \(z\)。
-換句話說，這個長方體
+                        <a class="header" href="#偏序集排序六" id="偏序集排序六"><h1>偏序集排序（六）</h1></a>
+<p>使用兩兩元素進行比較的排序演算法，不外乎就是採用「插入」或「合併」兩種策略。給定一個偏序集 \((P, &lt;)\)，如同合併插入排序法一般，如果我們找到正確的插入順序，就可以得到一個只需要 \(O(\log n \cdot \log e(P))\) 次比較的偏序集排序方法囉！</p>
+<a class="header" href="#找出最長可比鏈" id="找出最長可比鏈"><h2>找出最長可比鏈</h2></a>
+<p>在偏序集當中，一條鏈（chain）是指一個序列 \(x_1, x_2, \ldots, x_\ell \in P\)，而且他們形成一個全序關係：\(x_1 &lt; x_2 &lt; \cdots &lt; x_\ell\)。我們可以利用動態規劃方法在 \(O(n^2)\) 的時間（或關於偏序集偏序關係總數之線性時間）內找出偏序集 \(P\) 中的最長鏈。</p>
+<p>現在，我們將證明以下引理：</p>
+<a class="header" href="#引理-27" id="引理-27"><h3>引理 27</h3></a>
+<p>令 \(\ell\) 為偏序集 \((P, &lt;)\) 裡面的最長鏈的長度。那麼有 \(n-\ell \le \log e(P)\)。</p>
+<a class="header" href="#證明" id="證明"><h3>證明</h3></a>
+<p>我們預計要證明的，其實是以下的式子：</p>
+<p>\[
+e(P) \ge 2^{n-\ell} \label{eq1}\tag{*}
+\]</p>
+<p>換句話說，在最長鏈長度為 \(\ell\) 的條件下，我們想要證明任意偏序集裡面至少存在 \(2^{n-\ell}\) 個線性延伸。
+要怎麼下手呢？我們其實也沒有太多招可以使用。一個簡單的方法便是使用數學歸納法。
+這裡我們使用的數學歸納法，比較不太一樣：在固定總資料筆數 \(n\) 的情形下，我們要讓 \(\ell\) 的值從大到小進行歸納。</p>
+<p>當 \(\ell = n\) 的時候，所有的資料都被排序完成了，此時 \(e(P) = 1 = 2^{0} = 2^{n-\ell}\)，滿足條件。</p>
+<p>現在 \(\ell &lt; n\)。根據歸納假設，對於任何偏序集 \(P'\)，只要它的最長鏈的長度是 \(\ell+1\)，那麼\(\eqref{eq1}\) 式成立。
+考慮一個最長鏈長度恰好為 \(\ell\) 的偏序集 \(P\)，以及上面任何一條最長鏈 \(A\)。
+首先，因為 \(\ell &lt; n\)，因此對於任何鏈以外 \(P\setminus A\) 的資料 \(x\)，都至少存在 \(A\) 中某筆資料無法與其比較。
+我們可以將 \(A\) 中的資料由小到大排列出來：
 \[
-\text{Box}(z) = [0, z_1]\times [0, z_2]\times \cdots \times [0, z_n]\subset \mathcal{C}(P)
+a_1 &lt; a_2 &lt; \cdots &lt; a_\ell
 \]</p>
-<p>\(\text{Box}(z)\) 的體積，顯然可以直接寫出來：\(z_1z_2\cdots z_n\)。既然長方體的體積如此好算，那麼我們試圖找出 \(\mathcal{C}(P)\) 內部最大的長方體，用它來估計 \(e(P)\) 的值，應該很有希望。於是，我們可以寫下一個最佳化問題：</p>
+<p>因為 \(P\setminus A\neq \emptyset\)，存在一個<strong>最小的註標</strong> \(i\)，使得存在 \(P\setminus A\) 中的某筆資料 \(x\)，與 \(a_i\) 不分軒輊。這件事情蘊含了 \(a_{i-1} &lt; x\)。
+我們如果拿 \(x\) 和 \(a_i\) 互相比較，根據比較結果，可能產生兩種情形：</p>
 <p>\[
-\begin{aligned}
-\text{maximize }\ \ &amp; z_1z_2\cdots z_n\\
-\text{subject to }\ \ &amp; z\in \mathcal{C}(P)
-\end{aligned}
+A_1: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{x&lt; a_i}}  &lt; a_{i+1} &lt; \cdots &lt; a_\ell
 \]</p>
-<p>這個問題，乍看之下有點棘手，理由是，目前我們能夠輕鬆解決的問題，大多是線性規劃、或是凸函數最佳化等等。
-而上述題目，有兩個地方跟我們平常解的最佳化問題有些出入：其一是目標函數，全部乘在一起了看起來有點麻煩；其二是變數條件，\(\mathcal{C}(P)\) 雖然是個多胞形，能夠被許多線性條件表示。
-但是， \(\mathcal{C}(P)\) 的定義並非如 \(\mathcal{O}(P)\) 一般可以單純以 \(z_i \le z_j \ \ \forall x_i, x_j\in P, x_i &lt; x_j\) 的條件來表示之。
-最直接的寫法──枚舉所有最大獨立集，並設定所有參與獨立集裡面的變數總和不超過 1 ──可能會需要指數級別數量的線性不等式。</p>
-<p>不過呢，如果我們把目標函數取個 \(-\log\)，然後除個 \(n\) 平均一下，就可以讓目標函數變成凸函數啦～於是第一個問題變得可解一些：</p>
+<p>以及</p>
 <p>\[
-\begin{aligned}
-\text{minimize }\ \ &amp; H(z) := -\frac{1}{n}\sum_{i=1}^n \log z_i \\
-\text{subject to }\ \ &amp; z\in \mathcal{C}(P)
-\end{aligned}
+A_2: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{a_i &lt; x}} &lt; a_{i+1} &lt; \cdots &lt; a_\ell
 \]</p>
-<p>（備註：上面的 \(1/n\) 並不影響最佳化的解，加上去是因為這個東西根本一臉資訊理論中的熵 entropy 的定義，為了保持定義的一致性加上去的。）
-要解決第二個問題，我們其實可以利用 membership oracle 的觀念：拿來解線性規劃的工具，如橢球法（Ellipsoid Method）與內點法（Interior Point Method），都只需要判斷「目前某個點是否滿足指定條件」的工具就行了。也就是說，我們可以透過兩個多胞形之間的轉換 \(\varphi^{-1}\)，將欲判斷 membership 的點從 \(\mathcal{C}(P)\) 換到 \(\mathcal{O}(P)\) 去檢查（或等價地、乾脆直接在 poset 上面作一次動態規劃），就可以在 \(O(n^2)\) 時間內判斷欲查詢的點是否在 \(\mathcal{C}(P)\) 內部囉。</p>
-<p>於是，我們可以套用凸函數最佳化的大刀，幫助我們找出直鏈和多胞形內部最大的長方體<sup class="footnote-reference"><a href="#1">1</a></sup>。
-假設這個最佳化問題的解是 \(z^*\)，對應到的長方體體積為 \(\text{vol}(\text{Box}(z^*)) = 2^{-nH(z^*)}\)。為了方便起見，我們暫且把這個體積記作 \(2^{-nH(P)}\)。於是呢，可以得出以下結論：</p>
-<a class="header" href="#引理-26" id="引理-26"><h3>引理 26</h3></a>
-<p>\[
-2^{-nH(P)} \le e(P)/n!
-\]</p>
-<p>整理一下可得</p>
-<p>\[
-\log e(P) + nH(P) \ge \log n!
-\]</p>
-<p>這告訴我們什麼呢？當這個解 \(nH(P)\) 的值越小的時候，\(\log e(P)\) 越大（存在更多的線性延伸）。等價地地，若 \(\log e(P)\) 很小（只有少許的線性延伸），那麼 \(nH(P)\) 保證很大。
-說到這裡，筆者不禁捫心自問，原本不是想估計 \(e(P)\) 的值嗎？為什麼我們可以只關心 \(\log e(P)\)？</p>
-<a class="header" href="#主題偏序集排序" id="主題偏序集排序"><h2>主題──偏序集排序</h2></a>
-<p>原因是這樣的：如果給定了部分資料之間的大小關係 \(P\)，顯然從前些日子提到的 \(S(12)&gt;29\) 來看，存在一些偏序集無法在恰好 \(\ceil{\log e(P)}\) 次比較之內排好所有資料的順序。那麼，我們想知道的是，能否退而求其次，如同大多數使用 \(O(n\log n)\) 次比較的排序演算法，允許常數倍數的誤差，在 \(O(\log e(P))\) 次比較之內排好順序呢？</p>
-<p>也就是說，如果這個偏序集 \(P\) 已經幾乎排好序了，有沒有比 \(\Theta(n\log n)\) 使用更少次數的排序演算法，可以正確地利用少少的 \(O(\log e(P))\) 次比較，從而達到正確排序呢？
-答案是有的<sup class="footnote-reference"><a href="#2">2</a></sup>，我們可以利用這幾天討論過的觀念，一步一步邁向 \(O(\log e(P))\) 的偏序集排序。我們甚至還不需要真的用大刀解凸函數最佳化問題，只需要觀念就可以了。</p>
-<p>一個有趣的暖身是這樣的：從上面的引理 26，我們可以得到一個超簡單 \(O(\log n\cdot \log e(P))\) 的偏序集排序演算法。大家也不妨猜猜看！這個我們明天講～</p>
+<p>都是滿足偏序集 \(P\) 的偏序條件。令前者定義出來的新的偏序集為 \(P_1\)、後者為 \(P_2\)。
+由於 \(x\) 是 \(P\setminus A\) 中的極小元素（對於所有 \(y\in P\setminus A\)、\(y\neq x\)，要嘛 \(x &lt; y\) 要嘛 \(x\) 和 \(y\) 不可比），不難推得 \(e(P_1) \ge e(P_2)\)，而且 \(e(P) \ge e(P_1) + e(P_2) \ge 2e(P_2)\)。
+現在，如果我們能證明 \(A_2\) 是 \(P_2\) 上面的一條最長鏈，由於它的長度為 \(\ell+1\)，套用歸納假設，我們可以知道 \(e(P)\) \(\ge 2e(P_2)\) \(\ge 2\cdot 2^{n-\ell-1}\) \(= 2^{n-\ell}\)，故 \(\eqref{eq1}\) 對 \(\ell\) 成立。</p>
+<p>顯然 \(A_2\) 是 \(P_2\) 上面的一條最長鏈。為什麼呢？我們可以利用反正法證明之：反正一定會對。不是啦，我們可以利用反證法證明：假設存在一條更長的鏈 \(A'\)，其長度 \(|A'\mid   \ge \ell + 2\)。
+首先，這條鏈 \(A'\) 一定會同時包含 \(a_i\) 和 \(x\) 這兩筆資料。
+這是因為 \(a_i &lt; x\) 這個偏序關係是 \(P\) 與 \(P_2\) 唯一的差別。
+如果 \(A'\) 少了任何一者，其整條鏈的偏序關係全部都會出現在原先的偏序集 \(P\) 中，因此與 \(A\) 為最長鏈之假設矛盾。</p>
+<p>接著，我們可以注意到在 \(a_i\) 之前，\(a_1, \ldots, a_{i-1}\) 一定是最長的，否則可以換得更長。
+然後呢，由於 \(x\) 是 \(P\setminus A\) 之中的極小資料，因此 \(a_i\) 與 \(x\) 之間不可能插入任何資料（備註：這邊用到了 \(i\) 的最小性質）。</p>
+<p>接下來，考慮在 \(P_2\) 裡面，以 \(x\) 為首的最長鏈 \(A_x\)。這條鏈一定也在 \(P\) 中，而且其長度會等於 \(\vert A'\vert  - i \ge (\ell+2)-i\)。注意到 \(x &gt; a_{i-1}\)。我們考慮把 \(a_1, \ldots, a_{i-1}\) 直接連接在 \(A_x\) 之前，此時這條新的鏈完完全全地出現在原先的偏序集裡頭，但它的長度是多少呢？它的長度是 \((\ell+2)-i + (i-1) = \ell+1\)，與 \(A\) 的最長鏈長度為 \(\ell\) 互相矛盾啊。</p>
+<p>因此，不存在更長的鏈，於是原命題根據數學歸納法得證啦。</p>
 <hr />
+<p>我們從引理 27，得出一個 \(O(\log n\cdot \log e(P))\) 次比較的偏序集排序演算法<sup class="footnote-reference"><a href="#1">1</a></sup>：</p>
+<blockquote>
+<ul>
+<li>第一步：找出最長鏈 \(A\)。</li>
+<li>第二步：對於剩下的所有資料，依序以二分法插入 \(A\) 中。</li>
+</ul>
+</blockquote>
+<p>由於剩下的資料筆數至多為 \(\log e(P)\) 個，因此每一筆至多以 \(\log n\) 次比較就可以插入最長鏈中，整體比較次數是 \(O(\log n\cdot \log e(P))\) 次。整體計算時間為 \(O(n^2)\)（或偏序集大小）。</p>
+<hr />
+<p>如果朋友們有餘力看到這邊，先容我致上深深的感謝。
+相信大家看到這邊，應該會說：前一篇文章裡面提到的凸函數最佳化上哪去了？
+這東西會有用的。
+比方說：
+假設最長鏈的長度為 \(\ell\)。那麼令所有變數 \(z_i = 1/\ell\) 的時候，保證滿足直鏈和多項式的要求（因為任何的鏈長都不超過 \(\ell\)，所以鏈上的變數加總起來都不會超過 \(1\)。）因此，將這個 \(z=(z_1, z_2, \ldots, z_n)\) 代入直鏈和多項式的最佳化問題中，我們可以得出 \(H(P) \le \log \ell\)，即 \(-nH(P) \ge -n\log \ell\)。</p>
+<p>而事實上，我們明天將利用上述結論，證明更強的定理：</p>
+<p>\[
+\log e(P) + nH(P) \ge n\log n
+\]</p>
+<p>(不等式的右手邊從 \(\log n!\) 變成 \(\log n^n\) 了。）</p>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>至於大刀該怎麼用比較正確，詳情以後再談好了…。</p>
+<p>演算法是 Cardinal, Fiorini, Joret, Jungers, 和 Munro 等人提出的<sup class="footnote-reference"><a href="#2">2</a></sup>，但這個證明是我自己想的。如果各位朋友們有發現參考資料或<font color=red>任何錯誤</font>的話拜託跟我說 (×﹏×)</p>
 </div>
 <div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
 <p>Jean Cardinal, Samuel Fiorini, Gwenaël Joret, Raphaël M. Jungers, J. Ian Munro, <em>Sorting under Partial Information (without the Ellipsoid Algorithm)</em>, Combinatorica 33, 655–697 (2013). https://doi.org/10.1007/s00493-013-2821-5, <a href="https://arxiv.org/pdf/0911.0086.pdf">ArXiv</a>.</p>
 </div>
+<!-- 
+首先我們先將引理 26 寫出來：
+\\[
+\log e(P) + nH(P) \ge \log n!
+\\]
+<p>然後利用 <a href="https://en.wikipedia.org/wiki/Stirling%27s_approximation">Stirling's Approximation</a>，把 \(\log n!\) 展開成
+\[
+\begin{aligned}
+\log n! &amp;= n\log n - n \log e + O(\log n)\\
+&amp;\ge n\log n - n\log e
+\end{aligned}
+\]</p>
+<p>因此，我們可以寫
+\[
+\begin{aligned}
+\log e(P) &amp;\ge \log n! - n\log \ell\\
+&amp;\ge n\log n - n\log e - n\log \ell\\
+&amp;\ge n\log \frac{n}{e\ell}
+\end{aligned}
+\] --&gt;</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../sorting/chain-polytope-and-graph-entropy.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../sorting/poset-sort5.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="../sorting/poset-sort6.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -223,15 +254,11 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../sorting/chain-polytope-and-graph-entropy.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../sorting/poset-sort5.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a href="../sorting/poset-sort6.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 
