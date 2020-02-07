@@ -1353,14 +1353,15 @@ A_2: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{a_i &lt; x}} &lt; a_{i+1} &l
 <hr />
 <p>如果朋友們有餘力看到這邊，先容我致上深深的感謝。
 相信大家看到這邊，應該會說：前一篇文章裡面提到的凸函數最佳化上哪去了？
-這東西會有用的。
-比方說：
-假設最長鏈的長度為 \(\ell\)。那麼令所有變數 \(z_i = 1/\ell\) 的時候，保證滿足直鏈和多項式的要求（因為任何的鏈長都不超過 \(\ell\)，所以鏈上的變數加總起來都不會超過 \(1\)。）因此，將這個 \(z=(z_1, z_2, \ldots, z_n)\) 代入直鏈和多項式的最佳化問題中，我們可以得出 \(H(P) \le \log \ell\)，即 \(-nH(P) \ge -n\log \ell\)。</p>
-<p>而事實上，我們明天將利用上述結論，證明更強的定理：</p>
+這東西會有用的。</p>
+<!-- 比方說：
+假設最長鏈的長度為 \\(\ell\\)。那麼令所有變數 \\(z\_i = 1/\ell\\) 的時候，保證滿足直鏈和多項式的要求（因為任何的鏈長都不超過 \\(\ell\\)，所以鏈上的變數加總起來都不會超過 \\(1\\)。）因此，將這個 \\(z=(z\_1, z\_2, \ldots, z\_n)\\) 代入直鏈和多項式的最佳化問題中，我們可以得出 \\(H(P) \le \log \ell\\)，即 \\(-nH(P) \ge -n\log \ell\\)。 -->
+<p>我們明天將證明一個比引理 26 更強的定理：</p>
 <p>\[
 4\log e(P) + nH(P) \ge n\log n
 \]</p>
-<p>(在增加左手邊的係數變成 \(4\) 以後，不等式的右手邊就可以從 \(\log n!\) 變成 \(\log n^n\) 了。事實上這個係數可以是 \(2\)，不過證明比較複雜，所以我只會介紹係數等於 \(4\) 的版本。）</p>
+<p>(在增加左手邊的係數變成 \(4\) 以後，不等式的右手邊就可以從 \(\log n!\) 變成 \(\log n^n\) 了。事實上這個係數可以是 \(2\)，不過證明比較複雜，所以我只會介紹係數等於 \(4\) 的版本。）
+事實上，有了這個更強的定理以後，其實才能無痛證明引理 27 的 big-O 版本，昨天的引理 26 是不夠的。</p>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>演算法是 Cardinal, Fiorini, Joret, Jungers, 和 Munro 等人提出的<sup class="footnote-reference"><a href="#2">2</a></sup>，但這個證明是我自己想的。如果各位朋友們有發現參考資料或<font color=red>任何錯誤</font>的話拜託跟我說 (×﹏×)</p>
 </div>
@@ -1409,21 +1410,6 @@ A_2: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{a_i &lt; x}} &lt; a_{i+1} &l
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload(true); // force reload from server (not from cache)
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         
