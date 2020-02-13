@@ -80,7 +80,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="../sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="../sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="../sorting/poset-sort6.html" class="active">02/07 - 偏序集排序（六）</a></li></ol></li></ol>
+            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="../sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="../sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="../sorting/poset-sort6.html" class="active">02/07 - 偏序集排序（六）</a></li><li><a href="../sorting/poset-sort7.html">02/14 - 偏序集排序（七）</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -175,18 +175,28 @@ A_1: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{x&lt; a_i}}  &lt; a_{i+1} &l
 \]</p>
 <p>以及</p>
 <p>\[
-A_2: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{a_i &lt; x}} &lt; a_{i+1} &lt; \cdots &lt; a_\ell
+A_2: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{a_i &lt; x &lt; a_{i+1}}} &lt; \cdots &lt; a_\ell
 \]</p>
 <p>都是滿足偏序集 \(P\) 的偏序條件。令前者定義出來的新的偏序集為 \(P_1\)、後者為 \(P_2\)。
 由於 \(x\) 是 \(P\setminus A\) 中的極小元素（對於所有 \(y\in P\setminus A\)、\(y\neq x\)，要嘛 \(x &lt; y\) 要嘛 \(x\) 和 \(y\) 不可比），不難推得 \(e(P_1) \ge e(P_2)\)，而且 \(e(P) \ge e(P_1) + e(P_2) \ge 2e(P_2)\)。
 現在，如果我們能證明 \(A_2\) 是 \(P_2\) 上面的一條最長鏈，由於它的長度為 \(\ell+1\)，套用歸納假設，我們可以知道 \(e(P)\) \(\ge 2e(P_2)\) \(\ge 2\cdot 2^{n-\ell-1}\) \(= 2^{n-\ell}\)，故 \(\eqref{eq1}\) 對 \(\ell\) 成立。</p>
-<p>顯然 \(A_2\) 是 \(P_2\) 上面的一條最長鏈。為什麼呢？我們可以利用反正法證明之：反正一定會對。不是啦，我們可以利用反證法證明：假設存在一條更長的鏈 \(A'\)，其長度 \(|A'\mid   \ge \ell + 2\)。
-首先，這條鏈 \(A'\) 一定會同時包含 \(a_i\) 和 \(x\) 這兩筆資料。
-這是因為 \(a_i &lt; x\) 這個偏序關係是 \(P\) 與 \(P_2\) 唯一的差別。
-如果 \(A'\) 少了任何一者，其整條鏈的偏序關係全部都會出現在原先的偏序集 \(P\) 中，因此與 \(A\) 為最長鏈之假設矛盾。</p>
-<p>接著，我們可以注意到在 \(a_i\) 之前，\(a_1, \ldots, a_{i-1}\) 一定是最長的，否則可以換得更長。
-然後呢，由於 \(x\) 是 \(P\setminus A\) 之中的極小資料，因此 \(a_i\) 與 \(x\) 之間不可能插入任何資料（備註：這邊用到了 \(i\) 的最小性質）。</p>
-<p>接下來，考慮在 \(P_2\) 裡面，以 \(x\) 為首的最長鏈 \(A_x\)。這條鏈一定也在 \(P\) 中，而且其長度會等於 \(\vert A'\vert  - i \ge (\ell+2)-i\)。注意到 \(x &gt; a_{i-1}\)。我們考慮把 \(a_1, \ldots, a_{i-1}\) 直接連接在 \(A_x\) 之前，此時這條新的鏈完完全全地出現在原先的偏序集裡頭，但它的長度是多少呢？它的長度是 \((\ell+2)-i + (i-1) = \ell+1\)，與 \(A\) 的最長鏈長度為 \(\ell\) 互相矛盾啊。</p>
+<p>顯然 \(A_2\) 是 \(P_2\) 上面的一條最長鏈。為什麼呢？我們可以利用反正法證明之：反正一定會對。不是啦，我們可以利用反證法證明：假設存在一條更長的鏈 \(A'\)，其長度 \(|A'\vert   \ge \ell + 2\)。
+首先，這條鏈 \(A'\) 一定會包含 \(x\)，如果不會的話，那整條鏈早已出現在 \(P\) 中，與假設矛盾。</p>
+<p>我們定義 \(I'_{&lt; x}\) 為在 \(P'\) 裡面以 \(x\) 為最大元素的最長鏈。
+類似地我們定義 \(I'_{&gt; x}\) 為在 \(P'\) 裡面以 \(x\) 為最小元素的最長鏈。
+考慮 \(I'_{&lt; x}\) 裡頭到達 \(x\) 之前的那個元素，它可以是 \(a_i\)、也可以是其他元素。
+如果是 \(a_i\) 接在前面的話顯然有 \(|I'_{&lt; x}\vert  \le i+1\)。如果是其他元素 \(y\) 接在前面的話，這個 \(y &lt; x\) 關係顯然被包含在 \(P\) 之中、或是透過 \(y &lt; a_i {\color{red}{&lt; }}\ x\) 達成的，如果早已在 \(P\) 中，根據假設它只能是 \(a_1, \ldots, a_{i-1}\) 其中一者，此時 \(|I'_{&lt; x}\vert  \le i\)。
+若是透過 \(a_i\) 達成的，那麼把 \(a_i\) 接上去會更長。
+於是得到結論 \(|I'_{&lt; x}\vert  \le i+1\)。</p>
+<p>類似地，考慮 \(I'_{&gt; x}\) 裡頭緊接在 \(x\) 之後的那個元素，它可以是 \(a_{i+1}\)、或是其他元素 \(y'\)，無論是何種情形都可以得到 \(|I'_{&gt; x}\vert  \le \ell-i+1\)。於是有
+\[\ell+2 \le \vert A'\vert  = \vert I'_{&lt; x}\vert  + \vert I'_{&gt; x}\vert  - 1 \le (i+1) + (\ell-i+1)-1 = \ell+1\]
+矛盾。</p>
+<!-- 首先，這條鏈 \\(A'\\) 一定會同時包含 \\(a\_i\\) 和 \\(x\\) 這兩筆資料。
+這是因為 \\(a\_i < x\\) 這個偏序關係是 \\(P\\) 與 \\(P\_2\\) 唯一的差別。
+如果 \\(A'\\) 少了任何一者，其整條鏈的偏序關係全部都會出現在原先的偏序集 \\(P\\) 中，因此與 \\(A\\) 為最長鏈之假設矛盾。 -->
+<!-- 接著，我們可以注意到在 \\(a\_i\\) 之前，\\(a\_1, \ldots, a\_{i-1}\\) 一定是最長的，否則可以換得更長。
+然後呢，由於 \\(x\\) 是 \\(P\setminus A\\) 之中的極小資料，因此 \\(a\_i\\) 與 \\(x\\) 之間不可能插入任何資料（備註：這邊用到了 \\(i\\) 的最小性質）。 -->
+<!-- 接下來，考慮在 \\(P\_2\\) 裡面，以 \\(x\\) 為首的最長鏈 \\(A\_x\\)。這條鏈一定也在 \\(P\\) 中，而且其長度會等於 \\(\vert A'\vert  - i \ge (\ell+2)-i\\)。注意到 \\(x > a\_{i-1}\\)。我們考慮把 \\(a\_1, \ldots, a\_{i-1}\\) 直接連接在 \\(A\_x\\) 之前，此時這條新的鏈完完全全地出現在原先的偏序集裡頭，但它的長度是多少呢？它的長度是 \\((\ell+2)-i + (i-1) = \ell+1\\)，與 \\(A\\) 的最長鏈長度為 \\(\ell\\) 互相矛盾啊。 -->
 <p>因此，不存在更長的鏈，於是原命題根據數學歸納法得證啦。</p>
 <hr />
 <p>我們從引理 27，得出一個 \(O(\log n\cdot \log e(P))\) 次比較的偏序集排序演算法<sup class="footnote-reference"><a href="#1">1</a></sup>：</p>
@@ -247,6 +257,10 @@ A_2: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{a_i &lt; x}} &lt; a_{i+1} &l
                         
 
                         
+                            <a rel="next" href="../sorting/poset-sort7.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -260,6 +274,10 @@ A_2: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{a_i &lt; x}} &lt; a_{i+1} &l
                     </a>
                 
 
+                
+                    <a href="../sorting/poset-sort7.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                 
             </nav>
 

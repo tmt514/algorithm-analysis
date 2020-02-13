@@ -80,7 +80,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="index.html">2020 新計劃</a></li><li><a href="GLOSSARY.html">Glossary</a></li><li><a href="sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="sorting/poset-sort6.html">02/07 - 偏序集排序（六）</a></li></ol></li></ol>
+            <ol class="chapter"><li><a href="index.html">2020 新計劃</a></li><li><a href="GLOSSARY.html">Glossary</a></li><li><a href="sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="sorting/poset-sort6.html">02/07 - 偏序集排序（六）</a></li><li><a href="sorting/poset-sort7.html">02/14 - 偏序集排序（七）</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -199,7 +199,7 @@
 <a class="header" href="#基於資料數值的排序-numbers-sorting" id="基於資料數值的排序-numbers-sorting"><h2>基於資料數值的排序 Numbers Sorting</h2></a>
 <table><thead><tr><th> 演算法 </th><th> 時間複雜度 </th><th> 備註 </th></tr></thead><tbody>
 <tr><td> 計數排序法 </td><td> \(O(n+M)\) </td><td> 正整數資料範圍 \(O(M)\) </td></tr>
-<tr><td> \(k\)-進制桶子排序法 </td><td> \(O((n+k)\log_k \frac{1}{\epsilon})\) </td><td> 最相近兩數之相對誤差 \(\epsilon = \frac{\min_{i\neq j} \mid A[i]-A[j]\mid }{\max_i \mid A[i]\mid }\) </td></tr>
+<tr><td> \(k\)-進制桶子排序法 </td><td> \(O((n+k)\log_k \frac{1}{\epsilon})\) </td><td> 最相近兩數之相對誤差 \(\epsilon = \frac{\min_{i\neq j} \vert A[i]-A[j]\vert }{\max_i \vert A[i]\vert }\) </td></tr>
 <tr><td> \(k\)-進制基數排序法 </td><td> \(O((n+k)\log_k M)\) </td><td> 正整數資料範圍 \(O(M)\) </td></tr>
 </tbody></table>
 <a class="header" href="#二進位整數排序-sorting-in-word-ram-model" id="二進位整數排序-sorting-in-word-ram-model"><h2>二進位整數排序 Sorting in Word RAM Model</h2></a>
@@ -446,10 +446,10 @@ T(n) \le T(n') = \Theta(n' \log n') = \Theta(n\log n)\text{。}
 <a class="header" href="#kronrod-工作空間重疊大法" id="kronrod-工作空間重疊大法"><h2>Kronrod 工作空間重疊大法</h2></a>
 <p>假設我們有兩塊相鄰的陣列區段 \(A\) 和 \(B\)，如下圖：</p>
 <p><img src="./in-place-mergesort1.png" alt="" /></p>
-<p>注意到 \(A\) 左邊有一塊可以暫時拿來當作暫存空間用的未排序區域，但如果它的長度比 \(|A\mid +\mid B\mid \) 來得小，很有可能在合併排序的過程中或覆蓋到 \(A\) 區域的資料。可能就會慘掉。</p>
+<p>注意到 \(A\) 左邊有一塊可以暫時拿來當作暫存空間用的未排序區域，但如果它的長度比 \(|A\vert +\vert B\vert \) 來得小，很有可能在合併排序的過程中或覆蓋到 \(A\) 區域的資料。可能就會慘掉。</p>
 <p><img src="./in-place-mergesort2.png" alt="" /></p>
 <a class="header" href="#引理-10-kronrod" id="引理-10-kronrod"><h3>引理 10 (Kronrod)</h3></a>
-<p>Kronrod 注意到，假設 \(|A\mid \) 的長度比 \(|B\mid \) 短。如果我們將 \(A\) 搬到左邊，使得 \(A\) 與 \(B\) 之間空出 \(|A\mid \) 個暫存空間。
+<p>Kronrod 注意到，假設 \(|A\vert \) 的長度比 \(|B\vert \) 短。如果我們將 \(A\) 搬到左邊，使得 \(A\) 與 \(B\) 之間空出 \(|A\vert \) 個暫存空間。
 這個時候，我們就可以安心地使用這塊空間當作合併排序的暫存空間了！就算合併時碰到了原本屬於 \(B\) 區段的空間也沒有關係，因為可以保證不會重疊到 \(B\) 目前的工作區間。（證明略）</p>
 <p>使用這個想法，我們可以得出像是 Katajianen-Pasanen-Teuhola 的原地演算法。</p>
 <a class="header" href="#katajianen-pasanen-teuhola-的原地類合併排序法" id="katajianen-pasanen-teuhola-的原地類合併排序法"><h2>Katajianen-Pasanen-Teuhola 的原地類合併排序法</h2></a>
@@ -804,9 +804,9 @@ S(n) = {\color{purple}{\sum_{x=1}^{n/2} \log\frac{n/2}{x}}} + {\color{green}{\fr
 <a class="header" href="#定理-18" id="定理-18"><h3>定理 18</h3></a>
 <p>任何一個確定性演算法，如果存取輸入資料時<strong>僅</strong>能夠進行「兩兩互相比較」。那麼排序 \(n\) 筆資料，最壞情形下至少要進行 \(\ceil{\log n!} = \Omega(n\log n)\) 次比較。</p>
 <a class="header" href="#證明-12" id="證明-12"><h3>證明</h3></a>
-<p>對於輸入的 \(n\) 筆資料，排序完畢後的輸出，相對於輸入總是一個排列（Permutation）。由於 \(n\) 筆資料總共有 \(n!\) 種不同的排列情形，每問一個問題「是否 \(A[i] &gt; A[j]\)？」，我們可以把仍滿足先前所有提問的排列找出來，形成集合 \(\mathcal{S}\)，然後分成兩組：滿足當前這個問題（\(A[i] &gt; A[j]\)）的所有排列 \(\mathcal{S}_{yes}\)、或者是不滿足當前問題（\(A[i] \le A[j]\)）的所有排列 \(\mathcal{S}_{no}\)。這兩個排列集合是不相交的，換句話說，如果我是邪惡的餵輸入的人，我可以設計一組輸入，讓滿足所有到目前為止的排列們，恰好就是 \(|\mathcal{S}_{yes}\mid \) 或 \(|\mathcal{S}_{no}\mid \) 之間比較大的那一個。
+<p>對於輸入的 \(n\) 筆資料，排序完畢後的輸出，相對於輸入總是一個排列（Permutation）。由於 \(n\) 筆資料總共有 \(n!\) 種不同的排列情形，每問一個問題「是否 \(A[i] &gt; A[j]\)？」，我們可以把仍滿足先前所有提問的排列找出來，形成集合 \(\mathcal{S}\)，然後分成兩組：滿足當前這個問題（\(A[i] &gt; A[j]\)）的所有排列 \(\mathcal{S}_{yes}\)、或者是不滿足當前問題（\(A[i] \le A[j]\)）的所有排列 \(\mathcal{S}_{no}\)。這兩個排列集合是不相交的，換句話說，如果我是邪惡的餵輸入的人，我可以設計一組輸入，讓滿足所有到目前為止的排列們，恰好就是 \(|\mathcal{S}_{yes}\vert \) 或 \(|\mathcal{S}_{no}\vert \) 之間比較大的那一個。
 換句話說，在運氣最好的情況下，你的演算法也只能夠剔除一半的排列數。</p>
-<p>為了讓演算法完全正確，任何確定性的演算法，在 \(|\mathcal{S}\mid  &gt; 1\) 的任何時刻，演算法都不能輸出答案。
+<p>為了讓演算法完全正確，任何確定性的演算法，在 \(|\mathcal{S}\vert  &gt; 1\) 的任何時刻，演算法都不能輸出答案。
 否則的話，總是存在另兩種不同的輸入（\(1\) 到 \(n\) 的排列），經歷過一連串比較得到一模一樣的答案以後，演算法就停下來而且輸出了其中一個作為答案。此時，另一個輸入再餵進同樣的演算法，就會錯掉了。
 至少要經過幾次比較，才能讓滿足條件的排列集合 \(\mathcal{S}\) 變成唯一的排列呢？由於每一個問題只能讓排列數降低成一半，至少得經過 \(\ceil{\log n!}\) 次比較才行。</p>
 <p>於是我們就得到 \(\Omega(n\log n)\) 的比較排序下界啦！</p>
@@ -1013,7 +1013,7 @@ F(n) = n\ceil{\log_2 \frac{3}{4} n} + \floor{\frac13 2^{\floor{\log_2 6n}}} + \f
 <p>要如何找出排序 \(n=12\) 筆資料的最小排序方法數呢？我們可以利用 <strong>動態規劃</strong> 的概念來解它！
 對於任何一個偏序集 \(P\)，定義 \(dp(P)\) 表示完成排序尚需要的最少比較次數。
 不難發現，一開始我們掌握的資訊量是一個空的偏序集 \(P_\emptyset\)，所求的最少比較次數 \(S(12) = dp(P_\emptyset)\)。</p>
-<p>假設我們現在手上有個偏序集 \(P_0\)，第一步該做什麼呢？我們可以選擇任何兩筆資料 \(x_i, x_j\) 進行比較。無論獲得什麼結果，我們會得到另一個偏序集 \(P_1 = P_0(x_i \lessgtr x_j)\)。注意到，如果 \(x_i\) 與 \(x_j\) 在 \(P_0\) 之中不存在任何關聯，那麼新的偏序集的大小必定大於原本的 \(|P_1\mid  &gt; \mid P_0\mid \)。
+<p>假設我們現在手上有個偏序集 \(P_0\)，第一步該做什麼呢？我們可以選擇任何兩筆資料 \(x_i, x_j\) 進行比較。無論獲得什麼結果，我們會得到另一個偏序集 \(P_1 = P_0(x_i \lessgtr x_j)\)。注意到，如果 \(x_i\) 與 \(x_j\) 在 \(P_0\) 之中不存在任何關聯，那麼新的偏序集的大小必定大於原本的 \(|P_1\vert  &gt; \vert P_0\vert \)。
 如果我們事先計算好，對所有 \(i, j\)，到底產生出來的偏序集，其最糟情形下會需要幾次比較。選取最小的那組 \((i, j)\) 就可以了！寫成遞迴關係會變成：</p>
 <p>\[
 dp(P_0) = 1 + \min_{i, j} \left( \max\{dp(P_0(x_i &lt; x_j)), dp(P_0(x_i &gt; x_j))\} \right)
@@ -1143,7 +1143,7 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 \((\sigma(1), \sigma(2), \ldots, \sigma(n))\)，使得 \(x_{\sigma(i)} &lt; x_{\sigma(j)}\) \(\implies\) \(i &lt; j\)。（由於是偏序集，逆命題並不一定成立。）</p>
 <p>這個多胞形 \(\mathcal{O}(P)\) 的定義是這樣的：</p>
 <p>\[
-\mathcal{O}(P) = \{ (z_1, z_2, \ldots, z_n) \ \mid \ z_i &lt; z_j \text{ whenever } x_i &lt; x_j \text{ in } P \}
+\mathcal{O}(P) = \{ (z_1, z_2, \ldots, z_n) \ \vert \ z_i &lt; z_j \text{ whenever } x_i &lt; x_j \text{ in } P \}
 \]</p>
 <a class="header" href="#定理-24" id="定理-24"><h3>定理 24</h3></a>
 <p>\(\mathcal{O}(P)\) 是一個凸多胞形，而且其體積恰好等於 \(e(P)/n!\)。</p>
@@ -1151,7 +1151,7 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 <p>要證明 \(\mathcal{O}(P)\) 是凸多胞形，只需要說明對任何兩個 \(\mathcal{O}(P)\) 裡面的點 \(z, z'\)，其連線中點 \((z+z')/2\) 仍然落在 \(\mathcal{O}(P)\) 裡面即可。根據定義，每一個點都會滿足至少一個對應的 \(P\) 的線性延伸。假設 \(z\) 對應的是 \(\sigma\)、\(z'\) 對應的是 \(\sigma'\)，顯然對於所有 \(P\) 中的大小順序 \(x_i &lt; x_j\)，都有 \(z_{\sigma^{-1}(i)} \le z_{\sigma^{-1}(j)}\)、且 \(z'_{\sigma^{-1}(i)} \le z'_{\sigma^{-1}(j)}\)。因此加起來除以 \(2\) 以後，將所有座標值由小到大排列得到的新的排列 \(\sigma''\) 仍然是 \(P\) 的一個線性延伸。</p>
 <p>關於體積的部分，我們考慮任何一個線性延伸 \(\sigma\)。由單一線性延伸定義出來的多胞形，它會是一個<strong>單純形（Simplex）</strong>。這邊定義出來的單純形，經過座標置換以後，可以發現其體積總是等價於以下這個單純形的體積：</p>
 <p>\[
-\Delta_*^n := \{(z_1, z_2, \ldots, z_n)\in \mathbb{R}^n \ \mid \ 0 \le z_1 \le z_2 \le \cdots \le z_n \le 1\}
+\Delta_*^n := \{(z_1, z_2, \ldots, z_n)\in \mathbb{R}^n \ \vert \ 0 \le z_1 \le z_2 \le \cdots \le z_n \le 1\}
 \]</p>
 <p>這個體積是多少呢？你可以用積分方法求出、也可以用對稱方法求出：總共有 \(n!\) 種排列、每一個排列定義出來的單純形，體積都相同，而且它們全部聯集起來恰好組成 \([0, 1]^n\subset \mathbb{R}^n\) 的小方塊，也就是說他們體積總和恰好等於 \(1\)。一個這樣的單純形的體積是 \(1/n!\)。於是，\(\mathcal{O}(P)\) 的體積就恰好等於 \(e(P)/n!\) 啦～
 <span style="float:right">\(\square\)</span></p>
@@ -1189,7 +1189,7 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 <p>在 poset \((P, &lt;)\) 上面的一條<strong>直鏈（chain）</strong> \(C\subset P\)，其實就是一個任兩元素都可以比較的子集合。
 我們考慮以下的<strong>直鏈和多胞形（chain polytope）</strong>：</p>
 <p>\[
-\mathcal{C}(P) = \{ (z_1, \ldots, z_n) \ \mid \ \forall \text{ chain } C, 0\le \sum_{x_i\in C} z_i \le 1 \}
+\mathcal{C}(P) = \{ (z_1, \ldots, z_n) \ \vert \ \forall \text{ chain } C, 0\le \sum_{x_i\in C} z_i \le 1 \}
 \]</p>
 <p>換句話說，只要 \(n\) 個介於 \([0, 1]\) 之間的實數，滿足對於 poset 之中任何一條直鏈，它對應數字的總和不超過 \(1\) 的話，這個點就會被我們加入多胞形之中。</p>
 <a class="header" href="#兩個多胞形之間的轉換" id="兩個多胞形之間的轉換"><h2>兩個多胞形之間的轉換</h2></a>
@@ -1328,18 +1328,28 @@ A_1: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{x&lt; a_i}}  &lt; a_{i+1} &l
 \]</p>
 <p>以及</p>
 <p>\[
-A_2: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{a_i &lt; x}} &lt; a_{i+1} &lt; \cdots &lt; a_\ell
+A_2: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{a_i &lt; x &lt; a_{i+1}}} &lt; \cdots &lt; a_\ell
 \]</p>
 <p>都是滿足偏序集 \(P\) 的偏序條件。令前者定義出來的新的偏序集為 \(P_1\)、後者為 \(P_2\)。
 由於 \(x\) 是 \(P\setminus A\) 中的極小元素（對於所有 \(y\in P\setminus A\)、\(y\neq x\)，要嘛 \(x &lt; y\) 要嘛 \(x\) 和 \(y\) 不可比），不難推得 \(e(P_1) \ge e(P_2)\)，而且 \(e(P) \ge e(P_1) + e(P_2) \ge 2e(P_2)\)。
 現在，如果我們能證明 \(A_2\) 是 \(P_2\) 上面的一條最長鏈，由於它的長度為 \(\ell+1\)，套用歸納假設，我們可以知道 \(e(P)\) \(\ge 2e(P_2)\) \(\ge 2\cdot 2^{n-\ell-1}\) \(= 2^{n-\ell}\)，故 \(\eqref{eq1}\) 對 \(\ell\) 成立。</p>
-<p>顯然 \(A_2\) 是 \(P_2\) 上面的一條最長鏈。為什麼呢？我們可以利用反正法證明之：反正一定會對。不是啦，我們可以利用反證法證明：假設存在一條更長的鏈 \(A'\)，其長度 \(|A'\mid   \ge \ell + 2\)。
-首先，這條鏈 \(A'\) 一定會同時包含 \(a_i\) 和 \(x\) 這兩筆資料。
-這是因為 \(a_i &lt; x\) 這個偏序關係是 \(P\) 與 \(P_2\) 唯一的差別。
-如果 \(A'\) 少了任何一者，其整條鏈的偏序關係全部都會出現在原先的偏序集 \(P\) 中，因此與 \(A\) 為最長鏈之假設矛盾。</p>
-<p>接著，我們可以注意到在 \(a_i\) 之前，\(a_1, \ldots, a_{i-1}\) 一定是最長的，否則可以換得更長。
-然後呢，由於 \(x\) 是 \(P\setminus A\) 之中的極小資料，因此 \(a_i\) 與 \(x\) 之間不可能插入任何資料（備註：這邊用到了 \(i\) 的最小性質）。</p>
-<p>接下來，考慮在 \(P_2\) 裡面，以 \(x\) 為首的最長鏈 \(A_x\)。這條鏈一定也在 \(P\) 中，而且其長度會等於 \(\vert A'\vert  - i \ge (\ell+2)-i\)。注意到 \(x &gt; a_{i-1}\)。我們考慮把 \(a_1, \ldots, a_{i-1}\) 直接連接在 \(A_x\) 之前，此時這條新的鏈完完全全地出現在原先的偏序集裡頭，但它的長度是多少呢？它的長度是 \((\ell+2)-i + (i-1) = \ell+1\)，與 \(A\) 的最長鏈長度為 \(\ell\) 互相矛盾啊。</p>
+<p>顯然 \(A_2\) 是 \(P_2\) 上面的一條最長鏈。為什麼呢？我們可以利用反正法證明之：反正一定會對。不是啦，我們可以利用反證法證明：假設存在一條更長的鏈 \(A'\)，其長度 \(|A'\vert   \ge \ell + 2\)。
+首先，這條鏈 \(A'\) 一定會包含 \(x\)，如果不會的話，那整條鏈早已出現在 \(P\) 中，與假設矛盾。</p>
+<p>我們定義 \(I'_{&lt; x}\) 為在 \(P'\) 裡面以 \(x\) 為最大元素的最長鏈。
+類似地我們定義 \(I'_{&gt; x}\) 為在 \(P'\) 裡面以 \(x\) 為最小元素的最長鏈。
+考慮 \(I'_{&lt; x}\) 裡頭到達 \(x\) 之前的那個元素，它可以是 \(a_i\)、也可以是其他元素。
+如果是 \(a_i\) 接在前面的話顯然有 \(|I'_{&lt; x}\vert  \le i+1\)。如果是其他元素 \(y\) 接在前面的話，這個 \(y &lt; x\) 關係顯然被包含在 \(P\) 之中、或是透過 \(y &lt; a_i {\color{red}{&lt; }}\ x\) 達成的，如果早已在 \(P\) 中，根據假設它只能是 \(a_1, \ldots, a_{i-1}\) 其中一者，此時 \(|I'_{&lt; x}\vert  \le i\)。
+若是透過 \(a_i\) 達成的，那麼把 \(a_i\) 接上去會更長。
+於是得到結論 \(|I'_{&lt; x}\vert  \le i+1\)。</p>
+<p>類似地，考慮 \(I'_{&gt; x}\) 裡頭緊接在 \(x\) 之後的那個元素，它可以是 \(a_{i+1}\)、或是其他元素 \(y'\)，無論是何種情形都可以得到 \(|I'_{&gt; x}\vert  \le \ell-i+1\)。於是有
+\[\ell+2 \le \vert A'\vert  = \vert I'_{&lt; x}\vert  + \vert I'_{&gt; x}\vert  - 1 \le (i+1) + (\ell-i+1)-1 = \ell+1\]
+矛盾。</p>
+<!-- 首先，這條鏈 \\(A'\\) 一定會同時包含 \\(a\_i\\) 和 \\(x\\) 這兩筆資料。
+這是因為 \\(a\_i < x\\) 這個偏序關係是 \\(P\\) 與 \\(P\_2\\) 唯一的差別。
+如果 \\(A'\\) 少了任何一者，其整條鏈的偏序關係全部都會出現在原先的偏序集 \\(P\\) 中，因此與 \\(A\\) 為最長鏈之假設矛盾。 -->
+<!-- 接著，我們可以注意到在 \\(a\_i\\) 之前，\\(a\_1, \ldots, a\_{i-1}\\) 一定是最長的，否則可以換得更長。
+然後呢，由於 \\(x\\) 是 \\(P\setminus A\\) 之中的極小資料，因此 \\(a\_i\\) 與 \\(x\\) 之間不可能插入任何資料（備註：這邊用到了 \\(i\\) 的最小性質）。 -->
+<!-- 接下來，考慮在 \\(P\_2\\) 裡面，以 \\(x\\) 為首的最長鏈 \\(A\_x\\)。這條鏈一定也在 \\(P\\) 中，而且其長度會等於 \\(\vert A'\vert  - i \ge (\ell+2)-i\\)。注意到 \\(x > a\_{i-1}\\)。我們考慮把 \\(a\_1, \ldots, a\_{i-1}\\) 直接連接在 \\(A\_x\\) 之前，此時這條新的鏈完完全全地出現在原先的偏序集裡頭，但它的長度是多少呢？它的長度是 \\((\ell+2)-i + (i-1) = \ell+1\\)，與 \\(A\\) 的最長鏈長度為 \\(\ell\\) 互相矛盾啊。 -->
 <p>因此，不存在更長的鏈，於是原命題根據數學歸納法得證啦。</p>
 <hr />
 <p>我們從引理 27，得出一個 \(O(\log n\cdot \log e(P))\) 次比較的偏序集排序演算法<sup class="footnote-reference"><a href="#1">1</a></sup>：</p>
@@ -1388,6 +1398,61 @@ A_2: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{a_i &lt; x}} &lt; a_{i+1} &l
 &amp;\ge n\log \frac{n}{e\ell}
 \end{aligned}
 \] --&gt;</p>
+<a class="header" href="#偏序集排序七" id="偏序集排序七"><h1>偏序集排序（七）</h1></a>
+<p>從前一文章裡，我們發現「只是取出最長的一條鏈」就可以做到還不錯有效率的比較排序。
+那麼不斷取出更多的長鏈，說不定就能夠掌握排序的精髓了！是的，我們把這個每一次找出最長可比鏈，得到的結果稱為 <strong>「貪婪鏈分解」（Greedy Chain Decomposition）</strong>。</p>
+<a class="header" href="#貪婪鏈分解" id="貪婪鏈分解"><h2>貪婪鏈分解</h2></a>
+<p>對於一個偏序集 \((P, &lt;)\)，如果我們每一次都找出最長鏈，並且將它從偏序集中移除，那麼就會得到一個分割（Partition）：\(C_1, C_2, \ldots, C_k\)。
+其中每一個鏈 \(C_i\) 是一個集合，其內部任兩元素都可比較。嚴謹地描述的話，\(C_i\) 會被定義為子偏序集 \(P-\bigcup_{1\le j\le i-1} C_j\) 裡面的最長鏈。
+值得一提的是，這個分割方法並不唯一。如果有許多最長鏈同時存在的情形時，我們只要隨意選擇一個最長鏈就行了。
+這個分割方法可以保證鏈長遞減 \(|C_1\vert  \ge \vert C_2\vert  \ge \cdots \ge \vert C_k\vert \)。</p>
+<a class="header" href="#貪婪鏈分解的性質" id="貪婪鏈分解的性質"><h3>貪婪鏈分解的性質</h3></a>
+<p>固定一組貪婪鏈分解 \((C_1, C_2, \ldots, C_k)\)。
+對於 \(P\) 中的任何一個鏈 \(C\)，每一個 \(C\) 中的元素 \(v\) 都會對應到某個貪婪鏈分解當中的鏈 \(C_{id(v)}\)，其中 \(id(v)\) 是該鏈的編號。
+於是呢，我們可以將鏈中的元素依照其 \(id(v)\) 值由小到大重新排列。
+注意到，此時排列的順序並不是根據偏序集的大小關係來排序的、而是根據在貪婪鏈分解中對應到的鏈長來排序的。</p>
+<p>假設依照 \(id(v)\) 的值排好序以後，\(C\) 中元素編號依序為 \(v_1, v_2, \ldots, v_{\vert C\vert }\)。
+此時我們能有以下性質：</p>
+<a class="header" href="#引理-28" id="引理-28"><h3>引理 28</h3></a>
+<p>對所有的 \(1\le j \le \vert C\vert \)，都有 \(|C_{id(v_j)}\vert  \ge \vert C\vert  - j + 1\)。</p>
+<a class="header" href="#證明-18" id="證明-18"><h3>證明</h3></a>
+<p>由於鏈中元素已經按照 \(id(v)\) 的順序排序，去除掉前 \(j-1\) 個元素以後，
+\(C-\{v_1, v_2, \ldots, v_{j-1}\}\) （暫時記作 \(C'\)）裡頭剩餘的所有元素通通都會在 \(P-\bigcup_{1\le x\le id(j)-1} C_{x}\) （暫時記作 \(P'\)）裡面。
+因此，根據定義，此時 \(C_{id(v_j)}\) 會是 \(P'\) 裡頭的最長鏈。而 \(C'\) 也是 \(P'\) 當中的某個鏈，於是有 \(|C_{id(v_j)}\vert  \ge \vert C'\vert  = \vert C\vert  - j + 1\)，得證。</p>
+<a class="header" href="#基於貪婪鏈分解的合併排序法" id="基於貪婪鏈分解的合併排序法"><h2>基於貪婪鏈分解的合併排序法</h2></a>
+<p>我們現在來探討有了這個貪婪鏈分解以後，可以怎麼把它應用在比較排序上頭。</p>
+<p>每一條長鏈都是有全序排列的，有了很多條排好序的資料以後，我們通常會下意識地把它抓過來做合併排序法。
+假設我們就按照一般的合併方法來排序：合併兩條鏈 \(C_x\) 與 \(C_y\) 需要使用 \(|C_x\vert +\vert C_y\vert \) 次比較。
+那麼，由於每條鏈的長度都不固定，我們可以採用非常類似霍夫曼編碼演算法的方式，每一次貪心地挑選兩條最短的鏈進行合併。
+不難證明，如此進行合併後，所需要的總比較次數 \(T_{合併貪婪鏈}\) 不超過</p>
+<p>\[
+T_{合併貪婪鏈} \le n + \sum_{i=1}^k \vert C_i\vert  \log \frac{n}{\vert C_i\vert }\text{。}
+\]</p>
+<hr />
+<p>這個演算法把它寫下來會變這樣：</p>
+<blockquote>
+<ul>
+<li>第一步：進行貪婪鏈分解，得出 \(C_1, \ldots, C_k\)。</li>
+<li>第二步：重複以下操作直到只剩下一條鏈（也就是排序完畢）
+<ul>
+<li>每一次挑選最短的兩個鏈，然後利用合併排序法的合併步驟將它們合併起來。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<a class="header" href="#定理-29" id="定理-29"><h3>定理 29</h3></a>
+<p>基於貪婪鏈分解的合併排序法，其比較次數上界為 \(O(\log e(P)) + n\)。這個常數可以是 6.6 左右。</p>
+<a class="header" href="#證明大綱" id="證明大綱"><h3>證明大綱</h3></a>
+<p>詳細的證明我們明天講。
+但基本上，這個證明要做下面的事情：</p>
+<ul>
+<li>（一）我們得先證明加強版的引理 26：
+\[4\log e(P) + nH(P) \ge n\log n\]</li>
+<li>（二）根據貪婪鏈分解定義出直鏈和多胞形 \(\mathcal{C}(P)\) 上面的一個點 \(z\)。<br />
+根據這個點的值，找出 \(nH(P)\) 與 \(T_{合併貪婪鏈}\) 之間的關聯。</li>
+<li>（三）利用引理 27，先把最長鏈挑出來，然後說明剩下的比較次數可以被 \(O(\log e(P))\) 處理掉。</li>
+</ul>
+<p>然後就得證啦！</p>
 
                     </main>
 

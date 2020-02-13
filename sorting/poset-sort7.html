@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>排序 Sorting - 演算法的分析與證明</title>
+        <title>02/14 - 偏序集排序（七） - 演算法的分析與證明</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -80,7 +80,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html" class="active">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="../sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="../sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="../sorting/poset-sort6.html">02/07 - 偏序集排序（六）</a></li><li><a href="../sorting/poset-sort7.html">02/14 - 偏序集排序（七）</a></li></ol></li></ol>
+            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="../sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="../sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="../sorting/poset-sort6.html">02/07 - 偏序集排序（六）</a></li><li><a href="../sorting/poset-sort7.html" class="active">02/14 - 偏序集排序（七）</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -145,75 +145,72 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#排序-sorting" id="排序-sorting"><h1>排序 Sorting</h1></a>
-<p>排序是整理資料中一種最直接的方式。</p>
-<a class="header" href="#基於比較的排序-comparison-based-sorting" id="基於比較的排序-comparison-based-sorting"><h2>基於比較的排序 Comparison Based Sorting</h2></a>
-<table><thead><tr><th> 演算法 </th><th> 時間複雜度 </th><th> 空間複雜度 </th></tr></thead><tbody>
-<tr><td> 泡沫排序法 </td><td> 最差 \(O(n^2)\), \(O(n + n\tau)\) </td><td> 最差 \(O(1)\) </td></tr>
-<tr><td> 雞尾酒排序法 </td><td> 最差 \(O(n^2)\), \(O(n + n\sqrt{\tau})\) </td><td> 最差 \(O(1)\) </td></tr>
-<tr><td> 插入排序法 </td><td> 最差 \(O(n^2)\), \(O(n + \tau)\) </td><td> 最差 \(O(1)\) </td></tr>
-<tr><td> 選擇排序法 </td><td> 最差 \(O(n^2)\) </td><td> 最差 \(O(1)\) </td></tr>
-<tr><td> 合併排序法 </td><td> 最差 \(O(n\log n)\) </td><td> 最差 \(O(n)\) </td></tr>
-<tr><td> 原地合併排序 </td><td> 最差 \(O(n\log n)\) </td><td> 最差 \(O(1)\) </td></tr>
-<tr><td> 快速排序法 - 第一個數字 pivot </td><td> 最差 \(O(n^2)\) </td><td> 最差 \(O(d) = O(n)\) </td></tr>
-<tr><td> 快速排序法 - 隨機選 pivot </td><td> 期望 \(O(n\log n)\) </td><td> 期望 \(O(d) = O(\log n)\) </td></tr>
-<tr><td> 快速排序法 - 找中位數 pivot </td><td> 最差 \(O(n\log n)\) </td><td> 最差 \(O(d) = O(\log n)\) </td></tr>
-<tr><td> 原地快速排序 </td><td> 最差 \(O(n^2)\) </td><td> 最差 \(O(1)\) </td></tr>
-<tr><td> 堆積排序法 </td><td> 最差 \(O(n\log n)\) </td><td> 最差 \(O(1)\) </td></tr>
-</tbody></table>
-<a class="header" href="#註記" id="註記"><h3>註記</h3></a>
+                        <a class="header" href="#偏序集排序七" id="偏序集排序七"><h1>偏序集排序（七）</h1></a>
+<p>從前一文章裡，我們發現「只是取出最長的一條鏈」就可以做到還不錯有效率的比較排序。
+那麼不斷取出更多的長鏈，說不定就能夠掌握排序的精髓了！是的，我們把這個每一次找出最長可比鏈，得到的結果稱為 <strong>「貪婪鏈分解」（Greedy Chain Decomposition）</strong>。</p>
+<a class="header" href="#貪婪鏈分解" id="貪婪鏈分解"><h2>貪婪鏈分解</h2></a>
+<p>對於一個偏序集 \((P, &lt;)\)，如果我們每一次都找出最長鏈，並且將它從偏序集中移除，那麼就會得到一個分割（Partition）：\(C_1, C_2, \ldots, C_k\)。
+其中每一個鏈 \(C_i\) 是一個集合，其內部任兩元素都可比較。嚴謹地描述的話，\(C_i\) 會被定義為子偏序集 \(P-\bigcup_{1\le j\le i-1} C_j\) 裡面的最長鏈。
+值得一提的是，這個分割方法並不唯一。如果有許多最長鏈同時存在的情形時，我們只要隨意選擇一個最長鏈就行了。
+這個分割方法可以保證鏈長遞減 \(|C_1\vert  \ge \vert C_2\vert  \ge \cdots \ge \vert C_k\vert \)。</p>
+<a class="header" href="#貪婪鏈分解的性質" id="貪婪鏈分解的性質"><h3>貪婪鏈分解的性質</h3></a>
+<p>固定一組貪婪鏈分解 \((C_1, C_2, \ldots, C_k)\)。
+對於 \(P\) 中的任何一個鏈 \(C\)，每一個 \(C\) 中的元素 \(v\) 都會對應到某個貪婪鏈分解當中的鏈 \(C_{id(v)}\)，其中 \(id(v)\) 是該鏈的編號。
+於是呢，我們可以將鏈中的元素依照其 \(id(v)\) 值由小到大重新排列。
+注意到，此時排列的順序並不是根據偏序集的大小關係來排序的、而是根據在貪婪鏈分解中對應到的鏈長來排序的。</p>
+<p>假設依照 \(id(v)\) 的值排好序以後，\(C\) 中元素編號依序為 \(v_1, v_2, \ldots, v_{\vert C\vert }\)。
+此時我們能有以下性質：</p>
+<a class="header" href="#引理-28" id="引理-28"><h3>引理 28</h3></a>
+<p>對所有的 \(1\le j \le \vert C\vert \)，都有 \(|C_{id(v_j)}\vert  \ge \vert C\vert  - j + 1\)。</p>
+<a class="header" href="#證明" id="證明"><h3>證明</h3></a>
+<p>由於鏈中元素已經按照 \(id(v)\) 的順序排序，去除掉前 \(j-1\) 個元素以後，
+\(C-\{v_1, v_2, \ldots, v_{j-1}\}\) （暫時記作 \(C'\)）裡頭剩餘的所有元素通通都會在 \(P-\bigcup_{1\le x\le id(j)-1} C_{x}\) （暫時記作 \(P'\)）裡面。
+因此，根據定義，此時 \(C_{id(v_j)}\) 會是 \(P'\) 裡頭的最長鏈。而 \(C'\) 也是 \(P'\) 當中的某個鏈，於是有 \(|C_{id(v_j)}\vert  \ge \vert C'\vert  = \vert C\vert  - j + 1\)，得證。</p>
+<a class="header" href="#基於貪婪鏈分解的合併排序法" id="基於貪婪鏈分解的合併排序法"><h2>基於貪婪鏈分解的合併排序法</h2></a>
+<p>我們現在來探討有了這個貪婪鏈分解以後，可以怎麼把它應用在比較排序上頭。</p>
+<p>每一條長鏈都是有全序排列的，有了很多條排好序的資料以後，我們通常會下意識地把它抓過來做合併排序法。
+假設我們就按照一般的合併方法來排序：合併兩條鏈 \(C_x\) 與 \(C_y\) 需要使用 \(|C_x\vert +\vert C_y\vert \) 次比較。
+那麼，由於每條鏈的長度都不固定，我們可以採用非常類似霍夫曼編碼演算法的方式，每一次貪心地挑選兩條最短的鏈進行合併。
+不難證明，如此進行合併後，所需要的總比較次數 \(T_{合併貪婪鏈}\) 不超過</p>
+<p>\[
+T_{合併貪婪鏈} \le n + \sum_{i=1}^k \vert C_i\vert  \log \frac{n}{\vert C_i\vert }\text{。}
+\]</p>
+<hr />
+<p>這個演算法把它寫下來會變這樣：</p>
+<blockquote>
 <ul>
-<li>\(n\) 代表輸入的資料量（序列元素個數）。</li>
-<li>\(\tau\) 代表輸入序列的逆序數對個數。</li>
-<li>\(d\) 代表遞迴深度。</li>
-</ul>
-<a class="header" href="#資料不改變存取位置的排序-data-oblivious-sorting" id="資料不改變存取位置的排序-data-oblivious-sorting"><h2>資料不改變存取位置的排序 Data-Oblivious Sorting</h2></a>
-<table><thead><tr><th> 演算法 </th><th> 時間複雜度 </th><th> 排序網路深度 </th></tr></thead><tbody>
-<tr><td> Shell 排序法 </td><td> 最差 \(O(n^2)\) </td><td> \(O(n)\) </td></tr>
-<tr><td> Shell 排序法 - Pratt 版本 </td><td> 最差 \(O(n\log^2 n)\) </td><td> \(O(\log^2 n)\) </td></tr>
-<tr><td> Batcher 雙調排序法 </td><td> 最差 \(O(n\log^2 n)\) </td><td> \(O(\log^2 n)\) </td></tr>
-<tr><td> 奇偶合併排序 </td><td> 最差 \(O(n\log^2 n)\) </td><td> \(O(\log^2 n)\) </td></tr>
-<tr><td> Ajtai-Komlós-Szemerédi 排序網路 </td><td> 最差 \(O(n\log n)\) </td><td> \(O(\log n)\) </td></tr>
-<tr><td> Goodrich 排序網路 </td><td> 最差 \(O(n\log n)\) </td><td> \(O(n\log n)\) </td></tr>
-</tbody></table>
-<a class="header" href="#基於資料數值的排序-numbers-sorting" id="基於資料數值的排序-numbers-sorting"><h2>基於資料數值的排序 Numbers Sorting</h2></a>
-<table><thead><tr><th> 演算法 </th><th> 時間複雜度 </th><th> 備註 </th></tr></thead><tbody>
-<tr><td> 計數排序法 </td><td> \(O(n+M)\) </td><td> 正整數資料範圍 \(O(M)\) </td></tr>
-<tr><td> \(k\)-進制桶子排序法 </td><td> \(O((n+k)\log_k \frac{1}{\epsilon})\) </td><td> 最相近兩數之相對誤差 \(\epsilon = \frac{\min_{i\neq j} \vert A[i]-A[j]\vert }{\max_i \vert A[i]\vert }\) </td></tr>
-<tr><td> \(k\)-進制基數排序法 </td><td> \(O((n+k)\log_k M)\) </td><td> 正整數資料範圍 \(O(M)\) </td></tr>
-</tbody></table>
-<a class="header" href="#二進位整數排序-sorting-in-word-ram-model" id="二進位整數排序-sorting-in-word-ram-model"><h2>二進位整數排序 Sorting in Word RAM Model</h2></a>
-<table><thead><tr><th> 演算法 </th><th> 時間複雜度 </th><th> 備註 </th></tr></thead><tbody>
-<tr><td> van Emde Boas 樹 </td><td> \(O(n\log\log M)\) </td><td> 空間複雜度 \(O(M)\) </td></tr>
-<tr><td> X-fast 字母樹 </td><td> \(O(n\log\log M)\) </td><td> 空間複雜度 \(O(n\log M)\) </td></tr>
-<tr><td> Y-fast 字母樹 </td><td> \(O(n\log\log M)\) </td><td> 空間複雜度 \(O(n)\) </td></tr>
-<tr><td> Fusion Tree </td><td> \(O(n\log n/\log\log n)\) </td><td> 允許隨機與除法可做到 \(O(n\sqrt{\log n})\) </td></tr>
-<tr><td> Packed Sort </td><td> </td><td> </td></tr>
-<tr><td> Signature Sort </td><td> </td><td> </td></tr>
-<tr><td> Han-Thorup 整數排序 - 確定性 </td><td> \(O(n\log \log n)\) </td><td> 空間複雜度 \(O(n)\) </td></tr>
-<tr><td> Han-Thorup 整數排序 - 隨機 </td><td> 期望 \(O(n\sqrt{\log \log n})\) </td><td> 空間複雜度 \(O(n)\) </td></tr>
-</tbody></table>
-<a class="header" href="#推薦閱讀" id="推薦閱讀"><h3>推薦閱讀</h3></a>
+<li>第一步：進行貪婪鏈分解，得出 \(C_1, \ldots, C_k\)。</li>
+<li>第二步：重複以下操作直到只剩下一條鏈（也就是排序完畢）
 <ul>
-<li>https://www.bigocheatsheet.com/</li>
-<li>排序網路（維基百科）：https://en.wikipedia.org/wiki/Sorting_network</li>
-<li>Shell 排序法（維基百科）：https://en.wikipedia.org/wiki/Shellsort</li>
+<li>每一次挑選最短的兩個鏈，然後利用合併排序法的合併步驟將它們合併起來。</li>
 </ul>
+</li>
+</ul>
+</blockquote>
+<a class="header" href="#定理-29" id="定理-29"><h3>定理 29</h3></a>
+<p>基於貪婪鏈分解的合併排序法，其比較次數上界為 \(O(\log e(P)) + n\)。這個常數可以是 6.6 左右。</p>
+<a class="header" href="#證明大綱" id="證明大綱"><h3>證明大綱</h3></a>
+<p>詳細的證明我們明天講。
+但基本上，這個證明要做下面的事情：</p>
+<ul>
+<li>（一）我們得先證明加強版的引理 26：
+\[4\log e(P) + nH(P) \ge n\log n\]</li>
+<li>（二）根據貪婪鏈分解定義出直鏈和多胞形 \(\mathcal{C}(P)\) 上面的一個點 \(z\)。<br />
+根據這個點的值，找出 \(nH(P)\) 與 \(T_{合併貪婪鏈}\) 之間的關聯。</li>
+<li>（三）利用引理 27，先把最長鏈挑出來，然後說明剩下的比較次數可以被 \(O(\log e(P))\) 處理掉。</li>
+</ul>
+<p>然後就得證啦！</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../GLOSSARY.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../sorting/poset-sort6.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="../sorting/bubble-sort.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -223,15 +220,11 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../GLOSSARY.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../sorting/poset-sort6.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a href="../sorting/bubble-sort.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 
