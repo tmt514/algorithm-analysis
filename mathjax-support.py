@@ -19,7 +19,7 @@ def inner_replace_rules(inner):
   inner = inner.replace(r'\\', r'\\\\')
   inner = inner.replace(r'\{', r'\\{')
   inner = inner.replace(r'\}', r'\\}')
-  inner = mid.sub(r'\1\\mid ', inner)
+  inner = mid.sub(r'\1\\vert ', inner)
   inner = inner.replace('_', r'\_')
   inner = inner.replace('*', r'\*')
   return inner
