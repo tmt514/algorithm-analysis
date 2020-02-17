@@ -1,0 +1,336 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>02/17 - 偏序集排序（八） - 演算法的分析與證明</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="../styles/mdbook.css">
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="../sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="../sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="../sorting/poset-sort6.html">02/07 - 偏序集排序（六）</a></li><li><a href="../sorting/poset-sort7.html">02/14 - 偏序集排序（七）</a></li><li><a href="../sorting/poset-sort8.html" class="active">02/17 - 偏序集排序（八）</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">演算法的分析與證明</h1> 
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#偏序集排序八" id="偏序集排序八"><h1>偏序集排序（八）</h1></a>
+<p>今天來證明定理 29，的前半部。</p>
+<a class="header" href="#定理-29" id="定理-29"><h2>定理 29</h2></a>
+<p>基於貪婪鏈分解的合併排序法，其比較次數 \(T_{合併貪婪鏈} \le 6.6 \log e(P) + n\)。</p>
+<p>首先我們來證明加強版的引理 26。</p>
+<a class="header" href="#引理-30-cardinal-fiorini-joret-jungers-munro-2013" id="引理-30-cardinal-fiorini-joret-jungers-munro-2013"><h3>引理 30 [Cardinal, Fiorini, Joret, Jungers, Munro 2013]</h3></a>
+<p>對於任意偏序集 \(P\)，都有 \(4\log e(P) + nH(P) \ge n\log n\)。</p>
+<a class="header" href="#引理-30-的證明" id="引理-30-的證明"><h3>引理 30 的證明</h3></a>
+<p>證明的方法依舊是數學歸納法（萬用科科），歸納的方向是：讓 \(n\) 從小到大、然後對於同樣集合大小的偏序集，根據 \(e(P)\) 值由小到大的順序進行歸納（也就是說依照偏序關係的多寡，由大至小歸納）。</p>
+<p><strong>Base Case:</strong> \(n=1\) 的時候不等式右邊是 \(0\)、而左邊非負，結論顯然成立。</p>
+<p><strong>Inductive Case:</strong>
+令偏序集 \((P, &lt;)\) 內的元素為 \(x_1, x_2, \ldots, x_n\)。我們假設 \(z=(z_1, z_2, \ldots, z_n)\) 是直鏈和多胞形 \(\mathcal{C}(P)\) 定義出來的最佳化問題的最佳解，也就是 \(nH(P) = -\sum_{i=1}^n \log z_i\)。
+現在令 \(i^* = \arg\max_i\{z_i\}\) 是為數值最大的座標，如果有多個座標值相同我們可以隨意挑選一個。</p>
+<p>證明的計畫如下：我們如果能找到另一個與 \(x_{i^*}\) 無關的元素 \(x_j\)，然後考慮 \(x_{i^*}\) 與 \(x_j\) 之間的大小關係。
+根據新加入的大小關係，我們可以得到兩種可能的偏序集 \(P_1\) 與 \(P_2\)。此時根據線性延伸 \(e(P)\) 的定義，我們知道 \(e(P) = e(P_1) + e(P_2)\)。其中 \(\min\{e(P_1), e(P_2)\}\le \frac12 e(P)\)。
+不妨假設 \(e(P_1)\) 是比較小的那個。那麼，如果能夠透過修改目前達到 \(nH(P)\) 的 \(z\) 得到另一個座落於 \(\mathcal{C}(P_1)\) 內部的座標 \(z'\)，來證明 \(\eqref{eq2}\)。就能夠利用數學歸納法，把下列兩式加起來，得到結論。</p>
+<p>\[
+\begin{eqnarray}
+4\log e(P_1) &amp;\le&amp; 4\log e(P) - 4 \\
+nH(P_1) &amp; \le&amp; nH(z') = nH(P) + 4 \label{eq2}\tag{*}
+\end{eqnarray}
+\]</p>
+<p>加起來，利用歸納假設可以得到：\(4\log e(P) + nH(P) \ge 4\log e(P_1) + nH(P_1) \ge n\log n\)。</p>
+<hr />
+<p>怎麼把 \(z\in \mathcal{C}(P)\) 修改成 \(z'\in\mathcal{C}(P_1)\) 又不會使熵值 \(nH(P_1)\) 變化太大呢？現在，對於一個 \(z_i\)，我們想像一下 \(z_i\) 是怎麼來的。由於 \(z\in \mathcal{C}(P)\)，因此所有通過 \(x_i\) 的鏈，其對應到的 \(z\) 值加總都不超過 \(1\)。於是，我們可以定義這個點 \(x_i\) 的「活動範圍」\([L_i, R_i]\)，其中 \(L_i = \max_{I(&lt; x_i)} \sum_{k\in I-\{i\}} z_k\)，白話來說就是所有以 \(x_i\) 為結尾的鏈、不包含 \(x_i\) 本身之 \(z\) 值總和，的最大值。
+而類似地上界可定義為 \(R_i=1 - \max_{I(&gt; x_i)} \sum_{k \in I-\{i\}} z_k\)，也就是 \(x_i\) 後面能夠跟著的鏈的 \(z\) 值總和。</p>
+<p><img src="./poset-sort8-1.png" alt="" /></p>
+<p>由於 \(z\) 是最佳化問題的最佳解，所以保證有 \(z_i = R_i - L_i\)（也就是說左邊的最長鏈與右邊的最長鏈，恰好留給了 \(x_i\) 寬度為 \(z_i\) 的空間）。若不然，我們可以讓 \(z_i\) 的值變大，定義成 \(R_i - L_i\)，這麼一來 \(nH(z)\) 的值會變得更小，與 \(z\) 是最佳解矛盾。</p>
+<p>在這樣的結構之下，如果有兩個元素 \(x_i\) 與 \(x_j\) 其對應出來的區間重疊 \((L_i, R_i)\cap (L_j, R_j) = \emptyset\)，那麼我們便能保證 \(x_i\) 與 \(x_j\) 一定不可比較（incomparable）。</p>
+<hr />
+<a class="header" href="#第一種情況" id="第一種情況"><h3>第一種情況</h3></a>
+<p>如果今天有個元素 \(x_*\) 無法與 \(x_{i^*}\) 進行比較，那麼此時必定存在一條通過 \(x_*\) 的鏈，其上頭元素對應到的 \(z\) 值總和恰好是 \(1\)。換句話說，此時必定存在另一個 \(z_j\)。使得它的活動範圍蓋住 \([L_{i^*}, R_{i^*}]\) 的中點，即 \((L_{i^*}+R_{i^*})/2 \in [L_j, R_j]\)，如下圖所示。</p>
+<p><img src="./poset-sort8-2.png" alt="" /></p>
+<p>這種時候，考慮 \(P_1\) 與 \(P_2\)。無論是何種情形，我們總是可以修改 \(z_{i^*}\) 與 \(z_j\)，把它們變成原本的 \(1/4\)。這時候，不難說明新的 \(z'\in\mathcal{C}(P_1)\) 且 \(z'\in\mathcal{C}(P_2)\)，如下圖所示：</p>
+<p><img src="./poset-sort8-3.png" alt="" /></p>
+<p>這邊的證明會用到兩個條件：其一，\(z_{i^*} \ge z_j\)、其二，\(x_j\) 的活動範圍涵蓋了 \(x_{i^*}\) 的活動範圍中間點。
+此時，將 \(x_{i^*}\) 與 \(x_j\) 進行比較後，無論誰大誰小，都能夠透過新的偏序集（歸納假設），說明 \(4e(P) + nH(P) \ge n\log n\)。</p>
+<hr />
+<a class="header" href="#第二種情況" id="第二種情況"><h3>第二種情況</h3></a>
+<p>現在假設 \(x_{i^*}\) 與所有其他元素都可以比較。
+此時我們想要把它歸納到 \(n-1\) 個點的偏序集：把這個元素從偏序集拿掉就可以了！
+令 \(P'\) 是偏序集 \((P, &lt;)\) 把 \(x_{i^*}\) 移除後（保持其他元素之間的可比較關係）得到的子偏序集。
+對於最佳解 \(z=(z_1, \ldots, z_n)\)，我們把除了 \(z_{i^*}\) 以外的所有數值通通等比例放大 \(1/(1-z_{i^*})\) 倍！
+如此一來，得到的點 \(z'\) 保證有 \(z'\in\mathcal{C}(P')\)。</p>
+<p>那麼，我們將得到</p>
+<p>\[
+\begin{aligned}
+(n-1)H(P') &amp;\le (n-1)H(z') \\
+&amp;= - \sum_{i\in [n]-\{i^*\}} \log z'_i\\
+&amp;= - \sum_{i\in [n]-\{i^*\}} \log z_i + \sum_{i\in [n]-\{i^*\}} \log (1-z_{i^*})\\
+&amp;= nH(P) + \log z_{i^*} + (n-1)\log (1-z_{i^*})
+\end{aligned}
+\]</p>
+<p>加上 \(e(P)=e(P')\) 這個觀察後，可以得到</p>
+<p>\[
+\begin{aligned}
+4\log e(P) + n H(P) &amp;= 4\log e(P') + nH(P)\\
+&amp;\ge 4\log e(P') + nH(P') - \log \left(z_{i^*} (1-z_{i^*})^{n-1}\right)\\
+&amp;\ge (n-1)\log (n-1) - \log \left(z_{i^*} (1-z_{i^*})^{n-1}\right)
+\end{aligned}
+\]</p>
+<p>而後面這一項，透過算幾不等式可以知道，對任意 \(t\in (0, 1)\)：</p>
+<p>\[
+t(1-t)^{n-1} \le \frac{1}{n-1}\left( \frac{n-1}{n} \right)^n
+\]</p>
+<p>因此</p>
+<p>\[ - \log \left(z_{i^*} (1-z_{i^*})^{n-1}\right) \ge -\log \frac{1}{n-1} - n\log \frac{n-1}{n}
+\]</p>
+<p>從而</p>
+<p>\[
+\begin{aligned}
+4\log e(P) + n H(P) &amp;\ge (n-1)\log (n-1) - \log \left(z_{i^*} (1-z_{i^*})^{n-1}\right)\\
+&amp;\ge (n-1)\log (n-1) + \log (n-1) - n\log (n-1) + n\log n \\
+&amp;= n\log n
+\end{aligned}
+\]</p>
+<p>得證。
+<span style="float:right">\(\square\)</span></p>
+<hr />
+<p>接下來是證明的第二步</p>
+<a class="header" href="#引理-31" id="引理-31"><h3>引理 31</h3></a>
+<p>對於任意 \(\delta\in [0, 1]\)，都有 \(nH(P) \le (1-\delta) T_{合併貪婪鏈} + n\log \frac{n}{\delta}\)。</p>
+<a class="header" href="#引理-31-的證明" id="引理-31-的證明"><h3>引理 31 的證明</h3></a>
+<p>對於每一個偏序集中的元素 \(x_i\)，我們定義對應的座標</p>
+<p>\[z_i = \frac{\delta}{n}\left(\frac{n}{\vert C_{id(x_i)}\vert }\right)^{1-\delta}\]</p>
+<p>我們想要說 \(z=(z_1, z_2, \ldots, z_n)\) 這個點座落在 \(\mathcal{C}(P)\) 裡面即可。
+要怎麼檢驗呢？只要說明對任意的鏈 \(C=\{v_1, v_2, \ldots, v_{\vert C\vert }\}\)，都有 \(\sum_{j} z_{v_j} \le 1\) 即可。
+透過<a href="./poset-sort7.html#%E5%BC%95%E7%90%86-28">引理 28</a>，我們知道 \(|C_{id(v_j)}\vert  \ge \vert C\vert -j+1\)。
+於是呢，</p>
+<p>\[
+\begin{aligned}
+\sum_{j} z_{v_j} &amp;= \sum_{j=1}^{\vert C\vert } \frac{\delta}{n^{\delta}} \left(\frac{1}{\vert C_{id(v_j)}\vert }\right)^{1-\delta} \\
+&amp;\le \frac{\delta}{n^{\delta}} \sum_{j=1}^{\vert C\vert } \left( \frac{1}{\vert C\vert -j+1}\right)^{1-\delta} \\
+&amp;\le \frac{\delta}{n^{\delta}} \int_{0}^{\vert C\vert } \frac{1}{x^{1-\delta}} {\mathrm{d}} x \\
+&amp;= \delta \left(\frac{\vert C\vert }{n}\right)^\delta \le 1
+\end{aligned}
+\]</p>
+<p>接著，我們只需要利用 \(nH(P) \le nH(z)\) 這個觀察，整理兩邊以後可以得到：</p>
+<p>\[
+\begin{aligned}
+nH(P) &amp;\le nH(z) = -\sum_{i=1}^n \log z_i\\
+&amp; = -\sum_{i=1}^n \log \frac{\delta}{n} - (1-\delta)\sum_{i=1}^n \log \frac{n}{\vert C_{id(x_i)}\vert }\\
+&amp; = -\sum_{i=1}^n \log \frac{\delta}{n} + (1-\delta) T_{合併貪婪鏈} \\
+&amp; = n\log \frac{n}{\delta} + (1-\delta) T_{合併貪婪鏈}
+\end{aligned}
+\]</p>
+<p>得證。
+<span style="float:right">\(\square\)</span></p>
+<hr />
+<p>明天我們來完成定理 29 的證明。</p>
+<a class="header" href="#備註" id="備註"><h3>備註</h3></a>
+<p>在參考資料中，Cardinal 等人證明了引理 30 時，除了上述版本的證明方法以外，還證明了最扎實版本：\(2\log e(P) + nH(P) \ge n\log n\)，但是證明相對暴力了些；筆者比較喜歡本篇中的證明。
+此外，引理 31 是筆者以 \(H(P)\) 的最長鏈角度重新寫過一遍的做法，在原作之中是直接引用同一批作者更早以前在最大獨立集上的結論。如果朋友們跳進去看原本那篇論文的話，可能在這部分會感受到混淆，還請多留意。</p>
+<a class="header" href="#參考資料" id="參考資料"><h3>參考資料</h3></a>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Jean Cardinal, Samuel Fiorini, Gwenaël Joret, Raphaël M. Jungers, J. Ian Munro, <em>Sorting under Partial Information (without the Ellipsoid Algorithm)</em>, Combinatorica 33, 655–697 (2013). https://doi.org/10.1007/s00493-013-2821-5, <a href="https://arxiv.org/pdf/0911.0086.pdf">ArXiv</a>.</p>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../sorting/poset-sort7.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../sorting/poset-sort7.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-68887724-4', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="../mathjax-config.js"></script>
+        
+
+        
+
+    </body>
+</html>
