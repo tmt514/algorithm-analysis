@@ -1,6 +1,6 @@
 # 偏序集排序（八）
 
-今天來證明定理 29。
+今天來證明定理 29，的前半部。
 
 ## 定理 29
 
@@ -8,7 +8,7 @@
 
 首先我們來證明加強版的引理 26。
 
-### 引理 30
+### 引理 30 [Cardinal, Fiorini, Joret, Jungers, Munro 2013]
 
 對於任意偏序集 $P$，都有 $4\log e(P) + nH(P) \ge n\log n$。
 
@@ -56,3 +56,119 @@ $$
 
 這種時候，考慮 $P_1$ 與 $P_2$。無論是何種情形，我們總是可以修改 $z_{i^*}$ 與 $z_j$，把它們變成原本的 $1/4$。這時候，不難說明新的 $z'\in\mathcal{C}(P_1)$ 且 $z'\in\mathcal{C}(P_2)$，如下圖所示：
 
+![](./poset-sort8-3.png)
+
+這邊的證明會用到兩個條件：其一，$z_{i^*} \ge z_j$、其二，$x_j$ 的活動範圍涵蓋了 $x_{i^*}$ 的活動範圍中間點。
+此時，將 $x_{i^*}$ 與 $x_j$ 進行比較後，無論誰大誰小，都能夠透過新的偏序集（歸納假設），說明 $4e(P) + nH(P) \ge n\log n$。
+
+-----
+
+### 第二種情況
+
+現在假設 $x_{i^*}$ 與所有其他元素都可以比較。
+此時我們想要把它歸納到 $n-1$ 個點的偏序集：把這個元素從偏序集拿掉就可以了！
+令 $P'$ 是偏序集 $(P, <)$ 把 $x_{i^*}$ 移除後（保持其他元素之間的可比較關係）得到的子偏序集。
+對於最佳解 $z=(z_1, \ldots, z_n)$，我們把除了 $z_{i^*}$ 以外的所有數值通通等比例放大 $1/(1-z_{i^*})$ 倍！
+如此一來，得到的點 $z'$ 保證有 $z'\in\mathcal{C}(P')$。
+
+那麼，我們將得到 
+
+$$
+\begin{aligned}
+(n-1)H(P') &\le (n-1)H(z') \\
+&= - \sum_{i\in [n]-\{i^*\}} \log z'_i\\
+&= - \sum_{i\in [n]-\{i^*\}} \log z_i + \sum_{i\in [n]-\{i^*\}} \log (1-z_{i^*})\\
+&= nH(P) + \log z_{i^*} + (n-1)\log (1-z_{i^*})
+\end{aligned}
+$$
+
+加上 $e(P)=e(P')$ 這個觀察後，可以得到
+
+$$
+\begin{aligned}
+4\log e(P) + n H(P) &= 4\log e(P') + nH(P)\\
+&\ge 4\log e(P') + nH(P') - \log \left(z_{i^*} (1-z_{i^*})^{n-1}\right)\\
+&\ge (n-1)\log (n-1) - \log \left(z_{i^*} (1-z_{i^*})^{n-1}\right)
+\end{aligned}
+$$
+
+而後面這一項，透過算幾不等式可以知道，對任意 $t\in (0, 1)$：
+
+$$
+t(1-t)^{n-1} \le \frac{1}{n-1}\left( \frac{n-1}{n} \right)^n
+$$
+
+因此 
+
+$$ - \log \left(z_{i^*} (1-z_{i^*})^{n-1}\right) \ge -\log \frac{1}{n-1} - n\log \frac{n-1}{n} 
+$$
+
+從而
+
+$$
+\begin{aligned}
+4\log e(P) + n H(P) &\ge (n-1)\log (n-1) - \log \left(z_{i^*} (1-z_{i^*})^{n-1}\right)\\
+&\ge (n-1)\log (n-1) + \log (n-1) - n\log (n-1) + n\log n \\
+&= n\log n
+\end{aligned}
+$$
+
+得證。
+<span style="float:right">$\square$</span>
+
+-----
+
+接下來是證明的第二步
+
+
+### 引理 31
+
+對於任意 $\delta\in [0, 1]$，都有 $nH(P) \le (1-\delta) T_{合併貪婪鏈} + n\log \frac{n}{\delta}$。
+
+### 引理 31 的證明
+
+對於每一個偏序集中的元素 $x_i$，我們定義對應的座標
+
+$$z_i = \frac{\delta}{n}\left(\frac{n}{|C_{id(x_i)}|}\right)^{1-\delta}$$
+
+我們想要說 $z=(z_1, z_2, \ldots, z_n)$ 這個點座落在 $\mathcal{C}(P)$ 裡面即可。
+要怎麼檢驗呢？只要說明對任意的鏈 $C=\{v_1, v_2, \ldots, v_{|C|}\}$，都有 $\sum_{j} z_{v_j} \le 1$ 即可。
+透過[引理 28](./poset-sort7.html#引理-28)，我們知道 $|C_{id(v_j)}| \ge |C|-j+1$。
+於是呢，
+
+$$
+\begin{aligned}
+\sum_{j} z_{v_j} &= \sum_{j=1}^{|C|} \frac{\delta}{n^{\delta}} \left(\frac{1}{|C_{id(v_j)}|}\right)^{1-\delta} \\
+&\le \frac{\delta}{n^{\delta}} \sum_{j=1}^{|C|} \left( \frac{1}{|C|-j+1}\right)^{1-\delta} \\
+&\le \frac{\delta}{n^{\delta}} \int_{0}^{|C|} \frac{1}{x^{1-\delta}} {\mathrm{d}} x \\
+&= \delta \left(\frac{|C|}{n}\right)^\delta \le 1
+\end{aligned}
+$$
+
+接著，我們只需要利用 $nH(P) \le nH(z)$ 這個觀察，整理兩邊以後可以得到：
+
+$$
+\begin{aligned}
+nH(P) &\le nH(z) = -\sum_{i=1}^n \log z_i\\
+& = -\sum_{i=1}^n \log \frac{\delta}{n} - (1-\delta)\sum_{i=1}^n \log \frac{n}{|C_{id(x_i)}|}\\
+& = -\sum_{i=1}^n \log \frac{\delta}{n} + (1-\delta) T_{合併貪婪鏈} \\
+& = n\log \frac{n}{\delta} + (1-\delta) T_{合併貪婪鏈}
+\end{aligned}
+$$
+
+得證。
+<span style="float:right">$\square$</span>
+
+
+-----
+
+明天我們來完成定理 29 的證明。
+
+### 備註
+
+在參考資料中，Cardinal 等人證明了引理 30 時，除了上述版本的證明方法以外，還證明了最扎實版本：$2\log e(P) + nH(P) \ge n\log n$，但是證明相對暴力了些；筆者比較喜歡本篇中的證明。
+此外，引理 31 是筆者以 $H(P)$ 的最長鏈角度重新寫過一遍的做法，在原作之中是直接引用同一批作者更早以前在最大獨立集上的結論。如果朋友們跳進去看原本那篇論文的話，可能在這部分會感受到混淆，還請多留意。
+
+### 參考資料
+
+[^1]: Jean Cardinal, Samuel Fiorini, Gwenaël Joret, Raphaël M. Jungers, J. Ian Munro, _Sorting under Partial Information (without the Ellipsoid Algorithm)_, Combinatorica 33, 655–697 (2013). https://doi.org/10.1007/s00493-013-2821-5, [ArXiv](https://arxiv.org/pdf/0911.0086.pdf).
