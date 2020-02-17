@@ -1534,7 +1534,7 @@ t(1-t)^{n-1} \le \frac{1}{n-1}\left( \frac{n-1}{n} \right)^n
 <hr />
 <p>接下來是證明的第二步</p>
 <a class="header" href="#引理-31" id="引理-31"><h3>引理 31</h3></a>
-<p>對於任意 \(\delta\in [0, 1]\)，都有 \(nH(P) \le (1-\delta) T_{合併貪婪鏈} + n\log \frac{n}{\delta}\)。</p>
+<p>對於任意 \(\delta\in [0, 1]\)，都有 \(nH(P) + (1-\delta) T_{合併貪婪鏈} \le n\log \frac{n}{\delta}\)。</p>
 <a class="header" href="#引理-31-的證明" id="引理-31-的證明"><h3>引理 31 的證明</h3></a>
 <p>對於每一個偏序集中的元素 \(x_i\)，我們定義對應的座標</p>
 <p>\[z_i = \frac{\delta}{n}\left(\frac{n}{\vert C_{id(x_i)}\vert }\right)^{1-\delta}\]</p>
@@ -1555,8 +1555,8 @@ t(1-t)^{n-1} \le \frac{1}{n-1}\left( \frac{n-1}{n} \right)^n
 \begin{aligned}
 nH(P) &amp;\le nH(z) = -\sum_{i=1}^n \log z_i\\
 &amp; = -\sum_{i=1}^n \log \frac{\delta}{n} - (1-\delta)\sum_{i=1}^n \log \frac{n}{\vert C_{id(x_i)}\vert }\\
-&amp; = -\sum_{i=1}^n \log \frac{\delta}{n} + (1-\delta) T_{合併貪婪鏈} \\
-&amp; = n\log \frac{n}{\delta} + (1-\delta) T_{合併貪婪鏈}
+&amp; = -\sum_{i=1}^n \log \frac{\delta}{n} - (1-\delta) T_{合併貪婪鏈} \\
+&amp; = n\log \frac{n}{\delta} - (1-\delta) T_{合併貪婪鏈}
 \end{aligned}
 \]</p>
 <p>得證。
