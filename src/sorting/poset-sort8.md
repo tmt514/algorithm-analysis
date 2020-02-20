@@ -4,7 +4,7 @@
 
 ## 定理 29
 
-基於貪婪鏈分解的合併排序法，其比較次數 $T_{合併貪婪鏈} \le 6.6 \log e(P) + n$。
+基於貪婪鏈分解的合併排序法，其比較次數 $T_{合併貪婪鏈} \le 6.33 \log e(P) + n$。
 
 首先我們來證明加強版的引理 26。
 
@@ -123,7 +123,7 @@ $$
 
 ### 引理 31
 
-對於任意 $\delta\in [0, 1]$，都有 $nH(P) \le (1-\delta) T_{合併貪婪鏈} + n\log \frac{n}{\delta}$。
+對於任意 $\delta\in [0, 1]$，都有 $nH(P) + (1-\delta) T_{合併貪婪鏈} \le n\log \frac{n}{\delta}$。
 
 ### 引理 31 的證明
 
@@ -151,8 +151,8 @@ $$
 \begin{aligned}
 nH(P) &\le nH(z) = -\sum_{i=1}^n \log z_i\\
 & = -\sum_{i=1}^n \log \frac{\delta}{n} - (1-\delta)\sum_{i=1}^n \log \frac{n}{|C_{id(x_i)}|}\\
-& = -\sum_{i=1}^n \log \frac{\delta}{n} + (1-\delta) T_{合併貪婪鏈} \\
-& = n\log \frac{n}{\delta} + (1-\delta) T_{合併貪婪鏈}
+& = -\sum_{i=1}^n \log \frac{\delta}{n} - (1-\delta) T_{合併貪婪鏈} \\
+& = n\log \frac{n}{\delta} - (1-\delta) T_{合併貪婪鏈}
 \end{aligned}
 $$
 

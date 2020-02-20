@@ -24,3 +24,4 @@
   * [02/07 - 偏序集排序（六）](sorting/poset-sort6.md)
   * [02/14 - 偏序集排序（七）](sorting/poset-sort7.md)
   * [02/17 - 偏序集排序（八）](sorting/poset-sort8.md)
+  * [02/21 - 偏序集排序（九）](sorting/poset-sort9.md)
