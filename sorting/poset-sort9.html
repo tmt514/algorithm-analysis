@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>02/01 - 偏序集排序（四） - 演算法的分析與證明</title>
+        <title>02/21 - 偏序集排序（九） - 演算法的分析與證明</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -80,7 +80,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="../sorting/chain-polytope-and-graph-entropy.html" class="active">02/01 - 偏序集排序（四）</a></li><li><a href="../sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="../sorting/poset-sort6.html">02/07 - 偏序集排序（六）</a></li><li><a href="../sorting/poset-sort7.html">02/14 - 偏序集排序（七）</a></li><li><a href="../sorting/poset-sort8.html">02/17 - 偏序集排序（八）</a></li><li><a href="../sorting/poset-sort9.html">02/21 - 偏序集排序（九）</a></li></ol></li></ol>
+            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="../sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="../sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="../sorting/poset-sort6.html">02/07 - 偏序集排序（六）</a></li><li><a href="../sorting/poset-sort7.html">02/14 - 偏序集排序（七）</a></li><li><a href="../sorting/poset-sort8.html">02/17 - 偏序集排序（八）</a></li><li><a href="../sorting/poset-sort9.html" class="active">02/21 - 偏序集排序（九）</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -145,67 +145,48 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#偏序集排序四" id="偏序集排序四"><h1>偏序集排序（四）</h1></a>
-<p>為了繞過使用深奧隨機走訪方法與馬可夫鏈而得到的估計 \(e(P)\) 近似演算法，
-我們今天把這個順序多胞形轉換一下，變成另一個直鏈和多胞形（Chain Polytope）。</p>
-<a class="header" href="#直鏈和多胞形-chain-polytope" id="直鏈和多胞形-chain-polytope"><h2>直鏈和多胞形 Chain Polytope</h2></a>
-<p>在 poset \((P, &lt;)\) 上面的一條<strong>直鏈（chain）</strong> \(C\subset P\)，其實就是一個任兩元素都可以比較的子集合。
-我們考慮以下的<strong>直鏈和多胞形（chain polytope）</strong>：</p>
+                        <a class="header" href="#偏序集排序九" id="偏序集排序九"><h1>偏序集排序（九）</h1></a>
+<p>今天來證明定理 29，的後半部。</p>
+<a class="header" href="#定理-29" id="定理-29"><h2>定理 29</h2></a>
+<p>基於貪婪鏈分解的合併排序法，其比較次數 \(T_{合併貪婪鏈} \le 6.33 \log e(P) + n\)。</p>
+<a class="header" href="#定理-29-的證明" id="定理-29-的證明"><h3>定理 29 的證明</h3></a>
+<p>首先，讓我們試圖把引理 30 帶入引理 31 之中，我們可以得到</p>
+<p>\[\begin{aligned}
+T_{合併貪婪鏈} &amp;\le \frac{1}{1-\delta} \left(n\log \frac{n}{\delta} - nH(P)\right) \\
+&amp;\le \frac{1}{1-\delta} \left(n\log \frac{n}{\delta} + 4\log e(P) - n\log n\right) \\
+&amp; = \frac{1}{1-\delta} \left(4\log e(P) + n\log \frac{1}{\delta}\right)
+\end{aligned}\tag{*}\label{eq0}
+\]</p>
+<p>當我們選取 \(\delta = 1/2\) 的時候，可以得到 \(T_{合併貪婪鏈} \le 8\log e(P) + 2n\)。
+選取 \(\delta \to 1\) 的時候，後面 \(n\) 的常數也只是趨近於 \(1/\ln 2\approx 1.44\)。
+這個常數比起上面的 \(6.6\log e(P)+n\) 還要差了一點點呢。這代表我們還需要一些觀察。</p>
+<p>而事實上，<a href="./poset-sort6.html#%E5%BC%95%E7%90%86-27">引理 27</a> 給予了我們相當大的提示。
+這個觀察是這樣的：我們如果把最長的鏈先拿到旁邊放著，那麼剩下的 \(n-\vert C_1\vert \) 筆資料拿去做貪婪鏈合併之後，
+所需要的比較次數複雜度會長得像 \(T' \le c_1\log e(P') + c_2 (n-\vert C_1\vert )\)。其中 \(P'\) 是指將 \(P\) 中最長鏈移除後的子偏序集。
+顯然移除了一些集合元素以後，我們有 \(e(P') \le e(P)\)、而且 \(n-\vert C_1\vert  \le \log e(P)\)。因此可以順水推舟得到
+\(T' \le (c_1 + c_2)\log e(P)\)。最後再將合併完成的 \(C_2\cup C_3\cup\cdots \cup C_k\) 與 \(C_1\) 進行合併。顯然這步最多只要花費 \(n\) 次比較就行了。因此加起來我們可以得到 \(O(\log e(P)) + n\) 次比較。</p>
+<a class="header" href="#引理-32" id="引理-32"><h3>引理 32</h3></a>
 <p>\[
-\mathcal{C}(P) = \{ (z_1, \ldots, z_n) \ \vert \ \forall \text{ chain } C, 0\le \sum_{x_i\in C} z_i \le 1 \}
+T_{合併貪婪鏈} \le n + (n - \vert C_1\vert ) + \sum_{i=2}^k \vert C_i\vert  \log \frac{n-\vert C_1\vert }{\vert C_i\vert }
 \]</p>
-<p>換句話說，只要 \(n\) 個介於 \([0, 1]\) 之間的實數，滿足對於 poset 之中任何一條直鏈，它對應數字的總和不超過 \(1\) 的話，這個點就會被我們加入多胞形之中。</p>
-<a class="header" href="#兩個多胞形之間的轉換" id="兩個多胞形之間的轉換"><h2>兩個多胞形之間的轉換</h2></a>
-<p>要怎麼找出直鏈和多胞形 \(\mathcal{C}(P)\) 與順序多胞形 \(\mathcal{O}(P)\) 之間的關聯呢？
-試想像一下，如果我們有一條鏈：</p>
-<p><img src="./chain-polytope-and-graph-entropy1.png" alt="" /></p>
-<!--
-\tikzset{n/.style={inner sep=0pt, minimum size=4pt, circle, fill=black}}
-\tikz{
-\foreach \x/\c in {1/0.1,2/0.3,3/0.05,4/0.2,5/0.05,6/0.3} {
-  \node[n,label=below:{\\(x\_\x\\)}](A\x) at (\x, 0) {};
-  \node[rotate=30,anchor=west,shift={(0.1, 0.1)}] at (A\x) {\c};
-};
-\foreach \x in {1,2,...,5} {
-\pgfmathsetmacro\y{\x+1}%
-\draw (A\x) edge [-latex,thick] (\\((A\y)+(-0.1,0)\\));
-};
-}
--->
-<p>那麼 \((0.1, 0.3, 0.05, 0.2, 0.05, 0.3, \ldots)\in \mathcal{C}(P)\)。由於在 \(\mathcal{C}(P)\) 上頭，每一條鏈上面的數值總和都不超過 \(1\)，透過 <strong>前綴和（Prefix Sum）</strong> 的概念，我們可以定義出一條非遞減的序列如下：</p>
-<p><img src="./chain-polytope-and-graph-entropy2.png" alt="" /></p>
-<!--
-\tikzset{n/.style={inner sep=0pt, minimum size=4pt, circle, fill=black}}
-\tikz{
-\foreach \x/\c in {1/0.1,2/0.4,3/0.45,4/0.65,5/0.7,6/1.0} {
-  \node[n,label=below:{\\(x\_\x\\)}](A\x) at (\x, 0) {};
-  \node[rotate=30,anchor=west,shift={(0.1, 0.1)},color=blue] at (A\x) {\c};
-};
-\foreach \x in {1,2,...,5} {
-\pgfmathsetmacro\y{\x+1}%
-\draw (A\x) edge [-latex,thick] (\\((A\y)+(-0.1,0)\\));
-};
-}
--->
-<p>每一個點的數值變成了這條鏈上面它所有祖先原本的數值總和，加上自己本身的數值。
-不難發現，現在這個賦值方式滿足順序多胞形的條件：
-\[
-(0.1, 0.4, 0.45, 0.65, 0.7, 1.0, \ldots) \in \mathcal{O}(P)
-\]</p>
-<p>現在讓我們來考慮推廣版的情形：如果一個點屬於超過一條鏈怎麼辦呢？對於一個點 \(z=(z_1, \ldots, z_n)\in\mathcal{C}(P)\)，我們可以定義出一個點 \(\varphi(z) = (z'_1, \ldots, z'_n)\in\mathcal{O}(P)\)，其中 \(z'_i = z_i + \max_{j: x_j &lt; x_i} z'_j\)。這個轉換 \(\varphi\) 其實也是一一對應的：對於一個點 \(z' = (z'_1, \ldots, z'_n)\in\mathcal{O}(P)\)，我們可以回推出 \(\varphi^{-1}(z') = (z_1, \ldots, z_n)\in\mathcal{C}(P)\)，使得 \(z_i = z'_{i} - \max_{j: x_j &lt; x_i} z'_j\)。</p>
-<p>因此我們可以說：對於任意偏序集，都存在一個雙射變換 \(\varphi_P: \mathcal{C}(P)\to \mathcal{O}(P)\)。可惜的是，光憑這個結論，我們無法斷定這兩個多胞形的體積關係。這時候，就是我們前一篇介紹的 Ehrhart 多項式派上用場的時候啦！</p>
-<a class="header" href="#定理-25-stanley-1986sup-classfootnote-referencea-href11asup" id="定理-25-stanley-1986sup-classfootnote-referencea-href11asup"><h3>定理 25 [Stanley 1986]<sup class="footnote-reference"><a href="#1">1</a></sup></h3></a>
-<p>對於任何偏序集。\(\mathcal{C}(P)\) 的體積與 \(\mathcal{O}(P)\) 的體積相等。</p>
-<a class="header" href="#證明" id="證明"><h3>證明</h3></a>
-<p>還記得我們說過多胞形的 Ehrhart 多項式嗎？如果把 \(\mathbb{R}^n\) 空間中，每一個座標軸放大整數倍 \(k\)，那麼多胞形內部的格子點（所有座標都是整數的點）的數量會以 \(\Theta(k^n)\) 的速度成長，而這個點數可以被一個 \(n\) 次多項式表示之。</p>
-<p>換句話說，如果我們有辦法證明 \(\mathcal{C}(P)\) 與 \(\mathcal{O}(P)\)，在座標軸放大任意整數倍之後，格子點數仍然相同，那麼很顯然它們有一模一樣的 Ehrhart 多項式（任何一個 \(n\) 次單變數多項式可以被 \(n+1\) 個取值唯一決定。）</p>
-<p>而這個整數點格子數量的結論顯然是正確的：在放大 \(k\) 倍之後，若 \(kz = (kz_1, kz_2, \ldots, kz_n)\) 是格子點，那麼根據 \(\varphi\) 的定義，在變換之後 \(\varphi(kz) = kz'\) 也會是格子點。反之亦然。於是，我們就得證啦～</p>
+<a class="header" href="#引理-32-的證明" id="引理-32-的證明"><h3>引理 32 的證明</h3></a>
+<p>這個分析是先把 \(|C_1\vert \) 拿掉，然後合併其他部分，最終再將 \(|C_1\vert \) 與剩下的資料合併。
+由於採用貪婪法合併序列所得到的總比較次數是最優的，因此這個方法得到的總比較次數，不會比原本的貪婪法合併來得好。
+<span style="float:right">\(\square\)</span></p>
 <hr />
-<p>這個直鏈和多胞形有什麼好處呢？它其實有另一個等價的定義：如果我們從偏序集 \(P\) 當中，任何兩個可以比較的元素對，都建立一條邊，我們會得到一個無向圖 \(G(P)\)。\(G(P)\) 也被稱為 \(P\) 的<strong>可比較圖（Comparability Graph）</strong>。</p>
-<p>而 \(\mathcal{C}(P)\) 呢，它會恰好等於所有 \(G(P)\) 上面所有「獨立集（stable set, independent set）」所對應到的單位向量，與原點形成的凸組合（convex combination）空間。</p>
-<p>明天我們來看看這個 \(G(P)\) 的補圖 \(\overline{G(P)}\) <strong>不可比圖（incomparability graph）</strong>，他對於 \(e(P)\) 的估計有什麼厲害的幫助吧！</p>
+<p>結合 \(\eqref{eq0}\) 的論證過程以後，我們可以得到新的上界：</p>
+<p>\[
+\begin{aligned}
+T_{合併貪婪鏈} &amp;\le n + (n - \vert C_1\vert ) + \sum_{i=2}^k \vert C_i\vert  \log \frac{n-\vert C_1\vert }{\vert C_i\vert } \\
+&amp;\le n +  (n - \vert C_1\vert )+ \frac{1}{1 - \delta}\left( 4\log e(P) + (n-\vert C_1\vert )\log \frac{1}{\delta}\right)\\
+&amp;\le n + \log e(P) + \frac{1}{1 - \delta}\left( 4\log e(P) + \log e(P) \log \frac{1}{\delta}\right)\\
+&amp;\le n + \left(1 + \frac{4}{1-\delta} + \frac{1}{1-\delta} \log \frac{1}{\delta} \right) \log e(P)
+\end{aligned}
+\]</p>
+<p>透過 <a href="https://www.wolframalpha.com/input/?i=min+1+%2B+4%2F%281-x%29+%2B+%281%2F%281-x%29%29log2%281%2Fx%29+in+%5B0%2C+1%5D">Wolfram Alpha</a> 來看，選取 \(\delta\approx 0.18274\) 左右的時候，可以得到 \(8.89\log e(P) + n\) 的結論。</p>
+<p>如果我們將 Cardinal 等人的原作<sup class="footnote-reference"><a href="#1">1</a></sup> 裡面的結論帶入的話（把 4 換成 2），就可以得到<a href="https://www.wolframalpha.com/input/?i=min+1+%2B+2%2F%281-x%29+%2B+%281%2F%281-x%29%29log2%281%2Fx%29+in+%5B0%2C+1%5D">最小值</a>出現在 \(\delta\approx 0.27081\) 左右，可以得到 \(6.33\log e(P) + n\) 的結論！</p>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>Richard P. Stanley, <em>Two Poset Polytopes</em>, 1986. <a href="http://dedekind.mit.edu/%7Erstan/pubs/pubfiles/66.pdf">http://dedekind.mit.edu/~rstan/pubs/pubfiles/66.pdf</a></p>
+<p>Jean Cardinal, Samuel Fiorini, Gwenaël Joret, Raphaël M. Jungers, J. Ian Munro, <em>Sorting under Partial Information (without the Ellipsoid Algorithm)</em>, Combinatorica 33, 655–697 (2013). https://doi.org/10.1007/s00493-013-2821-5, <a href="https://arxiv.org/pdf/0911.0086.pdf">ArXiv</a>.</p>
 </div>
 
                     </main>
@@ -213,15 +194,11 @@
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../sorting/order-polytope-and-ehrhart-polynomial.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../sorting/poset-sort8.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="../sorting/poset-sort5.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -231,15 +208,11 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../sorting/order-polytope-and-ehrhart-polynomial.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../sorting/poset-sort8.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a href="../sorting/poset-sort5.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 
