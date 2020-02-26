@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>01/05 - 合併排序法 - 演算法的分析與證明</title>
+        <title>02/25 - 謝耳排序法（一） - 演算法的分析與證明</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -80,7 +80,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html" class="active">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="../sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="../sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="../sorting/poset-sort6.html">02/07 - 偏序集排序（六）</a></li><li><a href="../sorting/poset-sort7.html">02/14 - 偏序集排序（七）</a></li><li><a href="../sorting/poset-sort8.html">02/17 - 偏序集排序（八）</a></li><li><a href="../sorting/poset-sort9.html">02/21 - 偏序集排序（九）</a></li><li><a href="../sorting/shell-sort1.html">02/25 - 謝耳排序法（一）</a></li></ol></li></ol>
+            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="../sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="../sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="../sorting/poset-sort6.html">02/07 - 偏序集排序（六）</a></li><li><a href="../sorting/poset-sort7.html">02/14 - 偏序集排序（七）</a></li><li><a href="../sorting/poset-sort8.html">02/17 - 偏序集排序（八）</a></li><li><a href="../sorting/poset-sort9.html">02/21 - 偏序集排序（九）</a></li><li><a href="../sorting/shell-sort1.html" class="active">02/25 - 謝耳排序法（一）</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -145,95 +145,82 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#合併排序法" id="合併排序法"><h1>合併排序法</h1></a>
-<p>如果我們不限制每次都交換相鄰兩個數字的話，顯然存在著理論上有更有效率的排序演算法。</p>
-<p>分而治之（Divide and Conquer）是重要的解題方法之一：我們將一個大問題拆解成許多小問題、個個擊破以後再把它們組合回來。
-如果我們將分而治之法應用在排序問題當中，就可以得到俗稱合併排序法（Merge Sort）的演算法：</p>
-<ul>
-<li>假設欲排序 \(A[0..n-1]\)。
-<ol>
-<li>把輸入的資料拆成差不多相等的兩半：\(L=A[0..\lfloor\frac{n}{2}\rfloor-1]\)、\(R=A[\lfloor\frac{n}{2}\rfloor..n-1]\)。</li>
-<li>呼叫遞迴將兩邊分別排序。</li>
-<li>假設 \(L\) 與 \(R\) 已經各自排好順序，將 \(L\) 與 \(R\) 合併回完整的、排好順序的資料陣列 \(A\)。</li>
-</ol>
-</li>
-</ul>
-<p>實作上大概長得像這樣：</p>
-<pre><code class="language-cpp">void MergeSort(data_t *A, int n) {
-  // 只剩一個元素的時候，整個陣列就已經排好順序啦。
-  if (n &lt;= 1) return;
-  // Divide &amp; Conquer 的各自遞迴部分。
-  MergeSort(A, n/2);
-  MergeSort(A + n/2, n - n/2);
-  // Combine: 這邊是仿效 C++ STL 的 std::merge() 格式。
-  Merge(A, A + n/2, A + n/2, A + n, A);
-}
-</code></pre>
-<a class="header" href="#合併兩個序列" id="合併兩個序列"><h2>合併兩個序列</h2></a>
-<p>要怎麼將兩個排好順序的序列合併起來呢？一個簡單的想法是：每一次考慮兩個序列目前的排頭，把比較小的那個拉出來，最終接成一串。
-如果用 linked list 或 vector 寫起來大概像這樣：</p>
-<pre><code class="language-cpp">void Merge(data_t *L_start, data_t *L_end,
-           data_t *R_start, data_t *R_end, data_t *Output) {
-  vector&lt;data_t&gt; tmp;
-  data_t *L_ptr = L_start, *R_ptr = R_start;
-  while (L_ptr != L_end || R_ptr != R_end) {
-    // 把比較小的那筆資料複製到 vector 裡面。
-    if (L_ptr != L_end &amp;&amp; (R_ptr == R_end || *L_ptr &lt; *R_ptr))  // (**)
-      tmp.push_back(*L_ptr++);
-    else
-      tmp.push_back(*R_ptr++);
+                        <a class="header" href="#謝耳排序法" id="謝耳排序法"><h1>謝耳排序法</h1></a>
+<p>今天來講講插入排序的另一種特殊變化型。
+這一類特化是由 <a href="https://en.wikipedia.org/wiki/Donald_Shell">Donald L. Shell</a> 在 1959 年提出<sup class="footnote-reference"><a href="#2">1</a></sup>。
+謝耳排序之所以非常非常有趣，是因為它根據不同的「步長序列」（Gap Sequence）設定，會有著不同的最差情形時間複雜度。</p>
+<a class="header" href="#步長與步長序列" id="步長與步長序列"><h2>步長與步長序列</h2></a>
+<p>這個插入排序法的變化是這樣的：一般來說我們會把新加入的資料與前面已經排好序的序列進行插入排序，從最後一個數字往前面逐一比較，並且交換。謝耳教授引入了一個新的想法，如果我們把整個陣列打散，依照指定步長 \(h\)（或稱為間隔，Gap）分成 \(h\) 個群組：每隔 \(h\) 筆資料就被分配到同一組。</p>
+<a class="header" href="#定義" id="定義"><h3>定義</h3></a>
+<p>我們說一個陣列是 <strong>\(h\)-排序（\(h\)-sorted）</strong> 的，若且唯若每一個群組由左至右都是由小到大排好序的。</p>
+<p>從上面的定義看起來，一個真正排好序的序列是 \(1\)-排序的。
+我們的目的是根據某個序列 \(h_0=1 &lt; h_1 &lt; \ldots &lt; h_k\)，逐步把陣列變成 \(h_k\)-sorted、\(h_{k-1}\)-sorted、依此類推最終變成 \(1\)-sorted。而此時這個序列便稱為 <strong>步長序列（Gap Sequence）</strong>。</p>
+<a class="header" href="#各自排序" id="各自排序"><h3>各自排序</h3></a>
+<p>要怎麼把一個陣列整理成 \(h\)-sorted 呢？我們可以輕易地使用插入排序法完成任務：</p>
+<pre><code class="language-cpp">void h_sort(int arr[], int N, int h) {
+  for (int i = 0; i &lt; N; i += h) {
+    // 把新的元素 arr[i] 插入所屬群組中。
+    for (int j = i; j &gt;= h &amp;&amp; arr[j-h] &gt; arr[j]; j -= h)
+      swap(arr[j-h], arr[j]);
   }
-  // 再把合併好的資料抄回去。
-  for (const auto &amp;data : tmp) *Output++ = data;
 }
 </code></pre>
-<p>不難發現，由於兩個指標 <code>*L_ptr</code> 和 <code>*R_ptr</code> 不斷遞增，而且每次迴圈<strong>恰好</strong>有一者前進一格。
-因此整個 <code>Merge()</code> 的時間複雜度是線性的 \(\Theta(n)\)。
-正確性來自於對排序資料的假設、以及每一次我們都拉比較小的排頭出來，這個排頭必定是剩下所有還沒被排進來的資料中，最小的一個。</p>
-<p>近幾年這個合併兩個序列的方法已經被歸類成一種叫做 Two Pointers 的技巧。當然這個技巧當初是用來描述<a href="https://en.wikipedia.org/wiki/Cycle_detection">龜兔賽跑方法</a>（這個用來找 Linked List 尾圈方法我們以後再聊），但已經被推廣成泛指「只要維護兩個註標，這兩個註標只會往單方向移動」的演算法。</p>
-<a class="header" href="#時間複雜度的分析" id="時間複雜度的分析"><h2>時間複雜度的分析</h2></a>
-<p>由於每一次的資料搬移，大致可以對應到 (**) 處的比較，因此合併排序法所需要的時間，我們可以用「兩兩比較次數」代表之。
-現在我們來證明合併排序法的時間複雜度是 \(O(n\log n)\)。</p>
-<a class="header" href="#引理-8" id="引理-8"><h3>引理 8</h3></a>
-<p>令 \(T(n)\) 表示以合併排序法排序 \(n\) 個數字時，所需要進行的比較次數。則 \(T(n) = O(n\log n)\)。</p>
-<a class="header" href="#證明" id="證明"><h3>證明</h3></a>
-<p>首先，當 \(n\) 是 \(2\) 的冪次（即 \(n\) 形如 \(2^k\) 時），兩個子問題的大小都是 \(n/2\)。此時我們有：</p>
-<p>\[
-T(n) = \begin{cases} 0 &amp; \text{ if } n\le 1, \\
-2T(\frac{n}{2}) + n-1 &amp; \text{ if } n &gt; 1. \end{cases}
-\]</p>
-<p>然後根據<a href="https://zh.wikipedia.org/zh-tw/%E4%B8%BB%E5%AE%9A%E7%90%86">主定理（Master Theorem）</a>或是數學歸納法，不難得出 \(T(n) = \Theta(n\log n)\) 的結論。</p>
-<p>當 \(n\) 不是 \(2\) 的冪次時（這很重要！）上面這個時間複雜度的遞迴式其實不全然正確。
-事實上，遞迴式應該是這樣才對：</p>
-<p>\[
-T(n) = T(\floor{\frac{n}{2}}) + T(\ceil{\frac{n}{2}}) + n-1
-\]</p>
-<p>好加在，我們可以利用數學歸納法證明出 \(T(n)\) 是遞增的。換句話說，令 \(n' = 2^{\ceil{\log n}}\)，利用 \(n \le n' &lt; 2n\)，我們可以得到</p>
-<p>\[
-T(n) \le T(n') = \Theta(n' \log n') = \Theta(n\log n)\text{。}
-\]</p>
+<a class="header" href="#引理-33" id="引理-33"><h3>引理 33</h3></a>
+<p>對陣列無任何假設的情形下，<code>h_sort</code> 執行的最差時間複雜度為 \(O(N^2/h)\)。</p>
+<a class="header" href="#引理-33-的證明" id="引理-33-的證明"><h3>引理 33 的證明</h3></a>
+<p>整個陣列根據間隔 \(h\) 分成了 \(h\) 組，每一組有 \(N/h\) 筆資料。上述演算法等價於對每一組分別進行插入排序法，所以最差時間複雜度是 \(O(h(N/h)^2) = O(N^2/h)\)。
+<span style="float:right">\(\square\)</span></p>
+<a class="header" href="#謝耳排序法-1" id="謝耳排序法-1"><h3>謝耳排序法</h3></a>
+<p>整理成 \(h\)-sorted 以後，就可以根據不同的 \(h\) 值呼叫這個子函式了：</p>
+<pre><code class="language-cpp">void shell_sort(int arr[], int N, int h[], int H) {
+  // 假設 h[0], h[1], ..., h[H-1] 已經由小排到大了。
+  for (int i = H-1; i &gt;= 0; --i)
+    h_sort(arr, N, h[i]);
+}
+</code></pre>
+<a class="header" href="#選取步長序列" id="選取步長序列"><h3>選取步長序列</h3></a>
+<p>顯然如果序列只有一個元素 \(h[0] = 1\) 的話，演算法就會退化成一般的插入排序法，執行的時間複雜度就是 \(O(N^2)\)。</p>
+<p>在 1959 年由 Shell 提出這個想法的時候，使用的是 \(1, \ldots, \floor{N/8}, \floor{N/4}, \floor{N/2}\) 這樣的步長序列。
+這個步長序列在 \(N\) 是 \(2\) 的冪次時，在最壞情形下仍然有著 \(\Omega(N^2)\) 的時間複雜度。(為什麼？提示：奇數位置所有數字都比偶數位置來得大。）
+謝耳教授只是發現在實際模擬時，這個演算法執行時間優於插入排序法。</p>
+<p>好消息是，接下來在 1960、1963、1965、1971 年陸陸續續地出現了因應各種不同的 Gap Sequence 得到的時間複雜度理論上界，證明了謝耳排序法在某些特殊的 Gap Sequence 底下確實比插入排序法有效率得多。</p>
+<a class="header" href="#關於下界" id="關於下界"><h3>關於下界</h3></a>
+<p>遺憾的是，Shell 的改良方法在 1992 年由 Plaxton, Poonen 與 Suel 等人<sup class="footnote-reference"><a href="#1">2</a></sup>證明出了對於任意步長序列，Shell Sort 在最差情形的時間複雜度至少有 \(\Omega(n (\log n / \log\log n)^2)\)。因此，任何謝耳排序類型的演算法，並沒有辦法在理論上達到如同快速排序或合併排序法等，逼近真正的 \(n\log n\) 比較排序下界。</p>
 <hr />
-<p>合併排序法在合併的時候，會需要<strong>複製</strong>欲排序的資料。因此，合併排序法在實作的時候，一般來說會佔用到 \(\Theta(n)\) 的額外記憶體空間。
-我們有辦法省下些許額外的記憶體嗎？</p>
+<p>明天我們來看第一個改進最差時間複雜度的例子：如果 \(h_i = 2^i-1\)，那麼就可以得到
+\(O(N^{3/2})\) 時間複雜度的謝耳排序。1960 年的 Lazarus 和 Frank<sup class="footnote-reference"><a href="#3">3</a></sup> 提出了這個排序方法、並且在 1961 年出現在 Hibbard<sup class="footnote-reference"><a href="#4">4</a></sup> 的實驗中。但一個乾淨的證明直到 Pratt 在史丹佛大學的博士論文<sup class="footnote-reference"><a href="#5">5</a></sup>才集大成（對，就是那個 Knuth-Morris-Pratt KMP 演算法的 Pratt）給出了上界證明。</p>
 <a class="header" href="#推薦閱讀" id="推薦閱讀"><h3>推薦閱讀</h3></a>
 <ul>
-<li>主定理的天花板形式：https://fu-sheng-wang.blogspot.com/2016/11/algorithms14-master-theorem.html</li>
+<li><a href="http://notepad.yehyeh.net/Content/Algorithm/Sort/Shell/Shell.php">yehyeh's notepad</a> 這個對 Shellsort 演算法介紹得很淺顯易懂，但沒有對 Gap Sequence 深入的分析。</li>
+<li>Robert Sedgewick, <a href="http://thomas.baudel.name/Visualisation/VisuTri/Docs/shellsort.pdf">Analysis of Shellsort and Related Algorithms</a>.</li>
+<li><a href="https://en.wikipedia.org/wiki/Shellsort">維基百科 Shellsort</a></li>
 </ul>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">1</sup>
+<p>D.L. Shell, <em>A high-Speed Sorting Procedure</em>, Communications of the ACM, 1959. <a href="https://dl.acm.org/doi/10.1145/368370.368387">https://dl.acm.org/doi/10.1145/368370.368387</a></p>
+</div>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">2</sup>
+<p>C.G. Plaxton, B. Poonen, and T. Suel, <em>Improved lower bounds for Shellsort</em>, FOCS 1992. <a href="https://ieeexplore.ieee.org/document/267769">https://ieeexplore.ieee.org/document/267769</a></p>
+</div>
+<div class="footnote-definition" id="3"><sup class="footnote-definition-label">3</sup>
+<p>R.M. Frank, R.B. Lazarus, <em>A high-speed sorting procedure</em>, Communications of the ACM, 1960. <a href="https://dl.acm.org/doi/10.1145/366947.366957">https://dl.acm.org/doi/10.1145/366947.366957</a></p>
+</div>
+<div class="footnote-definition" id="4"><sup class="footnote-definition-label">4</sup>
+<p>Thomas N. Hibbard, <em>An empirical study of minimal storage sorting</em>, Communications of the ACM, 1963. <a href="https://dl.acm.org/doi/10.1145/366552.366557">https://dl.acm.org/doi/10.1145/366552.366557</a></p>
+</div>
+<div class="footnote-definition" id="5"><sup class="footnote-definition-label">5</sup>
+<p>Vaughan R. Pratt, <em>Shellsort and Sorting Networks</em>, Ph.D Thesis, Stanford University, 1972. <a href="https://apps.dtic.mil/dtic/tr/fulltext/u2/740110.pdf">https://apps.dtic.mil/dtic/tr/fulltext/u2/740110.pdf</a></p>
+</div>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../sorting/inversions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../sorting/poset-sort9.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="../sorting/in-place-mergesort.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -243,15 +230,11 @@ T(n) \le T(n') = \Theta(n' \log n') = \Theta(n\log n)\text{。}
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../sorting/inversions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../sorting/poset-sort9.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a href="../sorting/in-place-mergesort.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 
