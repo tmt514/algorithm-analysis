@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>01/18 - 比較排序下界 - 演算法的分析與證明</title>
+        <title>02/29 - 謝耳排序法（二） - 演算法的分析與證明</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -80,7 +80,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html" class="active">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="../sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="../sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="../sorting/poset-sort6.html">02/07 - 偏序集排序（六）</a></li><li><a href="../sorting/poset-sort7.html">02/14 - 偏序集排序（七）</a></li><li><a href="../sorting/poset-sort8.html">02/17 - 偏序集排序（八）</a></li><li><a href="../sorting/poset-sort9.html">02/21 - 偏序集排序（九）</a></li><li><a href="../sorting/shell-sort1.html">02/26 - 謝耳排序法（一）</a></li><li><a href="../sorting/shell-sort2.html">02/29 - 謝耳排序法（二）</a></li></ol></li></ol>
+            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="../sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="../sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="../sorting/poset-sort6.html">02/07 - 偏序集排序（六）</a></li><li><a href="../sorting/poset-sort7.html">02/14 - 偏序集排序（七）</a></li><li><a href="../sorting/poset-sort8.html">02/17 - 偏序集排序（八）</a></li><li><a href="../sorting/poset-sort9.html">02/21 - 偏序集排序（九）</a></li><li><a href="../sorting/shell-sort1.html">02/26 - 謝耳排序法（一）</a></li><li><a href="../sorting/shell-sort2.html" class="active">02/29 - 謝耳排序法（二）</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -145,60 +145,86 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#比較排序下界" id="比較排序下界"><h1>比較排序下界</h1></a>
-<p>到目前為止我們看過的排序方法，都是只要支援「能夠兩兩互相比較」，就可以由小到大排好序的演算法。
-其中幾個排序演算法如：合併排序法、隨機排序法、堆積排序法等等，都能夠達到 \(O(n\log n)\) 的時間複雜度，幾乎線性。
-但終究還是與顯然下界（至少要看過所有輸入的資料才能排序，因此任何能夠將資料正確排序的演算法都必須花費 \(\Omega(n)\) 的時間）有著隔閡。下面這個定理告訴我們，如果只計算比較次數的話，我們能得到更大的下界。</p>
-<a class="header" href="#定理-18" id="定理-18"><h3>定理 18</h3></a>
-<p>任何一個確定性演算法，如果存取輸入資料時<strong>僅</strong>能夠進行「兩兩互相比較」。那麼排序 \(n\) 筆資料，最壞情形下至少要進行 \(\ceil{\log n!} = \Omega(n\log n)\) 次比較。</p>
-<a class="header" href="#證明" id="證明"><h3>證明</h3></a>
-<p>對於輸入的 \(n\) 筆資料，排序完畢後的輸出，相對於輸入總是一個排列（Permutation）。由於 \(n\) 筆資料總共有 \(n!\) 種不同的排列情形，每問一個問題「是否 \(A[i] &gt; A[j]\)？」，我們可以把仍滿足先前所有提問的排列找出來，形成集合 \(\mathcal{S}\)，然後分成兩組：滿足當前這個問題（\(A[i] &gt; A[j]\)）的所有排列 \(\mathcal{S}_{yes}\)、或者是不滿足當前問題（\(A[i] \le A[j]\)）的所有排列 \(\mathcal{S}_{no}\)。這兩個排列集合是不相交的，換句話說，如果我是邪惡的餵輸入的人，我可以設計一組輸入，讓滿足所有到目前為止的排列們，恰好就是 \(|\mathcal{S}_{yes}\vert \) 或 \(|\mathcal{S}_{no}\vert \) 之間比較大的那一個。
-換句話說，在運氣最好的情況下，你的演算法也只能夠剔除一半的排列數。</p>
-<p>為了讓演算法完全正確，任何確定性的演算法，在 \(|\mathcal{S}\vert  &gt; 1\) 的任何時刻，演算法都不能輸出答案。
-否則的話，總是存在另兩種不同的輸入（\(1\) 到 \(n\) 的排列），經歷過一連串比較得到一模一樣的答案以後，演算法就停下來而且輸出了其中一個作為答案。此時，另一個輸入再餵進同樣的演算法，就會錯掉了。
-至少要經過幾次比較，才能讓滿足條件的排列集合 \(\mathcal{S}\) 變成唯一的排列呢？由於每一個問題只能讓排列數降低成一半，至少得經過 \(\ceil{\log n!}\) 次比較才行。</p>
-<p>於是我們就得到 \(\Omega(n\log n)\) 的比較排序下界啦！</p>
-<blockquote>
-<p>這個證明是少數幾個能夠簡單推論出的非顯然下界，我們應該要多多珍惜。
-一般來說，要證明時間複雜度下界，通常可以從資訊理論（Information Theory）的角度，加上決策樹來下手。</p>
-</blockquote>
+                        <a class="header" href="#謝耳排序法二" id="謝耳排序法二"><h1>謝耳排序法（二）</h1></a>
+<p>在前一篇文章裡面，我們定義了 \(h\)-排序（\(h\)-sorted）與步長序列（Gap Sequence），它們能帶給我們什麼樣的好處呢？
+如果我們換一個角度來觀察 \(h\)-排序：經過了 \(h\)-排序以後，對於陣列中任何一個位置 \(i\)，都有 \(A[i] \le A[i+h] \le A[i+2h]\le \cdots\)。</p>
+<a class="header" href="#一口氣考慮兩種-h" id="一口氣考慮兩種-h"><h2>一口氣考慮兩種 \(h\)</h2></a>
+<p>經過了 \(h_1\)-sorted 以及 \(h_2\)-sorted 以後，我們能不能對於，除了間隔 \(h_1\) 或是間隔 \(h_2\) 的整數倍以外，從某些陣列元素之間獲取一些大小關係呢？其實是可以的！
+比方說，我們利用 \(h_1\)-sorted 的性質寫下
+\[
+A[i] \le A[i+kh_1]\ \ \ \forall k\in\mathbb{N}
+\]
+然後再利用 \(h_2\)-sorted 性質寫下
+\[
+A[i+kh_1] \le A[i+kh_1 + \ell h_2]\ \ \ \forall k, \ell\in\mathbb{N}
+\]
+如果 \(h_1\) 與 \(h_2\) <strong>互質（coprime）</strong> 的話，透過下述經典的 <strong>湊郵票問題</strong>，我們可以發現每一個元素與 <strong>足夠遠</strong> 的資料其實都已經排好了大小順序！</p>
+<a class="header" href="#引理-34湊郵票問題" id="引理-34湊郵票問題"><h3>引理 34（湊郵票問題）</h3></a>
+<p>假設你有兩種郵票：第一種每張面額 \(a\) 元、第二種每張面額 \(b\) 元。
+如果 \(\gcd(a, b)=1\)，那麼對於任意整數 \(c\ge ab-a-b+1\)，我們保證能用若干張郵票，湊出恰好 \(c\) 元的郵資。</p>
+<a class="header" href="#引理-34-的證明" id="引理-34-的證明"><h3>引理 34 的證明</h3></a>
+<p>讓我們快速回憶一下關於最大公因數的 <a href="https://zh.wikipedia.org/wiki/%E8%B2%9D%E7%A5%96%E7%AD%89%E5%BC%8F">貝祖定理 Bézout's Lemma</a>：對於任意正整數 \(a, b\)，若 \(\gcd(a, b)=1\)，則存在整數 \(x, y\) 使得 \(ax+by=1\)。</p>
+<p>現在把等式兩邊同乘以命題中的 \(c\) 值：\(a(cx) + b(cy) = c\)。
+若 \(cx\) 與 \(cy\) 都是非負，那麼顯然我們用 \(cx\) 張面額為 \(a\) 的郵票、以及 \(cy\) 張面額為 \(b\) 的郵票，就可以湊出想要的值。
+否則的話，\(cx\) 與 \(cy\) 一正一負。
+我們不妨暫且假設 \(cx &gt; 0\)。此時我們把式子整理一下，把 \(cx\) 當中可以被 \(b\) 整除的部分通通搬到右邊去補那個負數。得到：
+\[ a(cx\bmod b) + b Y = c \]</p>
+<p>其中 \(Y = cy + a \floor{cx/b}\) 是一個整數。由於 \(cx\bmod b \ge 0\)，我們只要能夠證明 \(Y \ge 0\) 我們就能保證得到一種郵票的湊法了！
+注意到「\(b Y = c - a(cx\bmod b)\)」總是 \(b\) 的倍數，因此，只要 \(c - a(cx\bmod b) \ge -(b-1)\)，就能夠推得 \(Y \ge 0\)。</p>
+<p>根據 \(cx\bmod b\) 的定義、與我們對 \(c\) 的假設，可以得到
+\[
+\begin{aligned}
+bY &amp;= c - a(cx\bmod b) \\
+&amp; \ge c - a(b-1) \\
+&amp;\ge (ab - a - b + 1) - a(b-1) \\
+&amp;= -(b - 1)<br />
+\end{aligned}
+\]</p>
+<p>因此，\(Y \ge 0\)，得證。
+事實上，無論是否 \(cx &gt; 0\)，只要我們定義 \((cx\bmod b) = cx - b\floor{cx/b}\)，基本上該值就是非負。
+<span style="float:right">\(\square\)</span></p>
 <hr />
-<p>我們可以把這套方法，應用在其他類似的問題中。比方說，假設我們有兩個已經排好序的數列 \(A[1..n]\)、以及 \(B[1..m]\)。
-合併排序法的「合併」步驟，需要花費 \(O(n+m)\) 次比較。這個方法是最優的嗎？我們可以透過類似的分析，得到有趣的結論：</p>
-<a class="header" href="#定理-19" id="定理-19"><h3>定理 19</h3></a>
-<p>合併兩個已排序的序列 \(A[1..n]\) 以及 \(B[1..m]\)。假設 \(n\le m\)，那麼，任何確定性演算法，都至少需要 \(\Omega(n\log \frac{m}{n})\) 次比較才行。</p>
-<a class="header" href="#證明-1" id="證明-1"><h3>證明</h3></a>
-<p>合併完畢的結果，可以一一對應到把 \(n+m\) 個連續的格子進行黑白染色，使得恰好有 \(n\) 個黑色格子、有 \(m\) 個白色格子。其中黑色格子就依序對應了 \(A\) 陣列的內容、白色格子就依序對應了 \(B\) 陣列的內容。
-由於每一次比較也只能剔除一半的黑白染色方法，因此任何一個確定性演算法，在最壞情形下至少得進行 \(\ceil{\log {m+n\choose n}}\) 次比較。</p>
-<p>於是，在 \(n\le m\) 的時候，我們有
-\(\log {m+n\choose n}\ge \log \frac{m^n}{n!} \approx n\log m - n\log n = n\log \frac{m}{n}\)，得證。</p>
-<a class="header" href="#這個證明告訴我們什麼" id="這個證明告訴我們什麼"><h3>這個證明告訴我們什麼？</h3></a>
-<p>如果 \(n\) 與 \(m\) 比例懸殊（比方說極端情形 \(n=1\)），那麼，比方說，我們可以用「二分搜尋法」，對每一個 \(A\) 中的元素，找到適合插入在陣列 \(B\) 裡面的位置。有了這些位置以後，就可以在「不查看大部分資料內容」的情形下，合併兩個陣列了！
-雖然合併陣列的時間複雜度顯然得花 \(O(n+m)\) 的時間，但這些時間是大多花費在資料的搬移上，我們降低的是「進行決策」所花費的時間複雜度（從另一個角度來看，也可以說是減少可能產生的程序分支 branching！）</p>
+<p>有了引理 34 以後，對於同時滿足 \(a\)-sorted 與 \(b\)-sorted 的陣列來說，只要距離超過 \(c\ge ab-a-b+1\)，就能夠保證 \(A[i]\le A[i+c]\)。換句話說，如果要在此時進行插入排序法，每一個元素只要往前換最多 \(ab-a-b+1=\Theta(ab)\) 次即可！
+如果在此時對某個 \(h\) 進行 <code>h_sort</code>，那麼每一個元素只需要往前考慮 \(\Theta(ab/h)\) 次交換即可，於是有以下小結論：</p>
+<a class="header" href="#係理-35" id="係理-35"><h3>係理 35</h3></a>
+<p>令 \(h_1, h_2, h_3\in \mathbb{N}\)。假設 \(\gcd(h_1, h_2)=1\)。
+若陣列 \(A\) 是 \(h_1\)-sorted 且為 \(h_2\)-sorted，
+那麼欲將陣列以 <code>h_sort</code> 整理成 \(h_3\)-sorted，只需要 \(O(Nh_1h_2/h_3)\) 的時間。
+<span style="float:right">\(\square\)</span></p>
+<p>有了係理 35 以後，我們就能證明前一篇文章中最後提到的 \(O(N^{3/2})\) 時間排序。
+假設我們考慮的步長序列為 \(h=(1, 3, 7, 15, \ldots, 2^i-1, \ldots)\)。從最接近 \(N\) 的那個步長開始，逐步往下進行 <code>h_sort</code>。
+現在這個「<strong>每一項都是 2 的冪次減 1</strong>」的這個步長設定，就顯然變得比較有意義了：我們希望相鄰兩個步長總是互質的！</p>
+<a class="header" href="#定理-36" id="定理-36"><h3>定理 36</h3></a>
+<p>對於步長序列 \(h_i=2^i-1\)，謝耳排序法的時間複雜度為 \(O(N^{3/2})\)。</p>
+<a class="header" href="#定理-36-的證明" id="定理-36-的證明"><h3>定理 36 的證明</h3></a>
+<p>對於所有 \(h_i &gt; \sqrt{N}\) 的那些步長，使用引理 33 可以知道每一次時間複雜度正比於 \(N^2/h_i \le N^{3/2}\)，
+而且每一次放大兩倍，所以全部加起來的執行時間是 \(O(N^{3/2})\)。
+對於所有 \(h_i &lt; \sqrt{N}\) 的那些步長，在執行 \(h_i\)-sort 之前，由於已執行過 \(h_{i+1}\)-sort 與 \(h_{i+2}\)-sort。
+因此根據係理 35，進行 \(h_i\)-sort 的時間複雜度為 \(O(Nh_{i+1}h_{i+2}/h_i) = O(N2^i)\)，因此全部加起來時間正比於 \(N^{3/2}\)，得證。
+<span style="float:right">\(\square\)</span></p>
 <hr />
-<p>有沒有更快的排序演算法呢？這個取決於你的計算模型！
-我們現在使用的電腦，顯然比「兩兩互相比較」模型還要強得多。
-而事實上，是比較接近「隨機存取模型」的。因此，在不同計算模型的條件下，我們被允許對資料有更多種類的操作，或許存在著時間複雜度更低的演算法。</p>
-<a class="header" href="#推薦閱讀" id="推薦閱讀"><h3>推薦閱讀</h3></a>
-<ul>
-<li>德州農工(TAMU)投影片：http://faculty.cs.tamu.edu/klappi/csce411-f17/csce411-set3.pdf</li>
-</ul>
-<!-- * 偷推林軒田教授的資訊理論課程：https://www.csie.ntu.edu.tw/~htlin/course/iit19fall/ -->
+<p>我們下一篇要把這個湊郵票的問題發揮到極致，邁向 Pratt 版本的 \(O(N\log^2 N)\) 時間謝耳排序！</p>
+<a class="header" href="#備註" id="備註"><h3>備註</h3></a>
+<p>定理 36 的分析是緊的，從 Pratt 的論文<sup class="footnote-reference"><a href="#1">1</a></sup>中的第 22 頁構造了一組長度為 \(N\) 的輸入，
+它使用這個 2 的冪次減一版本的步長序列進行謝耳排序，至少要花 \(\Omega(N^{3/2})\) 的時間。
+Poonen<sup class="footnote-reference"><a href="#2">2</a></sup> 提供了更多的 Worst case examples。</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Vaughan R. Pratt, <em>Shellsort and Sorting Networks</em>, Ph.D Thesis, Stanford University, 1972. <a href="https://apps.dtic.mil/dtic/tr/fulltext/u2/740110.pdf">https://apps.dtic.mil/dtic/tr/fulltext/u2/740110.pdf</a></p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>Bjorn Poonen, <em>The Worst Case in Shellsort and Related Algorithms</em>, J. Algorithms, 1993. <a href="https://math.mit.edu/%7Epoonen/papers/shell.pdf">https://math.mit.edu/~poonen/papers/shell.pdf</a></p>
+</div>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../sorting/heapsort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../sorting/shell-sort1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="../sorting/minimum-comparison-sort.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -208,15 +234,11 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../sorting/heapsort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../sorting/shell-sort1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a href="../sorting/minimum-comparison-sort.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 
