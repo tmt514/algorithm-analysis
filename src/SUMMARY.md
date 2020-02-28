@@ -25,4 +25,5 @@
   * [02/14 - 偏序集排序（七）](sorting/poset-sort7.md)
   * [02/17 - 偏序集排序（八）](sorting/poset-sort8.md)
   * [02/21 - 偏序集排序（九）](sorting/poset-sort9.md)
-  * [02/25 - 謝耳排序法（一）](sorting/shell-sort1.md)
+  * [02/26 - 謝耳排序法（一）](sorting/shell-sort1.md)
+  * [02/29 - 謝耳排序法（二）](sorting/shell-sort2.md)

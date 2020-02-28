@@ -1,4 +1,4 @@
-# 謝耳排序法
+# 謝耳排序法（一）
 
 今天來講講插入排序的另一種特殊變化型。
 這一類特化是由 [Donald L. Shell](https://en.wikipedia.org/wiki/Donald_Shell) 在 1959 年提出[^2]。
