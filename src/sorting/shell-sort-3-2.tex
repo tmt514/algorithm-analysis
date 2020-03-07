@@ -1,0 +1,42 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{ifthen}
+\usepackage{concmath}
+
+\begin{document}
+\begin{tikzpicture}
+\foreach \x in {0,1,...,5} {
+\foreach \y in {0,1,...,8} {
+\pgfmathparse{int(pow(3,\x)*pow(2,\y))}
+\let\z=\pgfmathresult;
+\ifthenelse{\z < 500}{
+\node(A\x\y) at (\x*1.5+\y*1.5, \y*0.4-\x*0.7) {$\z$};
+\node at (\x*1.5+\y*1.5, \y*0.4-\x*0.7-0.3) {\scriptsize$\color{blue}{2^\y}\color{red}{3^\x}$};
+}{};
+}
+}
+\foreach \x in {0,1,...,5} {
+\foreach \y in {0,1,...,7} {
+\pgfmathparse{int(pow(3,\x)*pow(2,\y+1))}
+\let\nn=\pgfmathresult;
+\ifthenelse{\nn < 500}{
+\pgfmathparse{int(\y+1)}
+\let\z=\pgfmathresult;
+\draw (A\x\y) -- (A\x\z);
+}{};
+}
+}
+\foreach \x in {0,1,...,4} {
+\foreach \y in {0,1,...,8} {
+\pgfmathparse{int(pow(3,\x+1)*pow(2,\y))}
+\let\nn=\pgfmathresult;
+\ifthenelse{\nn < 500}{
+\pgfmathparse{int(\x+1)}
+\let\z=\pgfmathresult;
+\draw (A\x\y) -- (A\z\y);
+}{};
+}
+}
+\end{tikzpicture}
+\end{document}
