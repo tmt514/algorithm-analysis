@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>01/10 - 隨機快速排序法（一） - 演算法的分析與證明</title>
+        <title>03/08 - 謝耳排序法（三） - 演算法的分析與證明</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -80,7 +80,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html" class="active">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="../sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="../sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="../sorting/poset-sort6.html">02/07 - 偏序集排序（六）</a></li><li><a href="../sorting/poset-sort7.html">02/14 - 偏序集排序（七）</a></li><li><a href="../sorting/poset-sort8.html">02/17 - 偏序集排序（八）</a></li><li><a href="../sorting/poset-sort9.html">02/21 - 偏序集排序（九）</a></li><li><a href="../sorting/shell-sort1.html">02/26 - 謝耳排序法（一）</a></li><li><a href="../sorting/shell-sort2.html">02/28 - 謝耳排序法（二）</a></li><li><a href="../sorting/shell-sort3.html">03/08 - 謝耳排序法（三）</a></li></ol></li></ol>
+            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="../sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="../sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="../sorting/poset-sort6.html">02/07 - 偏序集排序（六）</a></li><li><a href="../sorting/poset-sort7.html">02/14 - 偏序集排序（七）</a></li><li><a href="../sorting/poset-sort8.html">02/17 - 偏序集排序（八）</a></li><li><a href="../sorting/poset-sort9.html">02/21 - 偏序集排序（九）</a></li><li><a href="../sorting/shell-sort1.html">02/26 - 謝耳排序法（一）</a></li><li><a href="../sorting/shell-sort2.html">02/28 - 謝耳排序法（二）</a></li><li><a href="../sorting/shell-sort3.html" class="active">03/08 - 謝耳排序法（三）</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -145,87 +145,74 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#隨機快速排序法" id="隨機快速排序法"><h1>隨機快速排序法</h1></a>
-<p>如果我們允許演算法使用隨機數產生器，那麼快速排序法會變得更有效率！</p>
-<!--
-## 隨機演算法
-一般的確定性（deterministic）演算法 \\(\mathcal{A}(x)\\)，可以把它看成一個函數，其參數就是輸入的資料。
-而一個使用隨機數產生器的演算法 \\(\mathcal{A}(x, r)\\)，我們可以把隨機數產生器的內容 \\(r\\) 當作「額外的輸入參數」。
-當演算法需要使用新的隨機數字的時候，就從這個額外的輸入抓取新的數字來使用。
-通常在討論隨機演算法的時候，我們會假設產生出來的隨機數字 \\(r\\) 的每一個位元（或每一個數值，依照計算模型而定）都是均勻分布的。
-## 期望複雜度
-在考慮使用隨機數產生器的時候，我們自然不會過於在意某幾個造成演算法執行時間過久的隨機數值。
-而此時演算法的執行時間 \\(T(n)\\)，就會變成一個隨機變數。分析的時候，我們傾向於找出這個隨機演算法的
--->
-<p>而引入隨機的方法很簡單：我們只要在快速排序法開始之前，隨機排列原本的輸入序列即可！</p>
-<pre><code class="language-cpp">void RandomizedQuickSort(data_t *A, int n) {
-  RandomPermute(A, n); // 隨機排列輸入的數值。
-  QuickSort(A, n);     // 呼叫原本的快速排序法。
-}
+                        <a class="header" href="#謝耳排序法三" id="謝耳排序法三"><h1>謝耳排序法（三）</h1></a>
+<p>利用湊郵票問題（引理 34、係理 35）的性質，我們可以專注在 \(2\)-sorted 和 \(3\)-sorted 上面，
+並且推廣它：</p>
+<a class="header" href="#引理-37" id="引理-37"><h3>引理 37</h3></a>
+<p>令 \(h\) 為一個正整數。若一個長度為 \(N\) 的陣列 \(A\) 已經滿足 \(2h\)-sorted 且為 \(3h\)-sorted，那麼將陣列整理成 \(h\)-sorted，僅需要花費 \(O(N)\) 的時間。</p>
+<a class="header" href="#引理-37-的證明" id="引理-37-的證明"><h3>引理 37 的證明</h3></a>
+<p>因為陣列已經是 \(2h\)-sorted 與 \(3h\)-sorted 的關係，
+如果要把它整理成 \(h\)-sorted，對於任何註標 \(i\)，我們只需要考慮 \(A[i]\) 與 \(A[i\pm h]\) 之間的大小關係就好。
+也就是說，對於 <code>h_sort</code> 的第二層進行插入排序的迴圈，總是跑了常數次就會停下來。因此整體時間複雜度是 \(O(N)\)。
+<span style="float:right">\(\square\)</span></p>
+<p>我們可以從引理 37 進行逆向思考：
+最終的目的是 \(1\)-sorted（也就是完全排序），為了讓「整理成 \(1\)-sorted」這件事情能在 \(O(N)\) 做到，我們首先必須要讓陣列變成 \(2\)-sorted 以及 \(3\)-sorted。
+為了讓「整理成 \(2\)-sorted」和「整理成 \(3\)-sorted」也都能在 \(O(N)\) 做到，我們必須讓陣列分別滿足 \(4\)-sorted、 \(6\)-sorted、以及 \(9\)-sorted。以 \(N=500\) 為例，依此類推我們可以畫出以下的關係圖：</p>
+<p><img src="./shell-sort-3-2.png" alt="" /></p>
+<p>只要按照上圖中所有出現過形如 \(2^a3^b &lt; N\) 的數字，從大到小依序 <code>h_sort</code> 一遍，就能夠保證每一次 <code>h_sort</code> 都僅花費 \(O(N)\) 的時間。
+總共有多少個這樣的數字呢？從這張「二維」表格看起來，我們能輕易得到一個上界：至多只有 \(\log_2N\log_3N=\Theta(\log^2N)\) 個數字滿足條件。因此，我們能得到以下結論：</p>
+<a class="header" href="#定理-38-pratt-1972" id="定理-38-pratt-1972"><h3>定理 38 [Pratt 1972]</h3></a>
+<p>使用所有形如 \(2^a3^b\) 的整數作為步長序列，其謝耳排序法的時間複雜度為 \(O(N\log^2 N)\)。
+<span style="float:right">\(\square\)</span></p>
+<a class="header" href="#題外話之一" id="題外話之一"><h3>題外話之一</h3></a>
+<p>假設步長序列的長度為 \(m\)，我們可以在 \(O(m)\) 時間內，產生出所有必要的步長，並且由小到大排好順序。
+方法與霍夫曼編碼、或合併排序法的合併概念相當類似：我們只要把所有產生出來的步長依照大小順序塞入兩個有序數列即可。</p>
+<pre><code class="language-cpp">// 由小到大找出所有小於 N、且質因數只有 2 和 3 的所有正整數。
+vector&lt;int&gt; generate_steps(int N) {
+  queue&lt;int&gt; twos = {2}, threes = {3};
+  vector&lt;int&gt; result = {1};
+  while (twos.front() &lt; N &amp;&amp; threes.front() &lt; N) {
+    // 每一次從兩個序列中挑選小的那個，放入序列，並拓展接下來的數字。
+    auto&amp; smaller_queue = (twos.front() &lt; threes.front()? twos : threes);
+    int new_step = smaller_queue.front();
+    smaller_queue.pop();
+    if (result.back() != smaller_queue.front()) {
+      result.push_back(new_step);
+      twos.push(new_step * 2);
+      threes.push(new_step * 3);
+    }
+  }
+  return result;
+};
 </code></pre>
-<a class="header" href="#定理-13" id="定理-13"><h2>定理 13</h2></a>
-<p>假設 <code>RandomPermute</code> 可以均勻地產生隨機排列，那麼隨機快速排序法的期望時間複雜度為 \(O(n\log n)\)。</p>
-<a class="header" href="#開始證明之前" id="開始證明之前"><h3>開始證明之前</h3></a>
-<p>大家還記不記得<a href="https://zh.wikipedia.org/wiki/%E6%9C%9F%E6%9C%9B%E5%80%BC">期望值的可加性</a>呢？簡單來說，如果有兩個隨機變數（Random Variable） \(X, Y\)，那麼 \(X+Y\) 的期望值便滿足
-\(\E[X+Y] = \E[X] + \E[Y]\)。我們把這個觀念應用在分析演算法的期望時間複雜度上面，可以把它想成：若這個演算法分成前後兩個步驟 \(A\) 和 \(B\)，兩個步驟的執行時間分別可以用隨機變數 \(T_A\) 與 \(T_B\) 表示。那麼整個演算法的執行時間就可以寫成 \(T_A+T_B\)，而這個隨機變數的期望值就可以利用期望值的可加性寫得 \(\E[T_A+T_B] = \E[T_A]+\E[T_B]\)。也就是說，我們只要分別分析兩個步驟的期望執行時間，加起來，就會等於整個演算法的期望時間複雜度了。</p>
-<a class="header" href="#證明一遞迴方法" id="證明一遞迴方法"><h3>證明一：遞迴方法</h3></a>
-<p>我們定義 \(f(n)\) 為對 \(n\) 筆資料進行隨機快速排序的期望時間複雜度。我們想證明的是 \(f(n) = O(n\log n)\)。
-首先，我們可以簡單地說明 \(f(n)\) 是非遞減的：多一筆資料，要排好序總得花更多力氣。
-根據快速排序法的定義，我們選擇第一個數字作為 pivot，然後把整組資料拆成小於、等於、大於三個部分，再把小於 pivot、大於 pivot 這兩組資料分別遞迴下去排序。</p>
-<p>由於一開始我們就把陣列中所有數字都打亂了，所以作為 pivot 的「第一個數字」其實是所有資料皆以均等的機率出現的。
-因此，我們有 \(1/n\) 的機率選中最小值作為 pivot、有 \(1/n\) 的機率選中次小值作為 pivot、依此類推。</p>
-<p>⚠️ 在這邊有一個小小的重點：遞迴時，資料已經被搬移過了。我們需要保證遞迴下去的時候，資料的分布仍然是「隨機」的：也就是說，對於該子問題，其資料排列在記憶體中任一順序機率均等。（證明可以使用條件機率或組合計數，這邊就略過啦）另一種繞過這個限制的方法，是修改隨機快速排序法，讓它每一次找 pivot 的當下，隨機選取一筆資料作為 pivot，分析起來是一樣的。</p>
-<p>於是，利用期望值的可加性，我們可以得到關於期望時間複雜度 \(f(n)\) 的遞迴關係式：</p>
-<p>\[
-f(n) \le \begin{cases}
-O(1) &amp; \text{ if } n \le 1,\\
-\Theta(n) + \frac{1}{n} \sum_{p=1}^n (f(p-1) + f(n-p)) &amp; \text{ otherwise.}
-\end{cases}
-\]</p>
-<p>要怎麼證明這個遞迴式解出來會是 \(O(n\log n)\) 呢？最好用的證明工具當然就是數學歸納法囉！</p>
-<a class="header" href="#數學歸納法" id="數學歸納法"><h4>數學歸納法</h4></a>
-<p>我們想要證明 \(f(n) = cn\log n\)，其中 \(c\) 是某個待定的常數。
-假設選定 pivot 以後比較與分組所花費的時間為 \(\le c_0n\)，於是遞迴式會長這樣：</p>
-<p>\[
-\begin{aligned}
-f(n) &amp;\le c_0 n + \frac{1}{n}\sum_{p=1}^n (f(p-1) + f(n-p))\\
-&amp;= c_0n + \frac{2}{n}\sum_{i=1}^{n-1} f(i)
-\end{aligned}
-\]</p>
-<p>假設對於所有的 \(n' &lt; n\)，都有 \(f(n') \le cn'\log n'\)。
-我們想證明 \(f(n) \le cn\log n\)。而證明的關鍵，是利用後面總和的部分想辦法榨出一個 \(-c_0n\)，消去前面的項。</p>
-<p>\[
-\begin{aligned}
-f(n) &amp;\le c_0n + \frac{2}{n}\sum_{i=1}^{n-1} f(i)\\
-&amp;= c_0n + \frac{2}{n}\left(\sum_{i=1}^{\floor{n/2}} f(i) + \sum_{i=\floor{n/2}+1}^{n-1} f(i)\right)\\
-&amp;\le c_0n + \frac{2}{n}\left(\sum_{i=1}^{\floor{n/2}} ci\log \frac{n}{2} + \sum_{i=\floor{n/2}+1}^{n-1} ci\log n\right)\\
-&amp;= c_0n + \frac{2}{n}\left(\sum_{i=1}^{\floor{n/2}} ci(\log n - 1) + \sum_{i=\floor{n/2}+1}^{n-1} ci\log n\right)\\
-&amp;= c_0n + \frac{2}{n}\left(\sum_{i=1}^{n-1} ci\log n - \sum_{i=1}^{\floor{n/2}} ci\right)\\
-&amp;= c_0n + c(n-1)\log n - c \frac{2}{n}\frac{\floor{n/2}(\floor{n/2}+1)}{2}\\
-&amp;\le c_0n + cn\log n - \frac{c}{4}n + (\frac{c}{4} - c\log n)\\
-&amp;\le c_0n + cn\log n - \frac{c}{4}n \\
-&amp;= cn\log n + (c_0 - \frac{c}{4})n
-\end{aligned}
-\]</p>
-<p>如果我們選取 \(c \ge 4c_0\)，那麼便能使式子成立，從而命題得證。</p>
 <hr />
-<p>數學歸納法是很繁瑣的，其他證明方法都不比數學歸納法來得繁瑣。<s>為什麼呢？因為布吉納法索（被拖走）</s></p>
-<p>下次我們來看看另外兩個利用期望值可加性和機率方法獲得的證明！</p>
+<a class="header" href="#題外話之二" id="題外話之二"><h3>題外話之二</h3></a>
+<p>關於謝耳排序法的正確性，其實用到了一個重要的非顯然性質，描述如下：</p>
+<a class="header" href="#性質-39" id="性質-39"><h3>性質 39</h3></a>
+<p>令 \(h\) 和 \(h'\) 為兩個正整數，且 \(h &gt; h'\)。假設陣列 \(A\) 已經是 \(h\)-sorted，那麼對較小的步長 \(h'\) 呼叫 <code>h_sort</code> 重新整理後，這個陣列仍然是 \(h\)-sorted 的。
+換句話說，在謝耳排序法之中，若一個陣列已經是 \(h\)-sorted 了，那麼它終生都是 \(h\)-sorted<sup class="footnote-reference"><a href="#1">1</a></sup>。
+各位朋友有興趣的話可以證明看看唷。</p>
+<hr />
+<p>在 Pratt 給出了非常漂亮的步長序列<sup class="footnote-reference"><a href="#2">2</a></sup>以後，大家對於步長序列的長度 \(m\) 與對應之謝耳演算法效率之間的權衡產生了興趣。
+為了突破 \(O(N\log^2N)\) 時間複雜度，勢必要縮短步長。
+明天我們先從 \(N^{1+O(1/\sqrt{m})}\) 的謝耳排序演算法開始，然後試圖解釋為什麼<strong>不存在</strong> \(O(N\log N)\) 的謝耳排序法。</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p><a href="https://www.ptt.cc/bbs/Tech_Job/M.1452353440.A.D62.html">一日XX 終身XX</a></p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>Vaughan R. Pratt, <em>Shellsort and Sorting Networks</em>, Ph.D Thesis, Stanford University, 1972. <a href="https://apps.dtic.mil/dtic/tr/fulltext/u2/740110.pdf">https://apps.dtic.mil/dtic/tr/fulltext/u2/740110.pdf</a></p>
+</div>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../sorting/quick-sort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../sorting/shell-sort2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="../sorting/randomized-quicksort2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -235,15 +222,11 @@ f(n) &amp;\le c_0n + \frac{2}{n}\sum_{i=1}^{n-1} f(i)\\
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../sorting/quick-sort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../sorting/shell-sort2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a href="../sorting/randomized-quicksort2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 
