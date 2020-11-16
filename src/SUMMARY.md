@@ -28,5 +28,5 @@
   * [02/26 - 謝耳排序法（一）](sorting/shell-sort1.md)
   * [02/28 - 謝耳排序法（二）](sorting/shell-sort2.md)
   * [03/08 - 謝耳排序法（三）](sorting/shell-sort3.md)
-  
+  * [10/12 - 謝耳排序法（四）](sorting/shell-sort4.md)  
   
