@@ -2,7 +2,7 @@
 
 嗨大家好久不見！為了讓大家快速回憶起謝耳排序法厲害的地方：利用兩個互質數字的次方，達到排序的目的。我們用這個定理作為開頭。
 
-### 定理 40
+### 定理 40 [Incerpi-Sedgewick 1985]
 
 給定一個長度 $m$，存在一個長度為 $m$ 的步長序列，使得謝耳排序法的時間複雜度為 $O(mN^{1 + O(1/\sqrt{m})})$。
 
@@ -48,3 +48,4 @@ $$a = N^{\Theta(1/\sqrt{m})}$$
 [3]: Jiang, Li, Vitányi. [Average-Case Complexity of Shellsort](https://arxiv.org/abs/cs/9901010) (ICALP 1999) [比較乾淨的版本](https://arxiv.org/pdf/cs/9906008.pdf)。
 
 [4]: Vitányi. [On The Average-Case Complexity of Shellsort.](https://arxiv.org/pdf/1501.06461.pdf) (RSA 2018)
+
