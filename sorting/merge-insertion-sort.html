@@ -1,15 +1,28 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="en" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>01/22 - 合併插入排序 - 演算法的分析與證明</title>
+        <title>20/01/22 - 合併插入排序 - 演算法的分析與證明</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
         <link rel="shortcut icon" href="../favicon.png">
+        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -17,8 +30,9 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -35,11 +49,11 @@
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "../";
-            var default_theme = "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -61,10 +75,13 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -80,44 +97,46 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../index.html">2020 新計劃</a></li><li><a href="../GLOSSARY.html">Glossary</a></li><li><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="../sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="../sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="../sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="../sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="../sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="../sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="../sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="../sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="../sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="../sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="../sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="../sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="../sorting/merge-insertion-sort.html" class="active">01/22 - 合併插入排序</a></li><li><a href="../sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="../sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="../sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="../sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="../sorting/poset-sort6.html">02/07 - 偏序集排序（六）</a></li><li><a href="../sorting/poset-sort7.html">02/14 - 偏序集排序（七）</a></li><li><a href="../sorting/poset-sort8.html">02/17 - 偏序集排序（八）</a></li><li><a href="../sorting/poset-sort9.html">02/21 - 偏序集排序（九）</a></li><li><a href="../sorting/shell-sort1.html">02/26 - 謝耳排序法（一）</a></li><li><a href="../sorting/shell-sort2.html">02/28 - 謝耳排序法（二）</a></li><li><a href="../sorting/shell-sort3.html">03/08 - 謝耳排序法（三）</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">2020 新計劃</a></li><li class="chapter-item expanded "><a href="../GLOSSARY.html">Glossary</a></li><li class="chapter-item expanded "><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../sorting/bubble-sort.html">20/01/02 - 泡沫排序法</a></li><li class="chapter-item expanded "><a href="../sorting/cocktail-sort.html">20/01/03 - 雞尾酒排序法</a></li><li class="chapter-item expanded "><a href="../sorting/inversions.html">20/01/04 - 逆序數對</a></li><li class="chapter-item expanded "><a href="../sorting/merge-sort.html">20/01/05 - 合併排序法</a></li><li class="chapter-item expanded "><a href="../sorting/in-place-mergesort.html">20/01/06 - 原地演算法</a></li><li class="chapter-item expanded "><a href="../sorting/quick-sort.html">20/01/08 - 快速排序法</a></li><li class="chapter-item expanded "><a href="../sorting/randomized-quicksort.html">20/01/10 - 隨機快速排序法（一）</a></li><li class="chapter-item expanded "><a href="../sorting/randomized-quicksort2.html">20/01/12 - 隨機快速排序法（二）</a></li><li class="chapter-item expanded "><a href="../sorting/randomized-quicksort3.html">20/01/13 - 隨機快速排序法（三）</a></li><li class="chapter-item expanded "><a href="../sorting/heapsort.html">20/01/16 - 堆積排序法</a></li><li class="chapter-item expanded "><a href="../sorting/comparison-based-sorting.html">20/01/18 - 比較排序下界</a></li><li class="chapter-item expanded "><a href="../sorting/minimum-comparison-sort.html">20/01/20 - 最少比較排序</a></li><li class="chapter-item expanded "><a href="../sorting/merge-insertion-sort.html" class="active">20/01/22 - 合併插入排序</a></li><li class="chapter-item expanded "><a href="../sorting/poset-efficiency.html">20/01/25 - 偏序集排序（一）</a></li><li class="chapter-item expanded "><a href="../sorting/linear-extensions.html">20/01/26 - 偏序集排序（二）</a></li><li class="chapter-item expanded "><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">20/01/27 - 偏序集排序（三）</a></li><li class="chapter-item expanded "><a href="../sorting/chain-polytope-and-graph-entropy.html">20/02/01 - 偏序集排序（四）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort5.html">20/02/03 - 偏序集排序（五）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort6.html">20/02/07 - 偏序集排序（六）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort7.html">20/02/14 - 偏序集排序（七）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort8.html">20/02/17 - 偏序集排序（八）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort9.html">20/02/21 - 偏序集排序（九）</a></li><li class="chapter-item expanded "><a href="../sorting/shell-sort1.html">20/02/26 - 謝耳排序法（一）</a></li><li class="chapter-item expanded "><a href="../sorting/shell-sort2.html">20/02/28 - 謝耳排序法（二）</a></li><li class="chapter-item expanded "><a href="../sorting/shell-sort3.html">20/03/08 - 謝耳排序法（三）</a></li><li class="chapter-item expanded "><a href="../sorting/shell-sort4.html">20/10/12 - 謝耳排序法（四）</a></li></ol></li><li class="chapter-item expanded "><a href="../dynamic-graph/index.html">動態圖論資料結構</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dynamic-graph/connectivity/index.html">無向圖的連通問題 Connectivity</a></li><li class="chapter-item expanded "><a href="../dynamic-graph/reachability/index.html">有向圖的連通問題 Reachability</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
 
-                        <h1 class="menu-title">演算法的分析與證明</h1> 
+                    <h1 class="menu-title">演算法的分析與證明</h1>
 
-                        <div class="right-buttons">
-                            <a href="../print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                            
-                        </div>
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -145,11 +164,11 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#合併插入排序" id="合併插入排序"><h1>合併插入排序</h1></a>
+                        <h1><a class="header" href="#合併插入排序" id="合併插入排序">合併插入排序</a></h1>
 <p>Lester Ford, Jr. 以及 Selmer Johnson 把 <a href="https://www.uidaho.edu/engr/departments/ece/our-people/emeriti/howard-demuth">Howard B. Demuth</a> 的 1957 年博士論文裡面提到的 5 筆資料排序方法進行推廣，最終獲得一個用謹慎的方法試圖減少比較次數的排序方法──<strong>合併插入排序 Merge Insertion Sort</strong>。
 這個排序法的名字是高德納教授（Donald Knuth）在他撰寫的《The Art of Computer Programming》裡面取的。
 附帶一提，最近 MIT 教授 Lex Fridman 釋出了一段與 Knuth 的訪談<sup class="footnote-reference"><a href="#1">1</a></sup>：https://www.youtube.com/watch?v=2BdBfsXbST8 大家有興趣可以聽聽看。</p>
-<a class="header" href="#如何避免大量的天花板" id="如何避免大量的天花板"><h2>如何避免大量的天花板</h2></a>
+<h2><a class="header" href="#如何避免大量的天花板" id="如何避免大量的天花板">如何避免大量的天花板</a></h2>
 <p>演算法的核心概念是這樣的：如果看到一個長度為 \(2^k-1\) 元素的序列，那麼此時將一個新的元素插入其中，是最不會浪費「資訊」的。因為資訊理論下界 \(\ceil{\log_2 ((2^k-1)+1)}\) 無論有沒有天花板，其數值都是一樣的，得花費恰巧 \(k\) 次才能夠找出新元素的落點。</p>
 <p>如果長度不到 \(2^k-1\) 的序列怎麼辦？盡量讓這件事情不要發生就好了！
 乍看之下很困難啊──但是 Ford-Johnson <strong>盡量</strong>做到了，最重要的想法可以透過下面這張圖來傳達：</p>
@@ -157,7 +176,7 @@
 <p>假設我們能夠經過若干次比較之後，把所有元素的大小關係描述成上面這張圖。其中 \(x\to y\) 代表經過比較以後，我們得出了 \(x &lt; y\) 這項結論。
 上圖黃色框線內共有 7 個元素，若我們想將紅色元素插入上面長鏈中，此時恰好達到資訊理論下界的 \(\log_2(7+1) = 3\) 次。因此可以得到結論是：此時優先將紅色元素插入長鏈、再將左邊的藍色元素插入長鏈。其需要的比較次數至多是 \(\log_2(7+1) + \log_2(7+1) = 6\) 次。相反地，若我們先插入藍色元素，再插入紅色元素，在最壞情形下我們得花費 \(\log_2(7+1) + \ceil{\log_2(8+1)} = 7\) 次比較才能達到效果。</p>
 <p>行文至此，不難發現，如果我們有辦法把輸入資料的大小關係，表達成上圖這種牙刷形狀，再依照最不浪費比較次數的方式進行二分插入，說不定可以得到較佳（比較次數較小）的排序演算法。</p>
-<a class="header" href="#合併插入排序的第一步" id="合併插入排序的第一步"><h2>合併插入排序的第一步</h2></a>
+<h2><a class="header" href="#合併插入排序的第一步" id="合併插入排序的第一步">合併插入排序的第一步</a></h2>
 <p>要怎麼生出牙刷呢？
 首先，在分而治之的部分，我們先將資料隨意地兩兩分成一組，並且花費 \(\floor{n/2}\) 次比較。
 如果有多出來的元素，就先放在旁邊吧。
@@ -191,10 +210,10 @@ G(\ceil{n/2}) &amp;= \sum_{i=1}^{k-1} i (t_i-t_{i-1}) + k(\ceil{n/2} - t_{k-1}) 
 \]</p>
 <p>令 \(w_k = t_0+t_1+\cdots + t_{k-1} = \floor{2^{k+1}/3}\)。
 現在來證明今天最重要的一個結論：</p>
-<a class="header" href="#引理-22" id="引理-22"><h3>引理 22</h3></a>
+<h3><a class="header" href="#引理-22" id="引理-22">引理 22</a></h3>
 <p>\( F(n) - F(n-1) = k \) 若且唯若 \(w_k &lt; n \le w_{k+1}\)。</p>
-<a class="header" href="#證明" id="證明"><h3>證明</h3></a>
-<p>我們可以用數學歸納法。Base Case 很顯然，所以就不寫了。Inductive Case 的部分可以利用 \(n\) 的奇偶性分別討論：如果 \(n\) 是偶數，那麼 \(F(n)-F(n-1) = 1+F(n/2)-F(n/2-1)\)，後半部的數值等於 \(k-1\) 若且唯若 \(w_{k-1} &lt; \floor{n/2} \le w_{k}\)。而由 \(w_k\) 之定義可知</p>
+<h3><a class="header" href="#證明" id="證明">證明</a></h3>
+<p>我們可以用數學歸納法。Base Case 很顯然，所以就不寫了。Inductive Case 的部分可以利用 \(n\) 的奇偶性分別討論：如果 \(n\) 是偶數，那麼 \(F(n)-F(n-1) = 1+F(n/2)-F(n/2-1)\)，後半部的數值等於 \(k-1\) 若且唯若 \(w_{k-1} &lt; \floor{n/2} \le w_{k}\)。而由 \(w_k\) 之定義可知 </p>
 <p>\[
 \begin{aligned}
 &amp;&amp; w_{k-1} &amp; &lt; &amp; n/2 &amp; \le   w_{k}  &amp; \text{（} n \text{ 是偶數。）}\\
@@ -222,7 +241,7 @@ A(n) = \ceil{\log n!}  \approx n\log_2 n - 1.443 n + O(\log_2 n)
 B(n) = \sum_{i=1}^n \ceil{\log i} \approx n\log_2 n - 0.915 n + O(\log_2 n)
 \]</p>
 <p>不難發現 \(F(n)\) 比起二分插入法得到的比較次數 \(B(n)\)，更接近資訊理論下界 \(A(n)\) 了呢！</p>
-<a class="header" href="#結論" id="結論"><h3>結論</h3></a>
+<h3><a class="header" href="#結論" id="結論">結論</a></h3>
 <p>後話就是，在 1979 年 Manacher<sup class="footnote-reference"><a href="#3">3</a></sup> 用了混合方法，把 Hwang-Lin<sup class="footnote-reference"><a href="#5">4</a></sup> 的兩序列合併演算法考慮進去並且在某些情形下改良，同時改進了 Ford-Johnson 演算法，並且證明了<strong>存在無窮多個</strong> \(n\)，其最少比較排序的比較次數比 \(F(n)\) 嚴格來得小，該方法贏過 FJ 的最小值是 \(n=189\)。然後到了 1985 年 Bui 和 Thanh<sup class="footnote-reference"><a href="#4">5</a></sup> 再次修改了 Manacher 演算法，得出在絕大多數的 \(n\) 時，FJ 演算法不是最優的。而且也得出了最小反例出現在 \(n=47\)（到 2007 年為止，Peczarski<sup class="footnote-reference"><a href="#6">6</a></sup> 聲稱 FJ 演算法在 \(n&lt;47\) 的時候是最佳解，Peczarski 證明了利用某一類型的分而治之演算法無法在 \(n\le 46\) 的時候贏過 FJ 演算法。）</p>
 <p>然後 \(F(n)\) 其實有封閉形式（Closed Form，俗稱公式解）：
 \[
@@ -231,7 +250,7 @@ F(n) = n\ceil{\log_2 \frac{3}{4} n} + \floor{\frac13 2^{\floor{\log_2 6n}}} + \f
 <p>最後，大家要多多刷牙喔 ^_&lt;。</p>
 <hr />
 <p>合併插入排序法中間的分析，利用到了「如何從排序到一半的東西，利用盡量少比較次數完成排序」的特性。我們是否可以把這個概念推廣一下呢？排序到一半的東西，可以被表示成一個叫做 <strong>偏序集（Partial Ordered Set）</strong> 的東西。我們能否從偏序集獲得一些排序知識呢？</p>
-<a class="header" href="#推薦閱讀" id="推薦閱讀"><h3>推薦閱讀</h3></a>
+<h3><a class="header" href="#推薦閱讀" id="推薦閱讀">推薦閱讀</a></h3>
 <ul>
 <li>維基百科：https://en.wikipedia.org/wiki/Merge-insertion_sort</li>
 <li>Ford-Johnson 演算法當年的論文：https://www.jstor.org/stable/pdf/2308750.pdf</li>
@@ -278,13 +297,13 @@ F(n) = n\ceil{\log_2 \frac{3}{4} n} + \floor{\frac13 2^{\floor{\log_2 6n}}} + \f
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../sorting/minimum-comparison-sort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../sorting/minimum-comparison-sort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../sorting/poset-efficiency.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../sorting/poset-efficiency.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -310,6 +329,14 @@ F(n) = n\ceil{\log_2 \frac{3}{4} n} + \floor{\frac13 2^{\floor{\log_2 6n}}} + \f
                 ga('create', 'UA-68887724-4', 'auto');
                 ga('send', 'pageview');
             }
+        </script>
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
         </script>
         
 

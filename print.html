@@ -1,15 +1,30 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="en" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>演算法的分析與證明</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
         <link rel="shortcut icon" href="favicon.png">
+        
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
@@ -17,8 +32,9 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
@@ -35,11 +51,11 @@
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
-            var default_theme = "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -61,10 +77,13 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -80,44 +99,46 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="index.html">2020 新計劃</a></li><li><a href="GLOSSARY.html">Glossary</a></li><li><a href="sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li><a href="sorting/bubble-sort.html">01/02 - 泡沫排序法</a></li><li><a href="sorting/cocktail-sort.html">01/03 - 雞尾酒排序法</a></li><li><a href="sorting/inversions.html">01/04 - 逆序數對</a></li><li><a href="sorting/merge-sort.html">01/05 - 合併排序法</a></li><li><a href="sorting/in-place-mergesort.html">01/06 - 原地演算法</a></li><li><a href="sorting/quick-sort.html">01/08 - 快速排序法</a></li><li><a href="sorting/randomized-quicksort.html">01/10 - 隨機快速排序法（一）</a></li><li><a href="sorting/randomized-quicksort2.html">01/12 - 隨機快速排序法（二）</a></li><li><a href="sorting/randomized-quicksort3.html">01/13 - 隨機快速排序法（三）</a></li><li><a href="sorting/heapsort.html">01/16 - 堆積排序法</a></li><li><a href="sorting/comparison-based-sorting.html">01/18 - 比較排序下界</a></li><li><a href="sorting/minimum-comparison-sort.html">01/20 - 最少比較排序</a></li><li><a href="sorting/merge-insertion-sort.html">01/22 - 合併插入排序</a></li><li><a href="sorting/poset-efficiency.html">01/25 - 偏序集排序（一）</a></li><li><a href="sorting/linear-extensions.html">01/26 - 偏序集排序（二）</a></li><li><a href="sorting/order-polytope-and-ehrhart-polynomial.html">01/27 - 偏序集排序（三）</a></li><li><a href="sorting/chain-polytope-and-graph-entropy.html">02/01 - 偏序集排序（四）</a></li><li><a href="sorting/poset-sort5.html">02/03 - 偏序集排序（五）</a></li><li><a href="sorting/poset-sort6.html">02/07 - 偏序集排序（六）</a></li><li><a href="sorting/poset-sort7.html">02/14 - 偏序集排序（七）</a></li><li><a href="sorting/poset-sort8.html">02/17 - 偏序集排序（八）</a></li><li><a href="sorting/poset-sort9.html">02/21 - 偏序集排序（九）</a></li><li><a href="sorting/shell-sort1.html">02/26 - 謝耳排序法（一）</a></li><li><a href="sorting/shell-sort2.html">02/28 - 謝耳排序法（二）</a></li><li><a href="sorting/shell-sort3.html">03/08 - 謝耳排序法（三）</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">2020 新計劃</a></li><li class="chapter-item expanded "><a href="GLOSSARY.html">Glossary</a></li><li class="chapter-item expanded "><a href="sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="sorting/bubble-sort.html">20/01/02 - 泡沫排序法</a></li><li class="chapter-item expanded "><a href="sorting/cocktail-sort.html">20/01/03 - 雞尾酒排序法</a></li><li class="chapter-item expanded "><a href="sorting/inversions.html">20/01/04 - 逆序數對</a></li><li class="chapter-item expanded "><a href="sorting/merge-sort.html">20/01/05 - 合併排序法</a></li><li class="chapter-item expanded "><a href="sorting/in-place-mergesort.html">20/01/06 - 原地演算法</a></li><li class="chapter-item expanded "><a href="sorting/quick-sort.html">20/01/08 - 快速排序法</a></li><li class="chapter-item expanded "><a href="sorting/randomized-quicksort.html">20/01/10 - 隨機快速排序法（一）</a></li><li class="chapter-item expanded "><a href="sorting/randomized-quicksort2.html">20/01/12 - 隨機快速排序法（二）</a></li><li class="chapter-item expanded "><a href="sorting/randomized-quicksort3.html">20/01/13 - 隨機快速排序法（三）</a></li><li class="chapter-item expanded "><a href="sorting/heapsort.html">20/01/16 - 堆積排序法</a></li><li class="chapter-item expanded "><a href="sorting/comparison-based-sorting.html">20/01/18 - 比較排序下界</a></li><li class="chapter-item expanded "><a href="sorting/minimum-comparison-sort.html">20/01/20 - 最少比較排序</a></li><li class="chapter-item expanded "><a href="sorting/merge-insertion-sort.html">20/01/22 - 合併插入排序</a></li><li class="chapter-item expanded "><a href="sorting/poset-efficiency.html">20/01/25 - 偏序集排序（一）</a></li><li class="chapter-item expanded "><a href="sorting/linear-extensions.html">20/01/26 - 偏序集排序（二）</a></li><li class="chapter-item expanded "><a href="sorting/order-polytope-and-ehrhart-polynomial.html">20/01/27 - 偏序集排序（三）</a></li><li class="chapter-item expanded "><a href="sorting/chain-polytope-and-graph-entropy.html">20/02/01 - 偏序集排序（四）</a></li><li class="chapter-item expanded "><a href="sorting/poset-sort5.html">20/02/03 - 偏序集排序（五）</a></li><li class="chapter-item expanded "><a href="sorting/poset-sort6.html">20/02/07 - 偏序集排序（六）</a></li><li class="chapter-item expanded "><a href="sorting/poset-sort7.html">20/02/14 - 偏序集排序（七）</a></li><li class="chapter-item expanded "><a href="sorting/poset-sort8.html">20/02/17 - 偏序集排序（八）</a></li><li class="chapter-item expanded "><a href="sorting/poset-sort9.html">20/02/21 - 偏序集排序（九）</a></li><li class="chapter-item expanded "><a href="sorting/shell-sort1.html">20/02/26 - 謝耳排序法（一）</a></li><li class="chapter-item expanded "><a href="sorting/shell-sort2.html">20/02/28 - 謝耳排序法（二）</a></li><li class="chapter-item expanded "><a href="sorting/shell-sort3.html">20/03/08 - 謝耳排序法（三）</a></li><li class="chapter-item expanded "><a href="sorting/shell-sort4.html">20/10/12 - 謝耳排序法（四）</a></li></ol></li><li class="chapter-item expanded "><a href="dynamic-graph/index.html">動態圖論資料結構</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="dynamic-graph/connectivity/index.html">無向圖的連通問題 Connectivity</a></li><li class="chapter-item expanded "><a href="dynamic-graph/reachability/index.html">有向圖的連通問題 Reachability</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
 
-                        <h1 class="menu-title">演算法的分析與證明</h1> 
+                    <h1 class="menu-title">演算法的分析與證明</h1>
 
-                        <div class="right-buttons">
-                            <a href="print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                            
-                        </div>
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -145,12 +166,12 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#演算法的分析與證明" id="演算法的分析與證明"><h1>演算法的分析與證明</h1></a>
+                        <h1><a class="header" href="#演算法的分析與證明" id="演算法的分析與證明">演算法的分析與證明</a></h1>
 <p>這個是卡恩的 2020 新計劃。總之就是每天要寫一點東西這樣。
 預計要放的東西，是在於演算法的正確性和時間複雜度的證明。
 希望每一天的閱讀份量不超過五分鐘，然後有機會的話想順便偷渡一些這陣子看到的有趣演算法～</p>
-<a class="header" href="#符號與說明" id="符號與說明"><h1>符號與說明</h1></a>
-<a class="header" href="#時間複雜度" id="時間複雜度"><h2>時間複雜度</h2></a>
+<h1><a class="header" href="#符號與說明" id="符號與說明">符號與說明</a></h1>
+<h2><a class="header" href="#時間複雜度" id="時間複雜度">時間複雜度</a></h2>
 <p>對於一個演算法，考慮所有大小為 \(n\) 的輸入，若它的最差執行時間為 \(T(n)\)，那麼我們便說該演算法的最差時間複雜度為 \(T(n)\)。
 通常我們會關心在 \(n\) 趨近無窮大的時候，這個函數的成長幅度為何。因此我們通常關心的是 \(T(n)\) 的漸進時間複雜度（Asymptotic Time Complexity）。
 常見的漸進符號如下：</p>
@@ -159,67 +180,67 @@
 <li>Big-\(\Omega\)：我們說一個演算法的執行時間為 \(\Omega(f(n))\)，若存在一個常數 \(c &gt; 0\)、以及一個 \(n_0\in\mathbb{N}\)，使得對所有的 \(n &gt; n_0\) 皆有 \(T(n) \ge cf(n)\)。</li>
 <li>Big-\(\Theta\)：我們說一個演算法的執行時間為 \(\Theta(f(n))\)，若存在兩個常數 \(c_1, c_2 &gt; 0\)、以及一個 \(n_0\in\mathbb{N}\)，使得對於任意的 \(n &gt; n_0\) 都有 \(c_1f(n) \le T(n) \le c_2f(n)\)。</li>
 </ul>
-<a class="header" href="#計算模型" id="計算模型"><h2>計算模型</h2></a>
+<h2><a class="header" href="#計算模型" id="計算模型">計算模型</a></h2>
 <p>最簡單的說法，是指計算模型嚴謹地定義了「\(O(1)\) 的時間可以做什麼」、以及「資料的存取方式」。</p>
-<a class="header" href="#misc" id="misc"><h2>Misc</h2></a>
+<h2><a class="header" href="#misc" id="misc">Misc</a></h2>
 <ul>
 <li>身為一個資訊系理論宅，我們使用的對數函數 \(\log\)，在沒有額外說明的情形下，一律以 2 為底。</li>
 </ul>
-<a class="header" href="#排序-sorting" id="排序-sorting"><h1>排序 Sorting</h1></a>
+<h1><a class="header" href="#排序-sorting" id="排序-sorting">排序 Sorting</a></h1>
 <p>排序是整理資料中一種最直接的方式。</p>
-<a class="header" href="#基於比較的排序-comparison-based-sorting" id="基於比較的排序-comparison-based-sorting"><h2>基於比較的排序 Comparison Based Sorting</h2></a>
-<table><thead><tr><th> 演算法 </th><th> 時間複雜度 </th><th> 空間複雜度 </th></tr></thead><tbody>
-<tr><td> 泡沫排序法 </td><td> 最差 \(O(n^2)\), \(O(n + n\tau)\) </td><td> 最差 \(O(1)\) </td></tr>
-<tr><td> 雞尾酒排序法 </td><td> 最差 \(O(n^2)\), \(O(n + n\sqrt{\tau})\) </td><td> 最差 \(O(1)\) </td></tr>
-<tr><td> 插入排序法 </td><td> 最差 \(O(n^2)\), \(O(n + \tau)\) </td><td> 最差 \(O(1)\) </td></tr>
-<tr><td> 選擇排序法 </td><td> 最差 \(O(n^2)\) </td><td> 最差 \(O(1)\) </td></tr>
-<tr><td> 合併排序法 </td><td> 最差 \(O(n\log n)\) </td><td> 最差 \(O(n)\) </td></tr>
-<tr><td> 原地合併排序 </td><td> 最差 \(O(n\log n)\) </td><td> 最差 \(O(1)\) </td></tr>
-<tr><td> 快速排序法 - 第一個數字 pivot </td><td> 最差 \(O(n^2)\) </td><td> 最差 \(O(d) = O(n)\) </td></tr>
-<tr><td> 快速排序法 - 隨機選 pivot </td><td> 期望 \(O(n\log n)\) </td><td> 期望 \(O(d) = O(\log n)\) </td></tr>
-<tr><td> 快速排序法 - 找中位數 pivot </td><td> 最差 \(O(n\log n)\) </td><td> 最差 \(O(d) = O(\log n)\) </td></tr>
-<tr><td> 原地快速排序 </td><td> 最差 \(O(n^2)\) </td><td> 最差 \(O(1)\) </td></tr>
-<tr><td> 堆積排序法 </td><td> 最差 \(O(n\log n)\) </td><td> 最差 \(O(1)\) </td></tr>
+<h2><a class="header" href="#基於比較的排序-comparison-based-sorting" id="基於比較的排序-comparison-based-sorting">基於比較的排序 Comparison Based Sorting</a></h2>
+<table><thead><tr><th>演算法</th><th>時間複雜度</th><th>空間複雜度</th></tr></thead><tbody>
+<tr><td>泡沫排序法</td><td>最差 \(O(n^2)\), \(O(n + n\tau)\)</td><td>最差 \(O(1)\)</td></tr>
+<tr><td>雞尾酒排序法</td><td>最差 \(O(n^2)\), \(O(n + n\sqrt{\tau})\)</td><td>最差 \(O(1)\)</td></tr>
+<tr><td>插入排序法</td><td>最差 \(O(n^2)\), \(O(n + \tau)\)</td><td>最差 \(O(1)\)</td></tr>
+<tr><td>選擇排序法</td><td>最差 \(O(n^2)\)</td><td>最差 \(O(1)\)</td></tr>
+<tr><td>合併排序法</td><td>最差 \(O(n\log n)\)</td><td>最差 \(O(n)\)</td></tr>
+<tr><td>原地合併排序</td><td>最差 \(O(n\log n)\)</td><td>最差 \(O(1)\)</td></tr>
+<tr><td>快速排序法 - 第一個數字 pivot</td><td>最差 \(O(n^2)\)</td><td>最差 \(O(d) = O(n)\)</td></tr>
+<tr><td>快速排序法 - 隨機選 pivot</td><td>期望 \(O(n\log n)\)</td><td>期望 \(O(d) = O(\log n)\)</td></tr>
+<tr><td>快速排序法 - 找中位數 pivot</td><td>最差 \(O(n\log n)\)</td><td>最差 \(O(d) = O(\log n)\)</td></tr>
+<tr><td>原地快速排序</td><td>最差 \(O(n^2)\)</td><td>最差 \(O(1)\)</td></tr>
+<tr><td>堆積排序法</td><td>最差 \(O(n\log n)\)</td><td>最差 \(O(1)\)</td></tr>
 </tbody></table>
-<a class="header" href="#註記" id="註記"><h3>註記</h3></a>
+<h3><a class="header" href="#註記" id="註記">註記</a></h3>
 <ul>
 <li>\(n\) 代表輸入的資料量（序列元素個數）。</li>
 <li>\(\tau\) 代表輸入序列的逆序數對個數。</li>
 <li>\(d\) 代表遞迴深度。</li>
 </ul>
-<a class="header" href="#資料不改變存取位置的排序-data-oblivious-sorting" id="資料不改變存取位置的排序-data-oblivious-sorting"><h2>資料不改變存取位置的排序 Data-Oblivious Sorting</h2></a>
-<table><thead><tr><th> 演算法 </th><th> 時間複雜度 </th><th> 排序網路深度 </th></tr></thead><tbody>
-<tr><td> Shell 排序法 </td><td> 最差 \(O(n^2)\) </td><td> \(O(n)\) </td></tr>
-<tr><td> Shell 排序法 - Pratt 版本 </td><td> 最差 \(O(n\log^2 n)\) </td><td> \(O(\log^2 n)\) </td></tr>
-<tr><td> Batcher 雙調排序法 </td><td> 最差 \(O(n\log^2 n)\) </td><td> \(O(\log^2 n)\) </td></tr>
-<tr><td> 奇偶合併排序 </td><td> 最差 \(O(n\log^2 n)\) </td><td> \(O(\log^2 n)\) </td></tr>
-<tr><td> Ajtai-Komlós-Szemerédi 排序網路 </td><td> 最差 \(O(n\log n)\) </td><td> \(O(\log n)\) </td></tr>
-<tr><td> Goodrich 排序網路 </td><td> 最差 \(O(n\log n)\) </td><td> \(O(n\log n)\) </td></tr>
+<h2><a class="header" href="#資料不改變存取位置的排序-data-oblivious-sorting" id="資料不改變存取位置的排序-data-oblivious-sorting">資料不改變存取位置的排序 Data-Oblivious Sorting</a></h2>
+<table><thead><tr><th>演算法</th><th>時間複雜度</th><th>排序網路深度</th></tr></thead><tbody>
+<tr><td>Shell 排序法</td><td>最差 \(O(n^2)\)</td><td>\(O(n)\)</td></tr>
+<tr><td>Shell 排序法 - Pratt 版本</td><td>最差 \(O(n\log^2 n)\)</td><td>\(O(\log^2 n)\)</td></tr>
+<tr><td>Batcher 雙調排序法</td><td>最差 \(O(n\log^2 n)\)</td><td>\(O(\log^2 n)\)</td></tr>
+<tr><td>奇偶合併排序</td><td>最差 \(O(n\log^2 n)\)</td><td>\(O(\log^2 n)\)</td></tr>
+<tr><td>Ajtai-Komlós-Szemerédi 排序網路</td><td>最差 \(O(n\log n)\)</td><td>\(O(\log n)\)</td></tr>
+<tr><td>Goodrich 排序網路</td><td>最差 \(O(n\log n)\)</td><td>\(O(n\log n)\)</td></tr>
 </tbody></table>
-<a class="header" href="#基於資料數值的排序-numbers-sorting" id="基於資料數值的排序-numbers-sorting"><h2>基於資料數值的排序 Numbers Sorting</h2></a>
-<table><thead><tr><th> 演算法 </th><th> 時間複雜度 </th><th> 備註 </th></tr></thead><tbody>
-<tr><td> 計數排序法 </td><td> \(O(n+M)\) </td><td> 正整數資料範圍 \(O(M)\) </td></tr>
-<tr><td> \(k\)-進制桶子排序法 </td><td> \(O((n+k)\log_k \frac{1}{\epsilon})\) </td><td> 最相近兩數之相對誤差 \(\epsilon = \frac{\min_{i\neq j} \vert A[i]-A[j]\vert }{\max_i \vert A[i]\vert }\) </td></tr>
-<tr><td> \(k\)-進制基數排序法 </td><td> \(O((n+k)\log_k M)\) </td><td> 正整數資料範圍 \(O(M)\) </td></tr>
+<h2><a class="header" href="#基於資料數值的排序-numbers-sorting" id="基於資料數值的排序-numbers-sorting">基於資料數值的排序 Numbers Sorting</a></h2>
+<table><thead><tr><th>演算法</th><th>時間複雜度</th><th>備註</th></tr></thead><tbody>
+<tr><td>計數排序法</td><td>\(O(n+M)\)</td><td>正整數資料範圍 \(O(M)\)</td></tr>
+<tr><td>\(k\)-進制桶子排序法</td><td>\(O((n+k)\log_k \frac{1}{\epsilon})\)</td><td>最相近兩數之相對誤差 \(\epsilon = \frac{\min_{i\neq j} \vert A[i]-A[j]\vert }{\max_i \vert A[i]\vert }\)</td></tr>
+<tr><td>\(k\)-進制基數排序法</td><td>\(O((n+k)\log_k M)\)</td><td>正整數資料範圍 \(O(M)\)</td></tr>
 </tbody></table>
-<a class="header" href="#二進位整數排序-sorting-in-word-ram-model" id="二進位整數排序-sorting-in-word-ram-model"><h2>二進位整數排序 Sorting in Word RAM Model</h2></a>
-<table><thead><tr><th> 演算法 </th><th> 時間複雜度 </th><th> 備註 </th></tr></thead><tbody>
-<tr><td> van Emde Boas 樹 </td><td> \(O(n\log\log M)\) </td><td> 空間複雜度 \(O(M)\) </td></tr>
-<tr><td> X-fast 字母樹 </td><td> \(O(n\log\log M)\) </td><td> 空間複雜度 \(O(n\log M)\) </td></tr>
-<tr><td> Y-fast 字母樹 </td><td> \(O(n\log\log M)\) </td><td> 空間複雜度 \(O(n)\) </td></tr>
-<tr><td> Fusion Tree </td><td> \(O(n\log n/\log\log n)\) </td><td> 允許隨機與除法可做到 \(O(n\sqrt{\log n})\) </td></tr>
-<tr><td> Packed Sort </td><td> </td><td> </td></tr>
-<tr><td> Signature Sort </td><td> </td><td> </td></tr>
-<tr><td> Han-Thorup 整數排序 - 確定性 </td><td> \(O(n\log \log n)\) </td><td> 空間複雜度 \(O(n)\) </td></tr>
-<tr><td> Han-Thorup 整數排序 - 隨機 </td><td> 期望 \(O(n\sqrt{\log \log n})\) </td><td> 空間複雜度 \(O(n)\) </td></tr>
+<h2><a class="header" href="#二進位整數排序-sorting-in-word-ram-model" id="二進位整數排序-sorting-in-word-ram-model">二進位整數排序 Sorting in Word RAM Model</a></h2>
+<table><thead><tr><th>演算法</th><th>時間複雜度</th><th>備註</th></tr></thead><tbody>
+<tr><td>van Emde Boas 樹</td><td>\(O(n\log\log M)\)</td><td>空間複雜度 \(O(M)\)</td></tr>
+<tr><td>X-fast 字母樹</td><td>\(O(n\log\log M)\)</td><td>空間複雜度 \(O(n\log M)\)</td></tr>
+<tr><td>Y-fast 字母樹</td><td>\(O(n\log\log M)\)</td><td>空間複雜度 \(O(n)\)</td></tr>
+<tr><td>Fusion Tree</td><td>\(O(n\log n/\log\log n)\)</td><td>允許隨機與除法可做到 \(O(n\sqrt{\log n})\)</td></tr>
+<tr><td>Packed Sort</td><td></td><td></td></tr>
+<tr><td>Signature Sort</td><td></td><td></td></tr>
+<tr><td>Han-Thorup 整數排序 - 確定性</td><td>\(O(n\log \log n)\)</td><td>空間複雜度 \(O(n)\)</td></tr>
+<tr><td>Han-Thorup 整數排序 - 隨機</td><td>期望 \(O(n\sqrt{\log \log n})\)</td><td>空間複雜度 \(O(n)\)</td></tr>
 </tbody></table>
-<a class="header" href="#推薦閱讀" id="推薦閱讀"><h3>推薦閱讀</h3></a>
+<h3><a class="header" href="#推薦閱讀" id="推薦閱讀">推薦閱讀</a></h3>
 <ul>
 <li>https://www.bigocheatsheet.com/</li>
 <li>排序網路（維基百科）：https://en.wikipedia.org/wiki/Sorting_network</li>
 <li>Shell 排序法（維基百科）：https://en.wikipedia.org/wiki/Shellsort</li>
 </ul>
-<a class="header" href="#泡沫排序法" id="泡沫排序法"><h1>泡沫排序法</h1></a>
+<h1><a class="header" href="#泡沫排序法" id="泡沫排序法">泡沫排序法</a></h1>
 <p>泡沫排序法 (Bubble Sort) 是一種利用氣泡往上面浮的概念所發明出來的排序方法。
 不同大小的氣泡就像是會跟隔壁的人說「借過」一樣，利用不斷<strong>交換相鄰兩個元素</strong>來達到排序的效果。</p>
 <p>假設我們有 \(n\) 筆資料。如果我們要實作泡沫排序法，我們可以重複掃描這個陣列，只要發現相鄰兩個數字的大小順序是錯誤的，便交換兩者。
@@ -237,17 +258,17 @@ void BubbleSort(data_t arr[], int n) {
 <blockquote>
 <p>實作上我們也可以利用一個 flag，紀錄在 while 迴圈中發生的事情：如果沒有任何交換的情事發生，則代表它已經排好序了。</p>
 </blockquote>
-<a class="header" href="#正確性的證明" id="正確性的證明"><h2>正確性的證明</h2></a>
+<h2><a class="header" href="#正確性的證明" id="正確性的證明">正確性的證明</a></h2>
 <p>要怎麼證明呼叫 BubbleSort 以後，演算法能夠正確地將 <code>arr[]</code> 裡面的資料排好順序呢？
 很顯然，當程式停下來的時候，<code>AlreadySorted</code> 會回傳 <code>true</code>，因此資料一定是排好順序的。
 這是一個賴皮的證明方法，但它是對的。這也是為什麼在上述演算法我們用的是 while 而不是另一層 for-loop。
 （但其實需要的核心證明是一樣的）
 要怎麼證明演算法一定會停下來呢？這點我們可以留給時間複雜度一併分析。</p>
-<a class="header" href="#時間複雜度-1" id="時間複雜度-1"><h2>時間複雜度</h2></a>
+<h2><a class="header" href="#時間複雜度-1" id="時間複雜度-1">時間複雜度</a></h2>
 <p>我們可以利用數學歸納法證明以下敘述：</p>
-<a class="header" href="#引理-1" id="引理-1"><h3>引理 1</h3></a>
+<h3><a class="header" href="#引理-1" id="引理-1">引理 1</a></h3>
 <p>第 \(k\) 次執行 for-loop 之後，最大的 \(k\) 個元素已被正確地排入 <code>arr[n-k]...arr[n-1]</code>。</p>
-<a class="header" href="#證明" id="證明"><h3>證明</h3></a>
+<h3><a class="header" href="#證明" id="證明">證明</a></h3>
 <ul>
 <li>Base Case: 當 \(k=0\) 的時候，我們不需要去排序。</li>
 <li>Inductive Case: 當 \(k\ge 1\) 的時候，由於 <code>arr[n-k+1]...arr[n-1]</code> 都被放在正確的位置上，因此我們只要證明： <code>arr[0]...arr[n-k]</code> 當中最大的一筆資料會被置換到 <code>arr[n-k]</code> 的位置即可。怎麼證明這個敘述呢？注意到 for 迴圈 (1-3) 處的部分，假設最大的一筆資料目前在 <code>arr[j]</code>，而我們不妨假設 <code>arr[j]</code> 是所有相同值最右邊的那個。此時，因為 \(arr[j] \ge arr[j-1]\)，因此 \(i=j-1\) 的時候，(2) 不成立。此外，因為 \(arr[j] &gt; arr[j+1], \ldots, arr[n-k]\)，因此往後的每一次都會觸發 (3) 的交換操作，進而結論成立： <code>arr[j]</code> 被放在該放的位置上。</li>
@@ -256,24 +277,24 @@ void BubbleSort(data_t arr[], int n) {
 根據引理 1，我們知道 while 迴圈只需要跑 \(O(n)\) 次。因此整體泡沫排序法的時間複雜度是 \(O(n^2)\)。</p>
 <hr />
 <p>這樣的時間複雜度分析真的是緊的嗎？是否真的有這麼差的情況發生？</p>
-<a class="header" href="#雞尾酒排序法" id="雞尾酒排序法"><h1>雞尾酒排序法</h1></a>
+<h1><a class="header" href="#雞尾酒排序法" id="雞尾酒排序法">雞尾酒排序法</a></h1>
 <p>昨天我們介紹了泡沫排序法，但是，泡沫排序法最差情形 \(O(n^2)\) 的時間複雜度真的是緊的嗎？
 讓我們看看以下例子。</p>
-<a class="header" href="#引理-2" id="引理-2"><h3>引理 2</h3></a>
+<h3><a class="header" href="#引理-2" id="引理-2">引理 2</a></h3>
 <p>對於這組輸入 \((a_1, a_2, \ldots, a_n) = (n, n-1, \ldots, 1)\)，泡沫排序法執行時間為 \(\Omega(n^2)\)。</p>
-<a class="header" href="#證明-1" id="證明-1"><h3>證明</h3></a>
+<h3><a class="header" href="#證明-1" id="證明-1">證明</a></h3>
 <p>我們可以由數學歸納法證得，第 \(k\) 次迴圈過後，陣列會變成 \([n-k, \ldots, 1, n-k+1, n-k+2, \ldots, n]\)。
 因此，在 \(1\) 回到最前面之前，都不算排好順序。也就是說，泡沫排序法最差執行時間是 \(\Theta(n^2)\) 跑不掉的。</p>
-<a class="header" href="#雞尾酒排序法-cocktail-sort" id="雞尾酒排序法-cocktail-sort"><h2>雞尾酒排序法 Cocktail Sort</h2></a>
+<h2><a class="header" href="#雞尾酒排序法-cocktail-sort" id="雞尾酒排序法-cocktail-sort">雞尾酒排序法 Cocktail Sort</a></h2>
 <p>如果說由前往後，沒有辦法快速地把資料排好順序，那麼如果換個方式跑 for-loop，有沒有辦法變快呢？
 <a href="https://zh.wikipedia.org/wiki/%E9%9B%9E%E5%B0%BE%E9%85%92%E6%8E%92%E5%BA%8F">雞尾酒排序法</a>，就是基於泡沫排序法進行修改而成的排序方法。它從左邊刷過去再從右邊刷回來：第一次把最大值放到最右邊去、然後把最小值推到最左邊、再把次大值放到右邊、再把次小值放到左邊…依此類推。
 這個演算法的正確性證明與泡沫排序法相當雷同，因此時間複雜度也可以推得為 \(O(n^2)\)。
 遺憾的是，引理 2 的例子也是這個演算法的最壞輸入之一：即在最壞情形下仍需 \(\Theta(n^2)\) 的執行時間。</p>
-<a class="header" href="#插入排序法-insertion-sort" id="插入排序法-insertion-sort"><h2>插入排序法 Insertion Sort</h2></a>
+<h2><a class="header" href="#插入排序法-insertion-sort" id="插入排序法-insertion-sort">插入排序法 Insertion Sort</a></h2>
 <p>如果每一次都由右往左把資料刷回來，第 \(k\) 次把 \(arr[k-1]\) 從右邊往左邊一直推，
 那麼概念上會變成：每一次加入一筆新的資料後，不斷地往前擠，插入到正確的位置上。這個方法也可以視為泡沫排序法的一個變形。
 而事實上這個方法無論在現行的 CPU 架構下或是理論上，都不比泡沫排序法來得差。因此許多教科書都會選擇直接介紹插入排序法而非氣泡排序法。</p>
-<a class="header" href="#引理-3-sup-classfootnote-referencea-href11asup" id="引理-3-sup-classfootnote-referencea-href11asup"><h3>引理 3 <sup class="footnote-reference"><a href="#1">1</a></sup></h3></a>
+<h3><a class="header" href="#引理-3-sup-classfootnote-referencea-href11asup" id="引理-3-sup-classfootnote-referencea-href11asup">引理 3 <sup class="footnote-reference"><a href="#1">1</a></sup></a></h3>
 <p>如果輸入的資料中，每一筆資料距離其正確的位置皆不超過 \(k\) (\(k\ge 1\))，那麼泡沫排序法、雞尾酒排序法、以及插入排序法所需要的時間複雜度皆為 \(O(kn)\)。</p>
 <hr />
 <p>我們注意到，無論是氣泡排序法、雞尾酒排序法、或是插入排序法，這些方法在更動資料的時候，都只會交換相鄰兩筆資料。
@@ -281,46 +302,40 @@ void BubbleSort(data_t arr[], int n) {
 對於一個陣列 \(A\)，我們可以定義只能交換相鄰兩筆資料的情形下，欲將 \(A\) 排好順序最少需要的交換次數。
 這個數值，我們把它稱之為「逆序數對(Inversions)」。</p>
 <!-- 如果更加推廣這個想法，我們不禁想問：對於一筆輸入，是否存在「最佳檢查順序」讓我們能夠順著這個順序交換資料，而且達到良好的時間複雜度呢？
-<p>換句話說，對於一個輸入 \(A[1..n]\)，是否存在一個排列 \(\sigma: [n]\to [n]\)，使得以下演算法能夠很有效率地將資料排好順序？</p>
-<ul>
-<li><strong>while</strong>(還沒有排好順序):
-<ul>
-<li><strong>for</strong> \(i=1\) to \(n-1\):
-<ul>
-<li>如果 \(\sigma(i) &gt; \sigma(i+1)\) 和 \(A[\sigma(i)] &gt; A[\sigma(i+1)]\) 恰有一者不成立，則交換 \(A[\sigma(i)]\) 與 \(A[\sigma(i+1)]\) 之值。 --&gt;</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+
+換句話說，對於一個輸入 \\(A[1..n]\\)，是否存在一個排列 \\(\sigma: [n]\to [n]\\)，使得以下演算法能夠很有效率地將資料排好順序？
+
+* **while**(還沒有排好順序):
+  * **for** \\(i=1\\) to \\(n-1\\):
+    * 如果 \\(\sigma(i) > \sigma(i+1)\\) 和 \\(A[\sigma(i)] > A[\sigma(i+1)]\\) 恰有一者不成立，則交換 \\(A[\sigma(i)]\\) 與 \\(A[\sigma(i+1)]\\) 之值。 -->
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p><a href="https://en.wikipedia.org/wiki/Cocktail_shaker_sort">維基百科</a></p>
 </div>
-<a class="header" href="#逆序數對" id="逆序數對"><h1>逆序數對</h1></a>
-<a class="header" href="#定義" id="定義"><h3>定義</h3></a>
+<h1><a class="header" href="#逆序數對" id="逆序數對">逆序數對</a></h1>
+<h3><a class="header" href="#定義" id="定義">定義</a></h3>
 <p>給定一個序列 \(A=(a_1, a_2, \ldots, a_n)\)。我們說一個數對 \((i, j)\), \(1\le i &lt; j\le n\) 是一個它的<strong>逆序數對 (Inversion)</strong>，若 \(a_i &gt; a_j\)。
 而滿足條件的數對總數，我們寫作 \(\mathrm{Inv}(A)\)。</p>
 <hr />
 <p>有了這個定義以後，我們就可以討論當我們限制「每次只能交換相鄰兩數」的排序方法的效率了！</p>
-<a class="header" href="#引理-4" id="引理-4"><h3>引理 4</h3></a>
+<h3><a class="header" href="#引理-4" id="引理-4">引理 4</a></h3>
 <p>泡沫排序法、雞尾酒排序法、與插入排序法當中，交換數對的次數皆相同，而且恰好是 \(\mathrm{Inv}(A)\)。</p>
-<a class="header" href="#證明-2" id="證明-2"><h3>證明</h3></a>
+<h3><a class="header" href="#證明-2" id="證明-2">證明</a></h3>
 <p>由於交換的方式都是僅交換相鄰兩個數字，而且僅有在 \(a_i &gt; a_{i+1}\) 的時候才交換的。因此每一次交換後逆序數對總數恰好減 1。
 此外，逆序數對數量為零，等價於序列已排好序。故得證。</p>
-<a class="header" href="#係理-5" id="係理-5"><h3>係理 5</h3></a>
+<h3><a class="header" href="#係理-5" id="係理-5">係理 5</a></h3>
 <p>插入排序法的時間複雜度為 \(O(n + \mathrm{Inv}(A))\)。（證明略）</p>
-<a class="header" href="#係理-6" id="係理-6"><h3>係理 6</h3></a>
+<h3><a class="header" href="#係理-6" id="係理-6">係理 6</a></h3>
 <p>存在一筆輸入，使得泡沫排序法的時間複雜度為 \(\omega(n + \mathrm{Inv}(A))\)。
 即，對於該輸入，泡沫排序法需要 \(\Theta(n^2)\) 的時間，但是 \(\mathrm{Inv}(A)\) 很小，在本例中 \(\mathrm{Inv}(A) = O(n)\)。</p>
-<a class="header" href="#證明-3" id="證明-3"><h3>證明</h3></a>
+<h3><a class="header" href="#證明-3" id="證明-3">證明</a></h3>
 <p>該輸入為 \((2, 3, \ldots, n, 1)\)，此時要把 \(1\) 慢慢晃到最前面，需要歷經 \(n-1\) 次 while 迴圈。
 注意到這個例子在雞尾酒排序法當中，仍是有效率的。</p>
-<a class="header" href="#係理-7" id="係理-7"><h3>係理 7</h3></a>
+<h3><a class="header" href="#係理-7" id="係理-7">係理 7</a></h3>
 <ol>
 <li>泡沫排序法的時間複雜度為 \(O(n + n\cdot \mathrm{Inv}(A))\)，而且存在一些輸入符合這個時間複雜度。</li>
 <li>雞尾酒排序法的時間複雜度為 \(O(n + n\cdot \sqrt{\mathrm{Inv}(A)})\)，而且存在一些輸入符合這個時間複雜度。</li>
 </ol>
-<a class="header" href="#證明-4" id="證明-4"><h3>證明</h3></a>
+<h3><a class="header" href="#證明-4" id="證明-4">證明</a></h3>
 <p>第一部分還算單純：每一次 for-loop 之中，如果有 swap 就會讓逆序數對的數量減少 1。
 因此泡沫排序法中 while 迴圈的執行次數至多是 \(\mathrm{Inv}(A)\) 次。由係理 6 也可以得知這個時間複雜度是緊的。</p>
 <p>第二部分比較有意思，而且證明也相對複雜一些。注意到每次從左往右邊的 for-loop，拿來比較的 \(A[i]\) 是會越來越大的。
@@ -348,14 +363,14 @@ void BubbleSort(data_t arr[], int n) {
 <hr />
 <p>什麼樣的輸入需要讓雞尾酒排序法花到 \(\Theta(n+n\sqrt{\mathrm{Inv}(A)})\) 這麼久呢？
 可以試試看把 \(1\) 到 \(n\) 依序排好，然後把前 \(k\) 個數字反轉過來，你就會得到一個逆序數對個數為 \(k(k-1)/2\)、而且時間複雜度是 \(O(nk)\) 的結論了。</p>
-<a class="header" href="#小結論" id="小結論"><h2>小結論</h2></a>
+<h2><a class="header" href="#小結論" id="小結論">小結論</a></h2>
 <p>我們今天透過逆序數對的方法來分析氣泡排序法、雞尾酒排序法以及插入排序法的優劣。</p>
-<a class="header" href="#參考資料" id="參考資料"><h3>參考資料</h3></a>
+<h3><a class="header" href="#參考資料" id="參考資料">參考資料</a></h3>
 <ul>
 <li>https://en.wikipedia.org/wiki/Inversion_(discrete_mathematics)</li>
 <li>https://math.stackexchange.com/questions/2998546/sort-an-array-given-the-number-of-inversions</li>
 </ul>
-<a class="header" href="#合併排序法" id="合併排序法"><h1>合併排序法</h1></a>
+<h1><a class="header" href="#合併排序法" id="合併排序法">合併排序法</a></h1>
 <p>如果我們不限制每次都交換相鄰兩個數字的話，顯然存在著理論上有更有效率的排序演算法。</p>
 <p>分而治之（Divide and Conquer）是重要的解題方法之一：我們將一個大問題拆解成許多小問題、個個擊破以後再把它們組合回來。
 如果我們將分而治之法應用在排序問題當中，就可以得到俗稱合併排序法（Merge Sort）的演算法：</p>
@@ -379,7 +394,7 @@ void BubbleSort(data_t arr[], int n) {
   Merge(A, A + n/2, A + n/2, A + n, A);
 }
 </code></pre>
-<a class="header" href="#合併兩個序列" id="合併兩個序列"><h2>合併兩個序列</h2></a>
+<h2><a class="header" href="#合併兩個序列" id="合併兩個序列">合併兩個序列</a></h2>
 <p>要怎麼將兩個排好順序的序列合併起來呢？一個簡單的想法是：每一次考慮兩個序列目前的排頭，把比較小的那個拉出來，最終接成一串。
 如果用 linked list 或 vector 寫起來大概像這樣：</p>
 <pre><code class="language-cpp">void Merge(data_t *L_start, data_t *L_end,
@@ -401,12 +416,12 @@ void BubbleSort(data_t arr[], int n) {
 因此整個 <code>Merge()</code> 的時間複雜度是線性的 \(\Theta(n)\)。
 正確性來自於對排序資料的假設、以及每一次我們都拉比較小的排頭出來，這個排頭必定是剩下所有還沒被排進來的資料中，最小的一個。</p>
 <p>近幾年這個合併兩個序列的方法已經被歸類成一種叫做 Two Pointers 的技巧。當然這個技巧當初是用來描述<a href="https://en.wikipedia.org/wiki/Cycle_detection">龜兔賽跑方法</a>（這個用來找 Linked List 尾圈方法我們以後再聊），但已經被推廣成泛指「只要維護兩個註標，這兩個註標只會往單方向移動」的演算法。</p>
-<a class="header" href="#時間複雜度的分析" id="時間複雜度的分析"><h2>時間複雜度的分析</h2></a>
+<h2><a class="header" href="#時間複雜度的分析" id="時間複雜度的分析">時間複雜度的分析</a></h2>
 <p>由於每一次的資料搬移，大致可以對應到 (**) 處的比較，因此合併排序法所需要的時間，我們可以用「兩兩比較次數」代表之。
 現在我們來證明合併排序法的時間複雜度是 \(O(n\log n)\)。</p>
-<a class="header" href="#引理-8" id="引理-8"><h3>引理 8</h3></a>
+<h3><a class="header" href="#引理-8" id="引理-8">引理 8</a></h3>
 <p>令 \(T(n)\) 表示以合併排序法排序 \(n\) 個數字時，所需要進行的比較次數。則 \(T(n) = O(n\log n)\)。</p>
-<a class="header" href="#證明-5" id="證明-5"><h3>證明</h3></a>
+<h3><a class="header" href="#證明-5" id="證明-5">證明</a></h3>
 <p>首先，當 \(n\) 是 \(2\) 的冪次（即 \(n\) 形如 \(2^k\) 時），兩個子問題的大小都是 \(n/2\)。此時我們有：</p>
 <p>\[
 T(n) = \begin{cases} 0 &amp; \text{ if } n\le 1, \\
@@ -425,11 +440,11 @@ T(n) \le T(n') = \Theta(n' \log n') = \Theta(n\log n)\text{。}
 <hr />
 <p>合併排序法在合併的時候，會需要<strong>複製</strong>欲排序的資料。因此，合併排序法在實作的時候，一般來說會佔用到 \(\Theta(n)\) 的額外記憶體空間。
 我們有辦法省下些許額外的記憶體嗎？</p>
-<a class="header" href="#推薦閱讀-1" id="推薦閱讀-1"><h3>推薦閱讀</h3></a>
+<h3><a class="header" href="#推薦閱讀-1" id="推薦閱讀-1">推薦閱讀</a></h3>
 <ul>
 <li>主定理的天花板形式：https://fu-sheng-wang.blogspot.com/2016/11/algorithms14-master-theorem.html</li>
 </ul>
-<a class="header" href="#原地演算法" id="原地演算法"><h1>原地演算法</h1></a>
+<h1><a class="header" href="#原地演算法" id="原地演算法">原地演算法</a></h1>
 <p>合併排序法有著許多優點：
 <strong>時間複雜度</strong>勝過泡沫排序法、選擇排序法；
 <strong>執行效能</strong>相較快速排序法更穩定一些；
@@ -439,20 +454,20 @@ T(n) \le T(n') = \Theta(n' \log n') = \Theta(n\log n)\text{。}
 感覺很浪費記憶體啊。
 如果我們有辦法就地移動資料本身，不仰賴大量額外的記憶體的話，這類型的演算法通常被稱為<strong>原地演算法（In-Place Algorithms）</strong>。
 最嚴格的原地演算法定義，是規定只能使用<strong>常數</strong><sup class="footnote-reference"><a href="#4">2</a></sup>數量的記憶體空間（用來存放註標、或某些計數器等等資料）。</p>
-<a class="header" href="#性質-9" id="性質-9"><h3>性質 9</h3></a>
+<h3><a class="header" href="#性質-9" id="性質-9">性質 9</a></h3>
 <p>泡沫排序法、雞尾酒排序法、插入排序法、選擇排序法都是原地演算法。</p>
 <hr />
 <p>要怎麼在沒有額外記憶體空間的情況下，做到合併功能呢？今天我們會介紹在 Stack overflow<sup class="footnote-reference"><a href="#3">3</a></sup> 上面找到的、 Katajianen-Pasanen-Teuhola <sup class="footnote-reference"><a href="#2">4</a></sup> 把合併排序法和插入排序法融合起來，得到的原地排序演算法。其核心想法是由蘇聯數學家 <a href="https://en.wikipedia.org/wiki/Alexander_Kronrod">Kronrod</a> 在 1969 年提出的「從輸入陣列榨出暫存空間」的方法。</p>
-<a class="header" href="#kronrod-工作空間重疊大法" id="kronrod-工作空間重疊大法"><h2>Kronrod 工作空間重疊大法</h2></a>
+<h2><a class="header" href="#kronrod-工作空間重疊大法" id="kronrod-工作空間重疊大法">Kronrod 工作空間重疊大法</a></h2>
 <p>假設我們有兩塊相鄰的陣列區段 \(A\) 和 \(B\)，如下圖：</p>
-<p><img src="./in-place-mergesort1.png" alt="" /></p>
+<p><img src="sorting/./in-place-mergesort1.png" alt="" /></p>
 <p>注意到 \(A\) 左邊有一塊可以暫時拿來當作暫存空間用的未排序區域，但如果它的長度比 \(|A\vert +\vert B\vert \) 來得小，很有可能在合併排序的過程中或覆蓋到 \(A\) 區域的資料。可能就會慘掉。</p>
-<p><img src="./in-place-mergesort2.png" alt="" /></p>
-<a class="header" href="#引理-10-kronrod" id="引理-10-kronrod"><h3>引理 10 (Kronrod)</h3></a>
+<p><img src="sorting/./in-place-mergesort2.png" alt="" /></p>
+<h3><a class="header" href="#引理-10-kronrod" id="引理-10-kronrod">引理 10 (Kronrod)</a></h3>
 <p>Kronrod 注意到，假設 \(|A\vert \) 的長度比 \(|B\vert \) 短。如果我們將 \(A\) 搬到左邊，使得 \(A\) 與 \(B\) 之間空出 \(|A\vert \) 個暫存空間。
 這個時候，我們就可以安心地使用這塊空間當作合併排序的暫存空間了！就算合併時碰到了原本屬於 \(B\) 區段的空間也沒有關係，因為可以保證不會重疊到 \(B\) 目前的工作區間。（證明略）</p>
 <p>使用這個想法，我們可以得出像是 Katajianen-Pasanen-Teuhola 的原地演算法。</p>
-<a class="header" href="#katajianen-pasanen-teuhola-的原地類合併排序法" id="katajianen-pasanen-teuhola-的原地類合併排序法"><h2>Katajianen-Pasanen-Teuhola 的原地類合併排序法</h2></a>
+<h2><a class="header" href="#katajianen-pasanen-teuhola-的原地類合併排序法" id="katajianen-pasanen-teuhola-的原地類合併排序法">Katajianen-Pasanen-Teuhola 的原地類合併排序法</a></h2>
 <p>假設輸入的陣列為 \(A[0..n-1]\) 其中 \(n=2^k\)。這個排序演算法總共分成三個部分。</p>
 <ul>
 <li>第一部分，首先我們排好整個陣列的後半部 \(A[\frac{n}{2}..n-1]\)。由於我們可以利用前半部當作暫存空間，所以不用擔心空間不夠。</li>
@@ -470,10 +485,10 @@ T(n) \le T(n') = \Theta(n' \log n') = \Theta(n\log n)\text{。}
 </li>
 <li>第三部分，把剩下一個元素 \(A[0]\) 使用插入排序法排入 \(A[1..n-1]\) 之中。</li>
 </ul>
-<p><img src="./in-place-mergesort3.png" alt="" /></p>
-<a class="header" href="#定理-11" id="定理-11"><h3>定理 11</h3></a>
+<p><img src="sorting/./in-place-mergesort3.png" alt="" /></p>
+<h3><a class="header" href="#定理-11" id="定理-11">定理 11</a></h3>
 <p>KPT-類合併排序法的時間複雜度為 \(O(n\log n)\)、而且輸入陣列以外的空間複雜度為 \(O(1)\)。</p>
-<a class="header" href="#證明-6" id="證明-6"><h3>證明</h3></a>
+<h3><a class="header" href="#證明-6" id="證明-6">證明</a></h3>
 <p>空間複雜度應該還滿…顯然的吧XD，我們來證明時間複雜度。</p>
 <p>正常的合併排序時間複雜度是 \(O(n\log n)\)。因此第一部份的時間複雜度就是 \(O(\frac{n}{2}\log \frac{n}{2}) = O(n\log n)\)。
 對於每個 \(\ell\)，第二部份會花 \(O(2^\ell\log 2^\ell)\) 時間進行合併排序、然後花費 \(\frac{n}{2} + 2^\ell = O(n)\) 的時間進行合併。
@@ -485,11 +500,11 @@ T(n) \le T(n') = \Theta(n' \log n') = \Theta(n\log n)\text{。}
 \]</p>
 <p>第三部分時間複雜度是 \(O(n)\)。所以全部加起來是 \(O(n\log n)\)，得證。</p>
 <hr />
-<a class="header" href="#後記" id="後記"><h2>後記</h2></a>
+<h2><a class="header" href="#後記" id="後記">後記</a></h2>
 <p>從 KPT-之後，大部分的論文朝向幾個方向發展。大家關心的分析重點有幾個方向：把時間複雜度分拆成「比較次數」加上「資料移動次數」。
 比較次數雖然都是 \(O(n\log n)\)，但大家開始拼命壓前面的常數。而資料移動次數也有<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.22.5514&amp;rep=rep1&amp;type=pdf">不同方法</a>可以壓到 \(O(n\log n/ \log\log n)\)。
 此外，我們其實利用的分而治之的概念，偷偷榨出了不少暫存空間。如果我們回歸到最原本的問題：合併兩個已排序的序列，是否真的能在線性時間做到不使用額外空間呢？答案是可以的，但我想今天就在此打住吧。有興趣的朋友可以參考<a href="https://academic.oup.com/comjnl/article/38/8/681/335248">這篇</a>。</p>
-<a class="header" href="#參考資料-1" id="參考資料-1"><h3>參考資料</h3></a>
+<h3><a class="header" href="#參考資料-1" id="參考資料-1">參考資料</a></h3>
 <ul>
 <li>清大韓永楷教授的 In-Place Algorithms 簡介投影片：http://www.cs.nthu.edu.tw/~wkhon/algo08-tutorials/tutorial1b.pdf</li>
 <li>嘗試優化你的合併排序法（減少 Branch Prediction）：https://www.codeplay.com/portal/optimizing-sort-algorithms-for-the-ps3-part-2-merge</li>
@@ -501,7 +516,7 @@ T(n) \le T(n') = \Theta(n' \log n') = \Theta(n\log n)\text{。}
 <sup class="footnote-reference"><a href="#3">3</a></sup>: https://stackoverflow.com/questions/2571049/how-to-sort-in-place-using-the-merge-sort-algorithm
 <sup class="footnote-reference"><a href="#4">2</a></sup>: 這裡的「常數」要仰賴計算模型而定。一般來說為了支援隨機記憶體存取(RAM Model)，我們必須讓一單位的記憶體放得下對應資料的記憶體位址。也就是說，當輸入有 \(n\) 筆資料時，原地演算法允許我們使用 \(O(\log n)\)-bit 的額外記憶體空間。</p>
 </div>
-<a class="header" href="#快速排序法" id="快速排序法"><h1>快速排序法</h1></a>
+<h1><a class="header" href="#快速排序法" id="快速排序法">快速排序法</a></h1>
 <p>另一個利用分而治之達成的排序方法，是快速排序法（Quick Sort）。</p>
 <p>如果我們能將輸入的數值分成兩組，並且保證某一組的所有數字都不超過另一組的所有數字。
 那麼，把這兩組數字分別遞迴下去排序，再接起來就可以了。
@@ -528,22 +543,22 @@ T(n) \le T(n') = \Theta(n' \log n') = \Theta(n\log n)\text{。}
   QuickSort(A + now, n - now); // 嚴格大於 pivot 的元素們。
 }
 </code></pre>
-<a class="header" href="#最差時間複雜度" id="最差時間複雜度"><h2>最差時間複雜度</h2></a>
-<a class="header" href="#引理-12" id="引理-12"><h3>引理 12</h3></a>
+<h2><a class="header" href="#最差時間複雜度" id="最差時間複雜度">最差時間複雜度</a></h2>
+<h3><a class="header" href="#引理-12" id="引理-12">引理 12</a></h3>
 <p>快速排序法的時間複雜度為 \(O(n^2)\)。</p>
-<a class="header" href="#證明-7" id="證明-7"><h3>證明</h3></a>
+<h3><a class="header" href="#證明-7" id="證明-7">證明</a></h3>
 <p>注意到，對於任何一筆資料，在所有 QuickSort 函式的呼叫中最多只有一次會被當作 pivot 拿來比較。
 而 QuickSort 的執行時間正比於：\(n\le 1\) 情形的遞迴呼叫次數、以及拿 pivot 出來跟別人比較的總次數。
 前者是 \(O(n)\) 次函式呼叫，後者每個元素至多被拿來當作一次 pivot，每次 pivot 至多會跟 \(O(n)\) 個元素進行比較。
 因此時間複雜度為 \(O(n^2)\)。</p>
 <p>另一方面，考慮 \((n, n-1, n-2, \ldots, 1)\) 這個逆序的序列。每一次遞迴都會把最大的數字推到最右邊，因此每一層遞迴要處理的資料量依序為 \(n, n-1, \ldots, 1\)。這樣加起來就是 \(\Theta(n^2)\)。</p>
-<a class="header" href="#快速排序法不是原地演算法" id="快速排序法不是原地演算法"><h3>快速排序法不是原地演算法</h3></a>
+<h3><a class="header" href="#快速排序法不是原地演算法" id="快速排序法不是原地演算法">快速排序法不是原地演算法</a></h3>
 <p>雖然上面把資料分堆的部分，看起來只需要 \(O(1)\) 的記憶體空間。但遞迴呼叫會在使用呼叫堆疊（Call Stack），在最糟情形下仍會使用 \(O(n)\) 的額外記憶體空間。相當慘烈。此外，要把快速排序法改成非遞迴的形式，其實就有點痛苦了，不像是合併排序法那樣可以輕易地變成 bottom-up 的迭代形式。</p>
-<a class="header" href="#Ďurian-快速排序法" id="Ďurian-快速排序法"><h2>Ďurian 快速排序法</h2></a>
+<h2><a class="header" href="#Ďurian-快速排序法" id="Ďurian-快速排序法">Ďurian 快速排序法</a></h2>
 <p>一般來說，把一個遞迴函式無腦改成非遞迴函式，最簡單的方式就是手動模擬呼叫堆疊的行為。
 但事實上，今天來跟大家分享一個捷克學生 Branislav Ďurian 在 1986 年提出的改編版快速排序法。
 其核心想法是利用 pivot 當作擋板，找出目前遞迴到的子問題邊界。這麼一來，就不需要使用堆疊來存放邊界了！</p>
-<p><img src="./in-place-quicksort1.png" alt="" /></p>
+<p><img src="sorting/./in-place-quicksort1.png" alt="" /></p>
 <p>上圖示意著原本的快速排序法的遞迴呼叫過程，其中 L 和 R 表示的是當下的子問題邊界、而藍色和紅色底的兩條代表著兩次遞迴所選取的 pivot。
 大家可以想想看，如果不知道邊界的情形下（或者，只記得剛才處理的子問題邊界），要怎麼找回 pivot。
 如果是已分派好的 pivot，其實扮演著<strong>樞紐</strong>的功能：在它左邊的元素都比較小、在它右邊的元素都比較大。
@@ -555,19 +570,19 @@ T(n) \le T(n') = \Theta(n' \log n') = \Theta(n\log n)\text{。}
 換句話說，我們其實已經知道下一個要處理的子問題左界在哪裡了！
 要怎麼做到還原右邊界這件事呢？Ďurian 提出了一個絕妙的方法：在向下遞迴之前，偷偷把<font color='red'><strong>前一層的 pivot</strong> 換到目前 pivot 右邊</font>。
 以下圖為例，我們把藍色 pivot 調到紅色 pivot 右邊！</p>
-<p><img src="./in-place-quicksort2.png" alt="" /></p>
+<p><img src="sorting/./in-place-quicksort2.png" alt="" /></p>
 <p>當我們做完右圖的 \([L, R]\) 子問題以後，要怎麼還原藍色 pivot 的正確位置呢？
 由於已知藍色 pivot 的位置，這時候就變得相當單純了！我們就拿著這個藍色 pivot 往右邊刷，刷到第一個不比它小的數字就停下來。
 這麼一來就可以準確還原右界了！而且不需要任何堆疊或額外的記憶體空間！</p>
 <hr />
 <p>快速排序法的最差情形是 \(O(n^2)\)，乍看之下很沒有效率啊。
 但其實這個演算法相當有用啊，不致於這麼差吧──大家平常在說的快速排序法可以做到 \(O(n\log n)\) 是怎麼一回事？</p>
-<a class="header" href="#參考資料-2" id="參考資料-2"><h3>參考資料</h3></a>
+<h3><a class="header" href="#參考資料-2" id="參考資料-2">參考資料</a></h3>
 <ul>
 <li>郭至軒的（厲害而詳盡的）筆記：https://blog.kuoe0.tw/posts/2013/03/15/sort-about-quick-sort/</li>
 <li>非遞迴、不堆疊的快速排序法：https://link.springer.com/chapter/10.1007/BFb0016252</li>
 </ul>
-<a class="header" href="#隨機快速排序法" id="隨機快速排序法"><h1>隨機快速排序法</h1></a>
+<h1><a class="header" href="#隨機快速排序法" id="隨機快速排序法">隨機快速排序法</a></h1>
 <p>如果我們允許演算法使用隨機數產生器，那麼快速排序法會變得更有效率！</p>
 <!--
 ## 隨機演算法
@@ -585,12 +600,12 @@ T(n) \le T(n') = \Theta(n' \log n') = \Theta(n\log n)\text{。}
   QuickSort(A, n);     // 呼叫原本的快速排序法。
 }
 </code></pre>
-<a class="header" href="#定理-13" id="定理-13"><h2>定理 13</h2></a>
+<h2><a class="header" href="#定理-13" id="定理-13">定理 13</a></h2>
 <p>假設 <code>RandomPermute</code> 可以均勻地產生隨機排列，那麼隨機快速排序法的期望時間複雜度為 \(O(n\log n)\)。</p>
-<a class="header" href="#開始證明之前" id="開始證明之前"><h3>開始證明之前</h3></a>
+<h3><a class="header" href="#開始證明之前" id="開始證明之前">開始證明之前</a></h3>
 <p>大家還記不記得<a href="https://zh.wikipedia.org/wiki/%E6%9C%9F%E6%9C%9B%E5%80%BC">期望值的可加性</a>呢？簡單來說，如果有兩個隨機變數（Random Variable） \(X, Y\)，那麼 \(X+Y\) 的期望值便滿足
 \(\E[X+Y] = \E[X] + \E[Y]\)。我們把這個觀念應用在分析演算法的期望時間複雜度上面，可以把它想成：若這個演算法分成前後兩個步驟 \(A\) 和 \(B\)，兩個步驟的執行時間分別可以用隨機變數 \(T_A\) 與 \(T_B\) 表示。那麼整個演算法的執行時間就可以寫成 \(T_A+T_B\)，而這個隨機變數的期望值就可以利用期望值的可加性寫得 \(\E[T_A+T_B] = \E[T_A]+\E[T_B]\)。也就是說，我們只要分別分析兩個步驟的期望執行時間，加起來，就會等於整個演算法的期望時間複雜度了。</p>
-<a class="header" href="#證明一遞迴方法" id="證明一遞迴方法"><h3>證明一：遞迴方法</h3></a>
+<h3><a class="header" href="#證明一遞迴方法" id="證明一遞迴方法">證明一：遞迴方法</a></h3>
 <p>我們定義 \(f(n)\) 為對 \(n\) 筆資料進行隨機快速排序的期望時間複雜度。我們想證明的是 \(f(n) = O(n\log n)\)。
 首先，我們可以簡單地說明 \(f(n)\) 是非遞減的：多一筆資料，要排好序總得花更多力氣。
 根據快速排序法的定義，我們選擇第一個數字作為 pivot，然後把整組資料拆成小於、等於、大於三個部分，再把小於 pivot、大於 pivot 這兩組資料分別遞迴下去排序。</p>
@@ -605,7 +620,7 @@ O(1) &amp; \text{ if } n \le 1,\\
 \end{cases}
 \]</p>
 <p>要怎麼證明這個遞迴式解出來會是 \(O(n\log n)\) 呢？最好用的證明工具當然就是數學歸納法囉！</p>
-<a class="header" href="#數學歸納法" id="數學歸納法"><h4>數學歸納法</h4></a>
+<h4><a class="header" href="#數學歸納法" id="數學歸納法">數學歸納法</a></h4>
 <p>我們想要證明 \(f(n) = cn\log n\)，其中 \(c\) 是某個待定的常數。
 假設選定 pivot 以後比較與分組所花費的時間為 \(\le c_0n\)，於是遞迴式會長這樣：</p>
 <p>\[
@@ -633,12 +648,12 @@ f(n) &amp;\le c_0n + \frac{2}{n}\sum_{i=1}^{n-1} f(i)\\
 <hr />
 <p>數學歸納法是很繁瑣的，其他證明方法都不比數學歸納法來得繁瑣。<s>為什麼呢？因為布吉納法索（被拖走）</s></p>
 <p>下次我們來看看另外兩個利用期望值可加性和機率方法獲得的證明！</p>
-<a class="header" href="#隨機快速排序法-2" id="隨機快速排序法-2"><h1>隨機快速排序法 2</h1></a>
+<h1><a class="header" href="#隨機快速排序法-2" id="隨機快速排序法-2">隨機快速排序法 2</a></h1>
 <p>今天我們來看看不使用遞迴方法，直接用機率方法分析隨機快速排序的另一個證明吧。
 首先讓我們快速回顧一下定理 13。</p>
-<a class="header" href="#定理-13-1" id="定理-13-1"><h2>定理 13</h2></a>
+<h2><a class="header" href="#定理-13-1" id="定理-13-1">定理 13</a></h2>
 <p>假設 <code>RandomPermute</code> 可以均勻地產生隨機排列，那麼隨機快速排序法的期望時間複雜度為 \(O(n\log n)\)。</p>
-<a class="header" href="#在證明開始之前" id="在證明開始之前"><h3>在證明開始之前</h3></a>
+<h3><a class="header" href="#在證明開始之前" id="在證明開始之前">在證明開始之前</a></h3>
 <p>讓我們來回憶一下機率名詞。有一種隨機變數，其值只有 0 或 1，代表我們關心的事件出現與否。
 而該變數值等於 1 的機率，自然地對應到事件出現的機率。
 這樣的隨機變數被稱為<strong>指示隨機變數（Indicator random variable）</strong>。</p>
@@ -646,16 +661,16 @@ f(n) &amp;\le c_0n + \frac{2}{n}\sum_{i=1}^{n-1} f(i)\\
 如果我們站在全局視角，關心「任兩個元素被拿來比較」的情形，在快速排序法會不會發生，那麼資料之間的兩兩比較總次數 \(X\)，便可以被拆成任兩筆特定資料被比較的次數 \(X = \sum_{1\le i &lt; j \le n} X_{ij}\)，其中我們用 \(X_{ij}\) 來表示排序完成後，應排在第 \(i\) 位置的資料與第 \(j\) 位置的資料的「是否在演算法執行期間被比較過」的指示隨機變數。</p>
 <p>然後！我們就可以利用期望值的可加性，把所有隨機變數拆開來～輕鬆寫出快速排序法的期望時間複雜度：</p>
 <p>\(\E[X] = \sum_{1\le i &lt; j \le n} \E[X_{ij}]\text{。}\)</p>
-<a class="header" href="#證明二兩兩比較次數的期望值" id="證明二兩兩比較次數的期望值"><h3>證明二：兩兩比較次數的期望值</h3></a>
+<h3><a class="header" href="#證明二兩兩比較次數的期望值" id="證明二兩兩比較次數的期望值">證明二：兩兩比較次數的期望值</a></h3>
 <p>這麼分析有個好處：我們可以分別計算出 \(\E[X_{ij}]\) 的值。
 比起追蹤整個演算法執行時 \(n\) 個物件之間，直接將主力放在某兩個特定的資料上，分析起來可能簡單得多。
 在分析開始之前，我們可以試想想看這個值可能會是多少？如果 \(i=1, j=n\)，那麼這兩個數字被直接拿來比較的機率其實相當低。
 而這是因為，如果被選中的 pivot 在排序上介於 \(i\) 與 \(j\) 之間的話，顯然 \(i\) 與 \(j\) 會被分派到兩個不同的子問題下去遞迴，自此便無緣相見了。</p>
 <p>此外，值得一提的是，在快速排序法進行中，如果有兩筆資料 \(i\) 和 \(j\) 被拿來比較，想必其中一者必定為 pivot。</p>
 <p>有了以上的觀察以後，我們現在來說說要證明的敘述：</p>
-<a class="header" href="#引理-14" id="引理-14"><h4>引理 14</h4></a>
+<h4><a class="header" href="#引理-14" id="引理-14">引理 14</a></h4>
 <p>對於所有的 \(1\le i &lt; j \le n\)，都有 \(\E[X_{ij}] = \frac{2}{j-i+1}\)。</p>
-<a class="header" href="#證明-8" id="證明-8"><h4>證明</h4></a>
+<h4><a class="header" href="#證明-8" id="證明-8">證明</a></h4>
 <p>我們可以偷偷對 \(n\) 用<strong>數學歸納法</strong>來證明這件事情。</p>
 <ul>
 <li>Base Case: 當 \(n=2\) 的時候，唯一有意義的 \(i, j\) 是 \(i=1, j=2\)。顯然無論如何這兩筆資料都會比較到，因此 \(\E[X_{12}] = 1 = \frac{2}{2-1+1}\) 滿足條件。</li>
@@ -690,27 +705,27 @@ f(n) &amp;\le c_0n + \frac{2}{n}\sum_{i=1}^{n-1} f(i)\\
 <hr />
 <p>說到底我們還是偷偷用了數學歸納法呀...明天我們來看第三種證明！
 保證（希望啦，如果沒想錯的話）沒有數學歸納法！</p>
-<a class="header" href="#參考資料-3" id="參考資料-3"><h3>參考資料</h3></a>
+<h3><a class="header" href="#參考資料-3" id="參考資料-3">參考資料</a></h3>
 <ul>
 <li>關於機率論中，更嚴謹的 indicator function / indicator random variable 定義可以參考蔡宗翰的隨筆：https://ch-hsieh.blogspot.com/2012/07/indicator-function.html</li>
 </ul>
-<a class="header" href="#隨機快速排序法-3" id="隨機快速排序法-3"><h1>隨機快速排序法 3</h1></a>
+<h1><a class="header" href="#隨機快速排序法-3" id="隨機快速排序法-3">隨機快速排序法 3</a></h1>
 <p>今天來看看把期望值的可加性發揮到淋漓盡致的一個快速排序法證明。</p>
-<a class="header" href="#定理-13-2" id="定理-13-2"><h2>定理 13</h2></a>
+<h2><a class="header" href="#定理-13-2" id="定理-13-2">定理 13</a></h2>
 <p>假設 <code>RandomPermute</code> 可以均勻地產生隨機排列，那麼隨機快速排序法的期望時間複雜度為 \(O(n\log n)\)。</p>
-<a class="header" href="#觀察執行樹" id="觀察執行樹"><h3>觀察：執行樹</h3></a>
+<h3><a class="header" href="#觀察執行樹" id="觀察執行樹">觀察：執行樹</a></h3>
 <p>如果我們將快速排序法當中，呼叫遞迴解決子問題的所有過程記錄下來，可以描繪出一個樹狀結構。
 其中每一個節點都是代表一次的 <code>QuickSort()</code> 呼叫，葉子節點對應到的就是那些 \(n\le 1\) 的邊界條件。</p>
-<p><img src="./quicksort3.png" alt="" /></p>
+<p><img src="sorting/./quicksort3.png" alt="" /></p>
 <p>考慮任何一筆資料（如上圖紅色部分），則這筆資料<strong>參與</strong>了許多子問題的計算：包含一開始的整個問題（根節點），直到這筆資料被選為 pivot、或是整個子問題唯一的輸入，才停止參與在演算法的執行之中。
 對於每一個子問題，快速排序法對於該次遞迴的執行時間（不計遞迴子問題的時間）其實是線性的。
 因此，若我們令隨機變數 \(X_i\) 表示資料 \(i\) 參與的子問題數目，那麼整體的執行時間 \(X\) 將正比於每一筆資料參與的子問題數目總和，即 \(X = X_1+X_2+\cdots + X_n\)。</p>
-<a class="header" href="#證明-9" id="證明-9"><h3>證明</h3></a>
+<h3><a class="header" href="#證明-9" id="證明-9">證明</a></h3>
 <p>既然已將執行時間拆開，利用期望值的可加性，我們只要找出每一個隨機變數 \(X_i\) 的期望值，並且加起來就行了！
 而事實上，我們如果著眼在某個特定資料 \(i\)，那麼「隨機選 pivot 並且遞迴下去」的過程，就可以想像成：不斷地隨機選取一個資料，並且把所有跟 \(i\) 不在同一邊的資料丟掉。現在來看看一個決定性的觀察：</p>
-<a class="header" href="#引理-15" id="引理-15"><h4>引理 15</h4></a>
+<h4><a class="header" href="#引理-15" id="引理-15">引理 15</a></h4>
 <p>假設子問題大小為 \(k\)。那麼，無論我們關心的資料 \(i\) 的排序位置如何，均勻地隨機選取一筆資料作為 pivot 後，至少有 \(\ge 1/3\) 的機率使得包含 \(i\) 的子問題大小變成 \(\le (2/3)k\)。</p>
-<a class="header" href="#引理-15-的證明" id="引理-15-的證明"><h4>引理 15 的證明</h4></a>
+<h4><a class="header" href="#引理-15-的證明" id="引理-15-的證明">引理 15 的證明</a></h4>
 <p>可以證明，只有在選到排名前 \(1/3\) 的資料、或選到後 \(1/3\) 的資料作為 pivot 的時候，才有可能讓 \(i\) 所在的子問題保有至少 \((2/3)k\) 筆資料。因此其他情形（至少有 \(1/3\) 的機率）都會讓子問題數量縮小 \(2/3\) 倍。</p>
 <hr />
 <p>有了引理 15 以後，我們可以計算出 \(\E[X_i]\) 的上界了。由於讓子問題縮小 \(2/3\) 倍這件事情，從任何一個資料的角度來看，只會發生至多 \(\log_{3/2} n\) 次。這是因為子問題的大小都是整數，一旦子問題大小小於 1 了遞迴就自然會停下來。
@@ -719,15 +734,15 @@ f(n) &amp;\le c_0n + \frac{2}{n}\sum_{i=1}^{n-1} f(i)\\
 於是，我們可以知道 \(\E[X_i] \le 3\log_{3/2} n\)，因此 \(\E[X]\le 3n\log_{3/2} n = O(n\log n)\)。</p>
 <hr />
 <p>哈！我們利用把整個執行樹展開的觀念，成功避免掉了數學歸納法了。</p>
-<a class="header" href="#堆積排序法" id="堆積排序法"><h1>堆積排序法</h1></a>
+<h1><a class="header" href="#堆積排序法" id="堆積排序法">堆積排序法</a></h1>
 <p>堆積（Heap）是一種<strong>陣列資料結構</strong>。若我們將 \(n\) 筆資料的堆積以 \(A[1..n]\) 來表示的話，那麼堆積將滿足：對所有 \(x\)，\(A[x] \ge A[2x]\) 以及 \(A[x] \ge A[2x+1]\)（或是指定位置不存在資料）。我們可以按照註標將陣列資料排列成樹狀的結構：</p>
-<p><img src="./heapsort1.png" alt="" /></p>
+<p><img src="sorting/./heapsort1.png" alt="" /></p>
 <p>由於每一個節點內所代表的資料都比其子節點來得大，通常我們把這樣的堆積稱為最大堆積（Max-Heap）。相反地，如果我們維護的條件是 \(A[x] \le \min(A[2x], A[2x+1])\)，那麼我們會稱它為最小堆積。</p>
-<a class="header" href="#定義-1" id="定義-1"><h3>定義</h3></a>
+<h3><a class="header" href="#定義-1" id="定義-1">定義</a></h3>
 <p>我們說 \(A[x]\) <strong>滿足堆積性質</strong>，若對於所有樹狀結構中 \(A[x]\) 的子樹內節點 \(A[y]\)，都有 \(A[y] \ge \max(A[2y], A[2y+1])\)。即，如果我們把整個子樹的資料拿出來放在另一個陣列中，那它將是最大堆積。</p>
 <p>不難發現，如果 \(A\) 是最大堆積，那麼 \(A[1]\) 的值是整個陣列中所有資料的最大值。</p>
 <hr />
-<a class="header" href="#heapify---作一個整理成堆積的動作" id="heapify---作一個整理成堆積的動作"><h2>Heapify - 作一個整理成堆積的動作</h2></a>
+<h2><a class="header" href="#heapify---作一個整理成堆積的動作" id="heapify---作一個整理成堆積的動作">Heapify - 作一個整理成堆積的動作</a></h2>
 <p>要怎麼把一個陣列整理成堆積呢？我們只需要一種核心操作「向下交換」：</p>
 <pre><code class="language-cpp">void RollDown(data_t *A, const int n, int x) {
   // 邊界條件。
@@ -747,9 +762,9 @@ f(n) &amp;\le c_0n + \frac{2}{n}\sum_{i=1}^{n-1} f(i)\\
   }
 }
 </code></pre>
-<a class="header" href="#引理-16" id="引理-16"><h3>引理 16</h3></a>
+<h3><a class="header" href="#引理-16" id="引理-16">引理 16</a></h3>
 <p>若 \(A[2x]\) 與 \(A[2x+1]\) 分別滿足堆積性質，那麼呼叫 <code>RollDown(x)</code> 以後，\(A[x]\) 將滿足堆積性質。</p>
-<a class="header" href="#證明-10" id="證明-10"><h3>證明</h3></a>
+<h3><a class="header" href="#證明-10" id="證明-10">證明</a></h3>
 <p>可以利用數學歸納法來證明：假設對於所有的 \(x' &gt; x\) 都已成立。
 那麼對於現在這個 \(x\) 來說，在呼叫 <code>RollDown(x)</code> 以後，首先我們能保證 \(A[x] \ge \max(A[2x], A[2x+1])\)。
 接下來，我們檢視哪些元素被動過了：如果剛才交換的是 \(A[x]\) 與 \(A[2x]\)，那麼另一邊（\(A[2x+1]\)）整棵子樹是不會變的。
@@ -764,9 +779,9 @@ f(n) &amp;\le c_0n + \frac{2}{n}\sum_{i=1}^{n-1} f(i)\\
 }
 </code></pre>
 <p>正確性可以利用引理 16 輕鬆證得，比較有趣的是時間複雜度的分析。</p>
-<a class="header" href="#引理-17" id="引理-17"><h3>引理 17</h3></a>
+<h3><a class="header" href="#引理-17" id="引理-17">引理 17</a></h3>
 <p><code>Heapify()</code> 的時間複雜度為 \(O(n)\)。</p>
-<a class="header" href="#證明-11" id="證明-11"><h3>證明</h3></a>
+<h3><a class="header" href="#證明-11" id="證明-11">證明</a></h3>
 <p>對於每一個註標 \(x\)，呼叫 <code>RollDown(x)</code> 時，每一次遞迴呼叫時至少將參數乘以 2，直到超過 \(n\) 為止。因此單次呼叫 <code>RollDown(x)</code> 的執行時間不超過 \(\ceil{\log\frac{n}{x}}\)。把它全部加起來，會得到</p>
 <p>\[
 \begin{aligned}
@@ -781,7 +796,7 @@ S(n) = {\color{purple}{\sum_{x=1}^{n/2} \log\frac{n/2}{x}}} + {\color{green}{\fr
 \]</p>
 <p>於是一路推敲下去可以用數學歸納法證得 \(S(n)\le 2n\)。所以 Heapify 整體時間複雜度為 \(T(n) \le n + S(n) \le 3n = O(n)\)。</p>
 <hr />
-<a class="header" href="#堆積排序" id="堆積排序"><h2>堆積排序</h2></a>
+<h2><a class="header" href="#堆積排序" id="堆積排序">堆積排序</a></h2>
 <p>有了堆積以後，就可以進行堆積排序囉。注意到，一個最大堆積其最大值總是出現在 \(A[1]\) 的位置。因此，我們可以重複地將最大值放到堆積的末端（第一次交換 \(A[1]\) 與 \(A[n]\)、第二次交換 \(A[1]\) 與 \(A[n-1]\)、依此類推）最終就可以得到一個由小到大排好順序的序列啦！</p>
 <pre><code class="language-cpp">void HeapSort(data_t *A, int n) {
   // 注意這邊有別於一般陣列：傳入之陣列範圍是 A[1]...A[n]。
@@ -795,15 +810,15 @@ S(n) = {\color{purple}{\sum_{x=1}^{n/2} \log\frac{n/2}{x}}} + {\color{green}{\fr
 <p>這個方法的時間複雜度是 Heapify 的時間、加上執行 \(n\) 次 <code>RollDown()</code> 的時間。
 前者耗費 \(O(n)\)、後者耗費 \(\sum_{i=1}^n \log i = \Theta(n\log n)\)。
 因此總執行時間為 \(O(n\log n)\)。</p>
-<a class="header" href="#備註" id="備註"><h3>備註</h3></a>
+<h3><a class="header" href="#備註" id="備註">備註</a></h3>
 <p>這個排序方法所需要的額外空間是 \(O(1)\)，因此堆積排序法是一種原地演算法。</p>
-<a class="header" href="#比較排序下界" id="比較排序下界"><h1>比較排序下界</h1></a>
+<h1><a class="header" href="#比較排序下界" id="比較排序下界">比較排序下界</a></h1>
 <p>到目前為止我們看過的排序方法，都是只要支援「能夠兩兩互相比較」，就可以由小到大排好序的演算法。
 其中幾個排序演算法如：合併排序法、隨機排序法、堆積排序法等等，都能夠達到 \(O(n\log n)\) 的時間複雜度，幾乎線性。
 但終究還是與顯然下界（至少要看過所有輸入的資料才能排序，因此任何能夠將資料正確排序的演算法都必須花費 \(\Omega(n)\) 的時間）有著隔閡。下面這個定理告訴我們，如果只計算比較次數的話，我們能得到更大的下界。</p>
-<a class="header" href="#定理-18" id="定理-18"><h3>定理 18</h3></a>
+<h3><a class="header" href="#定理-18" id="定理-18">定理 18</a></h3>
 <p>任何一個確定性演算法，如果存取輸入資料時<strong>僅</strong>能夠進行「兩兩互相比較」。那麼排序 \(n\) 筆資料，最壞情形下至少要進行 \(\ceil{\log n!} = \Omega(n\log n)\) 次比較。</p>
-<a class="header" href="#證明-12" id="證明-12"><h3>證明</h3></a>
+<h3><a class="header" href="#證明-12" id="證明-12">證明</a></h3>
 <p>對於輸入的 \(n\) 筆資料，排序完畢後的輸出，相對於輸入總是一個排列（Permutation）。由於 \(n\) 筆資料總共有 \(n!\) 種不同的排列情形，每問一個問題「是否 \(A[i] &gt; A[j]\)？」，我們可以把仍滿足先前所有提問的排列找出來，形成集合 \(\mathcal{S}\)，然後分成兩組：滿足當前這個問題（\(A[i] &gt; A[j]\)）的所有排列 \(\mathcal{S}_{yes}\)、或者是不滿足當前問題（\(A[i] \le A[j]\)）的所有排列 \(\mathcal{S}_{no}\)。這兩個排列集合是不相交的，換句話說，如果我是邪惡的餵輸入的人，我可以設計一組輸入，讓滿足所有到目前為止的排列們，恰好就是 \(|\mathcal{S}_{yes}\vert \) 或 \(|\mathcal{S}_{no}\vert \) 之間比較大的那一個。
 換句話說，在運氣最好的情況下，你的演算法也只能夠剔除一半的排列數。</p>
 <p>為了讓演算法完全正確，任何確定性的演算法，在 \(|\mathcal{S}\vert  &gt; 1\) 的任何時刻，演算法都不能輸出答案。
@@ -817,26 +832,26 @@ S(n) = {\color{purple}{\sum_{x=1}^{n/2} \log\frac{n/2}{x}}} + {\color{green}{\fr
 <hr />
 <p>我們可以把這套方法，應用在其他類似的問題中。比方說，假設我們有兩個已經排好序的數列 \(A[1..n]\)、以及 \(B[1..m]\)。
 合併排序法的「合併」步驟，需要花費 \(O(n+m)\) 次比較。這個方法是最優的嗎？我們可以透過類似的分析，得到有趣的結論：</p>
-<a class="header" href="#定理-19" id="定理-19"><h3>定理 19</h3></a>
+<h3><a class="header" href="#定理-19" id="定理-19">定理 19</a></h3>
 <p>合併兩個已排序的序列 \(A[1..n]\) 以及 \(B[1..m]\)。假設 \(n\le m\)，那麼，任何確定性演算法，都至少需要 \(\Omega(n\log \frac{m}{n})\) 次比較才行。</p>
-<a class="header" href="#證明-13" id="證明-13"><h3>證明</h3></a>
+<h3><a class="header" href="#證明-13" id="證明-13">證明</a></h3>
 <p>合併完畢的結果，可以一一對應到把 \(n+m\) 個連續的格子進行黑白染色，使得恰好有 \(n\) 個黑色格子、有 \(m\) 個白色格子。其中黑色格子就依序對應了 \(A\) 陣列的內容、白色格子就依序對應了 \(B\) 陣列的內容。
 由於每一次比較也只能剔除一半的黑白染色方法，因此任何一個確定性演算法，在最壞情形下至少得進行 \(\ceil{\log {m+n\choose n}}\) 次比較。</p>
-<p>於是，在 \(n\le m\) 的時候，我們有
+<p>於是，在 \(n\le m\) 的時候，我們有 
 \(\log {m+n\choose n}\ge \log \frac{m^n}{n!} \approx n\log m - n\log n = n\log \frac{m}{n}\)，得證。</p>
-<a class="header" href="#這個證明告訴我們什麼" id="這個證明告訴我們什麼"><h3>這個證明告訴我們什麼？</h3></a>
+<h3><a class="header" href="#這個證明告訴我們什麼" id="這個證明告訴我們什麼">這個證明告訴我們什麼？</a></h3>
 <p>如果 \(n\) 與 \(m\) 比例懸殊（比方說極端情形 \(n=1\)），那麼，比方說，我們可以用「二分搜尋法」，對每一個 \(A\) 中的元素，找到適合插入在陣列 \(B\) 裡面的位置。有了這些位置以後，就可以在「不查看大部分資料內容」的情形下，合併兩個陣列了！
 雖然合併陣列的時間複雜度顯然得花 \(O(n+m)\) 的時間，但這些時間是大多花費在資料的搬移上，我們降低的是「進行決策」所花費的時間複雜度（從另一個角度來看，也可以說是減少可能產生的程序分支 branching！）</p>
 <hr />
 <p>有沒有更快的排序演算法呢？這個取決於你的計算模型！
 我們現在使用的電腦，顯然比「兩兩互相比較」模型還要強得多。
 而事實上，是比較接近「隨機存取模型」的。因此，在不同計算模型的條件下，我們被允許對資料有更多種類的操作，或許存在著時間複雜度更低的演算法。</p>
-<a class="header" href="#推薦閱讀-2" id="推薦閱讀-2"><h3>推薦閱讀</h3></a>
+<h3><a class="header" href="#推薦閱讀-2" id="推薦閱讀-2">推薦閱讀</a></h3>
 <ul>
 <li>德州農工(TAMU)投影片：http://faculty.cs.tamu.edu/klappi/csce411-f17/csce411-set3.pdf</li>
 </ul>
 <!-- * 偷推林軒田教授的資訊理論課程：https://www.csie.ntu.edu.tw/~htlin/course/iit19fall/ -->
-<a class="header" href="#最少比較排序" id="最少比較排序"><h1>最少比較排序</h1></a>
+<h1><a class="header" href="#最少比較排序" id="最少比較排序">最少比較排序</a></h1>
 <p>前一篇我們討論了比較排序的下界。對於所有的 \(n\)，基於比較的排序方法至少要花 \(\ceil{\log n!}\) 次比較。
 而根據合併排序法、或快速排序法等，我們也知道要完成排序至多只需要 \(O(n\log n)\) 次比較。
 Lower bound 與 Upper bound 完美地合起來了不是嗎！
@@ -844,35 +859,35 @@ Lower bound 與 Upper bound 完美地合起來了不是嗎！
 對於六〇年代的電腦科學家們，不把常數寫清楚是會對自己過意不去的。
 換句話說，若先不考慮把演算法實作出來後真正的時間複雜度，我們只關心「比較次數」的話，是否<strong>總是</strong>存在一種排序的演算法，在最壞情形下只需要恰好 \(\ceil{\log n!}\) 次比較就能夠排好序呢？</p>
 <p>答案是否定的。但是在描述最小反例之前，我們不妨先想想看，究竟可以設計出怎麼樣的演算法，其所需的比較次數與 \(\ceil{\log n!}\) 足夠接近：</p>
-<a class="header" href="#引理-20" id="引理-20"><h2>引理 20</h2></a>
+<h2><a class="header" href="#引理-20" id="引理-20">引理 20</a></h2>
 <p>存在一種比較排序法，使得排好 \(n\) 筆資料至多需要 \(\ceil{\log 2} + \ceil{\log 3} + \cdots + \ceil{\log n}\) 次比較。</p>
-<a class="header" href="#引理-20-的證明" id="引理-20-的證明"><h3>引理 20 的證明</h3></a>
+<h3><a class="header" href="#引理-20-的證明" id="引理-20-的證明">引理 20 的證明</a></h3>
 <p>上面這個式子給我們很大的提示：我們只要稍微修改一下<strong>插入排序法</strong>，每一次加入一個數字。但是在加入的時候，我們不從當前序列末端一路比較過來；相反地，我們使用定理 19 提到的<strong>二分搜尋法</strong>，把資料插入目前排好序的序列就可以了。
 我們不需要擔心資料搬移所花費的時間，反正資料的搬移在這個比較次數至上的計算模型裡面是免費的！</p>
 <hr />
 <p>看來細節不只藏在 big-O 裡面，還藏在天花板裡面呢。</p>
 <p>上面這兩個函數到底差多少？令 \(A(n) = \ceil{\log n!}\)、令 \(B(n) = \sum_{i=1}^n \ceil{\log i}\)。我們可以簡單寫張表，列出前面幾項數值：</p>
-<table><thead><tr><th align="center"> \(n\) </th><th align="center"> 1 </th><th align="center"> 2 </th><th align="center"> 3 </th><th align="center"> 4 </th><th align="center"> 5 </th><th align="center"> 6 </th><th align="center"> 7 </th><th align="center"> 8 </th><th align="center"> 9 </th><th align="center"> 10 </th><th> 11 </th><th> 12 </th></tr></thead><tbody>
-<tr><td align="center"> \(A(n)\) </td><td align="center"> 0 </td><td align="center"> 1 </td><td align="center"> 3 </td><td align="center"> 5 </td><td align="center"> 7 </td><td align="center"> 10 </td><td align="center"> 13 </td><td align="center"> 16 </td><td align="center"> 19 </td><td align="center"> 22 </td><td> 26 </td><td> 29 </td></tr>
-<tr><td align="center"> \(B(n)\) </td><td align="center"> 0 </td><td align="center"> 1 </td><td align="center"> 3 </td><td align="center"> 5 </td><td align="center"> 8 </td><td align="center"> 11 </td><td align="center"> 14 </td><td align="center"> 17 </td><td align="center"> 21 </td><td align="center"> 25 </td><td> 29 </td><td> 33 </td></tr>
+<table><thead><tr><th align="center">\(n\)</th><th align="center">1</th><th align="center">2</th><th align="center">3</th><th align="center">4</th><th align="center">5</th><th align="center">6</th><th align="center">7</th><th align="center">8</th><th align="center">9</th><th align="center">10</th><th align="center">11</th><th align="center">12</th></tr></thead><tbody>
+<tr><td align="center">\(A(n)\)</td><td align="center">0</td><td align="center">1</td><td align="center">3</td><td align="center">5</td><td align="center">7</td><td align="center">10</td><td align="center">13</td><td align="center">16</td><td align="center">19</td><td align="center">22</td><td align="center">26</td><td align="center">29</td></tr>
+<tr><td align="center">\(B(n)\)</td><td align="center">0</td><td align="center">1</td><td align="center">3</td><td align="center">5</td><td align="center">8</td><td align="center">11</td><td align="center">14</td><td align="center">17</td><td align="center">21</td><td align="center">25</td><td align="center">29</td><td align="center">33</td></tr>
 </tbody></table>
 <p>在 \(n=5\) 的時候數字就不一樣了！這不禁讓我們思考：要排好 5 個數字，至少需要進行幾次比較呢？如果是 7 次，那麼代表前述之「二分插入法」不能達到最少比較次數；反之，如果是 8 次，代表基於資訊理論方法得到的下界不是最緊的。無論是哪一種結論好像都讓我們多理解了什麼，對吧～</p>
-<a class="header" href="#引理-21" id="引理-21"><h2>引理 21</h2></a>
+<h2><a class="header" href="#引理-21" id="引理-21">引理 21</a></h2>
 <p>存在一個比較排序法，使得正確排序 5 筆資料，在最壞情形下僅需要 7 次比較。這結果真的是令人五筆振奮啊（這裡沒有梗）。</p>
-<a class="header" href="#引理-21-的證明" id="引理-21-的證明"><h3>引理 21 的證明</h3></a>
+<h3><a class="header" href="#引理-21-的證明" id="引理-21-的證明">引理 21 的證明</a></h3>
 <p>證明實在難以用言語形容，直接畫圖比較快。這邊我們假設輸入為 \(A[1..5]\)。</p>
-<p><img src="./minimum-comparison-sort.png" alt="" /></p>
+<p><img src="sorting/./minimum-comparison-sort.png" alt="" /></p>
 <p>你看看，無論輸入長什麼樣子，這個決策樹總可以在至多 7 次以內順利排序完畢。而這邊使用到的是二分插入法的概念，只是用了比較取巧的比較順序。西元 1959 年 Ford-Johnson 把這個想法延伸，設計出了一個叫做<strong>合併插入排序法 Merge Insertion Sort</strong> 的排序演算法（其中 Ford 就是 Ford-Fulkerson 演算法裡面的 Ford、Johnson 就是 Johnson 演算法裡面的那位、好吧我不知道我在講什麼。）</p>
 <p>如果我們把 FJ 演算法需要的比較次數的前幾項寫出來：</p>
-<table><thead><tr><th> \(n\) </th><th> 1 </th><th> 2 </th><th> 3 </th><th> 4 </th><th> 5 </th><th> 6 </th><th> 7 </th><th> 8 </th><th> 9 </th><th> 10 </th><th> 11 </th><th> 12 </th></tr></thead><tbody>
-<tr><td align="center"> \(A(n)\) </td><td align="center"> 0 </td><td align="center"> 1 </td><td align="center"> 3 </td><td align="center"> 5 </td><td align="center"> 7 </td><td align="center"> 10 </td><td align="center"> 13 </td><td align="center"> 16 </td><td align="center"> 19 </td><td align="center"> 22 </td><td> 26 </td><td> 29 </td></tr>
-<tr><td align="center"> \(FJ(n)\) </td><td align="center"> 0 </td><td align="center"> 1 </td><td align="center"> 3 </td><td align="center"> 5 </td><td align="center"> 7 </td><td align="center"> 10 </td><td align="center"> 13 </td><td align="center"> 16 </td><td align="center"> 19 </td><td align="center"> 22 </td><td> 26 </td><td> 30 </td></tr>
+<table><thead><tr><th align="center">\(n\)</th><th align="center">1</th><th align="center">2</th><th align="center">3</th><th align="center">4</th><th align="center">5</th><th align="center">6</th><th align="center">7</th><th align="center">8</th><th align="center">9</th><th align="center">10</th><th align="center">11</th><th align="center">12</th></tr></thead><tbody>
+<tr><td align="center">\(A(n)\)</td><td align="center">0</td><td align="center">1</td><td align="center">3</td><td align="center">5</td><td align="center">7</td><td align="center">10</td><td align="center">13</td><td align="center">16</td><td align="center">19</td><td align="center">22</td><td align="center">26</td><td align="center">29</td></tr>
+<tr><td align="center">\(FJ(n)\)</td><td align="center">0</td><td align="center">1</td><td align="center">3</td><td align="center">5</td><td align="center">7</td><td align="center">10</td><td align="center">13</td><td align="center">16</td><td align="center">19</td><td align="center">22</td><td align="center">26</td><td align="center">30</td></tr>
 </tbody></table>
 <p>從 \(n=2...11\) 全部都是最佳解了！真正難纏的部分是 \(n=12\)，直到 1965 年 Mark Wells<sup class="footnote-reference"><a href="#1">1</a></sup> 率先撰寫程式列舉所有排序結構，證明了 \(S(12) = 30\)（有興趣的朋友可以參考 Knuth 的 TAOCP，第三卷）。這個結果證明了資訊理論下界不等於最少排序次數。</p>
 <p>Ford-Johnson 的合併插入排序法是否真的是最優的呢？可惜的是 1977 年 Manacher<sup class="footnote-reference"><a href="#2">2</a></sup> 否定了這件事情：他證明了存在無窮多個 \(n\)，使得最少排序次數比 \(FJ(n)\) 嚴格來得小。目前已知最小的反例是在 \(n=189\)。</p>
 <hr />
 <p>如同四色定理一樣，找出最少比較排序的次數，可以藉由電腦輔助而完成證明。很酷吧！</p>
-<a class="header" href="#推薦閱讀-3" id="推薦閱讀-3"><h3>推薦閱讀</h3></a>
+<h3><a class="header" href="#推薦閱讀-3" id="推薦閱讀-3">推薦閱讀</a></h3>
 <ul>
 <li>高德納教授（Knuth）的《The Art Of Computer Programming》第 5.3.1 節。</li>
 <li>《最少排序問題中 \(S(15)\) 與 \(S(19)\) 的解決》：http://fcst.ceaj.org/EN/abstract/abstract47.shtml</li>
@@ -885,26 +900,26 @@ Lower bound 與 Upper bound 完美地合起來了不是嗎！
 <div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
 <p>Glenn K. Manacher, <strong>The Ford-Johnson Sorting Algorithm Is Not Optimal</strong>, 1979. https://dl.acm.org/doi/pdf/10.1145/322139.322145</p>
 </div>
-<a class="header" href="#合併插入排序" id="合併插入排序"><h1>合併插入排序</h1></a>
+<h1><a class="header" href="#合併插入排序" id="合併插入排序">合併插入排序</a></h1>
 <p>Lester Ford, Jr. 以及 Selmer Johnson 把 <a href="https://www.uidaho.edu/engr/departments/ece/our-people/emeriti/howard-demuth">Howard B. Demuth</a> 的 1957 年博士論文裡面提到的 5 筆資料排序方法進行推廣，最終獲得一個用謹慎的方法試圖減少比較次數的排序方法──<strong>合併插入排序 Merge Insertion Sort</strong>。
 這個排序法的名字是高德納教授（Donald Knuth）在他撰寫的《The Art of Computer Programming》裡面取的。
 附帶一提，最近 MIT 教授 Lex Fridman 釋出了一段與 Knuth 的訪談<sup class="footnote-reference"><a href="#1">1</a></sup>：https://www.youtube.com/watch?v=2BdBfsXbST8 大家有興趣可以聽聽看。</p>
-<a class="header" href="#如何避免大量的天花板" id="如何避免大量的天花板"><h2>如何避免大量的天花板</h2></a>
+<h2><a class="header" href="#如何避免大量的天花板" id="如何避免大量的天花板">如何避免大量的天花板</a></h2>
 <p>演算法的核心概念是這樣的：如果看到一個長度為 \(2^k-1\) 元素的序列，那麼此時將一個新的元素插入其中，是最不會浪費「資訊」的。因為資訊理論下界 \(\ceil{\log_2 ((2^k-1)+1)}\) 無論有沒有天花板，其數值都是一樣的，得花費恰巧 \(k\) 次才能夠找出新元素的落點。</p>
 <p>如果長度不到 \(2^k-1\) 的序列怎麼辦？盡量讓這件事情不要發生就好了！
 乍看之下很困難啊──但是 Ford-Johnson <strong>盡量</strong>做到了，最重要的想法可以透過下面這張圖來傳達：</p>
-<p><img src="./merge-insertion-sort1.png" alt="" /></p>
+<p><img src="sorting/./merge-insertion-sort1.png" alt="" /></p>
 <p>假設我們能夠經過若干次比較之後，把所有元素的大小關係描述成上面這張圖。其中 \(x\to y\) 代表經過比較以後，我們得出了 \(x &lt; y\) 這項結論。
 上圖黃色框線內共有 7 個元素，若我們想將紅色元素插入上面長鏈中，此時恰好達到資訊理論下界的 \(\log_2(7+1) = 3\) 次。因此可以得到結論是：此時優先將紅色元素插入長鏈、再將左邊的藍色元素插入長鏈。其需要的比較次數至多是 \(\log_2(7+1) + \log_2(7+1) = 6\) 次。相反地，若我們先插入藍色元素，再插入紅色元素，在最壞情形下我們得花費 \(\log_2(7+1) + \ceil{\log_2(8+1)} = 7\) 次比較才能達到效果。</p>
 <p>行文至此，不難發現，如果我們有辦法把輸入資料的大小關係，表達成上圖這種牙刷形狀，再依照最不浪費比較次數的方式進行二分插入，說不定可以得到較佳（比較次數較小）的排序演算法。</p>
-<a class="header" href="#合併插入排序的第一步" id="合併插入排序的第一步"><h2>合併插入排序的第一步</h2></a>
+<h2><a class="header" href="#合併插入排序的第一步" id="合併插入排序的第一步">合併插入排序的第一步</a></h2>
 <p>要怎麼生出牙刷呢？
 首先，在分而治之的部分，我們先將資料隨意地兩兩分成一組，並且花費 \(\floor{n/2}\) 次比較。
 如果有多出來的元素，就先放在旁邊吧。
 接下來，我們可以遞迴針對比較大的那些 \(\floor{n/2}\) 元素進行排序，就可以把它們接成一長串了！
 最後是刷毛整理的部分：我們將刷毛由左至右（資料可以命名為 \(b_1, b_2, \ldots, b_{\ceil{n/2}}\)）分成若干組，而每一組的數量都會滿足：把這組資料由右至左依序進行二分插入法，都是最不浪費資訊的。</p>
 <p>我們現在來引用 Donald Knuth 《The Art of Computer Programming》裡面提到的分析技巧<sup class="footnote-reference"><a href="#2">2</a></sup>：</p>
-<p><img src="./merge-insertion-sort2.png" alt="" /></p>
+<p><img src="sorting/./merge-insertion-sort2.png" alt="" /></p>
 <p>這些組別分起來，會長得像這樣：\(\{b_1\}\)、\(\{b_2, b_3\}\)、\(\{b_4, b_5\}\)、\(\{b_6, b_7, b_8, b_9, b_{10}, b_{11}\}\)…。我們可以令 \(t_k\) 代表最大的註標使得把跟它分派到同一組的所有元素，依照反過來的順序依序二分插入序列時，最壞情形下每次都恰好需要 \(k\) 次比較。即，跟 \(t_0\) 同一組的資料插入序列恰好需要 0 次比較、跟 \(t_2\) 同一組的資料插入序列需要 2 次比較、依此類推。</p>
 <p>要怎麼找出 \(t_k\) 的值呢？注意到，當 \(b_{t_k}\) 的筆資料被插入序列的時候，所有註標不超過 \(t_{k-1}\) 的資料已經被加入序列了。此外，所有註標等於 \(t_{k-1}+1, \ldots, t_k\) 的元素都還沒有被加入序列。也就是說，此時序列恰恰好有 \(2t_{k-1}+(t_k-t_{k-1}-1) = t_{k-1}+t_k-1\) 筆資料！（這個 \(-1\) 是因為最後一個註標 \(b_{t_k}\) 頭頂上那筆資料不需要被考慮進去，它的資料比所有人都來得大）為了讓資訊不浪費，我們希望 \(t_{k-1}+t_k-1 = 2^k-1\)。因此得到
 \[
@@ -931,10 +946,10 @@ G(\ceil{n/2}) &amp;= \sum_{i=1}^{k-1} i (t_i-t_{i-1}) + k(\ceil{n/2} - t_{k-1}) 
 \]</p>
 <p>令 \(w_k = t_0+t_1+\cdots + t_{k-1} = \floor{2^{k+1}/3}\)。
 現在來證明今天最重要的一個結論：</p>
-<a class="header" href="#引理-22" id="引理-22"><h3>引理 22</h3></a>
+<h3><a class="header" href="#引理-22" id="引理-22">引理 22</a></h3>
 <p>\( F(n) - F(n-1) = k \) 若且唯若 \(w_k &lt; n \le w_{k+1}\)。</p>
-<a class="header" href="#證明-14" id="證明-14"><h3>證明</h3></a>
-<p>我們可以用數學歸納法。Base Case 很顯然，所以就不寫了。Inductive Case 的部分可以利用 \(n\) 的奇偶性分別討論：如果 \(n\) 是偶數，那麼 \(F(n)-F(n-1) = 1+F(n/2)-F(n/2-1)\)，後半部的數值等於 \(k-1\) 若且唯若 \(w_{k-1} &lt; \floor{n/2} \le w_{k}\)。而由 \(w_k\) 之定義可知</p>
+<h3><a class="header" href="#證明-14" id="證明-14">證明</a></h3>
+<p>我們可以用數學歸納法。Base Case 很顯然，所以就不寫了。Inductive Case 的部分可以利用 \(n\) 的奇偶性分別討論：如果 \(n\) 是偶數，那麼 \(F(n)-F(n-1) = 1+F(n/2)-F(n/2-1)\)，後半部的數值等於 \(k-1\) 若且唯若 \(w_{k-1} &lt; \floor{n/2} \le w_{k}\)。而由 \(w_k\) 之定義可知 </p>
 <p>\[
 \begin{aligned}
 &amp;&amp; w_{k-1} &amp; &lt; &amp; n/2 &amp; \le   w_{k}  &amp; \text{（} n \text{ 是偶數。）}\\
@@ -962,7 +977,7 @@ A(n) = \ceil{\log n!}  \approx n\log_2 n - 1.443 n + O(\log_2 n)
 B(n) = \sum_{i=1}^n \ceil{\log i} \approx n\log_2 n - 0.915 n + O(\log_2 n)
 \]</p>
 <p>不難發現 \(F(n)\) 比起二分插入法得到的比較次數 \(B(n)\)，更接近資訊理論下界 \(A(n)\) 了呢！</p>
-<a class="header" href="#結論" id="結論"><h3>結論</h3></a>
+<h3><a class="header" href="#結論" id="結論">結論</a></h3>
 <p>後話就是，在 1979 年 Manacher<sup class="footnote-reference"><a href="#3">3</a></sup> 用了混合方法，把 Hwang-Lin<sup class="footnote-reference"><a href="#5">4</a></sup> 的兩序列合併演算法考慮進去並且在某些情形下改良，同時改進了 Ford-Johnson 演算法，並且證明了<strong>存在無窮多個</strong> \(n\)，其最少比較排序的比較次數比 \(F(n)\) 嚴格來得小，該方法贏過 FJ 的最小值是 \(n=189\)。然後到了 1985 年 Bui 和 Thanh<sup class="footnote-reference"><a href="#4">5</a></sup> 再次修改了 Manacher 演算法，得出在絕大多數的 \(n\) 時，FJ 演算法不是最優的。而且也得出了最小反例出現在 \(n=47\)（到 2007 年為止，Peczarski<sup class="footnote-reference"><a href="#6">6</a></sup> 聲稱 FJ 演算法在 \(n&lt;47\) 的時候是最佳解，Peczarski 證明了利用某一類型的分而治之演算法無法在 \(n\le 46\) 的時候贏過 FJ 演算法。）</p>
 <p>然後 \(F(n)\) 其實有封閉形式（Closed Form，俗稱公式解）：
 \[
@@ -971,7 +986,7 @@ F(n) = n\ceil{\log_2 \frac{3}{4} n} + \floor{\frac13 2^{\floor{\log_2 6n}}} + \f
 <p>最後，大家要多多刷牙喔 ^_&lt;。</p>
 <hr />
 <p>合併插入排序法中間的分析，利用到了「如何從排序到一半的東西，利用盡量少比較次數完成排序」的特性。我們是否可以把這個概念推廣一下呢？排序到一半的東西，可以被表示成一個叫做 <strong>偏序集（Partial Ordered Set）</strong> 的東西。我們能否從偏序集獲得一些排序知識呢？</p>
-<a class="header" href="#推薦閱讀-4" id="推薦閱讀-4"><h3>推薦閱讀</h3></a>
+<h3><a class="header" href="#推薦閱讀-4" id="推薦閱讀-4">推薦閱讀</a></h3>
 <ul>
 <li>維基百科：https://en.wikipedia.org/wiki/Merge-insertion_sort</li>
 <li>Ford-Johnson 演算法當年的論文：https://www.jstor.org/stable/pdf/2308750.pdf</li>
@@ -994,7 +1009,7 @@ F(n) = n\ceil{\log_2 \frac{3}{4} n} + \floor{\frac13 2^{\floor{\log_2 6n}}} + \f
 <div class="footnote-definition" id="6"><sup class="footnote-definition-label">6</sup>
 <p>Marcin Peczarski, <em>The Ford–Johnson algorithm still unbeaten for less than 47 elements</em>, IPL 2007 February. https://www.sciencedirect.com/science/article/pii/S0020019006002742</p>
 </div>
-<a class="header" href="#偏序集排序一" id="偏序集排序一"><h1>偏序集排序（一）</h1></a>
+<h1><a class="header" href="#偏序集排序一" id="偏序集排序一">偏序集排序（一）</a></h1>
 <p>在比較排序的過程中，我們不斷地詢問某兩筆資料之間的大小關係。
 到目前為止，我們知道，從資訊理論的角度來看，若採用兩兩資料比較的方式逐漸取得訊息，
 從一個「完全不知道訊息之間大小關係」，與「知曉任兩筆資料之間的大小關係」，
@@ -1005,7 +1020,7 @@ F(n) = n\ceil{\log_2 \frac{3}{4} n} + \floor{\frac13 2^{\floor{\log_2 6n}}} + \f
 <p>要理解這個問題，讓我們從定義<strong>偏序集（Partially Ordered Sets）</strong> 開始吧！</p>
 <!-- 今天來簡單介紹**偏序集（Partially Ordered Sets）**、**線性延伸（Linear Extension）**、以及由 Frank Hwang 與 Shen Lin 定義的**排序效率（Efficiency）**。
 以圖論語言來說明的話，我們今天想介紹的是**有向無環圖（Directed Acyclic Graph）**、**拓撲順序（Topological Order）**、以及基於這兩個觀念定義出來的排序效率。 -->
-<a class="header" href="#偏序集-poset" id="偏序集-poset"><h2>偏序集 Poset</h2></a>
+<h2><a class="header" href="#偏序集-poset" id="偏序集-poset">偏序集 Poset</a></h2>
 <p>首先，我們不妨假設任何兩筆輸入的資料都不相同，而且所有資料存在一個全序排列（Total Order），也就是說，隨意選取任何兩筆資料 \(x\) 和 \(y\)，必定有 \(x &lt; y\) 或者 \(x &gt; y\)。</p>
 <p>假設某個演算法今天對於 \(n\) 筆資料，抓了其中兩筆資料 \(x_1, x_2\) 來比較大小，獲得了 \(x_1 &lt; x_2\) 這樣的資訊。於是呢，我們可以從 \(x_1\) 到 \(x_2\) 畫一個箭頭 \(x_1\to x_2\)。這些資料與資料之間的關聯，形成一個偏序集 Partially Ordered Set，通常我們會簡稱 Poset，以 \((P, &lt;)\) 表示。
 這個偏序集，就相當於我們目前「已知」的所有資訊。一個超級粗略的估計如下：\(n\) 個元素的 Poset 至多有 \(2^{n^2-n}\) 種<sup class="footnote-reference"><a href="#1">1</a></sup>，因為這個集合當中、任何兩個元素之間的關係要嘛可以出現、要嘛不能出現。
@@ -1019,15 +1034,15 @@ F(n) = n\ceil{\log_2 \frac{3}{4} n} + \floor{\frac13 2^{\floor{\log_2 6n}}} + \f
 dp(P_0) = 1 + \min_{i, j} \left( \max\{dp(P_0(x_i &lt; x_j)), dp(P_0(x_i &gt; x_j))\} \right)
 \]</p>
 <p>對於 \(n=12\) 筆資料而言，我們就獲得一個 \(n^2\times 414864951055853499\) 時間複雜度的動態規劃演算法了！真是好棒棒。這個數字可能有點大，如果我們只考慮<strong>同構（Isomorphic）</strong> 的偏序集，那這個數字可以降到 \(n^2\times 1104891746\)，感覺變得可以負擔了。在這邊「同構」是這樣定義的：把輸入的資料 ID 隨意亂序置換以後，產生的所有偏序集都會被視為同構。顯然這些偏序集距離完全排好順序所需要的比較次數都相同，一旦計算出其中一個偏序集的 \(dp\) 值，就等同於計算出了所有其他同構的偏序集的 \(dp\) 值。</p>
-<a class="header" href="#有向無環圖-directed-acyclic-graph" id="有向無環圖-directed-acyclic-graph"><h2>有向無環圖 Directed Acyclic Graph</h2></a>
+<h2><a class="header" href="#有向無環圖-directed-acyclic-graph" id="有向無環圖-directed-acyclic-graph">有向無環圖 Directed Acyclic Graph</a></h2>
 <p>在我們要討論的主題中，偏序集與有向無環圖（Directed Acyclic Graph, DAG）其實有著非常相似的概念：
 我們可以利用 DAG 來表達一個 Poset \(P\)，考慮一個圖 \(G_P\)，其頂點集合就是所有的 \(n\) 筆資料 \(x_1, x_2, \ldots, x_n\)。只要在 Poset 裡面 \(x_i &lt; x_j\)，我們就加上一條 \(x_i\to x_j\) 的有向邊（arc）。</p>
 <p>如果這 \(n\) 筆資料是完全排序的，那麼對應到的圖 \(G_P\) 會是一個完全圖、而且它唯一的<strong>拓撲排序 Topological Order</strong> 就是把所有資料排序後的結果。
 藉由圖論，我們可以舉一個 \(n=5\) 的例子，把上面的動態規劃解釋得更美觀一點～</p>
-<p><img src="./poset-efficiency0.png" alt="" /></p>
+<p><img src="sorting/./poset-efficiency0.png" alt="" /></p>
 <hr />
 <p>明天來繼續講偏序集與完全排序之間的更多關係！</p>
-<a class="header" href="#延伸閱讀" id="延伸閱讀"><h3>延伸閱讀</h3></a>
+<h3><a class="header" href="#延伸閱讀" id="延伸閱讀">延伸閱讀</a></h3>
 <ul>
 <li><a href="https://luciuschang.wordpress.com/2016/10/24/%E6%95%B8%E5%AD%B8%E5%A6%82%E4%BD%95%E5%AE%9A%E7%BE%A9%E3%80%8C%E9%97%9C%E4%BF%82%E3%80%8D/">張志鴻教授：數學如何定義「關係」</a></li>
 </ul>
@@ -1080,19 +1095,19 @@ dp\left(
 }
 \right)
 \right\}
---><a class="header" href="#偏序集排序二" id="偏序集排序二"><h1>偏序集排序（二）</h1></a>
+--><h1><a class="header" href="#偏序集排序二" id="偏序集排序二">偏序集排序（二）</a></h1>
 <p>對於一個偏序集 \(P\)，我們可以利用動態規劃的方法，找出從 \(P\) 的狀態開始排序，到完整排序時，最壞情形下，至少需要幾次比較。
 可惜的是，這個方法需要跑遍所有可能的 \(n\) 個點的偏序集，而這個數量是隨著 \(n\) 越大而呈現指數級別成長的<sup class="footnote-reference"><a href="#1">1</a></sup>。</p>
-<a class="header" href="#線性延伸-linear-extensions" id="線性延伸-linear-extensions"><h2>線性延伸 Linear Extensions</h2></a>
+<h2><a class="header" href="#線性延伸-linear-extensions" id="線性延伸-linear-extensions">線性延伸 Linear Extensions</a></h2>
 <p>有沒有更有效的方法來提早排除某些「需要太多次比較」的偏序集呢？
 其實是可以的，給定一個偏序集 \(P\)，對於任何一個所有資料 \(x_1, x_2, \ldots, x_n\) 的全排列 \(\sigma\)，我們說 \(\sigma\) 是 \(P\) 的一個<strong>線性延伸（Linear Extension）</strong>，若且唯若對於任兩筆資料 \(x_i\) 與 \(x_j\)，一旦在 \(P\) 上面 \(x_i &lt; x_j\) \(\implies\) 在 \(\sigma\) 之中 \(x_i\) 出現在 \(x_j\) 前面。
 如果我們用圖論的語言來描述的話，其實滿足條件的 \(\sigma\) 就會是 \(P\) 所對應的有向無環圖 \(G_P\) 上頭的一個拓撲排序。</p>
 <p>我們用 \(e(P)\) 來表示偏序集上面的線性延伸數量，當我們寫成 \(e(G)\) 的時候，也代表著一個有向圖 \(G\) 中拓撲排序的方法數。兩者定義雖然不太一樣，在這裡我們不妨就混著使用了。
 舉例而言，如果 \(P_{\rm{total}}\) 是一個全序集，那麼它有唯一的線性延伸，因此 \(e(P_{\rm{total}}) = 1\)。如果 \(P_\emptyset\) 是空序集，那麼任何一個排列都會是 \(P_\emptyset\) 的線性延伸，此時 \(e(P_\emptyset) = n!\)。</p>
 <p>還記得資訊理論給出的複雜度下界嗎？同樣的方法在這邊也適用！</p>
-<a class="header" href="#性質-23" id="性質-23"><h3>性質 23</h3></a>
+<h3><a class="header" href="#性質-23" id="性質-23">性質 23</a></h3>
 <p>對於一個偏序集 \(P\)，進行兩兩比較方式排序，至少需要 \(\ceil{\log e(P)}\) 次比較。</p>
-<a class="header" href="#排序效率-efficiency" id="排序效率-efficiency"><h2>排序效率 Efficiency</h2></a>
+<h2><a class="header" href="#排序效率-efficiency" id="排序效率-efficiency">排序效率 Efficiency</a></h2>
 <p>從一個 \(n\) 個點的偏序集 \(P\) 開始，假設我們把 \(x_i\) 與 \(x_j\) 拿來互相比較，比完以後會得到 \(P_&lt; := P(x_i &lt; x_j)\)、或是 \(P_&gt; := P(x_i &gt; x_j)\) 這兩種可能。
 顯然對於所有 \(P\) 的線性延伸，都會恰好是 \(P_&lt;\) 或 \(P_&gt;\) 的線性延伸，於是我們有
 \[
@@ -1119,10 +1134,10 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 <p>(tl; dr) 最後的結論就是，在展開所有排序效率 \(\ge 0.89221\) 的搜索狀態時，我們始終無法達到全序集。因此可以證得 \(S(12) &gt; 29\)，由 Ford-Johnson 演算法可得知 \(F(12)=30\)。因此得證 \(S(12)=30\)。</p>
 <hr />
 <p>如果給定了偏序集 \(P\)，雖然無法精準計算出所有的線性延伸數量 \(e(P)\)，我們有沒有其他方式來得出 \(e(P)\) 的估計呢？</p>
-<a class="header" href="#備註-1" id="備註-1"><h3>備註</h3></a>
+<h3><a class="header" href="#備註-1" id="備註-1">備註</a></h3>
 <p>Linear Extension 在紡織科學裡面會被翻譯成直線伸長唷…</p>
-<p><img src="./poset-efficiency1.png" alt="" /></p>
-<a class="header" href="#延伸閱讀-1" id="延伸閱讀-1"><h3>延伸閱讀</h3></a>
+<p><img src="sorting/./poset-efficiency1.png" alt="" /></p>
+<h3><a class="header" href="#延伸閱讀-1" id="延伸閱讀-1">延伸閱讀</a></h3>
 <ul>
 <li><a href="https://web.math.sinica.edu.tw/math_media/d381/38103.pdf">黃光明教授：我與數學研究的第一次邂逅</a></li>
 </ul>
@@ -1132,10 +1147,10 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 <div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
 <p>Donald Knuth, <em>The Art of Computer Programming</em>, Volumn 3, Page 188-190.</p>
 </div>
-<a class="header" href="#偏序集排序三" id="偏序集排序三"><h1>偏序集排序（三）</h1></a>
+<h1><a class="header" href="#偏序集排序三" id="偏序集排序三">偏序集排序（三）</a></h1>
 <p>今天的目標是要試圖找出，計算一個偏序集 \((P, &lt;)\) 上面線性延伸數量 \(e(P)\) 的估計。
 如果有好辦法得到近似值，就可以拿它來計算排序效率、甚至可以用它來判斷每一次要比較哪兩個元素比較好。</p>
-<a class="header" href="#順序多胞形-order-polytope" id="順序多胞形-order-polytope"><h2>順序多胞形 Order Polytope</h2></a>
+<h2><a class="header" href="#順序多胞形-order-polytope" id="順序多胞形-order-polytope">順序多胞形 Order Polytope</a></h2>
 <p>今天的主角是一個在 \(n\) 維空間中的多胞形：\(\mathcal{O}(P)\)。
 更精確地說，它是一個被包含在 \(n\) 維空間中單位立方體內的一個多胞形。
 我們不妨假設 \(P\) 這個集合的元素有 \(x_1, x_2, \ldots, x_n\)。
@@ -1145,9 +1160,9 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 <p>\[
 \mathcal{O}(P) = \{ (z_1, z_2, \ldots, z_n) \ \vert \ z_i &lt; z_j \text{ whenever } x_i &lt; x_j \text{ in } P \}
 \]</p>
-<a class="header" href="#定理-24" id="定理-24"><h3>定理 24</h3></a>
+<h3><a class="header" href="#定理-24" id="定理-24">定理 24</a></h3>
 <p>\(\mathcal{O}(P)\) 是一個凸多胞形，而且其體積恰好等於 \(e(P)/n!\)。</p>
-<a class="header" href="#證明-15" id="證明-15"><h3>證明</h3></a>
+<h3><a class="header" href="#證明-15" id="證明-15">證明</a></h3>
 <p>要證明 \(\mathcal{O}(P)\) 是凸多胞形，只需要說明對任何兩個 \(\mathcal{O}(P)\) 裡面的點 \(z, z'\)，其連線中點 \((z+z')/2\) 仍然落在 \(\mathcal{O}(P)\) 裡面即可。根據定義，每一個點都會滿足至少一個對應的 \(P\) 的線性延伸。假設 \(z\) 對應的是 \(\sigma\)、\(z'\) 對應的是 \(\sigma'\)，顯然對於所有 \(P\) 中的大小順序 \(x_i &lt; x_j\)，都有 \(z_{\sigma^{-1}(i)} \le z_{\sigma^{-1}(j)}\)、且 \(z'_{\sigma^{-1}(i)} \le z'_{\sigma^{-1}(j)}\)。因此加起來除以 \(2\) 以後，將所有座標值由小到大排列得到的新的排列 \(\sigma''\) 仍然是 \(P\) 的一個線性延伸。</p>
 <p>關於體積的部分，我們考慮任何一個線性延伸 \(\sigma\)。由單一線性延伸定義出來的多胞形，它會是一個<strong>單純形（Simplex）</strong>。這邊定義出來的單純形，經過座標置換以後，可以發現其體積總是等價於以下這個單純形的體積：</p>
 <p>\[
@@ -1158,7 +1173,7 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 <p>我們之前隱約提及，要計算 \(e(P)\) 的精確值是困難的。而這也等價於，要精確計算出 \(\mathcal{O}(P)\) 的體積，也是困難的。
 幸虧，1989 年的時候 Dyer, Frieze, 與 Kannan<sup class="footnote-reference"><a href="#1">1</a></sup><sup class="footnote-reference"><a href="#3">2</a></sup> 提出了一個多項式隨機演算法，能夠有效率地計算出近似值。但他們的方法都是基於 random walk 的，基本的想法是從任何一個 linear extension 開始，利用 random walk 依照某個特定機率分布交換某兩個沒有關聯的元素。後面的分析就精彩了，這邊先暫時留給有興趣的朋友閱讀吧，有機會我會再補上證明的。</p>
 <p>最後我們再描述一個關於凸多胞形的性質。</p>
-<a class="header" href="#ehrhart-多項式" id="ehrhart-多項式"><h2>Ehrhart 多項式</h2></a>
+<h2><a class="header" href="#ehrhart-多項式" id="ehrhart-多項式">Ehrhart 多項式</a></h2>
 <p>法國數學家 <a href="https://en.wikipedia.org/wiki/Eug%C3%A8ne_Ehrhart">Eugène Ehrhart</a> 在中學教了十多年的書以後，在六十歲的時候終於獲得了博士學位。在那之前，他於 1962 年提出了皮克公式（Pick's Theorem）的 \(N\) 維加強版：<a href="https://en.wikipedia.org/wiki/Ehrhart_polynomial">Ehrhart Polynomial</a>。</p>
 <p>故事是這樣的：假設我們有一個 \(N\) 維度的多胞形 \(P\)，如果把每一個座標軸都伸長 \(k\) 倍，那基本上體積也會跟著放大 \(k^N\) 倍，對吧？如果這時候我們計較的是這個被放大的多胞形 \(kP\)，其邊界或內部的「整數座標點」的數量 \(L(P, k)\)。Ehrhart 證明出了它會形成一個關於 \(k\) 的 \(N\) 次多項式！</p>
 <p>不意外地，\(L(P, k)\) 的首項係數（最高次項 \(k^N\) 的係數）就會是這個多胞形真正的體積。
@@ -1166,7 +1181,7 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 <hr />
 <p>明天我們來介紹另一種比較平易近人的、計算出 \(e(P)\) 近似值的方式。
 這個方式是透過 1986 年 Richard P. Stanley<sup class="footnote-reference"><a href="#2">3</a></sup> 提出的趣味觀察，把這個順序多胞形與另一個直鏈和多胞形（Chain Polytope，暫譯直鏈和多胞形) 連結在一起，進而從解另一個多胞形上的凸函數優化（Convex Optimization）來達到計算近似 \(e(P)\) 的目的。</p>
-<a class="header" href="#延伸閱讀-2" id="延伸閱讀-2"><h3>延伸閱讀</h3></a>
+<h3><a class="header" href="#延伸閱讀-2" id="延伸閱讀-2">延伸閱讀</a></h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Order_polytope">維基百科：Order Polytope</a></li>
 <li>https://www.math.sci.hokudai.ac.jp/~wakate/mcyr/2016/pdf/TSUCHIYA.pdf</li>
@@ -1182,20 +1197,20 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 <div class="footnote-definition" id="3"><sup class="footnote-definition-label">2</sup>
 <p>Graham Brightwell and Peter Winkler, <em>Counting Linear Extensions</em>, 1991. <a href="https://link.springer.com/content/pdf/10.1007/BF00383444.pdf">https://link.springer.com/content/pdf/10.1007/BF00383444.pdf</a></p>
 </div>
-<a class="header" href="#偏序集排序四" id="偏序集排序四"><h1>偏序集排序（四）</h1></a>
+<h1><a class="header" href="#偏序集排序四" id="偏序集排序四">偏序集排序（四）</a></h1>
 <p>為了繞過使用深奧隨機走訪方法與馬可夫鏈而得到的估計 \(e(P)\) 近似演算法，
 我們今天把這個順序多胞形轉換一下，變成另一個直鏈和多胞形（Chain Polytope）。</p>
-<a class="header" href="#直鏈和多胞形-chain-polytope" id="直鏈和多胞形-chain-polytope"><h2>直鏈和多胞形 Chain Polytope</h2></a>
+<h2><a class="header" href="#直鏈和多胞形-chain-polytope" id="直鏈和多胞形-chain-polytope">直鏈和多胞形 Chain Polytope</a></h2>
 <p>在 poset \((P, &lt;)\) 上面的一條<strong>直鏈（chain）</strong> \(C\subset P\)，其實就是一個任兩元素都可以比較的子集合。
 我們考慮以下的<strong>直鏈和多胞形（chain polytope）</strong>：</p>
 <p>\[
 \mathcal{C}(P) = \{ (z_1, \ldots, z_n) \ \vert \ \forall \text{ chain } C, 0\le \sum_{x_i\in C} z_i \le 1 \}
 \]</p>
 <p>換句話說，只要 \(n\) 個介於 \([0, 1]\) 之間的實數，滿足對於 poset 之中任何一條直鏈，它對應數字的總和不超過 \(1\) 的話，這個點就會被我們加入多胞形之中。</p>
-<a class="header" href="#兩個多胞形之間的轉換" id="兩個多胞形之間的轉換"><h2>兩個多胞形之間的轉換</h2></a>
+<h2><a class="header" href="#兩個多胞形之間的轉換" id="兩個多胞形之間的轉換">兩個多胞形之間的轉換</a></h2>
 <p>要怎麼找出直鏈和多胞形 \(\mathcal{C}(P)\) 與順序多胞形 \(\mathcal{O}(P)\) 之間的關聯呢？
 試想像一下，如果我們有一條鏈：</p>
-<p><img src="./chain-polytope-and-graph-entropy1.png" alt="" /></p>
+<p><img src="sorting/./chain-polytope-and-graph-entropy1.png" alt="" /></p>
 <!--
 \tikzset{n/.style={inner sep=0pt, minimum size=4pt, circle, fill=black}}
 \tikz{
@@ -1210,7 +1225,7 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 }
 -->
 <p>那麼 \((0.1, 0.3, 0.05, 0.2, 0.05, 0.3, \ldots)\in \mathcal{C}(P)\)。由於在 \(\mathcal{C}(P)\) 上頭，每一條鏈上面的數值總和都不超過 \(1\)，透過 <strong>前綴和（Prefix Sum）</strong> 的概念，我們可以定義出一條非遞減的序列如下：</p>
-<p><img src="./chain-polytope-and-graph-entropy2.png" alt="" /></p>
+<p><img src="sorting/./chain-polytope-and-graph-entropy2.png" alt="" /></p>
 <!--
 \tikzset{n/.style={inner sep=0pt, minimum size=4pt, circle, fill=black}}
 \tikz{
@@ -1231,9 +1246,9 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 \]</p>
 <p>現在讓我們來考慮推廣版的情形：如果一個點屬於超過一條鏈怎麼辦呢？對於一個點 \(z=(z_1, \ldots, z_n)\in\mathcal{C}(P)\)，我們可以定義出一個點 \(\varphi(z) = (z'_1, \ldots, z'_n)\in\mathcal{O}(P)\)，其中 \(z'_i = z_i + \max_{j: x_j &lt; x_i} z'_j\)。這個轉換 \(\varphi\) 其實也是一一對應的：對於一個點 \(z' = (z'_1, \ldots, z'_n)\in\mathcal{O}(P)\)，我們可以回推出 \(\varphi^{-1}(z') = (z_1, \ldots, z_n)\in\mathcal{C}(P)\)，使得 \(z_i = z'_{i} - \max_{j: x_j &lt; x_i} z'_j\)。</p>
 <p>因此我們可以說：對於任意偏序集，都存在一個雙射變換 \(\varphi_P: \mathcal{C}(P)\to \mathcal{O}(P)\)。可惜的是，光憑這個結論，我們無法斷定這兩個多胞形的體積關係。這時候，就是我們前一篇介紹的 Ehrhart 多項式派上用場的時候啦！</p>
-<a class="header" href="#定理-25-stanley-1986sup-classfootnote-referencea-href11asup" id="定理-25-stanley-1986sup-classfootnote-referencea-href11asup"><h3>定理 25 [Stanley 1986]<sup class="footnote-reference"><a href="#1">1</a></sup></h3></a>
+<h3><a class="header" href="#定理-25-stanley-1986sup-classfootnote-referencea-href11asup" id="定理-25-stanley-1986sup-classfootnote-referencea-href11asup">定理 25 [Stanley 1986]<sup class="footnote-reference"><a href="#1">1</a></sup></a></h3>
 <p>對於任何偏序集。\(\mathcal{C}(P)\) 的體積與 \(\mathcal{O}(P)\) 的體積相等。</p>
-<a class="header" href="#證明-16" id="證明-16"><h3>證明</h3></a>
+<h3><a class="header" href="#證明-16" id="證明-16">證明</a></h3>
 <p>還記得我們說過多胞形的 Ehrhart 多項式嗎？如果把 \(\mathbb{R}^n\) 空間中，每一個座標軸放大整數倍 \(k\)，那麼多胞形內部的格子點（所有座標都是整數的點）的數量會以 \(\Theta(k^n)\) 的速度成長，而這個點數可以被一個 \(n\) 次多項式表示之。</p>
 <p>換句話說，如果我們有辦法證明 \(\mathcal{C}(P)\) 與 \(\mathcal{O}(P)\)，在座標軸放大任意整數倍之後，格子點數仍然相同，那麼很顯然它們有一模一樣的 Ehrhart 多項式（任何一個 \(n\) 次單變數多項式可以被 \(n+1\) 個取值唯一決定。）</p>
 <p>而這個整數點格子數量的結論顯然是正確的：在放大 \(k\) 倍之後，若 \(kz = (kz_1, kz_2, \ldots, kz_n)\) 是格子點，那麼根據 \(\varphi\) 的定義，在變換之後 \(\varphi(kz) = kz'\) 也會是格子點。反之亦然。於是，我們就得證啦～</p>
@@ -1244,10 +1259,10 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Richard P. Stanley, <em>Two Poset Polytopes</em>, 1986. <a href="http://dedekind.mit.edu/%7Erstan/pubs/pubfiles/66.pdf">http://dedekind.mit.edu/~rstan/pubs/pubfiles/66.pdf</a></p>
 </div>
-<a class="header" href="#偏序集排序五" id="偏序集排序五"><h1>偏序集排序（五）</h1></a>
+<h1><a class="header" href="#偏序集排序五" id="偏序集排序五">偏序集排序（五）</a></h1>
 <p>前一次我們提到了，從一個偏序集 \((P, &lt;)\) 定義出來的直鏈和多胞形（Chain Polytope）\(\mathcal{C}(P)\)，其體積與順序多胞形（Order Polytope）\(\mathcal{O}(P)\) 相等，且剛好等於 \(e(P) / n!\)。</p>
 <p>但是計算一個任意多胞形的確切體積，是困難的。幸好，如果我們只需要估計 \(e(P)\) 的值（甚至可以放寬條件、只需要估計 \(\log e(P)\) 的值就行了），不需要計算出整個多胞形的確切體積。</p>
-<a class="header" href="#利用長方體估算體積" id="利用長方體估算體積"><h2>利用長方體估算體積</h2></a>
+<h2><a class="header" href="#利用長方體估算體積" id="利用長方體估算體積">利用長方體估算體積</a></h2>
 <p>能夠簡單計算體積的形狀，大概就是長方體了吧。
 透過觀察，我們發現，對於任何一個直鏈和多胞形內的點 \(z=(z_1, z_2, \ldots, z_n) \in\mathcal{C}(P)\)，都可以定義出一個長方體，其兩個對角點剛好分別是原點 \((0, 0, \ldots, 0)\) 以及 \(z\)。
 換句話說，這個長方體
@@ -1276,7 +1291,7 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 要解決第二個問題，我們其實可以利用 membership oracle 的觀念：拿來解線性規劃的工具，如橢球法（Ellipsoid Method）與內點法（Interior Point Method），都只需要判斷「目前某個點是否滿足指定條件」的工具就行了。也就是說，我們可以透過兩個多胞形之間的轉換 \(\varphi^{-1}\)，將欲判斷 membership 的點從 \(\mathcal{C}(P)\) 換到 \(\mathcal{O}(P)\) 去檢查（或等價地、乾脆直接在 poset 上面作一次動態規劃），就可以在 \(O(n^2)\) 時間內判斷欲查詢的點是否在 \(\mathcal{C}(P)\) 內部囉。</p>
 <p>於是，我們可以套用凸函數最佳化的大刀，幫助我們找出直鏈和多胞形內部最大的長方體<sup class="footnote-reference"><a href="#1">1</a></sup>。
 假設這個最佳化問題的解是 \(z^*\)，對應到的長方體體積為 \(\text{vol}(\text{Box}(z^*)) = 2^{-nH(z^*)}\)。為了方便起見，我們暫且把這個體積記作 \(2^{-nH(P)}\)。於是呢，可以得出以下結論：</p>
-<a class="header" href="#引理-26" id="引理-26"><h3>引理 26</h3></a>
+<h3><a class="header" href="#引理-26" id="引理-26">引理 26</a></h3>
 <p>\[
 2^{-nH(P)} \le e(P)/n!
 \]</p>
@@ -1286,7 +1301,7 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 \]</p>
 <p>這告訴我們什麼呢？當這個解 \(nH(P)\) 的值越小的時候，\(\log e(P)\) 越大（存在更多的線性延伸）。等價地地，若 \(\log e(P)\) 很小（只有少許的線性延伸），那麼 \(nH(P)\) 保證很大。
 說到這裡，筆者不禁捫心自問，原本不是想估計 \(e(P)\) 的值嗎？為什麼我們可以只關心 \(\log e(P)\)？</p>
-<a class="header" href="#主題偏序集排序" id="主題偏序集排序"><h2>主題──偏序集排序</h2></a>
+<h2><a class="header" href="#主題偏序集排序" id="主題偏序集排序">主題──偏序集排序</a></h2>
 <p>原因是這樣的：如果給定了部分資料之間的大小關係 \(P\)，顯然從前些日子提到的 \(S(12)&gt;29\) 來看，存在一些偏序集無法在恰好 \(\ceil{\log e(P)}\) 次比較之內排好所有資料的順序。那麼，我們想知道的是，能否退而求其次，如同大多數使用 \(O(n\log n)\) 次比較的排序演算法，允許常數倍數的誤差，在 \(O(\log e(P))\) 次比較之內排好順序呢？</p>
 <p>也就是說，如果這個偏序集 \(P\) 已經幾乎排好序了，有沒有比 \(\Theta(n\log n)\) 使用更少次數的排序演算法，可以正確地利用少少的 \(O(\log e(P))\) 次比較，從而達到正確排序呢？
 答案是有的<sup class="footnote-reference"><a href="#2">2</a></sup>，我們可以利用這幾天討論過的觀念，一步一步邁向 \(O(\log e(P))\) 的偏序集排序。我們甚至還不需要真的用大刀解凸函數最佳化問題，只需要觀念就可以了。</p>
@@ -1298,14 +1313,14 @@ E(P_{\rm{total}}) = 5!/2^7 = 120/128 = 15/16\text{。}
 <div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
 <p>Jean Cardinal, Samuel Fiorini, Gwenaël Joret, Raphaël M. Jungers, J. Ian Munro, <em>Sorting under Partial Information (without the Ellipsoid Algorithm)</em>, Combinatorica 33, 655–697 (2013). https://doi.org/10.1007/s00493-013-2821-5, <a href="https://arxiv.org/pdf/0911.0086.pdf">ArXiv</a>.</p>
 </div>
-<a class="header" href="#偏序集排序六" id="偏序集排序六"><h1>偏序集排序（六）</h1></a>
+<h1><a class="header" href="#偏序集排序六" id="偏序集排序六">偏序集排序（六）</a></h1>
 <p>使用兩兩元素進行比較的排序演算法，不外乎就是採用「插入」或「合併」兩種策略。給定一個偏序集 \((P, &lt;)\)，如同合併插入排序法一般，如果我們找到正確的插入順序，就可以得到一個只需要 \(O(\log n \cdot \log e(P))\) 次比較的偏序集排序方法囉！</p>
-<a class="header" href="#找出最長可比鏈" id="找出最長可比鏈"><h2>找出最長可比鏈</h2></a>
+<h2><a class="header" href="#找出最長可比鏈" id="找出最長可比鏈">找出最長可比鏈</a></h2>
 <p>在偏序集當中，一條鏈（chain）是指一個序列 \(x_1, x_2, \ldots, x_\ell \in P\)，而且他們形成一個全序關係：\(x_1 &lt; x_2 &lt; \cdots &lt; x_\ell\)。我們可以利用動態規劃方法在 \(O(n^2)\) 的時間（或關於偏序集偏序關係總數之線性時間）內找出偏序集 \(P\) 中的最長鏈。</p>
 <p>現在，我們將證明以下引理：</p>
-<a class="header" href="#引理-27" id="引理-27"><h3>引理 27</h3></a>
+<h3><a class="header" href="#引理-27" id="引理-27">引理 27</a></h3>
 <p>令 \(\ell\) 為偏序集 \((P, &lt;)\) 裡面的最長鏈的長度。那麼有 \(n-\ell \le \log e(P)\)。</p>
-<a class="header" href="#證明-17" id="證明-17"><h3>證明</h3></a>
+<h3><a class="header" href="#證明-17" id="證明-17">證明</a></h3>
 <p>我們預計要證明的，其實是以下的式子：</p>
 <p>\[
 e(P) \ge 2^{n-\ell} \label{eq1}\tag{*}
@@ -1326,7 +1341,7 @@ a_1 &lt; a_2 &lt; \cdots &lt; a_\ell
 <p>\[
 A_1: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{x&lt; a_i}}  &lt; a_{i+1} &lt; \cdots &lt; a_\ell
 \]</p>
-<p>以及</p>
+<p>以及 </p>
 <p>\[
 A_2: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{a_i &lt; x &lt; a_{i+1}}} &lt; \cdots &lt; a_\ell
 \]</p>
@@ -1341,7 +1356,7 @@ A_2: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{a_i &lt; x &lt; a_{i+1}}} &l
 如果是 \(a_i\) 接在前面的話顯然有 \(|I'_{&lt; x}\vert  \le i+1\)。如果是其他元素 \(y\) 接在前面的話，這個 \(y &lt; x\) 關係顯然被包含在 \(P\) 之中、或是透過 \(y &lt; a_i {\color{red}{&lt; }}\ x\) 達成的，如果早已在 \(P\) 中，根據假設它只能是 \(a_1, \ldots, a_{i-1}\) 其中一者，此時 \(|I'_{&lt; x}\vert  \le i\)。
 若是透過 \(a_i\) 達成的，那麼把 \(a_i\) 接上去會更長。
 於是得到結論 \(|I'_{&lt; x}\vert  \le i+1\)。</p>
-<p>類似地，考慮 \(I'_{&gt; x}\) 裡頭緊接在 \(x\) 之後的那個元素，它可以是 \(a_{i+1}\)、或是其他元素 \(y'\)，無論是何種情形都可以得到 \(|I'_{&gt; x}\vert  \le \ell-i+1\)。於是有
+<p>類似地，考慮 \(I'_{&gt; x}\) 裡頭緊接在 \(x\) 之後的那個元素，它可以是 \(a_{i+1}\)、或是其他元素 \(y'\)，無論是何種情形都可以得到 \(|I'_{&gt; x}\vert  \le \ell-i+1\)。於是有 
 \[\ell+2 \le \vert A'\vert  = \vert I'_{&lt; x}\vert  + \vert I'_{&gt; x}\vert  - 1 \le (i+1) + (\ell-i+1)-1 = \ell+1\]
 矛盾。</p>
 <!-- 首先，這條鏈 \\(A'\\) 一定會同時包含 \\(a\_i\\) 和 \\(x\\) 這兩筆資料。
@@ -1383,43 +1398,44 @@ A_2: a_1 &lt; \cdots &lt; a_{i-1} &lt; {\color{red}{a_i &lt; x &lt; a_{i+1}}} &l
 \\[
 \log e(P) + nH(P) \ge \log n!
 \\]
-<p>然後利用 <a href="https://en.wikipedia.org/wiki/Stirling%27s_approximation">Stirling's Approximation</a>，把 \(\log n!\) 展開成
-\[
+
+然後利用 [Stirling's Approximation](https://en.wikipedia.org/wiki/Stirling%27s_approximation)，把 \\(\log n!\\) 展開成
+\\[
 \begin{aligned}
-\log n! &amp;= n\log n - n \log e + O(\log n)\\
-&amp;\ge n\log n - n\log e
+\log n! &= n\log n - n \log e + O(\log n)\\\\
+&\ge n\log n - n\log e
 \end{aligned}
-\]</p>
-<p>因此，我們可以寫
-\[
+\\]
+
+因此，我們可以寫
+\\[
 \begin{aligned}
-\log e(P) &amp;\ge \log n! - n\log \ell\\
-&amp;\ge n\log n - n\log e - n\log \ell\\
-&amp;\ge n\log \frac{n}{e\ell}
+\log e(P) &\ge \log n! - n\log \ell\\\\
+&\ge n\log n - n\log e - n\log \ell\\\\
+&\ge n\log \frac{n}{e\ell}
 \end{aligned}
-\] --&gt;</p>
-<a class="header" href="#偏序集排序七" id="偏序集排序七"><h1>偏序集排序（七）</h1></a>
+\\] --><h1><a class="header" href="#偏序集排序七" id="偏序集排序七">偏序集排序（七）</a></h1>
 <p>從前一文章裡，我們發現「只是取出最長的一條鏈」就可以做到還不錯有效率的比較排序。
 那麼不斷取出更多的長鏈，說不定就能夠掌握排序的精髓了！是的，我們把這個每一次找出最長可比鏈，得到的結果稱為 <strong>「貪婪鏈分解」（Greedy Chain Decomposition）</strong>。</p>
-<a class="header" href="#貪婪鏈分解" id="貪婪鏈分解"><h2>貪婪鏈分解</h2></a>
+<h2><a class="header" href="#貪婪鏈分解" id="貪婪鏈分解">貪婪鏈分解</a></h2>
 <p>對於一個偏序集 \((P, &lt;)\)，如果我們每一次都找出最長鏈，並且將它從偏序集中移除，那麼就會得到一個分割（Partition）：\(C_1, C_2, \ldots, C_k\)。
 其中每一個鏈 \(C_i\) 是一個集合，其內部任兩元素都可比較。嚴謹地描述的話，\(C_i\) 會被定義為子偏序集 \(P-\bigcup_{1\le j\le i-1} C_j\) 裡面的最長鏈。
 值得一提的是，這個分割方法並不唯一。如果有許多最長鏈同時存在的情形時，我們只要隨意選擇一個最長鏈就行了。
 這個分割方法可以保證鏈長遞減 \(|C_1\vert  \ge \vert C_2\vert  \ge \cdots \ge \vert C_k\vert \)。</p>
-<a class="header" href="#貪婪鏈分解的性質" id="貪婪鏈分解的性質"><h3>貪婪鏈分解的性質</h3></a>
+<h3><a class="header" href="#貪婪鏈分解的性質" id="貪婪鏈分解的性質">貪婪鏈分解的性質</a></h3>
 <p>固定一組貪婪鏈分解 \((C_1, C_2, \ldots, C_k)\)。
 對於 \(P\) 中的任何一個鏈 \(C\)，每一個 \(C\) 中的元素 \(v\) 都會對應到某個貪婪鏈分解當中的鏈 \(C_{id(v)}\)，其中 \(id(v)\) 是該鏈的編號。
 於是呢，我們可以將鏈中的元素依照其 \(id(v)\) 值由小到大重新排列。
 注意到，此時排列的順序並不是根據偏序集的大小關係來排序的、而是根據在貪婪鏈分解中對應到的鏈長來排序的。</p>
 <p>假設依照 \(id(v)\) 的值排好序以後，\(C\) 中元素編號依序為 \(v_1, v_2, \ldots, v_{\vert C\vert }\)。
 此時我們能有以下性質：</p>
-<a class="header" href="#引理-28" id="引理-28"><h3>引理 28</h3></a>
+<h3><a class="header" href="#引理-28" id="引理-28">引理 28</a></h3>
 <p>對所有的 \(1\le j \le \vert C\vert \)，都有 \(|C_{id(v_j)}\vert  \ge \vert C\vert  - j + 1\)。</p>
-<a class="header" href="#證明-18" id="證明-18"><h3>證明</h3></a>
+<h3><a class="header" href="#證明-18" id="證明-18">證明</a></h3>
 <p>由於鏈中元素已經按照 \(id(v)\) 的順序排序，去除掉前 \(j-1\) 個元素以後，
 \(C-\{v_1, v_2, \ldots, v_{j-1}\}\) （暫時記作 \(C'\)）裡頭剩餘的所有元素通通都會在 \(P-\bigcup_{1\le x\le id(j)-1} C_{x}\) （暫時記作 \(P'\)）裡面。
 因此，根據定義，此時 \(C_{id(v_j)}\) 會是 \(P'\) 裡頭的最長鏈。而 \(C'\) 也是 \(P'\) 當中的某個鏈，於是有 \(|C_{id(v_j)}\vert  \ge \vert C'\vert  = \vert C\vert  - j + 1\)，得證。</p>
-<a class="header" href="#基於貪婪鏈分解的合併排序法" id="基於貪婪鏈分解的合併排序法"><h2>基於貪婪鏈分解的合併排序法</h2></a>
+<h2><a class="header" href="#基於貪婪鏈分解的合併排序法" id="基於貪婪鏈分解的合併排序法">基於貪婪鏈分解的合併排序法</a></h2>
 <p>我們現在來探討有了這個貪婪鏈分解以後，可以怎麼把它應用在比較排序上頭。</p>
 <p>每一條長鏈都是有全序排列的，有了很多條排好序的資料以後，我們通常會下意識地把它抓過來做合併排序法。
 假設我們就按照一般的合併方法來排序：合併兩條鏈 \(C_x\) 與 \(C_y\) 需要使用 \(|C_x\vert +\vert C_y\vert \) 次比較。
@@ -1440,9 +1456,9 @@ T_{合併貪婪鏈} \le n + \sum_{i=1}^k \vert C_i\vert  \log \frac{n}{\vert C_i
 </li>
 </ul>
 </blockquote>
-<a class="header" href="#定理-29" id="定理-29"><h3>定理 29</h3></a>
+<h3><a class="header" href="#定理-29" id="定理-29">定理 29</a></h3>
 <p>基於貪婪鏈分解的合併排序法，其比較次數上界為 \(O(\log e(P)) + n\)。這個常數可以是 6.33 左右。</p>
-<a class="header" href="#證明大綱" id="證明大綱"><h3>證明大綱</h3></a>
+<h3><a class="header" href="#證明大綱" id="證明大綱">證明大綱</a></h3>
 <p>詳細的證明我們明天講。
 但基本上，這個證明要做下面的事情：</p>
 <ul>
@@ -1453,17 +1469,17 @@ T_{合併貪婪鏈} \le n + \sum_{i=1}^k \vert C_i\vert  \log \frac{n}{\vert C_i
 <li>（三）利用引理 27，先把最長鏈挑出來，然後說明剩下的比較次數可以被 \(O(\log e(P))\) 處理掉。</li>
 </ul>
 <p>然後就得證啦！</p>
-<a class="header" href="#偏序集排序八" id="偏序集排序八"><h1>偏序集排序（八）</h1></a>
+<h1><a class="header" href="#偏序集排序八" id="偏序集排序八">偏序集排序（八）</a></h1>
 <p>今天來證明定理 29，的前半部。</p>
-<a class="header" href="#定理-29-1" id="定理-29-1"><h2>定理 29</h2></a>
+<h2><a class="header" href="#定理-29-1" id="定理-29-1">定理 29</a></h2>
 <p>基於貪婪鏈分解的合併排序法，其比較次數 \(T_{合併貪婪鏈} \le 6.33 \log e(P) + n\)。</p>
 <p>首先我們來證明加強版的引理 26。</p>
-<a class="header" href="#引理-30-cardinal-fiorini-joret-jungers-munro-2013" id="引理-30-cardinal-fiorini-joret-jungers-munro-2013"><h3>引理 30 [Cardinal, Fiorini, Joret, Jungers, Munro 2013]</h3></a>
+<h3><a class="header" href="#引理-30-cardinal-fiorini-joret-jungers-munro-2013" id="引理-30-cardinal-fiorini-joret-jungers-munro-2013">引理 30 [Cardinal, Fiorini, Joret, Jungers, Munro 2013]</a></h3>
 <p>對於任意偏序集 \(P\)，都有 \(4\log e(P) + nH(P) \ge n\log n\)。</p>
-<a class="header" href="#引理-30-的證明" id="引理-30-的證明"><h3>引理 30 的證明</h3></a>
+<h3><a class="header" href="#引理-30-的證明" id="引理-30-的證明">引理 30 的證明</a></h3>
 <p>證明的方法依舊是數學歸納法（萬用科科），歸納的方向是：讓 \(n\) 從小到大、然後對於同樣集合大小的偏序集，根據 \(e(P)\) 值由小到大的順序進行歸納（也就是說依照偏序關係的多寡，由大至小歸納）。</p>
 <p><strong>Base Case:</strong> \(n=1\) 的時候不等式右邊是 \(0\)、而左邊非負，結論顯然成立。</p>
-<p><strong>Inductive Case:</strong>
+<p><strong>Inductive Case:</strong> 
 令偏序集 \((P, &lt;)\) 內的元素為 \(x_1, x_2, \ldots, x_n\)。我們假設 \(z=(z_1, z_2, \ldots, z_n)\) 是直鏈和多胞形 \(\mathcal{C}(P)\) 定義出來的最佳化問題的最佳解，也就是 \(nH(P) = -\sum_{i=1}^n \log z_i\)。
 現在令 \(i^* = \arg\max_i\{z_i\}\) 是為數值最大的座標，如果有多個座標值相同我們可以隨意挑選一個。</p>
 <p>證明的計畫如下：我們如果能找到另一個與 \(x_{i^*}\) 無關的元素 \(x_j\)，然後考慮 \(x_{i^*}\) 與 \(x_j\) 之間的大小關係。
@@ -1479,25 +1495,25 @@ nH(P_1) &amp; \le&amp; nH(z') = nH(P) + 4 \label{eq2}\tag{*}
 <hr />
 <p>怎麼把 \(z\in \mathcal{C}(P)\) 修改成 \(z'\in\mathcal{C}(P_1)\) 又不會使熵值 \(nH(P_1)\) 變化太大呢？現在，對於一個 \(z_i\)，我們想像一下 \(z_i\) 是怎麼來的。由於 \(z\in \mathcal{C}(P)\)，因此所有通過 \(x_i\) 的鏈，其對應到的 \(z\) 值加總都不超過 \(1\)。於是，我們可以定義這個點 \(x_i\) 的「活動範圍」\([L_i, R_i]\)，其中 \(L_i = \max_{I(&lt; x_i)} \sum_{k\in I-\{i\}} z_k\)，白話來說就是所有以 \(x_i\) 為結尾的鏈、不包含 \(x_i\) 本身之 \(z\) 值總和，的最大值。
 而類似地上界可定義為 \(R_i=1 - \max_{I(&gt; x_i)} \sum_{k \in I-\{i\}} z_k\)，也就是 \(x_i\) 後面能夠跟著的鏈的 \(z\) 值總和。</p>
-<p><img src="./poset-sort8-1.png" alt="" /></p>
+<p><img src="sorting/./poset-sort8-1.png" alt="" /></p>
 <p>由於 \(z\) 是最佳化問題的最佳解，所以保證有 \(z_i = R_i - L_i\)（也就是說左邊的最長鏈與右邊的最長鏈，恰好留給了 \(x_i\) 寬度為 \(z_i\) 的空間）。若不然，我們可以讓 \(z_i\) 的值變大，定義成 \(R_i - L_i\)，這麼一來 \(nH(z)\) 的值會變得更小，與 \(z\) 是最佳解矛盾。</p>
 <p>在這樣的結構之下，如果有兩個元素 \(x_i\) 與 \(x_j\) 其對應出來的區間重疊 \((L_i, R_i)\cap (L_j, R_j) = \emptyset\)，那麼我們便能保證 \(x_i\) 與 \(x_j\) 一定不可比較（incomparable）。</p>
 <hr />
-<a class="header" href="#第一種情況" id="第一種情況"><h3>第一種情況</h3></a>
+<h3><a class="header" href="#第一種情況" id="第一種情況">第一種情況</a></h3>
 <p>如果今天有個元素 \(x_*\) 無法與 \(x_{i^*}\) 進行比較，那麼此時必定存在一條通過 \(x_*\) 的鏈，其上頭元素對應到的 \(z\) 值總和恰好是 \(1\)。換句話說，此時必定存在另一個 \(z_j\)。使得它的活動範圍蓋住 \([L_{i^*}, R_{i^*}]\) 的中點，即 \((L_{i^*}+R_{i^*})/2 \in [L_j, R_j]\)，如下圖所示。</p>
-<p><img src="./poset-sort8-2.png" alt="" /></p>
+<p><img src="sorting/./poset-sort8-2.png" alt="" /></p>
 <p>這種時候，考慮 \(P_1\) 與 \(P_2\)。無論是何種情形，我們總是可以修改 \(z_{i^*}\) 與 \(z_j\)，把它們變成原本的 \(1/4\)。這時候，不難說明新的 \(z'\in\mathcal{C}(P_1)\) 且 \(z'\in\mathcal{C}(P_2)\)，如下圖所示：</p>
-<p><img src="./poset-sort8-3.png" alt="" /></p>
+<p><img src="sorting/./poset-sort8-3.png" alt="" /></p>
 <p>這邊的證明會用到兩個條件：其一，\(z_{i^*} \ge z_j\)、其二，\(x_j\) 的活動範圍涵蓋了 \(x_{i^*}\) 的活動範圍中間點。
 此時，將 \(x_{i^*}\) 與 \(x_j\) 進行比較後，無論誰大誰小，都能夠透過新的偏序集（歸納假設），說明 \(4e(P) + nH(P) \ge n\log n\)。</p>
 <hr />
-<a class="header" href="#第二種情況" id="第二種情況"><h3>第二種情況</h3></a>
+<h3><a class="header" href="#第二種情況" id="第二種情況">第二種情況</a></h3>
 <p>現在假設 \(x_{i^*}\) 與所有其他元素都可以比較。
 此時我們想要把它歸納到 \(n-1\) 個點的偏序集：把這個元素從偏序集拿掉就可以了！
 令 \(P'\) 是偏序集 \((P, &lt;)\) 把 \(x_{i^*}\) 移除後（保持其他元素之間的可比較關係）得到的子偏序集。
 對於最佳解 \(z=(z_1, \ldots, z_n)\)，我們把除了 \(z_{i^*}\) 以外的所有數值通通等比例放大 \(1/(1-z_{i^*})\) 倍！
 如此一來，得到的點 \(z'\) 保證有 \(z'\in\mathcal{C}(P')\)。</p>
-<p>那麼，我們將得到</p>
+<p>那麼，我們將得到 </p>
 <p>\[
 \begin{aligned}
 (n-1)H(P') &amp;\le (n-1)H(z') \\
@@ -1518,8 +1534,8 @@ nH(P_1) &amp; \le&amp; nH(z') = nH(P) + 4 \label{eq2}\tag{*}
 <p>\[
 t(1-t)^{n-1} \le \frac{1}{n-1}\left( \frac{n-1}{n} \right)^n
 \]</p>
-<p>因此</p>
-<p>\[ - \log \left(z_{i^*} (1-z_{i^*})^{n-1}\right) \ge -\log \frac{1}{n-1} - n\log \frac{n-1}{n}
+<p>因此 </p>
+<p>\[ - \log \left(z_{i^*} (1-z_{i^*})^{n-1}\right) \ge -\log \frac{1}{n-1} - n\log \frac{n-1}{n} 
 \]</p>
 <p>從而</p>
 <p>\[
@@ -1533,14 +1549,14 @@ t(1-t)^{n-1} \le \frac{1}{n-1}\left( \frac{n-1}{n} \right)^n
 <span style="float:right">\(\square\)</span></p>
 <hr />
 <p>接下來是證明的第二步</p>
-<a class="header" href="#引理-31" id="引理-31"><h3>引理 31</h3></a>
+<h3><a class="header" href="#引理-31" id="引理-31">引理 31</a></h3>
 <p>對於任意 \(\delta\in [0, 1]\)，都有 \(nH(P) + (1-\delta) T_{合併貪婪鏈} \le n\log \frac{n}{\delta}\)。</p>
-<a class="header" href="#引理-31-的證明" id="引理-31-的證明"><h3>引理 31 的證明</h3></a>
+<h3><a class="header" href="#引理-31-的證明" id="引理-31-的證明">引理 31 的證明</a></h3>
 <p>對於每一個偏序集中的元素 \(x_i\)，我們定義對應的座標</p>
 <p>\[z_i = \frac{\delta}{n}\left(\frac{n}{\vert C_{id(x_i)}\vert }\right)^{1-\delta}\]</p>
 <p>我們想要說 \(z=(z_1, z_2, \ldots, z_n)\) 這個點座落在 \(\mathcal{C}(P)\) 裡面即可。
 要怎麼檢驗呢？只要說明對任意的鏈 \(C=\{v_1, v_2, \ldots, v_{\vert C\vert }\}\)，都有 \(\sum_{j} z_{v_j} \le 1\) 即可。
-透過<a href="./poset-sort7.html#%E5%BC%95%E7%90%86-28">引理 28</a>，我們知道 \(|C_{id(v_j)}\vert  \ge \vert C\vert -j+1\)。
+透過<a href="sorting/./poset-sort7.html#%E5%BC%95%E7%90%86-28">引理 28</a>，我們知道 \(|C_{id(v_j)}\vert  \ge \vert C\vert -j+1\)。
 於是呢，</p>
 <p>\[
 \begin{aligned}
@@ -1563,18 +1579,18 @@ nH(P) &amp;\le nH(z) = -\sum_{i=1}^n \log z_i\\
 <span style="float:right">\(\square\)</span></p>
 <hr />
 <p>明天我們來完成定理 29 的證明。</p>
-<a class="header" href="#備註-2" id="備註-2"><h3>備註</h3></a>
+<h3><a class="header" href="#備註-2" id="備註-2">備註</a></h3>
 <p>在參考資料中，Cardinal 等人證明了引理 30 時，除了上述版本的證明方法以外，還證明了最扎實版本：\(2\log e(P) + nH(P) \ge n\log n\)，但是證明相對暴力了些；筆者比較喜歡本篇中的證明。
 此外，引理 31 是筆者以 \(H(P)\) 的最長鏈角度重新寫過一遍的做法，在原作之中是直接引用同一批作者更早以前在最大獨立集上的結論。如果朋友們跳進去看原本那篇論文的話，可能在這部分會感受到混淆，還請多留意。</p>
-<a class="header" href="#參考資料-4" id="參考資料-4"><h3>參考資料</h3></a>
+<h3><a class="header" href="#參考資料-4" id="參考資料-4">參考資料</a></h3>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Jean Cardinal, Samuel Fiorini, Gwenaël Joret, Raphaël M. Jungers, J. Ian Munro, <em>Sorting under Partial Information (without the Ellipsoid Algorithm)</em>, Combinatorica 33, 655–697 (2013). https://doi.org/10.1007/s00493-013-2821-5, <a href="https://arxiv.org/pdf/0911.0086.pdf">ArXiv</a>.</p>
 </div>
-<a class="header" href="#偏序集排序九" id="偏序集排序九"><h1>偏序集排序（九）</h1></a>
+<h1><a class="header" href="#偏序集排序九" id="偏序集排序九">偏序集排序（九）</a></h1>
 <p>今天來證明定理 29，的後半部。</p>
-<a class="header" href="#定理-29-2" id="定理-29-2"><h2>定理 29</h2></a>
+<h2><a class="header" href="#定理-29-2" id="定理-29-2">定理 29</a></h2>
 <p>基於貪婪鏈分解的合併排序法，其比較次數 \(T_{合併貪婪鏈} \le 6.33 \log e(P) + n\)。</p>
-<a class="header" href="#定理-29-的證明" id="定理-29-的證明"><h3>定理 29 的證明</h3></a>
+<h3><a class="header" href="#定理-29-的證明" id="定理-29-的證明">定理 29 的證明</a></h3>
 <p>首先，讓我們試圖把引理 30 帶入引理 31 之中，我們可以得到</p>
 <p>\[\begin{aligned}
 T_{合併貪婪鏈} &amp;\le \frac{1}{1-\delta} \left(n\log \frac{n}{\delta} - nH(P)\right) \\
@@ -1585,16 +1601,16 @@ T_{合併貪婪鏈} &amp;\le \frac{1}{1-\delta} \left(n\log \frac{n}{\delta} - n
 <p>當我們選取 \(\delta = 1/2\) 的時候，可以得到 \(T_{合併貪婪鏈} \le 8\log e(P) + 2n\)。
 選取 \(\delta \to 1\) 的時候，後面 \(n\) 的常數也只是趨近於 \(1/\ln 2\approx 1.44\)。
 這個常數比起上面的 \(6.6\log e(P)+n\) 還要差了一點點呢。這代表我們還需要一些觀察。</p>
-<p>而事實上，<a href="./poset-sort6.html#%E5%BC%95%E7%90%86-27">引理 27</a> 給予了我們相當大的提示。
+<p>而事實上，<a href="sorting/./poset-sort6.html#%E5%BC%95%E7%90%86-27">引理 27</a> 給予了我們相當大的提示。
 這個觀察是這樣的：我們如果把最長的鏈先拿到旁邊放著，那麼剩下的 \(n-\vert C_1\vert \) 筆資料拿去做貪婪鏈合併之後，
 所需要的比較次數複雜度會長得像 \(T' \le c_1\log e(P') + c_2 (n-\vert C_1\vert )\)。其中 \(P'\) 是指將 \(P\) 中最長鏈移除後的子偏序集。
 顯然移除了一些集合元素以後，我們有 \(e(P') \le e(P)\)、而且 \(n-\vert C_1\vert  \le \log e(P)\)。因此可以順水推舟得到
 \(T' \le (c_1 + c_2)\log e(P)\)。最後再將合併完成的 \(C_2\cup C_3\cup\cdots \cup C_k\) 與 \(C_1\) 進行合併。顯然這步最多只要花費 \(n\) 次比較就行了。因此加起來我們可以得到 \(O(\log e(P)) + n\) 次比較。</p>
-<a class="header" href="#引理-32" id="引理-32"><h3>引理 32</h3></a>
+<h3><a class="header" href="#引理-32" id="引理-32">引理 32</a></h3>
 <p>\[
 T_{合併貪婪鏈} \le n + (n - \vert C_1\vert ) + \sum_{i=2}^k \vert C_i\vert  \log \frac{n-\vert C_1\vert }{\vert C_i\vert }
 \]</p>
-<a class="header" href="#引理-32-的證明" id="引理-32-的證明"><h3>引理 32 的證明</h3></a>
+<h3><a class="header" href="#引理-32-的證明" id="引理-32-的證明">引理 32 的證明</a></h3>
 <p>這個分析是先把 \(|C_1\vert \) 拿掉，然後合併其他部分，最終再將 \(|C_1\vert \) 與剩下的資料合併。
 由於採用貪婪法合併序列所得到的總比較次數是最優的，因此這個方法得到的總比較次數，不會比原本的貪婪法合併來得好。
 <span style="float:right">\(\square\)</span></p>
@@ -1613,17 +1629,17 @@ T_{合併貪婪鏈} &amp;\le n + (n - \vert C_1\vert ) + \sum_{i=2}^k \vert C_i\
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Jean Cardinal, Samuel Fiorini, Gwenaël Joret, Raphaël M. Jungers, J. Ian Munro, <em>Sorting under Partial Information (without the Ellipsoid Algorithm)</em>, Combinatorica 33, 655–697 (2013). https://doi.org/10.1007/s00493-013-2821-5, <a href="https://arxiv.org/pdf/0911.0086.pdf">ArXiv</a>.</p>
 </div>
-<a class="header" href="#謝耳排序法一" id="謝耳排序法一"><h1>謝耳排序法（一）</h1></a>
+<h1><a class="header" href="#謝耳排序法一" id="謝耳排序法一">謝耳排序法（一）</a></h1>
 <p>今天來講講插入排序的另一種特殊變化型。
 這一類特化是由 <a href="https://en.wikipedia.org/wiki/Donald_Shell">Donald L. Shell</a> 在 1959 年提出<sup class="footnote-reference"><a href="#2">1</a></sup>。
 謝耳排序之所以非常非常有趣，是因為它根據不同的「步長序列」（Gap Sequence）設定，會有著不同的最差情形時間複雜度。</p>
-<a class="header" href="#步長與步長序列" id="步長與步長序列"><h2>步長與步長序列</h2></a>
+<h2><a class="header" href="#步長與步長序列" id="步長與步長序列">步長與步長序列</a></h2>
 <p>這個插入排序法的變化是這樣的：一般來說我們會把新加入的資料與前面已經排好序的序列進行插入排序，從最後一個數字往前面逐一比較，並且交換。謝耳教授引入了一個新的想法，如果我們把整個陣列打散，依照指定步長 \(h\)（或稱為間隔，Gap）分成 \(h\) 個群組：每隔 \(h\) 筆資料就被分配到同一組。</p>
-<a class="header" href="#定義-2" id="定義-2"><h3>定義</h3></a>
+<h3><a class="header" href="#定義-2" id="定義-2">定義</a></h3>
 <p>我們說一個陣列是 <strong>\(h\)-排序（\(h\)-sorted）</strong> 的，若且唯若每一個群組由左至右都是由小到大排好序的。</p>
 <p>從上面的定義看起來，一個真正排好序的序列是 \(1\)-排序的。
 我們的目的是根據某個序列 \(h_0=1 &lt; h_1 &lt; \ldots &lt; h_k\)，逐步把陣列變成 \(h_k\)-sorted、\(h_{k-1}\)-sorted、依此類推最終變成 \(1\)-sorted。而此時這個序列便稱為 <strong>步長序列（Gap Sequence）</strong>。</p>
-<a class="header" href="#各自排序" id="各自排序"><h3>各自排序</h3></a>
+<h3><a class="header" href="#各自排序" id="各自排序">各自排序</a></h3>
 <p>要怎麼把一個陣列整理成 \(h\)-sorted 呢？我們可以輕易地使用插入排序法完成任務：</p>
 <pre><code class="language-cpp">void h_sort(int arr[], int N, int h) {
   for (int i = 0; i &lt; N; i += h) {
@@ -1633,12 +1649,12 @@ T_{合併貪婪鏈} &amp;\le n + (n - \vert C_1\vert ) + \sum_{i=2}^k \vert C_i\
   }
 }
 </code></pre>
-<a class="header" href="#引理-33" id="引理-33"><h3>引理 33</h3></a>
+<h3><a class="header" href="#引理-33" id="引理-33">引理 33</a></h3>
 <p>對陣列無任何假設的情形下，<code>h_sort</code> 執行的最差時間複雜度為 \(O(N^2/h)\)。</p>
-<a class="header" href="#引理-33-的證明" id="引理-33-的證明"><h3>引理 33 的證明</h3></a>
+<h3><a class="header" href="#引理-33-的證明" id="引理-33-的證明">引理 33 的證明</a></h3>
 <p>整個陣列根據間隔 \(h\) 分成了 \(h\) 組，每一組有 \(N/h\) 筆資料。上述演算法等價於對每一組分別進行插入排序法，所以最差時間複雜度是 \(O(h(N/h)^2) = O(N^2/h)\)。
 <span style="float:right">\(\square\)</span></p>
-<a class="header" href="#謝耳排序法" id="謝耳排序法"><h3>謝耳排序法</h3></a>
+<h3><a class="header" href="#謝耳排序法" id="謝耳排序法">謝耳排序法</a></h3>
 <p>整理成 \(h\)-sorted 以後，就可以根據不同的 \(h\) 值呼叫這個子函式了：</p>
 <pre><code class="language-cpp">void shell_sort(int arr[], int N, int h[], int H) {
   // 假設 h[0], h[1], ..., h[H-1] 已經由小排到大了。
@@ -1646,18 +1662,18 @@ T_{合併貪婪鏈} &amp;\le n + (n - \vert C_1\vert ) + \sum_{i=2}^k \vert C_i\
     h_sort(arr, N, h[i]);
 }
 </code></pre>
-<a class="header" href="#選取步長序列" id="選取步長序列"><h3>選取步長序列</h3></a>
+<h3><a class="header" href="#選取步長序列" id="選取步長序列">選取步長序列</a></h3>
 <p>顯然如果序列只有一個元素 \(h[0] = 1\) 的話，演算法就會退化成一般的插入排序法，執行的時間複雜度就是 \(O(N^2)\)。</p>
 <p>在 1959 年由 Shell 提出這個想法的時候，使用的是 \(1, \ldots, \floor{N/8}, \floor{N/4}, \floor{N/2}\) 這樣的步長序列。
 這個步長序列在 \(N\) 是 \(2\) 的冪次時，在最壞情形下仍然有著 \(\Omega(N^2)\) 的時間複雜度。(為什麼？提示：奇數位置所有數字都比偶數位置來得大。）
 謝耳教授只是發現在實際模擬時，這個演算法執行時間優於插入排序法。</p>
 <p>好消息是，接下來在 1960、1963、1965、1971 年陸陸續續地出現了因應各種不同的 Gap Sequence 得到的時間複雜度理論上界，證明了謝耳排序法在某些特殊的 Gap Sequence 底下確實比插入排序法有效率得多。</p>
-<a class="header" href="#關於下界" id="關於下界"><h3>關於下界</h3></a>
+<h3><a class="header" href="#關於下界" id="關於下界">關於下界</a></h3>
 <p>遺憾的是，Shell 的改良方法在 1992 年由 Plaxton, Poonen 與 Suel 等人<sup class="footnote-reference"><a href="#1">2</a></sup>證明出了對於任意步長序列，Shell Sort 在最差情形的時間複雜度至少有 \(\Omega(n (\log n / \log\log n)^2)\)。因此，任何謝耳排序類型的演算法，並沒有辦法在理論上達到如同快速排序或合併排序法等，逼近真正的 \(n\log n\) 比較排序下界。</p>
 <hr />
 <p>明天我們來看第一個改進最差時間複雜度的例子：如果 \(h_i = 2^i-1\)，那麼就可以得到
 \(O(N^{3/2})\) 時間複雜度的謝耳排序。1960 年的 Lazarus 和 Frank<sup class="footnote-reference"><a href="#3">3</a></sup> 提出了這個排序方法、並且在 1961 年出現在 Hibbard<sup class="footnote-reference"><a href="#4">4</a></sup> 的實驗中。但一個乾淨的證明直到 Pratt 在史丹佛大學的博士論文<sup class="footnote-reference"><a href="#5">5</a></sup>才集大成（對，就是那個 Knuth-Morris-Pratt KMP 演算法的 Pratt）給出了上界證明。</p>
-<a class="header" href="#推薦閱讀-5" id="推薦閱讀-5"><h3>推薦閱讀</h3></a>
+<h3><a class="header" href="#推薦閱讀-5" id="推薦閱讀-5">推薦閱讀</a></h3>
 <ul>
 <li><a href="http://notepad.yehyeh.net/Content/Algorithm/Sort/Shell/Shell.php">yehyeh's notepad</a> 這個對 Shellsort 演算法介紹得很淺顯易懂，但沒有對 Gap Sequence 深入的分析。</li>
 <li>Robert Sedgewick, <a href="http://thomas.baudel.name/Visualisation/VisuTri/Docs/shellsort.pdf">Analysis of Shellsort and Related Algorithms</a>.</li>
@@ -1678,24 +1694,24 @@ T_{合併貪婪鏈} &amp;\le n + (n - \vert C_1\vert ) + \sum_{i=2}^k \vert C_i\
 <div class="footnote-definition" id="5"><sup class="footnote-definition-label">5</sup>
 <p>Vaughan R. Pratt, <em>Shellsort and Sorting Networks</em>, Ph.D Thesis, Stanford University, 1972. <a href="https://apps.dtic.mil/dtic/tr/fulltext/u2/740110.pdf">https://apps.dtic.mil/dtic/tr/fulltext/u2/740110.pdf</a></p>
 </div>
-<a class="header" href="#謝耳排序法二" id="謝耳排序法二"><h1>謝耳排序法（二）</h1></a>
+<h1><a class="header" href="#謝耳排序法二" id="謝耳排序法二">謝耳排序法（二）</a></h1>
 <p>在前一篇文章裡面，我們定義了 \(h\)-排序（\(h\)-sorted）與步長序列（Gap Sequence），它們能帶給我們什麼樣的好處呢？
 如果我們換一個角度來觀察 \(h\)-排序：經過了 \(h\)-排序以後，對於陣列中任何一個位置 \(i\)，都有 \(A[i] \le A[i+h] \le A[i+2h]\le \cdots\)。</p>
-<a class="header" href="#一口氣考慮兩種-h" id="一口氣考慮兩種-h"><h2>一口氣考慮兩種 \(h\)</h2></a>
+<h2><a class="header" href="#一口氣考慮兩種-h" id="一口氣考慮兩種-h">一口氣考慮兩種 \(h\)</a></h2>
 <p>經過了 \(h_1\)-sorted 以及 \(h_2\)-sorted 以後，我們能不能對於，除了間隔 \(h_1\) 或是間隔 \(h_2\) 的整數倍以外，從某些陣列元素之間獲取一些大小關係呢？其實是可以的！
 比方說，我們利用 \(h_1\)-sorted 的性質寫下
 \[
 A[i] \le A[i+kh_1]\ \ \ \forall k\in\mathbb{N}
 \]
-然後再利用 \(h_2\)-sorted 性質寫下
+然後再利用 \(h_2\)-sorted 性質寫下 
 \[
 A[i+kh_1] \le A[i+kh_1 + \ell h_2]\ \ \ \forall k, \ell\in\mathbb{N}
 \]
 如果 \(h_1\) 與 \(h_2\) <strong>互質（coprime）</strong> 的話，透過下述經典的 <strong>湊郵票問題</strong>，我們可以發現每一個元素與 <strong>足夠遠</strong> 的資料其實都已經排好了大小順序！</p>
-<a class="header" href="#引理-34湊郵票問題" id="引理-34湊郵票問題"><h3>引理 34（湊郵票問題）</h3></a>
+<h3><a class="header" href="#引理-34湊郵票問題" id="引理-34湊郵票問題">引理 34（湊郵票問題）</a></h3>
 <p>假設你有兩種郵票：第一種每張面額 \(a\) 元、第二種每張面額 \(b\) 元。
 如果 \(\gcd(a, b)=1\)，那麼對於任意整數 \(c\ge ab-a-b+1\)，我們保證能用若干張郵票，湊出恰好 \(c\) 元的郵資。</p>
-<a class="header" href="#引理-34-的證明" id="引理-34-的證明"><h3>引理 34 的證明</h3></a>
+<h3><a class="header" href="#引理-34-的證明" id="引理-34-的證明">引理 34 的證明</a></h3>
 <p>讓我們快速回憶一下關於最大公因數的 <a href="https://zh.wikipedia.org/wiki/%E8%B2%9D%E7%A5%96%E7%AD%89%E5%BC%8F">貝祖定理 Bézout's Lemma</a>：對於任意正整數 \(a, b\)，若 \(\gcd(a, b)=1\)，則存在整數 \(x, y\) 使得 \(ax+by=1\)。</p>
 <p>現在把等式兩邊同乘以命題中的 \(c\) 值：\(a(cx) + b(cy) = c\)。
 若 \(cx\) 與 \(cy\) 都是非負，那麼顯然我們用 \(cx\) 張面額為 \(a\) 的郵票、以及 \(cy\) 張面額為 \(b\) 的郵票，就可以湊出想要的值。
@@ -1719,7 +1735,7 @@ bY &amp;= c - a(cx\bmod b) \\
 <hr />
 <p>有了引理 34 以後，對於同時滿足 \(a\)-sorted 與 \(b\)-sorted 的陣列來說，只要距離超過 \(c\ge ab-a-b+1\)，就能夠保證 \(A[i]\le A[i+c]\)。換句話說，如果要在此時進行插入排序法，每一個元素只要往前換最多 \(ab-a-b+1=\Theta(ab)\) 次即可！
 如果在此時對某個 \(h\) 進行 <code>h_sort</code>，那麼每一個元素只需要往前考慮 \(\Theta(ab/h)\) 次交換即可，於是有以下小結論：</p>
-<a class="header" href="#係理-35" id="係理-35"><h3>係理 35</h3></a>
+<h3><a class="header" href="#係理-35" id="係理-35">係理 35</a></h3>
 <p>令 \(h_1, h_2, h_3\in \mathbb{N}\)。假設 \(\gcd(h_1, h_2)=1\)。
 若陣列 \(A\) 是 \(h_1\)-sorted 且為 \(h_2\)-sorted，
 那麼欲將陣列以 <code>h_sort</code> 整理成 \(h_3\)-sorted，只需要 \(O(Nh_1h_2/h_3)\) 的時間。
@@ -1727,9 +1743,9 @@ bY &amp;= c - a(cx\bmod b) \\
 <p>有了係理 35 以後，我們就能證明前一篇文章中最後提到的 \(O(N^{3/2})\) 時間排序。
 假設我們考慮的步長序列為 \(h=(1, 3, 7, 15, \ldots, 2^i-1, \ldots)\)。從最接近 \(N\) 的那個步長開始，逐步往下進行 <code>h_sort</code>。
 現在這個「<strong>每一項都是 2 的冪次減 1</strong>」的這個步長設定，就顯然變得比較有意義了：我們希望相鄰兩個步長總是互質的！</p>
-<a class="header" href="#定理-36" id="定理-36"><h3>定理 36</h3></a>
+<h3><a class="header" href="#定理-36" id="定理-36">定理 36</a></h3>
 <p>對於步長序列 \(h_i=2^i-1\)，謝耳排序法的時間複雜度為 \(O(N^{3/2})\)。</p>
-<a class="header" href="#定理-36-的證明" id="定理-36-的證明"><h3>定理 36 的證明</h3></a>
+<h3><a class="header" href="#定理-36-的證明" id="定理-36-的證明">定理 36 的證明</a></h3>
 <p>對於所有 \(h_i &gt; \sqrt{N}\) 的那些步長，使用引理 33 可以知道每一次時間複雜度正比於 \(N^2/h_i \le N^{3/2}\)，
 而且每一次放大兩倍，所以全部加起來的執行時間是 \(O(N^{3/2})\)。
 對於所有 \(h_i &lt; \sqrt{N}\) 的那些步長，在執行 \(h_i\)-sort 之前，由於已執行過 \(h_{i+1}\)-sort 與 \(h_{i+2}\)-sort。
@@ -1737,7 +1753,7 @@ bY &amp;= c - a(cx\bmod b) \\
 <span style="float:right">\(\square\)</span></p>
 <hr />
 <p>我們下一篇要把這個湊郵票的問題發揮到極致，邁向 Pratt 版本的 \(O(N\log^2 N)\) 時間謝耳排序！</p>
-<a class="header" href="#備註-3" id="備註-3"><h3>備註</h3></a>
+<h3><a class="header" href="#備註-3" id="備註-3">備註</a></h3>
 <p>定理 36 的分析是緊的，從 Pratt 的論文<sup class="footnote-reference"><a href="#1">1</a></sup>中的第 22 頁構造了一組長度為 \(N\) 的輸入，
 它使用這個 2 的冪次減一版本的步長序列進行謝耳排序，至少要花 \(\Omega(N^{3/2})\) 的時間。
 Poonen<sup class="footnote-reference"><a href="#2">2</a></sup> 提供了更多的 Worst case examples。</p>
@@ -1747,12 +1763,12 @@ Poonen<sup class="footnote-reference"><a href="#2">2</a></sup> 提供了更多�
 <div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
 <p>Bjorn Poonen, <em>The Worst Case in Shellsort and Related Algorithms</em>, J. Algorithms, 1993. <a href="https://math.mit.edu/%7Epoonen/papers/shell.pdf">https://math.mit.edu/~poonen/papers/shell.pdf</a></p>
 </div>
-<a class="header" href="#謝耳排序法三" id="謝耳排序法三"><h1>謝耳排序法（三）</h1></a>
+<h1><a class="header" href="#謝耳排序法三" id="謝耳排序法三">謝耳排序法（三）</a></h1>
 <p>利用湊郵票問題（引理 34、係理 35）的性質，我們可以專注在 \(2\)-sorted 和 \(3\)-sorted 上面，
 並且推廣它：</p>
-<a class="header" href="#引理-37" id="引理-37"><h3>引理 37</h3></a>
+<h3><a class="header" href="#引理-37" id="引理-37">引理 37</a></h3>
 <p>令 \(h\) 為一個正整數。若一個長度為 \(N\) 的陣列 \(A\) 已經滿足 \(2h\)-sorted 且為 \(3h\)-sorted，那麼將陣列整理成 \(h\)-sorted，僅需要花費 \(O(N)\) 的時間。</p>
-<a class="header" href="#引理-37-的證明" id="引理-37-的證明"><h3>引理 37 的證明</h3></a>
+<h3><a class="header" href="#引理-37-的證明" id="引理-37-的證明">引理 37 的證明</a></h3>
 <p>因為陣列已經是 \(2h\)-sorted 與 \(3h\)-sorted 的關係，
 如果要把它整理成 \(h\)-sorted，對於任何註標 \(i\)，我們只需要考慮 \(A[i]\) 與 \(A[i\pm h]\) 之間的大小關係就好。
 也就是說，對於 <code>h_sort</code> 的第二層進行插入排序的迴圈，總是跑了常數次就會停下來。因此整體時間複雜度是 \(O(N)\)。
@@ -1760,13 +1776,13 @@ Poonen<sup class="footnote-reference"><a href="#2">2</a></sup> 提供了更多�
 <p>我們可以從引理 37 進行逆向思考：
 最終的目的是 \(1\)-sorted（也就是完全排序），為了讓「整理成 \(1\)-sorted」這件事情能在 \(O(N)\) 做到，我們首先必須要讓陣列變成 \(2\)-sorted 以及 \(3\)-sorted。
 為了讓「整理成 \(2\)-sorted」和「整理成 \(3\)-sorted」也都能在 \(O(N)\) 做到，我們必須讓陣列分別滿足 \(4\)-sorted、 \(6\)-sorted、以及 \(9\)-sorted。以 \(N=500\) 為例，依此類推我們可以畫出以下的關係圖：</p>
-<p><img src="./shell-sort-3-2.png" alt="" /></p>
+<p><img src="sorting/./shell-sort-3-2.png" alt="" /></p>
 <p>只要按照上圖中所有出現過形如 \(2^a3^b &lt; N\) 的數字，從大到小依序 <code>h_sort</code> 一遍，就能夠保證每一次 <code>h_sort</code> 都僅花費 \(O(N)\) 的時間。
 總共有多少個這樣的數字呢？從這張「二維」表格看起來，我們能輕易得到一個上界：至多只有 \(\log_2N\log_3N=\Theta(\log^2N)\) 個數字滿足條件。因此，我們能得到以下結論：</p>
-<a class="header" href="#定理-38-pratt-1972" id="定理-38-pratt-1972"><h3>定理 38 [Pratt 1972]</h3></a>
+<h3><a class="header" href="#定理-38-pratt-1972" id="定理-38-pratt-1972">定理 38 [Pratt 1972]</a></h3>
 <p>使用所有形如 \(2^a3^b\) 的整數作為步長序列，其謝耳排序法的時間複雜度為 \(O(N\log^2 N)\)。
 <span style="float:right">\(\square\)</span></p>
-<a class="header" href="#題外話之一" id="題外話之一"><h3>題外話之一</h3></a>
+<h3><a class="header" href="#題外話之一" id="題外話之一">題外話之一</a></h3>
 <p>假設步長序列的長度為 \(m\)，我們可以在 \(O(m)\) 時間內，產生出所有必要的步長，並且由小到大排好順序。
 方法與霍夫曼編碼、或合併排序法的合併概念相當類似：我們只要把所有產生出來的步長依照大小順序塞入兩個有序數列即可。</p>
 <pre><code class="language-cpp">// 由小到大找出所有小於 N、且質因數只有 2 和 3 的所有正整數。
@@ -1788,21 +1804,122 @@ vector&lt;int&gt; generate_steps(int N) {
 };
 </code></pre>
 <hr />
-<a class="header" href="#題外話之二" id="題外話之二"><h3>題外話之二</h3></a>
+<h3><a class="header" href="#題外話之二" id="題外話之二">題外話之二</a></h3>
 <p>關於謝耳排序法的正確性，其實用到了一個重要的非顯然性質，描述如下：</p>
-<a class="header" href="#性質-39" id="性質-39"><h3>性質 39</h3></a>
+<h3><a class="header" href="#性質-39" id="性質-39">性質 39</a></h3>
 <p>令 \(h\) 和 \(h'\) 為兩個正整數，且 \(h &gt; h'\)。假設陣列 \(A\) 已經是 \(h\)-sorted，那麼對較小的步長 \(h'\) 呼叫 <code>h_sort</code> 重新整理後，這個陣列仍然是 \(h\)-sorted 的。
 換句話說，在謝耳排序法之中，若一個陣列已經是 \(h\)-sorted 了，那麼它終生都是 \(h\)-sorted<sup class="footnote-reference"><a href="#1">1</a></sup>。
 各位朋友有興趣的話可以證明看看唷。</p>
 <hr />
 <p>在 Pratt 給出了非常漂亮的步長序列<sup class="footnote-reference"><a href="#2">2</a></sup>以後，大家對於步長序列的長度 \(m\) 與對應之謝耳演算法效率之間的權衡產生了興趣。
 為了突破 \(O(N\log^2N)\) 時間複雜度，勢必要縮短步長。
-明天我們先從 \(N^{1+O(1/\sqrt{m})}\) 的謝耳排序演算法開始，然後試圖解釋為什麼<strong>不存在</strong> \(O(N\log N)\) 的謝耳排序法。</p>
+明天我們先從 \(mN^{1+O(1/\sqrt{m})}\) 的謝耳排序演算法開始，然後試圖解釋為什麼<strong>不存在</strong> \(O(N\log N)\) 的謝耳排序法。</p>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p><a href="https://www.ptt.cc/bbs/Tech_Job/M.1452353440.A.D62.html">一日XX 終身XX</a></p>
 </div>
 <div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
 <p>Vaughan R. Pratt, <em>Shellsort and Sorting Networks</em>, Ph.D Thesis, Stanford University, 1972. <a href="https://apps.dtic.mil/dtic/tr/fulltext/u2/740110.pdf">https://apps.dtic.mil/dtic/tr/fulltext/u2/740110.pdf</a></p>
+</div>
+<h1><a class="header" href="#謝耳排序法四" id="謝耳排序法四">謝耳排序法（四）</a></h1>
+<p>嗨大家好久不見！為了讓大家快速回憶起謝耳排序法厲害的地方：利用兩個互質數字的次方，達到排序的目的。我們用這個定理作為開頭。</p>
+<h3><a class="header" href="#定理-40-incerpi-sedgewick-1985" id="定理-40-incerpi-sedgewick-1985">定理 40 [Incerpi-Sedgewick 1985]</a></h3>
+<p>給定一個長度 \(m\)，存在一個長度為 \(m\) 的步長序列，使得謝耳排序法的時間複雜度為 \(O(mN^{1 + O(1/\sqrt{m})})\)。</p>
+<h3><a class="header" href="#證明-19" id="證明-19">證明</a></h3>
+<p>想像一下，如果我們以 \(2^x3^y\) 的形式挑選我們的步長，那麼所需要的步長序列長度不超過 \(\lceil\log_2(N+1)\rceil\lceil\log_3(N+1)\rceil\)。反過來思考，如果我們需要長度是 \(m\) 的步長序列，那麼我們只要挑選最大的整數 \(a\)，使其滿足 \(\lceil\log_a(N+1)\rceil\lceil\log_{a+1}(N+1)\rceil\le m\) 即可。</p>
+<p>這時候套用謝耳排序法所需要的時間複雜度是多少呢？根據<a href="sorting/shell-sort2.html#%E4%BF%82%E7%90%86-35">係理 35</a>，進行一次 \(h\)-sort 所需要的時間是 \(O(a^2)\)。因此整體時間複雜度為 \(O(a^2mN)\)。那麼，\(a\) 與 \(m\) 的關係如何呢？透過</p>
+<p>\[\left(\frac{\log N}{\log a}\right)^2 \approx m\]</p>
+<p>可以解得</p>
+<p>\[a = N^{\Theta(1/\sqrt{m})}\]</p>
+<p>證畢。</p>
+<hr />
+<p>上面這個式子，在 \(m\) 的值足夠小的時候，是可以把 \(m\) 的數值吃進 \(N^{1/\sqrt{m}}\) 這一項裡面的。於是我們有以下係理。</p>
+<h3><a class="header" href="#係理-41" id="係理-41">係理 41</a></h3>
+<p>給定一個長度 \(m \le (\log N / \log \log N)^2\)，對於所有足夠大的 \(N\)，存在一個步長序列，使得進行謝耳排序法所需要的比較次數至多為 \(N^{1+O(1/\sqrt{m})}\)。</p>
+<hr />
+<p>為什麼要注重於 \(N^{1+O(1/\sqrt{m})}\) 這個形狀的函數呢？在 1992 年的時候，Plaxton-Poonen-Suel<sup class="footnote-reference"><a href="#1">1</a></sup> 給出了一個下界序列的構造，他們證明了對於任何整數 \(m \le (\log N/ \log\log N)^2\)，存在一個序列使得謝耳排序法所需要的比較次數至少是 \(N^{1+\Omega(1/\sqrt{m})}\)。換句話說，謝耳排序法無論如何在最壞的情形下，都至少要花費 \(\Omega(N(\log N/\log\log N)^2)\) 的時間。</p>
+<p>這個是目前為止最佳的理論下界了。能不能把這個下界跟 \(O(N\log^2 N)\) 的上界合起來，還有待大家的努力。</p>
+<h2><a class="header" href="#附錄其他的變種下界" id="附錄其他的變種下界">附錄：其他的變種下界</a></h2>
+<ul>
+<li>Cypher 在 1989 年<sup class="footnote-reference"><a href="#2">2</a></sup> 率先找出了在排序網路(Sorting Network) 上面的 \(\Omega(N\log^2N/\log\log N)\) 下界。在這個模型中，謝耳排序的上界仍然是 \(O(N\log^2 N)\)，因此還是有個懸而未解的空隙。我們會在接下的文章討論排序網路。</li>
+<li>Jiang, Li, 以及 Vitányi 在 1999 年<sup class="footnote-reference"><a href="#3">3</a></sup> 的時候，以資訊理論的角度證明了任何長度為 \(m\) 的步長序列，其平均時間複雜度至少是 \(\Omega(mN^{1+1/m})\)。該結果由 Vitányi 在 2018 年<sup class="footnote-reference"><a href="#4">4</a></sup> 推廣到關於步長序列的函數。</li>
+</ul>
+<p>[1]: Plaxton, Poonen, and Suel. <a href="https://ieeexplore.ieee.org/document/267769">Improved lower bounds for Shellsort</a> (FOCS 1992)</p>
+<p>[2]: Cypher. <a href="https://dl.acm.org/doi/abs/10.1145/72935.72942">A lower bound on the size of shellsort networks</a> (SPAA 1989)</p>
+<p>[3]: Jiang, Li, Vitányi. <a href="https://arxiv.org/abs/cs/9901010">Average-Case Complexity of Shellsort</a> (ICALP 1999) <a href="https://arxiv.org/pdf/cs/9906008.pdf">比較乾淨的版本</a>。</p>
+<p>[4]: Vitányi. <a href="https://arxiv.org/pdf/1501.06461.pdf">On The Average-Case Complexity of Shellsort.</a> (RSA 2018)</p>
+<h1><a class="header" href="#動態圖論資料結構-dynamic-graph-data-structures" id="動態圖論資料結構-dynamic-graph-data-structures">動態圖論資料結構 Dynamic Graph Data Structures</a></h1>
+<h1><a class="header" href="#無向圖的連通問題-connectivity" id="無向圖的連通問題-connectivity">無向圖的連通問題 Connectivity</a></h1>
+<h1><a class="header" href="#有向圖的連通問題-reachability" id="有向圖的連通問題-reachability">有向圖的連通問題 Reachability</a></h1>
+<p>有向圖版本的動態資料結構，需要支援的操作有：</p>
+<ul>
+<li>更新類型的操作：
+<ul>
+<li>insert(\(u, v\)): 新增一條從 \(u\) 連到 \(v\) 的邊。</li>
+<li>delete(\(u, v\)): 移除一條已存在的 \((u, v)\) 邊。</li>
+</ul>
+</li>
+<li>查詢類型的操作：
+<ul>
+<li>reachable(\(u, v\)): 詢問在當前的圖中是否 \(u\) 走得到 \(v\)。</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#fully-dynamic-reachability" id="fully-dynamic-reachability">Fully Dynamic Reachability</a></h2>
+<h3><a class="header" href="#均攤更新時間" id="均攤更新時間">均攤更新時間</a></h3>
+<table><thead><tr><th align="center">演算法文獻</th><th align="center"><nobr>圖的種類</nobr></th><th align="center"><nobr>演算法類型</nobr></th><th align="center">均攤更新時間<br>Amortized<br>Update Time</th><th align="center">最差查詢時間</th></tr></thead><tbody>
+<tr><td align="center">Demetrescu-Italiano <sup class="footnote-reference"><a href="#7">1</a></sup></td><td align="center">general</td><td align="center">確定性</td><td align="center">\(O(n^2)\)</td><td align="center">\(O(1)\)</td></tr>
+<tr><td align="center">Henzinger-King<sup class="footnote-reference"><a href="#9">2</a></sup></td><td align="center">general</td><td align="center">蒙地卡羅</td><td align="center">\(O(m\sqrt{n}\log^2n)\)</td><td align="center">\(O(n/\log n)\)</td></tr>
+<tr><td align="center">Roditty-Zwick <sup class="footnote-reference"><a href="#1">3</a></sup></td><td align="center">general</td><td align="center">確定性</td><td align="center">\(O(m\sqrt{n})\)</td><td align="center">\(O(\sqrt{n})\)</td></tr>
+<tr><td align="center">Roditty-Zwick <sup class="footnote-reference"><a href="#1">3</a></sup></td><td align="center">general</td><td align="center">蒙地卡羅</td><td align="center">\(O(m^{0.58}n)\)</td><td align="center">\(O(m^{0.43})\)</td></tr>
+<tr><td align="center">Demetrescu-Italiano <sup class="footnote-reference"><a href="#8">4</a></sup></td><td align="center">DAGs</td><td align="center">蒙地卡羅</td><td align="center">\(O(n^{1.58})\)</td><td align="center">\(O(n^{0.58})\)</td></tr>
+<tr><td align="center">Roditty-Zwick <sup class="footnote-reference"><a href="#2">5</a></sup></td><td align="center">general</td><td align="center">確定性</td><td align="center">\(O(m + n\log n)\)</td><td align="center">\(O(n)\)</td></tr>
+</tbody></table>
+<h3><a class="header" href="#最差更新時間" id="最差更新時間">最差更新時間</a></h3>
+<table><thead><tr><th align="center">演算法文獻</th><th align="center"><nobr>圖的種類</nobr></th><th align="center"><nobr>演算法類型</nobr></th><th align="center">最差更新時間<br>Worst Case<br>Update Time</th><th align="center">最差查詢時間</th></tr></thead><tbody>
+<tr><td align="center">Sankowski<sup class="footnote-reference"><a href="#3">6</a></sup></td><td align="center">general</td><td align="center">蒙地卡羅</td><td align="center">\(O(n^2)\)</td><td align="center">\(O(1)\)</td></tr>
+<tr><td align="center">Sankowski<sup class="footnote-reference"><a href="#3">6</a></sup></td><td align="center">general</td><td align="center">蒙地卡羅</td><td align="center">\(O(n^{1.58})\)</td><td align="center">\(O(n^{0.58})\)</td></tr>
+<tr><td align="center">Sankowski<sup class="footnote-reference"><a href="#3">6</a></sup></td><td align="center">general</td><td align="center">蒙地卡羅</td><td align="center">\(O(n^{1.447})\)<sup class="footnote-reference"><a href="#4">7</a></sup></td><td align="center">\(O(n^{1.447})\)<sup class="footnote-reference"><a href="#4">7</a></sup></td></tr>
+<tr><td align="center">van den Brand,<br>Nanongkai,<br>Saranurak <sup class="footnote-reference"><a href="#4">7</a></sup></td><td align="center">general</td><td align="center">蒙地卡羅</td><td align="center">\(O(n^{1.407})\)</td><td align="center">\(O(n^{1.407})\)</td></tr>
+</tbody></table>
+<h2><a class="header" href="#incremental-reachability" id="incremental-reachability">Incremental Reachability</a></h2>
+<table><thead><tr><th align="center">演算法文獻</th><th align="center"><nobr>圖的種類</nobr></th><th align="center"><nobr>演算法類型</nobr></th><th align="center">更新時間</th><th align="center">最差查詢時間</th></tr></thead><tbody>
+<tr><td align="center">Italiano<sup class="footnote-reference"><a href="#5">8</a></sup></td><td align="center">general</td><td align="center">確定性</td><td align="center">均攤 \(O(n)\)</td><td align="center">\(O(n)\)</td></tr>
+</tbody></table>
+<h2><a class="header" href="#decremental-reachability" id="decremental-reachability">Decremental Reachability</a></h2>
+<table><thead><tr><th align="center">演算法文獻</th><th align="center"><nobr>圖的種類</nobr></th><th align="center"><nobr>演算法類型</nobr></th><th align="center">更新時間</th><th align="center">最差查詢時間</th></tr></thead><tbody>
+<tr><td align="center">Roditty-Zwick <sup class="footnote-reference"><a href="#1">3</a></sup></td><td align="center">general</td><td align="center">拉斯維加斯</td><td align="center">全部 \(O(mn)\)</td><td align="center">\(O(1)\)</td></tr>
+<tr><td align="center">Łącki<sup class="footnote-reference"><a href="#10">9</a></sup></td><td align="center">general</td><td align="center">確定性</td><td align="center">全部 \(O(mn)\)</td><td align="center">\(O(1)\)</td></tr>
+</tbody></table>
+<h2><a class="header" href="#參考資料-5" id="參考資料-5">參考資料</a></h2>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">3</sup>
+<p>Roditty and Zwick, <a href="https://doi.org/10.1137/060650271">Improved Dynamic Reachability Algorithms for Directed Graphs</a>. SIAM J. Comput 2008.</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">5</sup>
+<p>Roditty and Zwick, <a href="https://doi.org/10.1137/13093618X">A Fully Dynamic Reachability Algorithm for Directed Graphs with an Almost Linear Update Time</a>. SIAM J. Comput 2016.</p>
+</div>
+<div class="footnote-definition" id="3"><sup class="footnote-definition-label">6</sup>
+<p>Sankowski, <a href="https://ieeexplore.ieee.org/document/1366271">Dynamic transitive closure via dynamic matrix inverse</a>. FOCS 2004.</p>
+</div>
+<div class="footnote-definition" id="4"><sup class="footnote-definition-label">7</sup>
+<p>van den Brand, Nanongkai, and Saranurak. <a href="https://arxiv.org/abs/1905.05067">Dynamic Matrix Inverse: Improved Algorithms and Matching Conditional Lower Bounds</a>. FOCS 2019.</p>
+</div>
+<div class="footnote-definition" id="5"><sup class="footnote-definition-label">8</sup>
+<p>G.F.Italiano, <a href="https://dl.acm.org/doi/10.5555/39515.39523">Amortized Efficiency of a Path Retrieval Data Structure</a>. TCS 1986. </p>
+</div>
+<div class="footnote-definition" id="6"><sup class="footnote-definition-label">10</sup>
+<p>Liam Roditty, <a href="https://dl.acm.org/doi/10.1145/1328911.1328917">A Faster and Simpler Fully Dynamic Transitive Closure</a>. SODA 2003. TALG 2008.</p>
+</div>
+<div class="footnote-definition" id="7"><sup class="footnote-definition-label">1</sup>
+<p>C. Demetrescu and G.F. Italiano, <a href="https://ieeexplore.ieee.org/document/892126?section=abstract">Fully Dynamic Transitive Closure: Breaking Through the \(O(n^2)\) Barrier</a>. FOCS 2000.</p>
+</div>
+<div class="footnote-definition" id="8"><sup class="footnote-definition-label">4</sup>
+<p>C. Demetrescu and G.F. Italinao, <a href="https://core.ac.uk/download/pdf/194937906.pdf">Trade-offs for Fully Dynamic Transitive Closure on DAGs: Breaking Through the \(O(n^2)\) Barrier</a>. J ACM 2005.</p>
+</div>
+<div class="footnote-definition" id="9"><sup class="footnote-definition-label">2</sup>
+<p>M.R. Henzinger and V. King, <a href="https://www.computer.org/csdl/proceedings-article/focs/1995/71830664/12OmNrJAe8t">Fully Dynamic Biconnectivity and Transtive Closure</a>. FOCS 1995.</p>
+</div>
+<div class="footnote-definition" id="10"><sup class="footnote-definition-label">9</sup>
+<p>J Łącki, <a href="https://dl.acm.org/doi/10.1145/2483699.2483707">Improved Deterministic Algorithms for Decremental Transitive Closure</a>. SODA 2011. TALG 2013.</p>
 </div>
 
                     </main>
@@ -1844,6 +1961,14 @@ vector&lt;int&gt; generate_steps(int N) {
                 ga('create', 'UA-68887724-4', 'auto');
                 ga('send', 'pageview');
             }
+        </script>
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
         </script>
         
 
