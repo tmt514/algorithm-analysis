@@ -3,10 +3,10 @@
 有向圖版本的動態資料結構，需要支援的操作有：
 
 * 更新類型的操作：
-  - insert($u, v$): 新增一條從 $u$ 連到 $v$ 的邊。
-  - delete($u, v$): 移除一條已存在的 $(u, v)$ 邊。
+  - Insert($u, v$): 新增一條從 $u$ 連到 $v$ 的邊。
+  - Delete($u, v$): 移除一條已存在的 $(u, v)$ 邊。
 * 查詢類型的操作：
-  - reachable($u, v$): 詢問在當前的圖中是否 $u$ 走得到 $v$。
+  - Query($u, v$): 詢問在當前的圖中是否 $u$ 走得到 $v$，如果是的話回傳 *yes*。
 
 ## Fully Dynamic Reachability
 
@@ -14,12 +14,12 @@
 
 | 演算法文獻 | <nobr>圖的種類</nobr> | <nobr>演算法類型</nobr> | 均攤更新時間<br>Amortized<br>Update Time | 最差查詢時間 |
 |:---------:|:--------:|:--------:|:-----------:|:-----------:|
-| Demetrescu-Italiano [^7] | general | 確定性 | $O(n^2)$ | $O(1)$ |
+| Demetrescu-Italiano[^7], Roditty[^6] | general | 確定性 | $O(n^2)$ | $O(1)$ |
 | Henzinger-King[^9] | general | 蒙地卡羅 | $O(m\sqrt{n}\log^2n)$ | $O(n/\log n)$ |
-| Roditty-Zwick [^1] | general | 確定性 | $O(m\sqrt{n})$ | $O(\sqrt{n})$ |
-| Roditty-Zwick [^1] | general | 蒙地卡羅 | $O(m^{0.58}n)$ | $O(m^{0.43})$ | 
-| Demetrescu-Italiano [^8] | DAGs | 蒙地卡羅 | $O(n^{1.58})$ | $O(n^{0.58})$ |
-| Roditty-Zwick [^2] | general | 確定性 | $O(m + n\log n)$ | $O(n)$ |
+| Roditty-Zwick[^1] | general | 確定性 | $O(m\sqrt{n})$ | $O(\sqrt{n})$ |
+| Roditty-Zwick[^1] | general | 蒙地卡羅 | $O(m^{0.58}n)$ | $O(m^{0.43})$ | 
+| Demetrescu-Italiano[^8] | DAGs | 蒙地卡羅 | $O(n^{1.58})$ | $O(n^{0.58})$ |
+| Roditty-Zwick[^2] | general | 確定性 | $O(m + n\log n)$ | $O(n)$ |
 
 ### 最差更新時間
 
@@ -28,7 +28,7 @@
 | Sankowski[^3] | general | 蒙地卡羅 | $O(n^2)$ | $O(1)$ |
 | Sankowski[^3] | general | 蒙地卡羅 | $O(n^{1.58})$ | $O(n^{0.58})$ | 
 | Sankowski[^3] | general | 蒙地卡羅 | $O(n^{1.447})$[^4] | $O(n^{1.447})$[^4] |
-| van den Brand,<br>Nanongkai,<br>Saranurak [^4] | general | 蒙地卡羅 | $O(n^{1.407})$ | $O(n^{1.407})$ |
+| van den Brand,<br>Nanongkai,<br>Saranurak[^4] | general | 蒙地卡羅 | $O(n^{1.407})$ | $O(n^{1.407})$ |
 
 ## Incremental Reachability
 
@@ -40,7 +40,8 @@
 
 | 演算法文獻 | <nobr>圖的種類</nobr> | <nobr>演算法類型</nobr> | 更新時間 | 最差查詢時間 |
 |:---------:|:--------:|:--------:|:-----------:|:-----------:|
-| Roditty-Zwick [^1] | general | 拉斯維加斯 | 全部 $O(mn)$ | $O(1)$ | 
+| Frigioni, Miller,<br>Nanni,<br>Zaroliagis[^11] | general | 確定性 | 全部 $O(m^2)$ | $O(1)$ |
+| Roditty-Zwick[^1] | general | 拉斯維加斯 | 全部 $O(mn)$ | $O(1)$ | 
 | Łącki[^10] | general | 確定性 | 全部 $O(mn)$ | $O(1)$ |
 
 ## 參考資料
@@ -64,3 +65,5 @@
 [^9]: M.R. Henzinger and V. King, [Fully Dynamic Biconnectivity and Transtive Closure](https://www.computer.org/csdl/proceedings-article/focs/1995/71830664/12OmNrJAe8t). FOCS 1995.
 
 [^10]: J Łącki, [Improved Deterministic Algorithms for Decremental Transitive Closure](https://dl.acm.org/doi/10.1145/2483699.2483707). SODA 2011. TALG 2013.
+
+[^11]: Frigioni, Miller, Nanni, and Zaroliagis, [An Experimental Study of Dynamic Algorithms for Transitive Closure](https://dl.acm.org/doi/10.1145/945394.945403), J of Experimental Algorithms 2001.
