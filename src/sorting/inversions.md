@@ -24,7 +24,7 @@
 
 ### 係理 6
 
-存在一筆輸入，使得泡沫排序法的時間複雜度為 $\omega(n + \mathrm{Inv}(A))$。
+存在一筆輸入，使得泡沫排序法的時間複雜度為 $\omega(n + n\cdot \mathrm{Inv}(A))$。
 即，對於該輸入，泡沫排序法需要 $\Theta(n^2)$ 的時間，但是 $\mathrm{Inv}(A)$ 很小，在本例中 $\mathrm{Inv}(A) = O(n)$。
 
 ### 證明
@@ -34,7 +34,7 @@
 
 ### 係理 7
 
-1. 泡沫排序法的時間複雜度為 $O(n + n\cdot \mathrm{Inv}(A))$，而且存在一些輸入符合這個時間複雜度。
+1. 泡沫排序法的時間複雜度為 $O(n + n\cdot \mathrm{Inv}(A))$，而且當 $\mathrm{Inv}(A) = O(n)$ 時，存在一些輸入符合這個時間複雜度。
 2. 雞尾酒排序法的時間複雜度為 $O(n + n\cdot \sqrt{\mathrm{Inv}(A)})$，而且存在一些輸入符合這個時間複雜度。
 
 ### 證明
@@ -85,3 +85,7 @@ $$
 
 * https://en.wikipedia.org/wiki/Inversion_(discrete_mathematics)
 * https://math.stackexchange.com/questions/2998546/sort-an-array-given-the-number-of-inversions
+
+### 修訂紀錄
+
+* 2020/12/24: 感謝 Tommy Chiang 提出的[疑問與討論](https://www.facebook.com/AlgorithmAnalysisAndProofs/posts/105955824265261)！
