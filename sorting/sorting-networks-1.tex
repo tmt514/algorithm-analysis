@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{ifthen}
+\usepackage{concmath}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.5]
+\def\NN{3}
+
+\def\W{6}
+\foreach \x in {1,...,\NN} {
+  \draw (0, \x) -- (\W, \x);
+}
+\pgfmathparse{\NN-1}
+\foreach \x in {0,...,\pgfmathresult} {
+  \node at (-1, \NN-\x) {$A[\x]$};
+}
+\newcounter{t}
+\setcounter{t}{1}
+\node at (0, 1) {};
+\foreach \a/\b in {1/2,2/3,1/2} {
+  \draw (\thet, \NN+1-\a) -- (\thet, \NN+1-\b);
+  \node[circle,fill=black,inner sep=0pt,minimum size=4pt] at (\thet, \NN+1-\a) {};
+  \node[circle,fill=black,inner sep=0pt,minimum size=4pt] at (\thet, \NN+1-\b) {};
+  \stepcounter{t}
+}
+\end{tikzpicture}
+\end{document}
+
