@@ -1,0 +1,42 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{ifthen}
+\usepackage{concmath}
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}   %% some additional layers for demo
+
+\begin{document}
+\begin{tikzpicture}[scale=0.5]
+\def\NN{5}
+
+\def\W{12}
+\foreach \x in {1,...,\NN} {
+  \draw (0, \x) -- (\W, \x);
+}
+\pgfmathparse{\NN-1}
+\foreach \x in {0,...,\pgfmathresult} {
+  \node at (-1, \NN-\x) {$A[\x]$};
+}
+\newcounter{t}
+\setcounter{t}{1}
+\node at (0, 1) {};
+\foreach \a/\b in {1/2,2/3,1/2,3/4,2/3,1/2,4/5,3/4,2/3,1/2} {
+  \draw (\thet, \NN+1-\a) -- (\thet, \NN+1-\b);
+  \node[circle,fill=black,inner sep=0pt,minimum size=4pt] at (\thet, \NN+1-\a) {};
+  \node[circle,fill=black,inner sep=0pt,minimum size=4pt] at (\thet, \NN+1-\b) {};
+  \stepcounter{t}
+}
+
+\begin{pgfonlayer}{background}
+\draw[fill=blue!20, draw=none]  (0.5, 0.5) rectangle (1.5, \NN +0.5);
+\draw[fill=red!15, draw=none]  (1.5, 0.5) rectangle (3.5, \NN +0.5);
+\draw[fill=yellow!40, draw=none]  (3.5, 0.5) rectangle (6.5, \NN +0.5);
+\draw[fill=olive!20, draw=none]  (6.5, 0.5) rectangle (10.5, \NN +0.5);
+\end{pgfonlayer}
+
+\end{tikzpicture}
+\end{document}
+

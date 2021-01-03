@@ -1,5 +1,12 @@
 book
 
+## Latex middle file
+*.aux
+*.fls
+*.fdb_latexmk
+*.log
+*.synctex.gz
+
 # Node rules:
 ## Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt

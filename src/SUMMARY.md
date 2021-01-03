@@ -29,7 +29,7 @@
   * [20/02/28 - 謝耳排序法（二）](sorting/shell-sort2.md)
   * [20/03/08 - 謝耳排序法（三）](sorting/shell-sort3.md)
   * [20/10/12 - 謝耳排序法（四）](sorting/shell-sort4.md)
-  * [20/11/19 - 排序網路](sorting/sorting-network.md)
+  * [21/01/03 - 排序網路](sorting/sorting-network.md)
 * [動態圖論資料結構](dynamic-graph/README.md)
   * [無向圖的連通問題 Connectivity](dynamic-graph/connectivity/README.md)
   * [有向圖的連通問題 Reachability](dynamic-graph/reachability/README.md)
