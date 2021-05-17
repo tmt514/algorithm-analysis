@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.11.1)  3 JAN 2021 15:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.11.1)  14 JAN 2021 14:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/tmt514/git/algorithm-analysis/src/sorting/sorting-networks-1-2.tex
-(/home/tmt514/git/algorithm-analysis/src/sorting/sorting-networks-1-2.tex
+**/home/tmt514/git/algorithm-analysis/src/sorting/sorting-networks-2-1.tex
+(/home/tmt514/git/algorithm-analysis/src/sorting/sorting-networks-2-1.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls
@@ -369,41 +369,42 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> OT1/ccr/m/it on input line 54.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/ccr/m/it on input line 54.
+) (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
+\@xs@message=\write4
+\integerpart=\count122
+\decimalpart=\count123
 )
-\pgf@layerbox@background=\box40
-\pgf@layerboxsaved@background=\box41
-\pgf@layerbox@foreground=\box42
-\pgf@layerboxsaved@foreground=\box43
- (/home/tmt514/git/algorithm-analysis/src/sorting/sorting-networks-1-2.aux)
-\openout1 = `sorting-networks-1-2.aux'.
+Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
+) (/home/tmt514/git/algorithm-analysis/src/sorting/sorting-networks-2-1.aux)
+\openout1 = `sorting-networks-2-1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Try loading font information for OT1+ccr on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Try loading font information for OT1+ccr on input line 8.
  (/usr/share/texlive/texmf-dist/tex/latex/concmath/ot1ccr.fd
 File: ot1ccr.fd 1999/03/10 v2.0b LaTeX font defs for Concrete math fonts
 ) ABD: EveryShipout initializing macros (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count122
+\scratchcounter=\count124
 \scratchdimen=\dimen160
-\scratchbox=\box44
-\nofMPsegments=\count123
-\nofMParguments=\count124
+\scratchbox=\box40
+\nofMPsegments=\count125
+\nofMParguments=\count126
 \everyMPshowfont=\toks39
-\MPscratchCnt=\count125
+\MPscratchCnt=\count127
 \MPscratchDim=\dimen161
-\MPnumerator=\count126
-\makeMPintoPDFobject=\count127
+\MPnumerator=\count128
+\makeMPintoPDFobject=\count129
 \everyMPtoPDFconversion=\toks40
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
@@ -434,49 +435,48 @@ Package grfext Info: Graphics extension search list:
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Font Info:    Try loading font information for OML+ccm on input line 22.
+\c@t=\count130
+LaTeX Font Info:    Try loading font information for OML+ccm on input line 42.
  (/usr/share/texlive/texmf-dist/tex/latex/concmath/omlccm.fd
 File: omlccm.fd 1999/03/10 v2.0b LaTeX font defs for Concrete math fonts
 )
-LaTeX Font Info:    Try loading font information for OMS+ccsy on input line 22.
+LaTeX Font Info:    Try loading font information for OMS+ccsy on input line 42.
  (/usr/share/texlive/texmf-dist/tex/latex/concmath/omsccsy.fd
 File: omsccsy.fd 1999/03/10 v2.0b LaTeX font defs for Concrete math fonts
 )
-LaTeX Font Info:    Try loading font information for OMX+ccex on input line 22.
+LaTeX Font Info:    Try loading font information for OMX+ccex on input line 42.
  (/usr/share/texlive/texmf-dist/tex/latex/concmath/omxccex.fd
 File: omxccex.fd 1999/03/10 v2.0b LaTeX font defs for Concrete math fonts
 )
 LaTeX Font Info:    External font `xccex10' loaded for size
-(Font)              <10> on input line 22.
+(Font)              <10> on input line 42.
 LaTeX Font Info:    External font `xccex10' loaded for size
-(Font)              <7> on input line 22.
+(Font)              <7> on input line 42.
 LaTeX Font Info:    External font `xccex10' loaded for size
-(Font)              <5> on input line 22.
-LaTeX Font Info:    Try loading font information for U+msa on input line 22.
+(Font)              <5> on input line 42.
+LaTeX Font Info:    Try loading font information for U+msa on input line 42.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 22.
+LaTeX Font Info:    Try loading font information for U+msb on input line 42.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-\c@t=\count128
- [1
+) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (/home/tmt514/git/algorithm-analysis/src/sorting/sorting-networks-1-2.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (/home/tmt514/git/algorithm-analysis/src/sorting/sorting-networks-2-1.aux) ) 
 Here is how much of TeX's memory you used:
- 12922 strings out of 493029
- 254726 string characters out of 6136234
- 292833 words of memory out of 5000000
- 16185 multiletter control sequences out of 15000+600000
- 7852 words of font info for 30 fonts, out of 8000000 for 9000
+ 13208 strings out of 493029
+ 258945 string characters out of 6136234
+ 302391 words of memory out of 5000000
+ 16464 multiletter control sequences out of 15000+600000
+ 8356 words of font info for 33 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,56p,486b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/tmt514/.texmf-var/fonts/pk/ljfour/public/concrete/ccr10.600pk> </home/tmt514/.texmf-var/fonts/pk/ljfour/public/concmath-fonts/xccmi10.600pk>
-Output written on /home/tmt514/git/algorithm-analysis/src/sorting/sorting-networks-1-2.pdf (1 page, 5341 bytes).
+ 55i,7n,56p,486b,749s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/tmt514/.texmf-var/fonts/pk/ljfour/public/concmath-fonts/xccmi10.600pk> </home/tmt514/.texmf-var/fonts/pk/ljfour/public/concrete/ccr10.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on /home/tmt514/git/algorithm-analysis/src/sorting/sorting-networks-2-1.pdf (1 page, 6437 bytes).
 PDF statistics:
- 27 PDF objects out of 1000 (max. 8388607)
- 15 compressed objects within 1 object stream
+ 26 PDF objects out of 1000 (max. 8388607)
+ 18 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

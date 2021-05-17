@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>排序 Sorting - 演算法的分析與證明</title>
+        <title>Prim&#x27;s 演算法 - 演算法的分析與證明</title>
         
         
 
@@ -98,7 +98,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">2020 新計劃</a></li><li class="chapter-item expanded "><a href="../GLOSSARY.html">Glossary</a></li><li class="chapter-item expanded "><a href="../sorting/index.html" class="active">排序 Sorting</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../sorting/bubble-sort.html">20/01/02 - 泡沫排序法</a></li><li class="chapter-item expanded "><a href="../sorting/cocktail-sort.html">20/01/03 - 雞尾酒排序法</a></li><li class="chapter-item expanded "><a href="../sorting/inversions.html">20/01/04 - 逆序數對</a></li><li class="chapter-item expanded "><a href="../sorting/merge-sort.html">20/01/05 - 合併排序法</a></li><li class="chapter-item expanded "><a href="../sorting/in-place-mergesort.html">20/01/06 - 原地演算法</a></li><li class="chapter-item expanded "><a href="../sorting/quick-sort.html">20/01/08 - 快速排序法</a></li><li class="chapter-item expanded "><a href="../sorting/randomized-quicksort.html">20/01/10 - 隨機快速排序法（一）</a></li><li class="chapter-item expanded "><a href="../sorting/randomized-quicksort2.html">20/01/12 - 隨機快速排序法（二）</a></li><li class="chapter-item expanded "><a href="../sorting/randomized-quicksort3.html">20/01/13 - 隨機快速排序法（三）</a></li><li class="chapter-item expanded "><a href="../sorting/heapsort.html">20/01/16 - 堆積排序法</a></li><li class="chapter-item expanded "><a href="../sorting/comparison-based-sorting.html">20/01/18 - 比較排序下界</a></li><li class="chapter-item expanded "><a href="../sorting/minimum-comparison-sort.html">20/01/20 - 最少比較排序</a></li><li class="chapter-item expanded "><a href="../sorting/merge-insertion-sort.html">20/01/22 - 合併插入排序</a></li><li class="chapter-item expanded "><a href="../sorting/poset-efficiency.html">20/01/25 - 偏序集排序（一）</a></li><li class="chapter-item expanded "><a href="../sorting/linear-extensions.html">20/01/26 - 偏序集排序（二）</a></li><li class="chapter-item expanded "><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">20/01/27 - 偏序集排序（三）</a></li><li class="chapter-item expanded "><a href="../sorting/chain-polytope-and-graph-entropy.html">20/02/01 - 偏序集排序（四）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort5.html">20/02/03 - 偏序集排序（五）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort6.html">20/02/07 - 偏序集排序（六）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort7.html">20/02/14 - 偏序集排序（七）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort8.html">20/02/17 - 偏序集排序（八）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort9.html">20/02/21 - 偏序集排序（九）</a></li><li class="chapter-item expanded "><a href="../sorting/shell-sort1.html">20/02/26 - 謝耳排序法（一）</a></li><li class="chapter-item expanded "><a href="../sorting/shell-sort2.html">20/02/28 - 謝耳排序法（二）</a></li><li class="chapter-item expanded "><a href="../sorting/shell-sort3.html">20/03/08 - 謝耳排序法（三）</a></li><li class="chapter-item expanded "><a href="../sorting/shell-sort4.html">20/10/12 - 謝耳排序法（四）</a></li><li class="chapter-item expanded "><a href="../sorting/sorting-network.html">21/01/03 - 排序網路</a></li><li class="chapter-item expanded "><a href="../sorting/sorting-network-correctness.html">21/01/04 - 驗證排序網路</a></li></ol></li><li class="chapter-item expanded "><a href="../minimum-spanning-tree/index.html">最小生成樹</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../minimum-spanning-tree/prims-mst.html">Prim's 演算法</a></li></ol></li><li class="chapter-item expanded "><a href="../dynamic-graph/index.html">動態圖論資料結構</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dynamic-graph/connectivity/index.html">無向圖的連通問題 Connectivity</a></li><li class="chapter-item expanded "><a href="../dynamic-graph/reachability/index.html">有向圖的連通問題 Reachability</a></li></ol></li><li class="chapter-item expanded "><a href="../max-flow/index.html">最大網路流</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../max-flow/max-flow-min-cut-theorem.html">最大流最小割定理</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">2020 新計劃</a></li><li class="chapter-item expanded "><a href="../GLOSSARY.html">Glossary</a></li><li class="chapter-item expanded "><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../sorting/bubble-sort.html">20/01/02 - 泡沫排序法</a></li><li class="chapter-item expanded "><a href="../sorting/cocktail-sort.html">20/01/03 - 雞尾酒排序法</a></li><li class="chapter-item expanded "><a href="../sorting/inversions.html">20/01/04 - 逆序數對</a></li><li class="chapter-item expanded "><a href="../sorting/merge-sort.html">20/01/05 - 合併排序法</a></li><li class="chapter-item expanded "><a href="../sorting/in-place-mergesort.html">20/01/06 - 原地演算法</a></li><li class="chapter-item expanded "><a href="../sorting/quick-sort.html">20/01/08 - 快速排序法</a></li><li class="chapter-item expanded "><a href="../sorting/randomized-quicksort.html">20/01/10 - 隨機快速排序法（一）</a></li><li class="chapter-item expanded "><a href="../sorting/randomized-quicksort2.html">20/01/12 - 隨機快速排序法（二）</a></li><li class="chapter-item expanded "><a href="../sorting/randomized-quicksort3.html">20/01/13 - 隨機快速排序法（三）</a></li><li class="chapter-item expanded "><a href="../sorting/heapsort.html">20/01/16 - 堆積排序法</a></li><li class="chapter-item expanded "><a href="../sorting/comparison-based-sorting.html">20/01/18 - 比較排序下界</a></li><li class="chapter-item expanded "><a href="../sorting/minimum-comparison-sort.html">20/01/20 - 最少比較排序</a></li><li class="chapter-item expanded "><a href="../sorting/merge-insertion-sort.html">20/01/22 - 合併插入排序</a></li><li class="chapter-item expanded "><a href="../sorting/poset-efficiency.html">20/01/25 - 偏序集排序（一）</a></li><li class="chapter-item expanded "><a href="../sorting/linear-extensions.html">20/01/26 - 偏序集排序（二）</a></li><li class="chapter-item expanded "><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">20/01/27 - 偏序集排序（三）</a></li><li class="chapter-item expanded "><a href="../sorting/chain-polytope-and-graph-entropy.html">20/02/01 - 偏序集排序（四）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort5.html">20/02/03 - 偏序集排序（五）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort6.html">20/02/07 - 偏序集排序（六）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort7.html">20/02/14 - 偏序集排序（七）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort8.html">20/02/17 - 偏序集排序（八）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort9.html">20/02/21 - 偏序集排序（九）</a></li><li class="chapter-item expanded "><a href="../sorting/shell-sort1.html">20/02/26 - 謝耳排序法（一）</a></li><li class="chapter-item expanded "><a href="../sorting/shell-sort2.html">20/02/28 - 謝耳排序法（二）</a></li><li class="chapter-item expanded "><a href="../sorting/shell-sort3.html">20/03/08 - 謝耳排序法（三）</a></li><li class="chapter-item expanded "><a href="../sorting/shell-sort4.html">20/10/12 - 謝耳排序法（四）</a></li><li class="chapter-item expanded "><a href="../sorting/sorting-network.html">21/01/03 - 排序網路</a></li><li class="chapter-item expanded "><a href="../sorting/sorting-network-correctness.html">21/01/04 - 驗證排序網路</a></li></ol></li><li class="chapter-item expanded "><a href="../minimum-spanning-tree/index.html">最小生成樹</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../minimum-spanning-tree/prims-mst.html" class="active">Prim's 演算法</a></li></ol></li><li class="chapter-item expanded "><a href="../dynamic-graph/index.html">動態圖論資料結構</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dynamic-graph/connectivity/index.html">無向圖的連通問題 Connectivity</a></li><li class="chapter-item expanded "><a href="../dynamic-graph/reachability/index.html">有向圖的連通問題 Reachability</a></li></ol></li><li class="chapter-item expanded "><a href="../max-flow/index.html">最大網路流</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../max-flow/max-flow-min-cut-theorem.html">最大流最小割定理</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -164,73 +164,39 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#排序-sorting" id="排序-sorting">排序 Sorting</a></h1>
-<p>排序是整理資料中一種最直接的方式。</p>
-<h2><a class="header" href="#基於比較的排序-comparison-based-sorting" id="基於比較的排序-comparison-based-sorting">基於比較的排序 Comparison Based Sorting</a></h2>
-<table><thead><tr><th>演算法</th><th>時間複雜度</th><th>空間複雜度</th></tr></thead><tbody>
-<tr><td>泡沫排序法</td><td>最差 \(O(n^2)\), \(O(n + n\tau)\)</td><td>最差 \(O(1)\)</td></tr>
-<tr><td>雞尾酒排序法</td><td>最差 \(O(n^2)\), \(O(n + n\sqrt{\tau})\)</td><td>最差 \(O(1)\)</td></tr>
-<tr><td>插入排序法</td><td>最差 \(O(n^2)\), \(O(n + \tau)\)</td><td>最差 \(O(1)\)</td></tr>
-<tr><td>選擇排序法</td><td>最差 \(O(n^2)\)</td><td>最差 \(O(1)\)</td></tr>
-<tr><td>合併排序法</td><td>最差 \(O(n\log n)\)</td><td>最差 \(O(n)\)</td></tr>
-<tr><td>原地合併排序</td><td>最差 \(O(n\log n)\)</td><td>最差 \(O(1)\)</td></tr>
-<tr><td>快速排序法 - 第一個數字 pivot</td><td>最差 \(O(n^2)\)</td><td>最差 \(O(d) = O(n)\)</td></tr>
-<tr><td>快速排序法 - 隨機選 pivot</td><td>期望 \(O(n\log n)\)</td><td>期望 \(O(d) = O(\log n)\)</td></tr>
-<tr><td>快速排序法 - 找中位數 pivot</td><td>最差 \(O(n\log n)\)</td><td>最差 \(O(d) = O(\log n)\)</td></tr>
-<tr><td>原地快速排序</td><td>最差 \(O(n^2)\)</td><td>最差 \(O(1)\)</td></tr>
-<tr><td>堆積排序法</td><td>最差 \(O(n\log n)\)</td><td>最差 \(O(1)\)</td></tr>
-</tbody></table>
-<h3><a class="header" href="#註記" id="註記">註記</a></h3>
+                        <h1><a class="header" href="#最小生成樹的-prims-演算法" id="最小生成樹的-prims-演算法">最小生成樹的 Prim's 演算法</a></h1>
+<p>Prim 的最小生成樹演算法與 Dijkstra 的單一源點最短路徑演算法相當地類似。
+從任意選定的源頭 \(v\) 出發，接著不斷挑選 \(v\) 所在的連通元件的最小外連邊，向外擴增這個連通元件。
+演算法的步驟如下：</p>
+<ol>
+<li>隨意挑選一個點 \(v\in V\)，並定義當前的連通元件點集 \(S=\{v\}\)。初始化 \(E'=\emptyset\) 為欲輸出的最小生成樹的邊所成的集合。</li>
+<li>重複以下步驟直到 \(S=V\)：
 <ul>
-<li>\(n\) 代表輸入的資料量（序列元素個數）。</li>
-<li>\(\tau\) 代表輸入序列的逆序數對個數。</li>
-<li>\(d\) 代表遞迴深度。</li>
+<li>選擇任何一條從 \(S\) 連出去的邊 \(e_{min} = \arg\min_{e\in \partial S} w(e)\)。假設 \(e_{min}=(x, y)\)，其中 \(x\in S\) 並且 \(y\notin S\)。</li>
+<li>將 \(e_{min}\) 加入 \(E'\) 中，\(E' \gets E' \cup \{e_{min}\}\)。</li>
+<li>\(S \gets S\cup \{y\}\)。</li>
 </ul>
-<h2><a class="header" href="#資料不改變存取位置的排序-data-oblivious-sorting" id="資料不改變存取位置的排序-data-oblivious-sorting">資料不改變存取位置的排序 Data-Oblivious Sorting</a></h2>
-<table><thead><tr><th>演算法</th><th>時間複雜度</th><th>排序網路深度</th></tr></thead><tbody>
-<tr><td>Shell 排序法</td><td>最差 \(O(n^2)\)</td><td>\(O(n)\)</td></tr>
-<tr><td>Shell 排序法 - Pratt 版本</td><td>最差 \(O(n\log^2 n)\)</td><td>\(O(\log^2 n)\)</td></tr>
-<tr><td>Batcher 雙調排序法</td><td>最差 \(O(n\log^2 n)\)</td><td>\(O(\log^2 n)\)</td></tr>
-<tr><td>奇偶合併排序</td><td>最差 \(O(n\log^2 n)\)</td><td>\(O(\log^2 n)\)</td></tr>
-<tr><td>Ajtai-Komlós-Szemerédi 排序網路</td><td>最差 \(O(n\log n)\)</td><td>\(O(\log n)\)</td></tr>
-<tr><td>Goodrich 排序網路</td><td>最差 \(O(n\log n)\)</td><td>\(O(n\log n)\)</td></tr>
-</tbody></table>
-<h2><a class="header" href="#基於資料數值的排序-numbers-sorting" id="基於資料數值的排序-numbers-sorting">基於資料數值的排序 Numbers Sorting</a></h2>
-<table><thead><tr><th>演算法</th><th>時間複雜度</th><th>備註</th></tr></thead><tbody>
-<tr><td>計數排序法</td><td>\(O(n+M)\)</td><td>正整數資料範圍 \(O(M)\)</td></tr>
-<tr><td>\(k\)-進制桶子排序法</td><td>\(O((n+k)\log_k \frac{1}{\epsilon})\)</td><td>最相近兩數之相對誤差 \(\epsilon = \frac{\min_{i\neq j} \vert A[i]-A[j]\vert }{\max_i \vert A[i]\vert }\)</td></tr>
-<tr><td>\(k\)-進制基數排序法</td><td>\(O((n+k)\log_k M)\)</td><td>正整數資料範圍 \(O(M)\)</td></tr>
-</tbody></table>
-<h2><a class="header" href="#二進位整數排序-sorting-in-word-ram-model" id="二進位整數排序-sorting-in-word-ram-model">二進位整數排序 Sorting in Word RAM Model</a></h2>
-<table><thead><tr><th>演算法</th><th>時間複雜度</th><th>備註</th></tr></thead><tbody>
-<tr><td>van Emde Boas 樹</td><td>\(O(n\log\log M)\)</td><td>空間複雜度 \(O(M)\)</td></tr>
-<tr><td>X-fast 字母樹</td><td>\(O(n\log\log M)\)</td><td>空間複雜度 \(O(n\log M)\)</td></tr>
-<tr><td>Y-fast 字母樹</td><td>\(O(n\log\log M)\)</td><td>空間複雜度 \(O(n)\)</td></tr>
-<tr><td>Fusion Tree</td><td>\(O(n\log n/\log\log n)\)</td><td>允許隨機與除法可做到 \(O(n\sqrt{\log n})\)</td></tr>
-<tr><td>Packed Sort</td><td></td><td></td></tr>
-<tr><td>Signature Sort</td><td></td><td></td></tr>
-<tr><td>Han-Thorup 整數排序 - 確定性</td><td>\(O(n\log \log n)\)</td><td>空間複雜度 \(O(n)\)</td></tr>
-<tr><td>Han-Thorup 整數排序 - 隨機</td><td>期望 \(O(n\sqrt{\log \log n})\)</td><td>空間複雜度 \(O(n)\)</td></tr>
-</tbody></table>
-<h3><a class="header" href="#推薦閱讀" id="推薦閱讀">推薦閱讀</a></h3>
-<ul>
-<li>https://www.bigocheatsheet.com/</li>
-<li>排序網路（維基百科）：https://en.wikipedia.org/wiki/Sorting_network</li>
-<li>Shell 排序法（維基百科）：https://en.wikipedia.org/wiki/Shellsort</li>
-</ul>
+</li>
+</ol>
+<h2><a class="header" href="#定理-mst3" id="定理-mst3">定理 MST.3</a></h2>
+<p>若輸入之圖 \(G\) 為連通，且所有邊權重皆不相等，那麼執行完 Prim's 演算法後，\(E'\) 包含圖 \(G\) 上所有的安全邊。換句話說，\(E'\) 形成了最小生成樹。</p>
+<hr />
+<p>有了安全邊的定義之後，證明就會變得相當簡潔。我們假設 \(E_{\textit{safe}}\) 為圖 \(G\) 上所有的安全邊。那麼要證明的便是演算法執行完畢後，\(E'=E_{\textit{safe}}\)。</p>
+<h3><a class="header" href="#定理-mst3-的證明" id="定理-mst3-的證明">定理 MST.3 的證明</a></h3>
+<p>根據演算法，當 \(e_{min}\) 被加入 \(E'\) 的時候，這篇還沒寫完。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../GLOSSARY.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../minimum-spanning-tree/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../sorting/bubble-sort.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../dynamic-graph/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -242,13 +208,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../GLOSSARY.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../minimum-spanning-tree/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../sorting/bubble-sort.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../dynamic-graph/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
