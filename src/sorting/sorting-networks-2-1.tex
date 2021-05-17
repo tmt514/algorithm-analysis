@@ -1,0 +1,45 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{ifthen}
+\usepackage{concmath}
+\usepackage{xstring}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.5]
+\def\NN{3}
+\def\W{3}
+\newcounter{t}
+
+\foreach \p/\v/\r in {0/100/2312,1/101/1323,2/010/1312,3/110/1223} {
+  \StrChar{\v}{1}[\fooA]
+  \StrChar{\v}{2}[\fooB]
+  \StrChar{\v}{3}[\fooC]
+\foreach \x in {1,...,\NN} {
+  \draw (6*\p-0.5, \x) -- (6*\p+\W+0.5, \x);
+}
+% \pgfmathparse{\NN-1}
+% \foreach \x in {0,...,\pgfmathresult} {
+%   \node at (-1, \NN-\x) {$A[\x]$};
+% }
+\foreach \x/\y in {0/\fooA,1/\fooB,2/\fooC} {
+  \node at (6*\p-0.8, 3-\x) {$\y$};
+}
+
+\StrChar{\r}{1}[\RA]
+\StrChar{\r}{2}[\RB]
+\StrChar{\r}{3}[\RC]
+\StrChar{\r}{4}[\RD]
+\setcounter{t}{1}
+\node at (0, 1) {};
+\foreach \a/\b in {\RA/\RB,\RC/\RD} {
+  \draw (6*\p+\thet, \NN+1-\a) -- (6*\p+\thet, \NN+1-\b);
+  \node[circle,fill=black,inner sep=0pt,minimum size=4pt] at (6*\p+\thet, \NN+1-\a) {};
+  \node[circle,fill=black,inner sep=0pt,minimum size=4pt] at (6*\p+\thet, \NN+1-\b) {};
+  \stepcounter{t}
+}
+\node at (6*\p+1.5, 0) {$H_{\mathtt{\v}}$};
+}
+\end{tikzpicture}
+\end{document}
+
