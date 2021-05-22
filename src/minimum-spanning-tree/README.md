@@ -14,7 +14,7 @@
 
 ## 定義（Safe Edge）
 
-對於一條邊 $e=(u, v)$，若存在一個點的子集合 $S\subseteq V$，使得 $u\in S, v\notin S$，並且 $w(e)$ 是所有從集合 $S$ 連出去的邊當中，權重最小的一個（即 $w(e)=\min_{x\in \partial(S)} w(x)$），
+對於一條邊 $e=(u, v)$，若存在子集合 $S\subseteq V$，使得 $u\in S, v\notin S$，並且 $w(e)$ 是所有從集合 $S$ 連出去的邊當中，權重最小的一個（即 $w(e)=\min_{x\in \partial(S)} w(x)$），
 那麼我們說 $e$ 是一條**安全邊** _safe edge_。
 
 ## 定理 MST.1
