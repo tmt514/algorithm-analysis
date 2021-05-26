@@ -34,6 +34,8 @@
 * [最小生成樹](minimum-spanning-tree/README.md)
   * [Prim's 演算法](minimum-spanning-tree/prims-mst.md)
   * [Kruskal's 演算法](minimum-spanning-tree/kruskal-mst.md)
+  * [Borůvka's 演算法](minimum-spanning-tree/boruvka-mst.md)
+  * [Yao's 演算法](minimum-spanning-tree/yao-mst.md)
 * [動態圖論資料結構](dynamic-graph/README.md)
   * [無向圖的連通問題 Connectivity](dynamic-graph/connectivity/README.md)
   * [有向圖的連通問題 Reachability](dynamic-graph/reachability/README.md)
