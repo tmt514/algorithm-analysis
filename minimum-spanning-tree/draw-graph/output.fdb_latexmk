@@ -1,9 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1624424102 "/home/tmt514/git/algorithm-analysis/src/minimum-spanning-tree/draw-graph/output.tex" "/home/tmt514/git/algorithm-analysis/src/minimum-spanning-tree/draw-graph/output.pdf" "output" 1624424104
+["pdflatex"] 1624426665 "/home/tmt514/git/algorithm-analysis/src/minimum-spanning-tree/draw-graph/output.tex" "/home/tmt514/git/algorithm-analysis/src/minimum-spanning-tree/draw-graph/output.pdf" "output" 1624426671
   "/dev/null" 1624400196 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/etc/texmf/web2c/texmf.cnf" 1604269871 1101 af7716885e081ab43982cab7b4672c1a ""
-  "/home/tmt514/git/algorithm-analysis/src/minimum-spanning-tree/draw-graph/output.aux" 1624424103 8 a94a2480d3289e625eea47cd1b285758 ""
-  "/home/tmt514/git/algorithm-analysis/src/minimum-spanning-tree/draw-graph/output.tex" 1624424104 6739 6cb647a1d15fdb4ec78aec06dc8a4922 ""
+  "/home/tmt514/git/algorithm-analysis/src/minimum-spanning-tree/draw-graph/output.aux" 1624426671 8 a94a2480d3289e625eea47cd1b285758 ""
+  "/home/tmt514/git/algorithm-analysis/src/minimum-spanning-tree/draw-graph/output.tex" 1624426664 222159 9a4b64e958116a8448bbaa0e4c4498ec ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -100,11 +100,11 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1503343927 31343 93828589fb0cea665e553ee5a17ad2d4 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1604269879 1863403 f3ff9a4253bcb5fb9a9baaf0c572cb01 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1604269913 3853783 8dce6f3210a2100df3d82e91c2a3739e ""
-  "output.aux" 1624424103 8 a94a2480d3289e625eea47cd1b285758 ""
-  "output.tex" 1624424104 6739 6cb647a1d15fdb4ec78aec06dc8a4922 ""
+  "output.aux" 1624426671 8 a94a2480d3289e625eea47cd1b285758 ""
+  "output.tex" 1624426664 222159 9a4b64e958116a8448bbaa0e4c4498ec ""
   (generated)
-  "/home/tmt514/git/algorithm-analysis/src/minimum-spanning-tree/draw-graph/output.log"
-  "output.log"
   "output.aux"
   "output.pdf"
+  "/home/tmt514/git/algorithm-analysis/src/minimum-spanning-tree/draw-graph/output.log"
+  "output.log"
   "/home/tmt514/git/algorithm-analysis/src/minimum-spanning-tree/draw-graph/output.pdf"
