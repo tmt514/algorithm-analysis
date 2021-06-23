@@ -1,0 +1,138 @@
+
+\documentclass{standalone}
+\usepackage{tikz}
+
+\pgfdeclarelayer{foreground}
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main,foreground}
+\definecolor{customcolor3}{rgb}{0.237415, 0.299493, 0.463092}
+\definecolor{customcolor17}{rgb}{0.598528, 0.381632, 0.019840}
+\definecolor{customcolor19}{rgb}{0.308628, 0.568888, 0.122483}
+\definecolor{customcolor20}{rgb}{0.181868, 0.327157, 0.490975}
+\definecolor{customcolor26}{rgb}{0.086046, 0.074180, 0.839774}
+\definecolor{customcolor29}{rgb}{0.617502, 0.077081, 0.305417}
+
+\tikzset {n/.style={minimum size=20pt, inner sep=0.5pt, circle, draw=black, fill=white, line width=2pt},                     e2/.style={color=red, line width=4pt},                     e/.style={color=gray}}
+\begin{document}
+\begin{tikzpicture}
+\begin{pgfonlayer}{foreground}\node[n,draw=customcolor26,fill=customcolor26!20!white](v1) at (79.276381, 47.278350){$v_{1}$};
+\node[n,draw=customcolor26,fill=customcolor26!20!white](v2) at (78.692022, 45.775170){$v_{2}$};
+\node[n,draw=customcolor17,fill=customcolor17!20!white](v3) at (76.969338, 54.482440){$v_{3}$};
+\node[n,draw=customcolor3,fill=customcolor3!20!white](v4) at (74.981412, 49.704541){$v_{4}$};
+\node[n,draw=customcolor29,fill=customcolor29!20!white](v5) at (81.563529, 53.124038){$v_{5}$};
+\node[n,draw=customcolor26,fill=customcolor26!20!white](v6) at (79.464520, 48.869934){$v_{6}$};
+\node[n,draw=customcolor17,fill=customcolor17!20!white](v7) at (76.391884, 50.969349){$v_{7}$};
+\node[n,draw=customcolor26,fill=customcolor26!20!white](v8) at (76.516843, 46.786863){$v_{8}$};
+\node[n,draw=customcolor17,fill=customcolor17!20!white](v9) at (78.407766, 55.342117){$v_{9}$};
+\node[n,draw=customcolor17,fill=customcolor17!20!white](v10) at (77.337952, 52.208715){$v_{10}$};
+\node[n,draw=customcolor26,fill=customcolor26!20!white](v11) at (82.328169, 47.193105){$v_{11}$};
+\node[n,draw=customcolor26,fill=customcolor26!20!white](v12) at (83.557209, 48.021355){$v_{12}$};
+\node[n,draw=customcolor17,fill=customcolor17!20!white](v13) at (80.011206, 55.466026){$v_{13}$};
+\node[n,draw=customcolor26,fill=customcolor26!20!white](v14) at (76.836094, 49.106838){$v_{14}$};
+\node[n,draw=customcolor26,fill=customcolor26!20!white](v15) at (82.561939, 49.593469){$v_{15}$};
+\node[n,draw=customcolor26,fill=customcolor26!20!white](v16) at (81.182374, 48.872221){$v_{16}$};
+\node[n,draw=customcolor29,fill=customcolor29!20!white](v17) at (83.405208, 51.700248){$v_{17}$};
+\node[n,draw=customcolor17,fill=customcolor17!20!white](v18) at (79.975089, 53.776304){$v_{18}$};
+\node[n,draw=customcolor26,fill=customcolor26!20!white](v19) at (80.448122, 45.896696){$v_{19}$};
+\node[n,draw=customcolor19,fill=customcolor19!20!white](v20) at (81.647748, 54.899836){$v_{20}$};
+\node[n,draw=customcolor3,fill=customcolor3!20!white](v21) at (75.373625, 48.046781){$v_{21}$};
+\node[n,draw=customcolor29,fill=customcolor29!20!white](v22) at (80.360839, 51.767016){$v_{22}$};
+\node[n,draw=customcolor29,fill=customcolor29!20!white](v23) at (81.947785, 51.218036){$v_{23}$};
+\node[n,draw=customcolor17,fill=customcolor17!20!white](v24) at (78.269774, 53.534507){$v_{24}$};
+\node[n,draw=customcolor26,fill=customcolor26!20!white](v25) at (84.175516, 49.943519){$v_{25}$};
+\node[n,draw=customcolor17,fill=customcolor17!20!white](v26) at (75.860366, 53.190499){$v_{26}$};
+\node[n,draw=customcolor26,fill=customcolor26!20!white](v27) at (77.692652, 47.854201){$v_{27}$};
+\node[n,draw=customcolor26,fill=customcolor26!20!white](v28) at (80.860673, 47.451353){$v_{28}$};
+\node[n,draw=customcolor17,fill=customcolor17!20!white](v29) at (75.127562, 51.715591){$v_{29}$};
+\node[n,draw=customcolor29,fill=customcolor29!20!white](v30) at (82.911281, 53.244699){$v_{30}$};
+\end{pgfonlayer}\draw[line width=4pt,color=customcolor26] (v1) -- (v2);
+\draw[line width=4pt,color=customcolor26] (v1) -- (v6);
+\draw[e] (v1) -- (v8);
+\draw[e] (v1) -- (v16);
+\draw[e] (v1) -- (v19);
+\draw[line width=4pt,color=customcolor26] (v1) -- (v27);
+\draw[line width=4pt,color=customcolor26] (v1) -- (v28);
+\draw[e] (v2) -- (v6);
+\draw[e] (v2) -- (v19);
+\draw[e] (v2) -- (v27);
+\draw[e] (v2) -- (v28);
+\draw[line width=4pt,color=customcolor17] (v3) -- (v9);
+\draw[e] (v3) -- (v10);
+\draw[e] (v3) -- (v18);
+\draw[line width=4pt,color=customcolor17] (v3) -- (v24);
+\draw[e] (v3) -- (v26);
+\draw[e] (v3) -- (v29);
+\draw[e] (v4) -- (v7);
+\draw[e] (v4) -- (v8);
+\draw[e] (v4) -- (v10);
+\draw[e] (v4) -- (v14);
+\draw[line width=4pt,color=customcolor3] (v4) -- (v21);
+\draw[e] (v4) -- (v29);
+\draw[e] (v5) -- (v13);
+\draw[e] (v5) -- (v17);
+\draw[e] (v5) -- (v18);
+\draw[e] (v5) -- (v20);
+\draw[e] (v5) -- (v22);
+\draw[e] (v5) -- (v23);
+\draw[line width=4pt,color=customcolor29] (v5) -- (v30);
+\draw[e] (v6) -- (v19);
+\draw[e] (v6) -- (v27);
+\draw[e] (v6) -- (v28);
+\draw[line width=4pt,color=customcolor17] (v7) -- (v10);
+\draw[e] (v7) -- (v14);
+\draw[e] (v7) -- (v21);
+\draw[e] (v7) -- (v26);
+\draw[line width=4pt,color=customcolor17] (v7) -- (v29);
+\draw[e] (v8) -- (v14);
+\draw[e] (v8) -- (v21);
+\draw[line width=4pt,color=customcolor26] (v8) -- (v27);
+\draw[line width=4pt,color=customcolor17] (v9) -- (v13);
+\draw[e] (v9) -- (v18);
+\draw[e] (v9) -- (v20);
+\draw[e] (v9) -- (v24);
+\draw[line width=4pt,color=customcolor17] (v10) -- (v24);
+\draw[e] (v10) -- (v26);
+\draw[e] (v10) -- (v29);
+\draw[line width=4pt,color=customcolor26] (v11) -- (v12);
+\draw[e] (v11) -- (v15);
+\draw[e] (v11) -- (v16);
+\draw[e] (v11) -- (v19);
+\draw[e] (v11) -- (v25);
+\draw[line width=4pt,color=customcolor26] (v11) -- (v28);
+\draw[e] (v12) -- (v15);
+\draw[e] (v12) -- (v16);
+\draw[e] (v12) -- (v25);
+\draw[e] (v12) -- (v28);
+\draw[line width=4pt,color=customcolor17] (v13) -- (v18);
+\draw[e] (v13) -- (v20);
+\draw[e] (v13) -- (v24);
+\draw[e] (v14) -- (v21);
+\draw[line width=4pt,color=customcolor26] (v14) -- (v27);
+\draw[e] (v14) -- (v29);
+\draw[line width=4pt,color=customcolor26] (v15) -- (v16);
+\draw[e] (v15) -- (v17);
+\draw[e] (v15) -- (v23);
+\draw[line width=4pt,color=customcolor26] (v15) -- (v25);
+\draw[e] (v16) -- (v19);
+\draw[e] (v16) -- (v25);
+\draw[line width=4pt,color=customcolor26] (v16) -- (v28);
+\draw[e] (v17) -- (v22);
+\draw[line width=4pt,color=customcolor29] (v17) -- (v23);
+\draw[line width=4pt,color=customcolor29] (v17) -- (v30);
+\draw[e] (v18) -- (v20);
+\draw[e] (v18) -- (v22);
+\draw[e] (v18) -- (v24);
+\draw[e] (v18) -- (v30);
+\draw[line width=4pt,color=customcolor26] (v19) -- (v28);
+\draw[e] (v20) -- (v22);
+\draw[e] (v20) -- (v30);
+\draw[e] (v21) -- (v27);
+\draw[line width=4pt,color=customcolor29] (v22) -- (v23);
+\draw[e] (v22) -- (v30);
+\draw[e] (v23) -- (v25);
+\draw[e] (v23) -- (v30);
+\draw[e] (v24) -- (v26);
+\draw[line width=4pt,color=customcolor17] (v26) -- (v29);
+
+\end{tikzpicture}
+\end{document}
