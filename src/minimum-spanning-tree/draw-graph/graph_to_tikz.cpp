@@ -5,11 +5,27 @@ const double SQUARED_TARGET_DISTANCE = 3.0;
 
 struct Config {
   bool show_node_label = true;
+  bool use_kruskal = true;
+  int kruskal_hold_steps = 6;
+  int iterations = 10000;
+  double stepsize = 0.05;
 
   Config(int argc, char* argv[]) {
     for (int i = 1; i < argc; i++) {
       string s = string(argv[i]);
       if (s == "-no-node-label") show_node_label = false;
+      else if (s.rfind("-kruskal=", 0) == 0) {
+        kruskal_hold_steps = stoi(s.substr(s.find("=")+1));
+        fprintf(stderr, "kruskal_hold_steps = %d\n", kruskal_hold_steps);
+      } else if (s.rfind("-iterations=", 0) == 0) {
+        iterations = stoi(s.substr(s.find("=")+1));
+        fprintf(stderr, "iterations = %d\n", iterations);
+      } else if (s.rfind("-stepsize=", 0) == 0) {
+        stepsize = stod(s.substr(s.find("=")+1));
+        fprintf(stderr, "stepsize = %.3f\n", stepsize);
+      } else {
+        fprintf(stderr, "unknown parameter: %s", argv[i]);
+      }
     }
   }
 };
@@ -136,12 +152,13 @@ class Graph {
     Adj[loc_v].push_back(e);
   }
 
-  void compute_location_2d(mt19937& rng) {
+  void compute_location_2d(mt19937& rng, shared_ptr<Config> config) {
     int n = V.size();
     for (int i = 0; i < n; i++) V[i]->location = Point(rng, 0.0, 100.0);
-    int ITERATIONS = 10000;
-    double STEPSIZE = 0.05;
+    int ITERATIONS = config->iterations;
+    double STEPSIZE = config->stepsize;
     for (int _ = 0; _ < ITERATIONS; ++_) {
+      fprintf(stderr, "iterations: %d / %d\n", _, ITERATIONS);
       vector<int> permutation(n);
       iota(permutation.begin(), permutation.end(), 0);
       shuffle(permutation.begin(), permutation.end(), rng);
@@ -235,7 +252,7 @@ class Graph {
   }
 
 
-  void highlight_mst_edges(mt19937& rng) {
+  void highlight_mst_edges(mt19937& rng, shared_ptr<Config> config) {
     // Initialize color palette.
     if (latex_defined_colors.empty())
       generate_colors(rng);
@@ -261,7 +278,7 @@ class Graph {
     unordered_map<string, int> vid;
     for(int i=0;i<V.size();i++) vid[V[i]->label] = i;
     int n = V.size();
-    int target = n-6;
+    int target = n - (config->kruskal_hold_steps);
     for(auto it : weighted_edges) {
       
       shared_ptr<Vertex> u = it.second->u;
@@ -350,8 +367,8 @@ int main(int argc, char* argv[]) {
   auto config = make_shared<Config>(argc, argv);
   auto G = read_graph_from_stdin();
   mt19937 rng(58);
-  G->compute_location_2d(rng);
-  G->highlight_mst_edges(rng);
-  output_graph(move(G), move(config));
+  G->compute_location_2d(rng, config);
+  G->highlight_mst_edges(rng, config);
+  output_graph(move(G), config);
   return 0;
 }

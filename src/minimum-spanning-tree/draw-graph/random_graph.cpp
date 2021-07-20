@@ -8,9 +8,9 @@ class Vector {
     x = _x;
     y = _y;
   }
-  Vector(mt19937& rng, double L = 0.0, double R = 100.0) {
-    x = uniform_real_distribution<double>(L, R)(rng);
-    y = uniform_real_distribution<double>(L, R)(rng);
+  Vector(mt19937& rng, double X = 0.0, double Y = 100.0) {
+    x = uniform_real_distribution<double>(0.0, X)(rng);
+    y = uniform_real_distribution<double>(0.0, Y)(rng);
   }
   Vector operator+(const Vector& p) const { return Vector(x + p.x, y + p.y); }
   Vector operator-(const Vector& p) const { return Vector(x - p.x, y - p.y); }
@@ -27,13 +27,20 @@ class Vector {
 // Generates random simple graph. In order to provide better visualization, we
 // generate random points on a plane and connect them if they are close to each
 // other.
-int main() {
-  int n = 30;
+int main(int argc, char* argv[]) {
+  if (argc < 4) {
+    fprintf(stderr, "Usage: ./random_graph [n=10] [W=100.0] [H=50.0]\n");
+    return 0;
+  }
+  int n = atoi(argv[1]);
+  double W = atof(argv[2]);
+  double H = atof(argv[3]);
+
   mt19937 rng(58);
   vector<Vector> v;
   // vector<pair<int, int>> E;
   for (int i = 0; i < n; i++) {
-    v.push_back(Vector(rng));
+    v.push_back(Vector(rng, W, H));
   }
   set<pair<int, int>> E;
   for (int i = 0; i < n; i++) {
