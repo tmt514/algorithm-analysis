@@ -14,7 +14,7 @@
     "deploy": "gh-pages -t -d book -b gh-pages"
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1"
+    "gh-pages": "^3.2.3"
   },
   "repository": {
     "type": "git",
