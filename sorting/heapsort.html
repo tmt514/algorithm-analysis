@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>20/01/16 - 堆積排序法 - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,15 +145,15 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#堆積排序法" id="堆積排序法">堆積排序法</a></h1>
+                        <h1 id="堆積排序法"><a class="header" href="#堆積排序法">堆積排序法</a></h1>
 <p>堆積（Heap）是一種<strong>陣列資料結構</strong>。若我們將 \(n\) 筆資料的堆積以 \(A[1..n]\) 來表示的話，那麼堆積將滿足：對所有 \(x\)，\(A[x] \ge A[2x]\) 以及 \(A[x] \ge A[2x+1]\)（或是指定位置不存在資料）。我們可以按照註標將陣列資料排列成樹狀的結構：</p>
 <p><img src="./heapsort1.png" alt="" /></p>
 <p>由於每一個節點內所代表的資料都比其子節點來得大，通常我們把這樣的堆積稱為最大堆積（Max-Heap）。相反地，如果我們維護的條件是 \(A[x] \le \min(A[2x], A[2x+1])\)，那麼我們會稱它為最小堆積。</p>
-<h3><a class="header" href="#定義" id="定義">定義</a></h3>
+<h3 id="定義"><a class="header" href="#定義">定義</a></h3>
 <p>我們說 \(A[x]\) <strong>滿足堆積性質</strong>，若對於所有樹狀結構中 \(A[x]\) 的子樹內節點 \(A[y]\)，都有 \(A[y] \ge \max(A[2y], A[2y+1])\)。即，如果我們把整個子樹的資料拿出來放在另一個陣列中，那它將是最大堆積。</p>
 <p>不難發現，如果 \(A\) 是最大堆積，那麼 \(A[1]\) 的值是整個陣列中所有資料的最大值。</p>
 <hr />
-<h2><a class="header" href="#heapify---作一個整理成堆積的動作" id="heapify---作一個整理成堆積的動作">Heapify - 作一個整理成堆積的動作</a></h2>
+<h2 id="heapify---作一個整理成堆積的動作"><a class="header" href="#heapify---作一個整理成堆積的動作">Heapify - 作一個整理成堆積的動作</a></h2>
 <p>要怎麼把一個陣列整理成堆積呢？我們只需要一種核心操作「向下交換」：</p>
 <pre><code class="language-cpp">void RollDown(data_t *A, const int n, int x) {
   // 邊界條件。
@@ -192,9 +173,9 @@
   }
 }
 </code></pre>
-<h3><a class="header" href="#引理-16" id="引理-16">引理 16</a></h3>
+<h3 id="引理-16"><a class="header" href="#引理-16">引理 16</a></h3>
 <p>若 \(A[2x]\) 與 \(A[2x+1]\) 分別滿足堆積性質，那麼呼叫 <code>RollDown(x)</code> 以後，\(A[x]\) 將滿足堆積性質。</p>
-<h3><a class="header" href="#證明" id="證明">證明</a></h3>
+<h3 id="證明"><a class="header" href="#證明">證明</a></h3>
 <p>可以利用數學歸納法來證明：假設對於所有的 \(x' &gt; x\) 都已成立。
 那麼對於現在這個 \(x\) 來說，在呼叫 <code>RollDown(x)</code> 以後，首先我們能保證 \(A[x] \ge \max(A[2x], A[2x+1])\)。
 接下來，我們檢視哪些元素被動過了：如果剛才交換的是 \(A[x]\) 與 \(A[2x]\)，那麼另一邊（\(A[2x+1]\)）整棵子樹是不會變的。
@@ -209,9 +190,9 @@
 }
 </code></pre>
 <p>正確性可以利用引理 16 輕鬆證得，比較有趣的是時間複雜度的分析。</p>
-<h3><a class="header" href="#引理-17" id="引理-17">引理 17</a></h3>
+<h3 id="引理-17"><a class="header" href="#引理-17">引理 17</a></h3>
 <p><code>Heapify()</code> 的時間複雜度為 \(O(n)\)。</p>
-<h3><a class="header" href="#證明-1" id="證明-1">證明</a></h3>
+<h3 id="證明-1"><a class="header" href="#證明-1">證明</a></h3>
 <p>對於每一個註標 \(x\)，呼叫 <code>RollDown(x)</code> 時，每一次遞迴呼叫時至少將參數乘以 2，直到超過 \(n\) 為止。因此單次呼叫 <code>RollDown(x)</code> 的執行時間不超過 \(\ceil{\log\frac{n}{x}}\)。把它全部加起來，會得到</p>
 <p>\[
 \begin{aligned}
@@ -226,7 +207,7 @@ S(n) = {\color{purple}{\sum_{x=1}^{n/2} \log\frac{n/2}{x}}} + {\color{green}{\fr
 \]</p>
 <p>於是一路推敲下去可以用數學歸納法證得 \(S(n)\le 2n\)。所以 Heapify 整體時間複雜度為 \(T(n) \le n + S(n) \le 3n = O(n)\)。</p>
 <hr />
-<h2><a class="header" href="#堆積排序" id="堆積排序">堆積排序</a></h2>
+<h2 id="堆積排序"><a class="header" href="#堆積排序">堆積排序</a></h2>
 <p>有了堆積以後，就可以進行堆積排序囉。注意到，一個最大堆積其最大值總是出現在 \(A[1]\) 的位置。因此，我們可以重複地將最大值放到堆積的末端（第一次交換 \(A[1]\) 與 \(A[n]\)、第二次交換 \(A[1]\) 與 \(A[n-1]\)、依此類推）最終就可以得到一個由小到大排好順序的序列啦！</p>
 <pre><code class="language-cpp">void HeapSort(data_t *A, int n) {
   // 注意這邊有別於一般陣列：傳入之陣列範圍是 A[1]...A[n]。
@@ -240,24 +221,20 @@ S(n) = {\color{purple}{\sum_{x=1}^{n/2} \log\frac{n/2}{x}}} + {\color{green}{\fr
 <p>這個方法的時間複雜度是 Heapify 的時間、加上執行 \(n\) 次 <code>RollDown()</code> 的時間。
 前者耗費 \(O(n)\)、後者耗費 \(\sum_{i=1}^n \log i = \Theta(n\log n)\)。
 因此總執行時間為 \(O(n\log n)\)。</p>
-<h3><a class="header" href="#備註" id="備註">備註</a></h3>
+<h3 id="備註"><a class="header" href="#備註">備註</a></h3>
 <p>這個排序方法所需要的額外空間是 \(O(1)\)，因此堆積排序法是一種原地演算法。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../sorting/randomized-quicksort3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../sorting/comparison-based-sorting.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -265,24 +242,18 @@ S(n) = {\color{purple}{\sum_{x=1}^{n/2} \log\frac{n/2}{x}}} + {\color{green}{\fr
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../sorting/randomized-quicksort3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../sorting/comparison-based-sorting.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -299,34 +270,24 @@ S(n) = {\color{purple}{\sum_{x=1}^{n/2} \log\frac{n/2}{x}}} + {\color{green}{\fr
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>

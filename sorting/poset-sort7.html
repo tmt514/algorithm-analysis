@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>20/02/14 - 偏序集排序（七） - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,28 +145,28 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#偏序集排序七" id="偏序集排序七">偏序集排序（七）</a></h1>
+                        <h1 id="偏序集排序七"><a class="header" href="#偏序集排序七">偏序集排序（七）</a></h1>
 <p>從前一文章裡，我們發現「只是取出最長的一條鏈」就可以做到還不錯有效率的比較排序。
 那麼不斷取出更多的長鏈，說不定就能夠掌握排序的精髓了！是的，我們把這個每一次找出最長可比鏈，得到的結果稱為 <strong>「貪婪鏈分解」（Greedy Chain Decomposition）</strong>。</p>
-<h2><a class="header" href="#貪婪鏈分解" id="貪婪鏈分解">貪婪鏈分解</a></h2>
+<h2 id="貪婪鏈分解"><a class="header" href="#貪婪鏈分解">貪婪鏈分解</a></h2>
 <p>對於一個偏序集 \((P, &lt;)\)，如果我們每一次都找出最長鏈，並且將它從偏序集中移除，那麼就會得到一個分割（Partition）：\(C_1, C_2, \ldots, C_k\)。
 其中每一個鏈 \(C_i\) 是一個集合，其內部任兩元素都可比較。嚴謹地描述的話，\(C_i\) 會被定義為子偏序集 \(P-\bigcup_{1\le j\le i-1} C_j\) 裡面的最長鏈。
 值得一提的是，這個分割方法並不唯一。如果有許多最長鏈同時存在的情形時，我們只要隨意選擇一個最長鏈就行了。
 這個分割方法可以保證鏈長遞減 \(|C_1\vert  \ge \vert C_2\vert  \ge \cdots \ge \vert C_k\vert \)。</p>
-<h3><a class="header" href="#貪婪鏈分解的性質" id="貪婪鏈分解的性質">貪婪鏈分解的性質</a></h3>
+<h3 id="貪婪鏈分解的性質"><a class="header" href="#貪婪鏈分解的性質">貪婪鏈分解的性質</a></h3>
 <p>固定一組貪婪鏈分解 \((C_1, C_2, \ldots, C_k)\)。
 對於 \(P\) 中的任何一個鏈 \(C\)，每一個 \(C\) 中的元素 \(v\) 都會對應到某個貪婪鏈分解當中的鏈 \(C_{id(v)}\)，其中 \(id(v)\) 是該鏈的編號。
 於是呢，我們可以將鏈中的元素依照其 \(id(v)\) 值由小到大重新排列。
 注意到，此時排列的順序並不是根據偏序集的大小關係來排序的、而是根據在貪婪鏈分解中對應到的鏈長來排序的。</p>
 <p>假設依照 \(id(v)\) 的值排好序以後，\(C\) 中元素編號依序為 \(v_1, v_2, \ldots, v_{\vert C\vert }\)。
 此時我們能有以下性質：</p>
-<h3><a class="header" href="#引理-28" id="引理-28">引理 28</a></h3>
+<h3 id="引理-28"><a class="header" href="#引理-28">引理 28</a></h3>
 <p>對所有的 \(1\le j \le \vert C\vert \)，都有 \(|C_{id(v_j)}\vert  \ge \vert C\vert  - j + 1\)。</p>
-<h3><a class="header" href="#證明" id="證明">證明</a></h3>
+<h3 id="證明"><a class="header" href="#證明">證明</a></h3>
 <p>由於鏈中元素已經按照 \(id(v)\) 的順序排序，去除掉前 \(j-1\) 個元素以後，
 \(C-\{v_1, v_2, \ldots, v_{j-1}\}\) （暫時記作 \(C'\)）裡頭剩餘的所有元素通通都會在 \(P-\bigcup_{1\le x\le id(j)-1} C_{x}\) （暫時記作 \(P'\)）裡面。
 因此，根據定義，此時 \(C_{id(v_j)}\) 會是 \(P'\) 裡頭的最長鏈。而 \(C'\) 也是 \(P'\) 當中的某個鏈，於是有 \(|C_{id(v_j)}\vert  \ge \vert C'\vert  = \vert C\vert  - j + 1\)，得證。</p>
-<h2><a class="header" href="#基於貪婪鏈分解的合併排序法" id="基於貪婪鏈分解的合併排序法">基於貪婪鏈分解的合併排序法</a></h2>
+<h2 id="基於貪婪鏈分解的合併排序法"><a class="header" href="#基於貪婪鏈分解的合併排序法">基於貪婪鏈分解的合併排序法</a></h2>
 <p>我們現在來探討有了這個貪婪鏈分解以後，可以怎麼把它應用在比較排序上頭。</p>
 <p>每一條長鏈都是有全序排列的，有了很多條排好序的資料以後，我們通常會下意識地把它抓過來做合併排序法。
 假設我們就按照一般的合併方法來排序：合併兩條鏈 \(C_x\) 與 \(C_y\) 需要使用 \(|C_x\vert +\vert C_y\vert \) 次比較。
@@ -206,9 +187,9 @@ T_{合併貪婪鏈} \le n + \sum_{i=1}^k \vert C_i\vert  \log \frac{n}{\vert C_i
 </li>
 </ul>
 </blockquote>
-<h3><a class="header" href="#定理-29" id="定理-29">定理 29</a></h3>
+<h3 id="定理-29"><a class="header" href="#定理-29">定理 29</a></h3>
 <p>基於貪婪鏈分解的合併排序法，其比較次數上界為 \(O(\log e(P)) + n\)。這個常數可以是 6.33 左右。</p>
-<h3><a class="header" href="#證明大綱" id="證明大綱">證明大綱</a></h3>
+<h3 id="證明大綱"><a class="header" href="#證明大綱">證明大綱</a></h3>
 <p>詳細的證明我們明天講。
 但基本上，這個證明要做下面的事情：</p>
 <ul>
@@ -224,17 +205,13 @@ T_{合併貪婪鏈} \le n + \sum_{i=1}^k \vert C_i\vert  \log \frac{n}{\vert C_i
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../sorting/poset-sort6.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../sorting/poset-sort8.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -242,24 +219,18 @@ T_{合併貪婪鏈} \le n + \sum_{i=1}^k \vert C_i\vert  \log \frac{n}{\vert C_i
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../sorting/poset-sort6.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../sorting/poset-sort8.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -276,34 +247,24 @@ T_{合併貪婪鏈} \le n + \sum_{i=1}^k \vert C_i\vert  \log \frac{n}{\vert C_i
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>

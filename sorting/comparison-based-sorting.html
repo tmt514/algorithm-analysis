@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>20/01/18 - 比較排序下界 - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,13 +145,13 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#比較排序下界" id="比較排序下界">比較排序下界</a></h1>
+                        <h1 id="比較排序下界"><a class="header" href="#比較排序下界">比較排序下界</a></h1>
 <p>到目前為止我們看過的排序方法，都是只要支援「能夠兩兩互相比較」，就可以由小到大排好序的演算法。
 其中幾個排序演算法如：合併排序法、隨機排序法、堆積排序法等等，都能夠達到 \(O(n\log n)\) 的時間複雜度，幾乎線性。
 但終究還是與顯然下界（至少要看過所有輸入的資料才能排序，因此任何能夠將資料正確排序的演算法都必須花費 \(\Omega(n)\) 的時間）有著隔閡。下面這個定理告訴我們，如果只計算比較次數的話，我們能得到更大的下界。</p>
-<h3><a class="header" href="#定理-18" id="定理-18">定理 18</a></h3>
+<h3 id="定理-18"><a class="header" href="#定理-18">定理 18</a></h3>
 <p>任何一個確定性演算法，如果存取輸入資料時<strong>僅</strong>能夠進行「兩兩互相比較」。那麼排序 \(n\) 筆資料，最壞情形下至少要進行 \(\ceil{\log n!} = \Omega(n\log n)\) 次比較。</p>
-<h3><a class="header" href="#證明" id="證明">證明</a></h3>
+<h3 id="證明"><a class="header" href="#證明">證明</a></h3>
 <p>對於輸入的 \(n\) 筆資料，排序完畢後的輸出，相對於輸入總是一個排列（Permutation）。由於 \(n\) 筆資料總共有 \(n!\) 種不同的排列情形，每問一個問題「是否 \(A[i] &gt; A[j]\)？」，我們可以把仍滿足先前所有提問的排列找出來，形成集合 \(\mathcal{S}\)，然後分成兩組：滿足當前這個問題（\(A[i] &gt; A[j]\)）的所有排列 \(\mathcal{S}_{yes}\)、或者是不滿足當前問題（\(A[i] \le A[j]\)）的所有排列 \(\mathcal{S}_{no}\)。這兩個排列集合是不相交的，換句話說，如果我是邪惡的餵輸入的人，我可以設計一組輸入，讓滿足所有到目前為止的排列們，恰好就是 \(|\mathcal{S}_{yes}\vert \) 或 \(|\mathcal{S}_{no}\vert \) 之間比較大的那一個。
 換句話說，在運氣最好的情況下，你的演算法也只能夠剔除一半的排列數。</p>
 <p>為了讓演算法完全正確，任何確定性的演算法，在 \(|\mathcal{S}\vert  &gt; 1\) 的任何時刻，演算法都不能輸出答案。
@@ -184,21 +165,21 @@
 <hr />
 <p>我們可以把這套方法，應用在其他類似的問題中。比方說，假設我們有兩個已經排好序的數列 \(A[1..n]\)、以及 \(B[1..m]\)。
 合併排序法的「合併」步驟，需要花費 \(O(n+m)\) 次比較。這個方法是最優的嗎？我們可以透過類似的分析，得到有趣的結論：</p>
-<h3><a class="header" href="#定理-19" id="定理-19">定理 19</a></h3>
+<h3 id="定理-19"><a class="header" href="#定理-19">定理 19</a></h3>
 <p>合併兩個已排序的序列 \(A[1..n]\) 以及 \(B[1..m]\)。假設 \(n\le m\)，那麼，任何確定性演算法，都至少需要 \(\Omega(n\log \frac{m}{n})\) 次比較才行。</p>
-<h3><a class="header" href="#證明-1" id="證明-1">證明</a></h3>
+<h3 id="證明-1"><a class="header" href="#證明-1">證明</a></h3>
 <p>合併完畢的結果，可以一一對應到把 \(n+m\) 個連續的格子進行黑白染色，使得恰好有 \(n\) 個黑色格子、有 \(m\) 個白色格子。其中黑色格子就依序對應了 \(A\) 陣列的內容、白色格子就依序對應了 \(B\) 陣列的內容。
 由於每一次比較也只能剔除一半的黑白染色方法，因此任何一個確定性演算法，在最壞情形下至少得進行 \(\ceil{\log {m+n\choose n}}\) 次比較。</p>
 <p>於是，在 \(n\le m\) 的時候，我們有 
 \(\log {m+n\choose n}\ge \log \frac{m^n}{n!} \approx n\log m - n\log n = n\log \frac{m}{n}\)，得證。</p>
-<h3><a class="header" href="#這個證明告訴我們什麼" id="這個證明告訴我們什麼">這個證明告訴我們什麼？</a></h3>
+<h3 id="這個證明告訴我們什麼"><a class="header" href="#這個證明告訴我們什麼">這個證明告訴我們什麼？</a></h3>
 <p>如果 \(n\) 與 \(m\) 比例懸殊（比方說極端情形 \(n=1\)），那麼，比方說，我們可以用「二分搜尋法」，對每一個 \(A\) 中的元素，找到適合插入在陣列 \(B\) 裡面的位置。有了這些位置以後，就可以在「不查看大部分資料內容」的情形下，合併兩個陣列了！
 雖然合併陣列的時間複雜度顯然得花 \(O(n+m)\) 的時間，但這些時間是大多花費在資料的搬移上，我們降低的是「進行決策」所花費的時間複雜度（從另一個角度來看，也可以說是減少可能產生的程序分支 branching！）</p>
 <hr />
 <p>有沒有更快的排序演算法呢？這個取決於你的計算模型！
 我們現在使用的電腦，顯然比「兩兩互相比較」模型還要強得多。
 而事實上，是比較接近「隨機存取模型」的。因此，在不同計算模型的條件下，我們被允許對資料有更多種類的操作，或許存在著時間複雜度更低的演算法。</p>
-<h3><a class="header" href="#推薦閱讀" id="推薦閱讀">推薦閱讀</a></h3>
+<h3 id="推薦閱讀"><a class="header" href="#推薦閱讀">推薦閱讀</a></h3>
 <ul>
 <li>德州農工(TAMU)投影片：http://faculty.cs.tamu.edu/klappi/csce411-f17/csce411-set3.pdf</li>
 </ul>
@@ -208,17 +189,13 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../sorting/heapsort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../sorting/minimum-comparison-sort.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -226,24 +203,18 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../sorting/heapsort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../sorting/minimum-comparison-sort.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -260,34 +231,24 @@
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>

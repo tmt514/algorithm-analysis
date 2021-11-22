@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Yao&#x27;s 演算法 - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,24 +145,74 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#最小生成樹的-yaos-演算法" id="最小生成樹的-yaos-演算法">最小生成樹的 Yao's 演算法</a></h1>
+                        <h1 id="最小生成樹的-yaos-演算法"><a class="header" href="#最小生成樹的-yaos-演算法">最小生成樹的 Yao's 演算法</a></h1>
 <p>Borůvka 流派起初在 60 年代最為廣泛應用的地方在於平行計算。值得注意的是，1975 年 Yao（<a href="https://zh.wikipedia.org/wiki/%E5%A7%9A%E6%9C%9F%E6%99%BA">姚期智教授</a>）從 Borůvka / Sollin 的論文和 Tarjan 的手稿中獲得了一些靈感，得到了一個關於最小生成樹的 \(O(m\log\log n)\) 時間的演算法。</p>
+<h2 id="找出-borůvka-步驟中最可能浪費時間的地方"><a class="header" href="#找出-borůvka-步驟中最可能浪費時間的地方">找出 Borůvka 步驟中最可能浪費時間的地方</a></h2>
+<p>找出一個連通元件往外連的最小邊時，最原始的做法是逐一掃瞄與該連通元件相連的所有邊。這代表什麼意思呢？對於任何一條邊來說，如果它沒有被縮點縮掉，那麼它可能在每一個 Borůvka 步驟中都被看了一次。如果總共有 \(O(\log n)\) 個 Borůvka 步驟要做，那麼總花費的時間就是 \(O(m\log n)\)。</p>
+<p>姚期智教授（以及 Tarjan）注意到，假若我們有一種方式可以預處理每個連通元件（或每個點）外連的邊，說不定能夠幫助我們省去很多麻煩。比方說，假設我們事先將每一個點往外連的邊全部都依照權重由小到大排列 \(e_1, e_2, \ldots\)，並使用一個標記 \(i_v\) 記得從這個點看出去我們目前考慮到的是哪條邊。這麼做有什麼好處呢？當我們要尋找一個連通元件 \(C\) 的外連邊的時候，我們可以從當前的標記 \(i_v\) 開始，把這個標記逐步增加，直到遇到一條「不往內連的邊」為止。而當 \(i_v\) 停下來的時候，這條邊 \(e_{i_v}\) 就會是從 \(C\) 往外連的許多邊之中權重最小邊的候選者之一。</p>
+<p>如此一來，我們可以發現在同一輪 Borůvka 步驟被考慮到的邊，要嘛是候選者之一、要嘛就是因為已經是往內連的邊，再也不可能是未來的候選邊而被丟掉。因此，我們得到以下的引理。</p>
+<h3 id="引理-mst8"><a class="header" href="#引理-mst8">引理 MST.8</a></h3>
+<p>如果所有點的相連邊都已經按照權重由小至大排好順序了，那麼找出最小生成樹只需要花費 \(O(m + n\log n)\) 的時間。</p>
+<h3 id="引理-mst8-的證明"><a class="header" href="#引理-mst8-的證明">引理 MST.8 的證明</a></h3>
+<p>在每一個 Borůvka 步驟的當下，更新標記所需的時間為「因為 \(i_v\) 增加而被丟掉的邊」，加上「可能的候選邊」。每一條邊只會被丟掉兩次（因為有兩個端點）、而可能的候選邊顯然不超過總點數 \(n\)。因此，由引理 MST.7 可知花在考慮候選邊所需的總時間為 \(O(n\log n)\)、而花在前者更新標記的總時間為 \(O(m)\)；於是 MST.8 得證。</p>
+<hr />
+<p>上述「預處理每個點外連邊」的方法，其實可以看成局部(local)版本的 Kruskal 演算法。為什麼呢？Kruskal 考慮的是把所有邊通通抓起來一起排序。而這邊我們考慮的則是對每個點外連的邊分開排。</p>
+<p>遺憾的是，在最壞情形下，預處理排序每個點外連的邊仍然需要花費 \(\Theta(\deg(v)\log \deg(v))\) 的時間。因此加總之後得到 \(\Theta(\sum_v\deg(v)\log \deg(v)) = O(m\log (m/n))\)<sup class="footnote-reference"><a href="#1">1</a></sup>。當 \(m=\Omega(n^{1+\epsilon})\) 很大的時候，預處理時間複雜度仍然接近 \(O(m\log n)\)。</p>
+<p>姚期智教授發現了，預處理所花費的 \(O(m\log n)\) 時間與實際跑 Borůvka 步驟的 \(O(m+n\log n)\) 時間中間有個間隔！說不定有一個折衷的辦法，放寬預處理時要求每個點外連邊已排序的條件。而在實際跑 Borůvka 步驟的時候，增加一些計算量，但能讓原本的預處理變快。</p>
+<p>而我們今天要介紹的這個方法是<strong>近乎排序</strong><sup class="footnote-reference"><a href="#2">2</a></sup>。它與 Yao 在 1974 年提出的演算法描述過程稍有不同，但對於解決最小生成樹問題來說本質上是一樣的<sup class="footnote-reference"><a href="#3">3</a></sup>。</p>
+<h2 id="近乎排序-k-almost-sorting"><a class="header" href="#近乎排序-k-almost-sorting">近乎排序 k-almost Sorting</a></h2>
+<p>如果一個序列已是近乎排序 (k-almost sorted) 的，那麼代表每個元素距離其排序後的位置，皆嚴格小於 \(k\)。假若我們能將每個點外連的邊都排列成 \(k\)-almost sorted，那麼要找出當前外連邊的最小值（也就是所有可能的候選邊），僅需要從更新後的標記所在之處 \(i_v\) 往後查看至多 \(k\) 條邊即可。換句話說，「可能的候選邊」至多只有 \(k\) 條。</p>
+<p>如果我們讓「可能的候選邊」增加到 \(k\) 條之多，那麼引理 MST.8 的部分將會變成 \(O(m + nk\log n)\)。但這麼做有什麼好處呢？近乎排序所需要的時間只需要 \(O(\deg(v)\log \frac{\deg(v)}{k})\) 就好！</p>
+<h3 id="引理-mst9"><a class="header" href="#引理-mst9">引理 MST.9</a></h3>
+<p>對於一個長度為 \(n\ge k\) 的陣列，存在一個演算法在 \(O(n\log \frac{n}{k})\) 的時間內將之近乎排序。</p>
+<h3 id="引理-mst9-的證明"><a class="header" href="#引理-mst9-的證明">引理 MST.9 的證明</a></h3>
+<p>有很多方法可以做到這件事情：比方說，我們可以使用做一半的快速排序法，只要遞迴執行到陣列長度不超過 \(k\) 的時候就可以停下來了，這麼一來保證了任何一個數字往右邊數 \(k\) 個以後的所有數字都比較大。由於整個序列 \(n\) 被拆成了 \(O(n/k)\) 段，因此採用找中位數的方式進行遞迴，遞迴的層數只有 \(O(\log \frac{n}{k})\) 這麼多層而已，因此整體時間複雜度為 \(O(n\log\frac{n}{k})\)。</p>
+<p>當然，你也可以設計出具有相同效果的合併排序法，這邊就不多贅述了。</p>
+<h3 id="把所有度數加起來"><a class="header" href="#把所有度數加起來">把所有度數加起來</a></h3>
+<p>接下來，我們可以利用 \(x\log (x/k)\) 是個凸函數的性質，加上<a href="https://en.wikipedia.org/wiki/Jensen%27s_inequality">延森不等式 Jensen's Inequality</a> 以後可以得到</p>
+<p>\[
+\begin{aligned}
+\frac{1}{n}\sum_{v} \deg(v) \log \frac{\deg(v)}{k} &amp;\le \frac{\sum_v\deg(v)}{n} \log \frac{\sum_v\deg(v)}{nk}\\
+&amp;= \frac{2m}{n}\log \frac{2m}{nk}
+\end{aligned}
+\]</p>
+<p>兩邊移項以後就可以得到預處理的時間複雜度 \(O(m\log \frac{m}{nk})\) 了。</p>
+<h3 id="簡單的情況-mge-nlog-n"><a class="header" href="#簡單的情況-mge-nlog-n">簡單的情況 \(m\ge n\log n\)</a></h3>
+<p>我們令 \(k=m/(n\log n)\)，代入以後我們得到預處理時間複雜度 \(O(m\log\log n)\)、實際跑 Borůvka 步驟花的時間為 \(O(m+nk\log n) = O(m)\)，很棒吧！</p>
+<h3 id="複雜的情況-n-le-m--nlog-n"><a class="header" href="#複雜的情況-n-le-m--nlog-n">複雜的情況 \(n \le m &lt; n\log n\)</a></h3>
+<p>在這種時候，設定 \(k=m/(n\log n) &lt; 1\) 是沒有意義的。這種時候，我們可以直接先執行<strong>不需要預處理</strong>的 \(\log\log n\) 次 Borůvka 步驟。根據每次減半的引理 MST.7，不難發現經過了 \(\log\log n\) 次縮連通元件的動作，我們得到一張新的圖 \(G\)：</p>
+<ul>
+<li>有 \(m' &lt; m\) 條邊、並且</li>
+<li>有 \(n' \le  n/2^{\log\log n} = n/\log n\) 個點。</li>
+</ul>
+<p>此時，因為 \(m\ge n\)，我們能保證 \(m / (n'\log n') \ge m/n\ge 1\)，對這個新的圖再次設定 \(k=m/(n'\log n')\) 進行 Yao's 演算法，就能夠達到目的啦！</p>
+<h3 id="無聊的情況-m--n"><a class="header" href="#無聊的情況-m--n">無聊的情況 \(m &lt; n\)</a></h3>
+<p>這個圖要嘛天生就是一棵樹，要嘛就是不連通的。</p>
+<h2 id="參考資料"><a class="header" href="#參考資料">參考資料</a></h2>
+<ul>
+<li><a href="https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15859-f09/www/handouts/bob-mst.pdf">CMU 的 COS423 講義 (2007 年版)</a></li>
+</ul>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>我們假設了這張圖是簡單圖（有重邊的情形可以在線性時間內轉化成沒有重邊的情形）。</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>近乎排序 (nearly sorted) 又稱為大致排序 (roughly sorted)、k-排序 (k-sorted)、k-幾乎排序 (k-almost sorted)。<a href="https://en.wikipedia.org/wiki/K-sorted_sequence">維基百科</a></p>
+</div>
+<div class="footnote-definition" id="3"><sup class="footnote-definition-label">3</sup>
+<p><a href="https://archive.org/details/oeloglogvalgorit691yaoa/page/n13/mode/2up">Yao 的演算法</a>裡面，Yao 使用的 \(k\) 實際上是這篇內容的 \(m/nk\)。此外，Yao 的演算法將每一個鄰邊的陣列不分青紅皂白地直接拆分成 \(m/nk\) 等分大小的群組，並將群組與群組之間由小到大排列。在預處理的分析上會多一項 \(O(m\log k)\) 出來。</p>
+</div>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../minimum-spanning-tree/boruvka-mst.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../dynamic-graph/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -189,24 +220,18 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../minimum-spanning-tree/boruvka-mst.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../dynamic-graph/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -223,34 +248,24 @@
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>

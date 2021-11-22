@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>排序 Sorting - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,9 +145,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#排序-sorting" id="排序-sorting">排序 Sorting</a></h1>
+                        <h1 id="排序-sorting"><a class="header" href="#排序-sorting">排序 Sorting</a></h1>
 <p>排序是整理資料中一種最直接的方式。</p>
-<h2><a class="header" href="#基於比較的排序-comparison-based-sorting" id="基於比較的排序-comparison-based-sorting">基於比較的排序 Comparison Based Sorting</a></h2>
+<h2 id="基於比較的排序-comparison-based-sorting"><a class="header" href="#基於比較的排序-comparison-based-sorting">基於比較的排序 Comparison Based Sorting</a></h2>
 <table><thead><tr><th>演算法</th><th>時間複雜度</th><th>空間複雜度</th></tr></thead><tbody>
 <tr><td>泡沫排序法</td><td>最差 \(O(n^2)\), \(O(n + n\tau)\)</td><td>最差 \(O(1)\)</td></tr>
 <tr><td>雞尾酒排序法</td><td>最差 \(O(n^2)\), \(O(n + n\sqrt{\tau})\)</td><td>最差 \(O(1)\)</td></tr>
@@ -180,13 +161,13 @@
 <tr><td>原地快速排序</td><td>最差 \(O(n^2)\)</td><td>最差 \(O(1)\)</td></tr>
 <tr><td>堆積排序法</td><td>最差 \(O(n\log n)\)</td><td>最差 \(O(1)\)</td></tr>
 </tbody></table>
-<h3><a class="header" href="#註記" id="註記">註記</a></h3>
+<h3 id="註記"><a class="header" href="#註記">註記</a></h3>
 <ul>
 <li>\(n\) 代表輸入的資料量（序列元素個數）。</li>
 <li>\(\tau\) 代表輸入序列的逆序數對個數。</li>
 <li>\(d\) 代表遞迴深度。</li>
 </ul>
-<h2><a class="header" href="#資料不改變存取位置的排序-data-oblivious-sorting" id="資料不改變存取位置的排序-data-oblivious-sorting">資料不改變存取位置的排序 Data-Oblivious Sorting</a></h2>
+<h2 id="資料不改變存取位置的排序-data-oblivious-sorting"><a class="header" href="#資料不改變存取位置的排序-data-oblivious-sorting">資料不改變存取位置的排序 Data-Oblivious Sorting</a></h2>
 <table><thead><tr><th>演算法</th><th>時間複雜度</th><th>排序網路深度</th></tr></thead><tbody>
 <tr><td>Shell 排序法</td><td>最差 \(O(n^2)\)</td><td>\(O(n)\)</td></tr>
 <tr><td>Shell 排序法 - Pratt 版本</td><td>最差 \(O(n\log^2 n)\)</td><td>\(O(\log^2 n)\)</td></tr>
@@ -195,13 +176,13 @@
 <tr><td>Ajtai-Komlós-Szemerédi 排序網路</td><td>最差 \(O(n\log n)\)</td><td>\(O(\log n)\)</td></tr>
 <tr><td>Goodrich 排序網路</td><td>最差 \(O(n\log n)\)</td><td>\(O(n\log n)\)</td></tr>
 </tbody></table>
-<h2><a class="header" href="#基於資料數值的排序-numbers-sorting" id="基於資料數值的排序-numbers-sorting">基於資料數值的排序 Numbers Sorting</a></h2>
+<h2 id="基於資料數值的排序-numbers-sorting"><a class="header" href="#基於資料數值的排序-numbers-sorting">基於資料數值的排序 Numbers Sorting</a></h2>
 <table><thead><tr><th>演算法</th><th>時間複雜度</th><th>備註</th></tr></thead><tbody>
 <tr><td>計數排序法</td><td>\(O(n+M)\)</td><td>正整數資料範圍 \(O(M)\)</td></tr>
 <tr><td>\(k\)-進制桶子排序法</td><td>\(O((n+k)\log_k \frac{1}{\epsilon})\)</td><td>最相近兩數之相對誤差 \(\epsilon = \frac{\min_{i\neq j} \vert A[i]-A[j]\vert }{\max_i \vert A[i]\vert }\)</td></tr>
 <tr><td>\(k\)-進制基數排序法</td><td>\(O((n+k)\log_k M)\)</td><td>正整數資料範圍 \(O(M)\)</td></tr>
 </tbody></table>
-<h2><a class="header" href="#二進位整數排序-sorting-in-word-ram-model" id="二進位整數排序-sorting-in-word-ram-model">二進位整數排序 Sorting in Word RAM Model</a></h2>
+<h2 id="二進位整數排序-sorting-in-word-ram-model"><a class="header" href="#二進位整數排序-sorting-in-word-ram-model">二進位整數排序 Sorting in Word RAM Model</a></h2>
 <table><thead><tr><th>演算法</th><th>時間複雜度</th><th>備註</th></tr></thead><tbody>
 <tr><td>van Emde Boas 樹</td><td>\(O(n\log\log M)\)</td><td>空間複雜度 \(O(M)\)</td></tr>
 <tr><td>X-fast 字母樹</td><td>\(O(n\log\log M)\)</td><td>空間複雜度 \(O(n\log M)\)</td></tr>
@@ -212,7 +193,7 @@
 <tr><td>Han-Thorup 整數排序 - 確定性</td><td>\(O(n\log \log n)\)</td><td>空間複雜度 \(O(n)\)</td></tr>
 <tr><td>Han-Thorup 整數排序 - 隨機</td><td>期望 \(O(n\sqrt{\log \log n})\)</td><td>空間複雜度 \(O(n)\)</td></tr>
 </tbody></table>
-<h3><a class="header" href="#推薦閱讀" id="推薦閱讀">推薦閱讀</a></h3>
+<h3 id="推薦閱讀"><a class="header" href="#推薦閱讀">推薦閱讀</a></h3>
 <ul>
 <li>https://www.bigocheatsheet.com/</li>
 <li>排序網路（維基百科）：https://en.wikipedia.org/wiki/Sorting_network</li>
@@ -223,17 +204,13 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../GLOSSARY.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../sorting/bubble-sort.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -241,24 +218,18 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../GLOSSARY.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../sorting/bubble-sort.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -275,34 +246,24 @@
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>

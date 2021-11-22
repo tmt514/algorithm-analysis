@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>無向圖的連通問題 Connectivity - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../../favicon.png">
-        
         <link rel="stylesheet" href="../../css/variables.css">
         <link rel="stylesheet" href="../../css/general.css">
         <link rel="stylesheet" href="../../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,23 +145,106 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#無向圖的連通問題-connectivity" id="無向圖的連通問題-connectivity">無向圖的連通問題 Connectivity</a></h1>
+                        <h1 id="無向圖的連通問題-connectivity"><a class="header" href="#無向圖的連通問題-connectivity">無向圖的連通問題 Connectivity</a></h1>
+<h2 id="型態一基本詢問"><a class="header" href="#型態一基本詢問">型態一：基本詢問</a></h2>
+<ul>
+<li>更新類型操作：
+<ul>
+<li>Insert(u, v): 插入一條 \((u, v)\) 邊。</li>
+<li>Delete(u, v): 刪除一條 \((u, v)\) 邊。</li>
+</ul>
+</li>
+<li>查詢類型操作：
+<ul>
+<li>Query(u, v): 詢問 \(u\) 與 \(v\) 之間是否為 \(k\)-點連通 或 \(k\)-邊連通的。</li>
+</ul>
+</li>
+</ul>
+<table><thead><tr><th align="center">演算法文獻</th><th align="center"><nobr>\(k\)</nobr></th><th align="center"><nobr>更新方式</nobr></th><th align="center"><nobr>演算法類型</nobr></th><th align="center">更新</th><th align="center">查詢</th></tr></thead><tbody>
+<tr><td align="center">Eppstein, Galil, Italiano, and Nissenzweig<sup class="footnote-reference"><a href="#1">1</a></sup></td><td align="center"><nobr>\(1\)-連通</nobr></td><td align="center">Fully</td><td align="center">確定性</td><td align="center">最差 \(O(\sqrt{n})\)</td><td align="center"></td></tr>
+</tbody></table>
+<h2 id="型態二整體詢問"><a class="header" href="#型態二整體詢問">型態二：整體詢問</a></h2>
+<ul>
+<li>更新類型操作：
+<ul>
+<li>Insert(u, v): 插入一條 \((u, v)\) 邊。</li>
+<li>Delete(u, v): 刪除一條 \((u, v)\) 邊。</li>
+</ul>
+</li>
+<li>查詢類型操作：
+<ul>
+<li>Query(): 詢問圖 \(G\) 是否為 \(k\)-點連通 或 \(k\)-邊連通的。</li>
+</ul>
+</li>
+</ul>
+<table><thead><tr><th align="center">演算法文獻</th><th align="center"><nobr>\(k\)</nobr></th><th align="center"><nobr>更新方式</nobr></th><th align="center"><nobr>演算法類型</nobr></th><th align="center">更新</th><th align="center">查詢</th></tr></thead><tbody>
+<tr><td align="center">Eppstein et al<sup class="footnote-reference"><a href="#1">1</a></sup></td><td align="center"><nobr>\(2\)-點連通</nobr></td><td align="center">Fully</td><td align="center">確定性</td><td align="center">最差 \(O(n)\)</td><td align="center"></td></tr>
+<tr><td align="center">Eppstein et al<sup class="footnote-reference"><a href="#1">1</a></sup></td><td align="center"><nobr>\(3\)-點連通</nobr></td><td align="center">Fully</td><td align="center">確定性</td><td align="center">最差 \(O(n)\)</td><td align="center"></td></tr>
+<tr><td align="center">Eppstein et al<sup class="footnote-reference"><a href="#1">1</a></sup></td><td align="center"><nobr>\(4\)-點連通</nobr></td><td align="center">Fully</td><td align="center">確定性</td><td align="center">最差 \(O(n\alpha(n))\)</td><td align="center"></td></tr>
+<tr><td align="center">Eppstein et al<sup class="footnote-reference"><a href="#1">1</a></sup></td><td align="center"><nobr>\(2\)-邊連通</nobr></td><td align="center">Fully</td><td align="center">確定性</td><td align="center">最差 \(O(\sqrt{n})\)</td><td align="center"></td></tr>
+<tr><td align="center">Eppstein et al<sup class="footnote-reference"><a href="#1">1</a></sup></td><td align="center"><nobr>\(3\)-邊連通</nobr></td><td align="center">Fully</td><td align="center">確定性</td><td align="center">最差 \(O(n^{2/3})\)</td><td align="center"></td></tr>
+<tr><td align="center">Eppstein et al<sup class="footnote-reference"><a href="#1">1</a></sup></td><td align="center"><nobr>\(4\)-邊連通</nobr></td><td align="center">Fully</td><td align="center">確定性</td><td align="center">最差 \(O(n\alpha(n))\)</td><td align="center"></td></tr>
+<tr><td align="center">Eppstein et al<sup class="footnote-reference"><a href="#1">1</a></sup></td><td align="center"><nobr>\(\ge 5\)-邊連通</nobr></td><td align="center">Fully</td><td align="center">確定性</td><td align="center">最差 \(O(n\log n)\)</td><td align="center"></td></tr>
+</tbody></table>
+<h2 id="型態三容錯模型"><a class="header" href="#型態三容錯模型">型態三：容錯模型</a></h2>
+<h3 id="動態子圖連通問題"><a class="header" href="#動態子圖連通問題">動態子圖連通問題</a></h3>
+<ul>
+<li>更新類型操作：
+<ul>
+<li>Disable/Enable Vertex to/from \(S\).</li>
+<li>Insert/Delete Edge.</li>
+</ul>
+</li>
+<li>查詢類型操作：
+<ul>
+<li>Query(u, v): 詢問 \(u\) 與 \(v\) 之間是否避開 \(S\) 仍然連通。</li>
+</ul>
+</li>
+<li>參考文獻：
+<ul>
+<li>Ran Duan and Le Zhang, <a href="https://arxiv.org/abs/1611.09072">Faster Randomized Worst-Case Update Time for Dynamic Subgraph Connectivity</a>, WADS 2017.</li>
+</ul>
+</li>
+</ul>
+<h3 id="點容錯模型"><a class="header" href="#點容錯模型">點容錯模型</a></h3>
+<ul>
+<li>更新類型操作：
+<ul>
+<li>Insert/Delete Edge.</li>
+</ul>
+</li>
+<li>查詢預處理操作：
+<ul>
+<li>VertexFailure(\(S\)): 現在擬定點集合 \(S\) 為容錯集合。</li>
+</ul>
+</li>
+<li>查詢操作：
+<ul>
+<li>\(\text{Query}_S(u, v)\): 詢問避開 \(S\) 情形下 \(u\) 與 \(v\) 是否連通。</li>
+</ul>
+</li>
+<li>參考文獻：
+<ul>
+<li>Ran Duan and Seth Pettie, <a href="https://web.eecs.umich.edu/%7Epettie/papers/dfailure.pdf">Connectivity Oracles for Failure Prone Graphs</a>, STOC 2010.</li>
+<li>Ran Duan and Seth Pettie, <a href="https://arxiv.org/abs/1607.06865">Connectivity Oracles for Graphs Subject to Vertex Failures</a>, SODA 2017, SICOMP 2020.</li>
+</ul>
+</li>
+</ul>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>David Eppstein, Zvi Galil, Giuseppe F. Italiano, and Amnon Nissenzweig, <a href="http://www.cs.ust.hk/mjg_lib/bibs/qzhang_lib/Dynamic/p669-eppstein.pdf">Sparsification-A Technique for Speeding Up Dynamic Graph Algorithms</a>, JACM 1997.</p>
+</div>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../../dynamic-graph/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../../dynamic-graph/reachability/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -188,24 +252,18 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../../dynamic-graph/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../../dynamic-graph/reachability/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -222,34 +280,24 @@
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>

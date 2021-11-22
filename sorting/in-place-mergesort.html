@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>20/01/06 - 原地演算法 - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,7 +145,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#原地演算法" id="原地演算法">原地演算法</a></h1>
+                        <h1 id="原地演算法"><a class="header" href="#原地演算法">原地演算法</a></h1>
 <p>合併排序法有著許多優點：
 <strong>時間複雜度</strong>勝過泡沫排序法、選擇排序法；
 <strong>執行效能</strong>相較快速排序法更穩定一些；
@@ -174,20 +155,20 @@
 感覺很浪費記憶體啊。
 如果我們有辦法就地移動資料本身，不仰賴大量額外的記憶體的話，這類型的演算法通常被稱為<strong>原地演算法（In-Place Algorithms）</strong>。
 最嚴格的原地演算法定義，是規定只能使用<strong>常數</strong><sup class="footnote-reference"><a href="#4">2</a></sup>數量的記憶體空間（用來存放註標、或某些計數器等等資料）。</p>
-<h3><a class="header" href="#性質-9" id="性質-9">性質 9</a></h3>
+<h3 id="性質-9"><a class="header" href="#性質-9">性質 9</a></h3>
 <p>泡沫排序法、雞尾酒排序法、插入排序法、選擇排序法都是原地演算法。</p>
 <hr />
 <p>要怎麼在沒有額外記憶體空間的情況下，做到合併功能呢？今天我們會介紹在 Stack overflow<sup class="footnote-reference"><a href="#3">3</a></sup> 上面找到的、 Katajianen-Pasanen-Teuhola <sup class="footnote-reference"><a href="#2">4</a></sup> 把合併排序法和插入排序法融合起來，得到的原地排序演算法。其核心想法是由蘇聯數學家 <a href="https://en.wikipedia.org/wiki/Alexander_Kronrod">Kronrod</a> 在 1969 年提出的「從輸入陣列榨出暫存空間」的方法。</p>
-<h2><a class="header" href="#kronrod-工作空間重疊大法" id="kronrod-工作空間重疊大法">Kronrod 工作空間重疊大法</a></h2>
+<h2 id="kronrod-工作空間重疊大法"><a class="header" href="#kronrod-工作空間重疊大法">Kronrod 工作空間重疊大法</a></h2>
 <p>假設我們有兩塊相鄰的陣列區段 \(A\) 和 \(B\)，如下圖：</p>
 <p><img src="./in-place-mergesort1.png" alt="" /></p>
 <p>注意到 \(A\) 左邊有一塊可以暫時拿來當作暫存空間用的未排序區域，但如果它的長度比 \(|A\vert +\vert B\vert \) 來得小，很有可能在合併排序的過程中或覆蓋到 \(A\) 區域的資料。可能就會慘掉。</p>
 <p><img src="./in-place-mergesort2.png" alt="" /></p>
-<h3><a class="header" href="#引理-10-kronrod" id="引理-10-kronrod">引理 10 (Kronrod)</a></h3>
+<h3 id="引理-10-kronrod"><a class="header" href="#引理-10-kronrod">引理 10 (Kronrod)</a></h3>
 <p>Kronrod 注意到，假設 \(|A\vert \) 的長度比 \(|B\vert \) 短。如果我們將 \(A\) 搬到左邊，使得 \(A\) 與 \(B\) 之間空出 \(|A\vert \) 個暫存空間。
 這個時候，我們就可以安心地使用這塊空間當作合併排序的暫存空間了！就算合併時碰到了原本屬於 \(B\) 區段的空間也沒有關係，因為可以保證不會重疊到 \(B\) 目前的工作區間。（證明略）</p>
 <p>使用這個想法，我們可以得出像是 Katajianen-Pasanen-Teuhola 的原地演算法。</p>
-<h2><a class="header" href="#katajianen-pasanen-teuhola-的原地類合併排序法" id="katajianen-pasanen-teuhola-的原地類合併排序法">Katajianen-Pasanen-Teuhola 的原地類合併排序法</a></h2>
+<h2 id="katajianen-pasanen-teuhola-的原地類合併排序法"><a class="header" href="#katajianen-pasanen-teuhola-的原地類合併排序法">Katajianen-Pasanen-Teuhola 的原地類合併排序法</a></h2>
 <p>假設輸入的陣列為 \(A[0..n-1]\) 其中 \(n=2^k\)。這個排序演算法總共分成三個部分。</p>
 <ul>
 <li>第一部分，首先我們排好整個陣列的後半部 \(A[\frac{n}{2}..n-1]\)。由於我們可以利用前半部當作暫存空間，所以不用擔心空間不夠。</li>
@@ -206,9 +187,9 @@
 <li>第三部分，把剩下一個元素 \(A[0]\) 使用插入排序法排入 \(A[1..n-1]\) 之中。</li>
 </ul>
 <p><img src="./in-place-mergesort3.png" alt="" /></p>
-<h3><a class="header" href="#定理-11" id="定理-11">定理 11</a></h3>
+<h3 id="定理-11"><a class="header" href="#定理-11">定理 11</a></h3>
 <p>KPT-類合併排序法的時間複雜度為 \(O(n\log n)\)、而且輸入陣列以外的空間複雜度為 \(O(1)\)。</p>
-<h3><a class="header" href="#證明" id="證明">證明</a></h3>
+<h3 id="證明"><a class="header" href="#證明">證明</a></h3>
 <p>空間複雜度應該還滿…顯然的吧XD，我們來證明時間複雜度。</p>
 <p>正常的合併排序時間複雜度是 \(O(n\log n)\)。因此第一部份的時間複雜度就是 \(O(\frac{n}{2}\log \frac{n}{2}) = O(n\log n)\)。
 對於每個 \(\ell\)，第二部份會花 \(O(2^\ell\log 2^\ell)\) 時間進行合併排序、然後花費 \(\frac{n}{2} + 2^\ell = O(n)\) 的時間進行合併。
@@ -220,11 +201,11 @@
 \]</p>
 <p>第三部分時間複雜度是 \(O(n)\)。所以全部加起來是 \(O(n\log n)\)，得證。</p>
 <hr />
-<h2><a class="header" href="#後記" id="後記">後記</a></h2>
+<h2 id="後記"><a class="header" href="#後記">後記</a></h2>
 <p>從 KPT-之後，大部分的論文朝向幾個方向發展。大家關心的分析重點有幾個方向：把時間複雜度分拆成「比較次數」加上「資料移動次數」。
 比較次數雖然都是 \(O(n\log n)\)，但大家開始拼命壓前面的常數。而資料移動次數也有<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.22.5514&amp;rep=rep1&amp;type=pdf">不同方法</a>可以壓到 \(O(n\log n/ \log\log n)\)。
 此外，我們其實利用的分而治之的概念，偷偷榨出了不少暫存空間。如果我們回歸到最原本的問題：合併兩個已排序的序列，是否真的能在線性時間做到不使用額外空間呢？答案是可以的，但我想今天就在此打住吧。有興趣的朋友可以參考<a href="https://academic.oup.com/comjnl/article/38/8/681/335248">這篇</a>。</p>
-<h3><a class="header" href="#參考資料" id="參考資料">參考資料</a></h3>
+<h3 id="參考資料"><a class="header" href="#參考資料">參考資料</a></h3>
 <ul>
 <li>清大韓永楷教授的 In-Place Algorithms 簡介投影片：http://www.cs.nthu.edu.tw/~wkhon/algo08-tutorials/tutorial1b.pdf</li>
 <li>嘗試優化你的合併排序法（減少 Branch Prediction）：https://www.codeplay.com/portal/optimizing-sort-algorithms-for-the-ps3-part-2-merge</li>
@@ -241,17 +222,13 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../sorting/merge-sort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../sorting/quick-sort.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -259,24 +236,18 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../sorting/merge-sort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../sorting/quick-sort.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -293,34 +264,24 @@
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>

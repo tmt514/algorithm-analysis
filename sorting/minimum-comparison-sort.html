@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>20/01/20 - 最少比較排序 - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,7 +145,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#最少比較排序" id="最少比較排序">最少比較排序</a></h1>
+                        <h1 id="最少比較排序"><a class="header" href="#最少比較排序">最少比較排序</a></h1>
 <p>前一篇我們討論了比較排序的下界。對於所有的 \(n\)，基於比較的排序方法至少要花 \(\ceil{\log n!}\) 次比較。
 而根據合併排序法、或快速排序法等，我們也知道要完成排序至多只需要 \(O(n\log n)\) 次比較。
 Lower bound 與 Upper bound 完美地合起來了不是嗎！
@@ -172,9 +153,9 @@ Lower bound 與 Upper bound 完美地合起來了不是嗎！
 對於六〇年代的電腦科學家們，不把常數寫清楚是會對自己過意不去的。
 換句話說，若先不考慮把演算法實作出來後真正的時間複雜度，我們只關心「比較次數」的話，是否<strong>總是</strong>存在一種排序的演算法，在最壞情形下只需要恰好 \(\ceil{\log n!}\) 次比較就能夠排好序呢？</p>
 <p>答案是否定的。但是在描述最小反例之前，我們不妨先想想看，究竟可以設計出怎麼樣的演算法，其所需的比較次數與 \(\ceil{\log n!}\) 足夠接近：</p>
-<h2><a class="header" href="#引理-20" id="引理-20">引理 20</a></h2>
+<h2 id="引理-20"><a class="header" href="#引理-20">引理 20</a></h2>
 <p>存在一種比較排序法，使得排好 \(n\) 筆資料至多需要 \(\ceil{\log 2} + \ceil{\log 3} + \cdots + \ceil{\log n}\) 次比較。</p>
-<h3><a class="header" href="#引理-20-的證明" id="引理-20-的證明">引理 20 的證明</a></h3>
+<h3 id="引理-20-的證明"><a class="header" href="#引理-20-的證明">引理 20 的證明</a></h3>
 <p>上面這個式子給我們很大的提示：我們只要稍微修改一下<strong>插入排序法</strong>，每一次加入一個數字。但是在加入的時候，我們不從當前序列末端一路比較過來；相反地，我們使用定理 19 提到的<strong>二分搜尋法</strong>，把資料插入目前排好序的序列就可以了。
 我們不需要擔心資料搬移所花費的時間，反正資料的搬移在這個比較次數至上的計算模型裡面是免費的！</p>
 <hr />
@@ -185,9 +166,9 @@ Lower bound 與 Upper bound 完美地合起來了不是嗎！
 <tr><td align="center">\(B(n)\)</td><td align="center">0</td><td align="center">1</td><td align="center">3</td><td align="center">5</td><td align="center">8</td><td align="center">11</td><td align="center">14</td><td align="center">17</td><td align="center">21</td><td align="center">25</td><td align="center">29</td><td align="center">33</td></tr>
 </tbody></table>
 <p>在 \(n=5\) 的時候數字就不一樣了！這不禁讓我們思考：要排好 5 個數字，至少需要進行幾次比較呢？如果是 7 次，那麼代表前述之「二分插入法」不能達到最少比較次數；反之，如果是 8 次，代表基於資訊理論方法得到的下界不是最緊的。無論是哪一種結論好像都讓我們多理解了什麼，對吧～</p>
-<h2><a class="header" href="#引理-21" id="引理-21">引理 21</a></h2>
+<h2 id="引理-21"><a class="header" href="#引理-21">引理 21</a></h2>
 <p>存在一個比較排序法，使得正確排序 5 筆資料，在最壞情形下僅需要 7 次比較。這結果真的是令人五筆振奮啊（這裡沒有梗）。</p>
-<h3><a class="header" href="#引理-21-的證明" id="引理-21-的證明">引理 21 的證明</a></h3>
+<h3 id="引理-21-的證明"><a class="header" href="#引理-21-的證明">引理 21 的證明</a></h3>
 <p>證明實在難以用言語形容，直接畫圖比較快。這邊我們假設輸入為 \(A[1..5]\)。</p>
 <p><img src="./minimum-comparison-sort.png" alt="" /></p>
 <p>你看看，無論輸入長什麼樣子，這個決策樹總可以在至多 7 次以內順利排序完畢。而這邊使用到的是二分插入法的概念，只是用了比較取巧的比較順序。西元 1959 年 Ford-Johnson 把這個想法延伸，設計出了一個叫做<strong>合併插入排序法 Merge Insertion Sort</strong> 的排序演算法（其中 Ford 就是 Ford-Fulkerson 演算法裡面的 Ford、Johnson 就是 Johnson 演算法裡面的那位、好吧我不知道我在講什麼。）</p>
@@ -200,7 +181,7 @@ Lower bound 與 Upper bound 完美地合起來了不是嗎！
 <p>Ford-Johnson 的合併插入排序法是否真的是最優的呢？可惜的是 1977 年 Manacher<sup class="footnote-reference"><a href="#2">2</a></sup> 否定了這件事情：他證明了存在無窮多個 \(n\)，使得最少排序次數比 \(FJ(n)\) 嚴格來得小。目前已知最小的反例是在 \(n=189\)。</p>
 <hr />
 <p>如同四色定理一樣，找出最少比較排序的次數，可以藉由電腦輔助而完成證明。很酷吧！</p>
-<h3><a class="header" href="#推薦閱讀" id="推薦閱讀">推薦閱讀</a></h3>
+<h3 id="推薦閱讀"><a class="header" href="#推薦閱讀">推薦閱讀</a></h3>
 <ul>
 <li>高德納教授（Knuth）的《The Art Of Computer Programming》第 5.3.1 節。</li>
 <li>《最少排序問題中 \(S(15)\) 與 \(S(19)\) 的解決》：http://fcst.ceaj.org/EN/abstract/abstract47.shtml</li>
@@ -218,17 +199,13 @@ Lower bound 與 Upper bound 完美地合起來了不是嗎！
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../sorting/comparison-based-sorting.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../sorting/merge-insertion-sort.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -236,24 +213,18 @@ Lower bound 與 Upper bound 完美地合起來了不是嗎！
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../sorting/comparison-based-sorting.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../sorting/merge-insertion-sort.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -270,34 +241,24 @@ Lower bound 與 Upper bound 完美地合起來了不是嗎！
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>

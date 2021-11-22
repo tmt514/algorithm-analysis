@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>20/01/25 - 偏序集排序（一） - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,7 +145,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#偏序集排序一" id="偏序集排序一">偏序集排序（一）</a></h1>
+                        <h1 id="偏序集排序一"><a class="header" href="#偏序集排序一">偏序集排序（一）</a></h1>
 <p>在比較排序的過程中，我們不斷地詢問某兩筆資料之間的大小關係。
 到目前為止，我們知道，從資訊理論的角度來看，若採用兩兩資料比較的方式逐漸取得訊息，
 從一個「完全不知道訊息之間大小關係」，與「知曉任兩筆資料之間的大小關係」，
@@ -175,7 +156,7 @@
 <p>要理解這個問題，讓我們從定義<strong>偏序集（Partially Ordered Sets）</strong> 開始吧！</p>
 <!-- 今天來簡單介紹**偏序集（Partially Ordered Sets）**、**線性延伸（Linear Extension）**、以及由 Frank Hwang 與 Shen Lin 定義的**排序效率（Efficiency）**。
 以圖論語言來說明的話，我們今天想介紹的是**有向無環圖（Directed Acyclic Graph）**、**拓撲順序（Topological Order）**、以及基於這兩個觀念定義出來的排序效率。 -->
-<h2><a class="header" href="#偏序集-poset" id="偏序集-poset">偏序集 Poset</a></h2>
+<h2 id="偏序集-poset"><a class="header" href="#偏序集-poset">偏序集 Poset</a></h2>
 <p>首先，我們不妨假設任何兩筆輸入的資料都不相同，而且所有資料存在一個全序排列（Total Order），也就是說，隨意選取任何兩筆資料 \(x\) 和 \(y\)，必定有 \(x &lt; y\) 或者 \(x &gt; y\)。</p>
 <p>假設某個演算法今天對於 \(n\) 筆資料，抓了其中兩筆資料 \(x_1, x_2\) 來比較大小，獲得了 \(x_1 &lt; x_2\) 這樣的資訊。於是呢，我們可以從 \(x_1\) 到 \(x_2\) 畫一個箭頭 \(x_1\to x_2\)。這些資料與資料之間的關聯，形成一個偏序集 Partially Ordered Set，通常我們會簡稱 Poset，以 \((P, &lt;)\) 表示。
 這個偏序集，就相當於我們目前「已知」的所有資訊。一個超級粗略的估計如下：\(n\) 個元素的 Poset 至多有 \(2^{n^2-n}\) 種<sup class="footnote-reference"><a href="#1">1</a></sup>，因為這個集合當中、任何兩個元素之間的關係要嘛可以出現、要嘛不能出現。
@@ -189,7 +170,7 @@
 dp(P_0) = 1 + \min_{i, j} \left( \max\{dp(P_0(x_i &lt; x_j)), dp(P_0(x_i &gt; x_j))\} \right)
 \]</p>
 <p>對於 \(n=12\) 筆資料而言，我們就獲得一個 \(n^2\times 414864951055853499\) 時間複雜度的動態規劃演算法了！真是好棒棒。這個數字可能有點大，如果我們只考慮<strong>同構（Isomorphic）</strong> 的偏序集，那這個數字可以降到 \(n^2\times 1104891746\)，感覺變得可以負擔了。在這邊「同構」是這樣定義的：把輸入的資料 ID 隨意亂序置換以後，產生的所有偏序集都會被視為同構。顯然這些偏序集距離完全排好順序所需要的比較次數都相同，一旦計算出其中一個偏序集的 \(dp\) 值，就等同於計算出了所有其他同構的偏序集的 \(dp\) 值。</p>
-<h2><a class="header" href="#有向無環圖-directed-acyclic-graph" id="有向無環圖-directed-acyclic-graph">有向無環圖 Directed Acyclic Graph</a></h2>
+<h2 id="有向無環圖-directed-acyclic-graph"><a class="header" href="#有向無環圖-directed-acyclic-graph">有向無環圖 Directed Acyclic Graph</a></h2>
 <p>在我們要討論的主題中，偏序集與有向無環圖（Directed Acyclic Graph, DAG）其實有著非常相似的概念：
 我們可以利用 DAG 來表達一個 Poset \(P\)，考慮一個圖 \(G_P\)，其頂點集合就是所有的 \(n\) 筆資料 \(x_1, x_2, \ldots, x_n\)。只要在 Poset 裡面 \(x_i &lt; x_j\)，我們就加上一條 \(x_i\to x_j\) 的有向邊（arc）。</p>
 <p>如果這 \(n\) 筆資料是完全排序的，那麼對應到的圖 \(G_P\) 會是一個完全圖、而且它唯一的<strong>拓撲排序 Topological Order</strong> 就是把所有資料排序後的結果。
@@ -197,7 +178,7 @@ dp(P_0) = 1 + \min_{i, j} \left( \max\{dp(P_0(x_i &lt; x_j)), dp(P_0(x_i &gt; x_
 <p><img src="./poset-efficiency0.png" alt="" /></p>
 <hr />
 <p>明天來繼續講偏序集與完全排序之間的更多關係！</p>
-<h3><a class="header" href="#延伸閱讀" id="延伸閱讀">延伸閱讀</a></h3>
+<h3 id="延伸閱讀"><a class="header" href="#延伸閱讀">延伸閱讀</a></h3>
 <ul>
 <li><a href="https://luciuschang.wordpress.com/2016/10/24/%E6%95%B8%E5%AD%B8%E5%A6%82%E4%BD%95%E5%AE%9A%E7%BE%A9%E3%80%8C%E9%97%9C%E4%BF%82%E3%80%8D/">張志鴻教授：數學如何定義「關係」</a></li>
 </ul>
@@ -255,17 +236,13 @@ dp\left(
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../sorting/merge-insertion-sort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../sorting/linear-extensions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -273,24 +250,18 @@ dp\left(
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../sorting/merge-insertion-sort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../sorting/linear-extensions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -307,34 +278,24 @@ dp\left(
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>

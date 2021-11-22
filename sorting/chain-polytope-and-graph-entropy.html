@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>20/02/01 - 偏序集排序（四） - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,17 +145,17 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#偏序集排序四" id="偏序集排序四">偏序集排序（四）</a></h1>
+                        <h1 id="偏序集排序四"><a class="header" href="#偏序集排序四">偏序集排序（四）</a></h1>
 <p>為了繞過使用深奧隨機走訪方法與馬可夫鏈而得到的估計 \(e(P)\) 近似演算法，
 我們今天把這個順序多胞形轉換一下，變成另一個直鏈和多胞形（Chain Polytope）。</p>
-<h2><a class="header" href="#直鏈和多胞形-chain-polytope" id="直鏈和多胞形-chain-polytope">直鏈和多胞形 Chain Polytope</a></h2>
+<h2 id="直鏈和多胞形-chain-polytope"><a class="header" href="#直鏈和多胞形-chain-polytope">直鏈和多胞形 Chain Polytope</a></h2>
 <p>在 poset \((P, &lt;)\) 上面的一條<strong>直鏈（chain）</strong> \(C\subset P\)，其實就是一個任兩元素都可以比較的子集合。
 我們考慮以下的<strong>直鏈和多胞形（chain polytope）</strong>：</p>
 <p>\[
 \mathcal{C}(P) = \{ (z_1, \ldots, z_n) \ \vert \ \forall \text{ chain } C, 0\le \sum_{x_i\in C} z_i \le 1 \}
 \]</p>
 <p>換句話說，只要 \(n\) 個介於 \([0, 1]\) 之間的實數，滿足對於 poset 之中任何一條直鏈，它對應數字的總和不超過 \(1\) 的話，這個點就會被我們加入多胞形之中。</p>
-<h2><a class="header" href="#兩個多胞形之間的轉換" id="兩個多胞形之間的轉換">兩個多胞形之間的轉換</a></h2>
+<h2 id="兩個多胞形之間的轉換"><a class="header" href="#兩個多胞形之間的轉換">兩個多胞形之間的轉換</a></h2>
 <p>要怎麼找出直鏈和多胞形 \(\mathcal{C}(P)\) 與順序多胞形 \(\mathcal{O}(P)\) 之間的關聯呢？
 試想像一下，如果我們有一條鏈：</p>
 <p><img src="./chain-polytope-and-graph-entropy1.png" alt="" /></p>
@@ -213,9 +194,9 @@
 \]</p>
 <p>現在讓我們來考慮推廣版的情形：如果一個點屬於超過一條鏈怎麼辦呢？對於一個點 \(z=(z_1, \ldots, z_n)\in\mathcal{C}(P)\)，我們可以定義出一個點 \(\varphi(z) = (z'_1, \ldots, z'_n)\in\mathcal{O}(P)\)，其中 \(z'_i = z_i + \max_{j: x_j &lt; x_i} z'_j\)。這個轉換 \(\varphi\) 其實也是一一對應的：對於一個點 \(z' = (z'_1, \ldots, z'_n)\in\mathcal{O}(P)\)，我們可以回推出 \(\varphi^{-1}(z') = (z_1, \ldots, z_n)\in\mathcal{C}(P)\)，使得 \(z_i = z'_{i} - \max_{j: x_j &lt; x_i} z'_j\)。</p>
 <p>因此我們可以說：對於任意偏序集，都存在一個雙射變換 \(\varphi_P: \mathcal{C}(P)\to \mathcal{O}(P)\)。可惜的是，光憑這個結論，我們無法斷定這兩個多胞形的體積關係。這時候，就是我們前一篇介紹的 Ehrhart 多項式派上用場的時候啦！</p>
-<h3><a class="header" href="#定理-25-stanley-1986sup-classfootnote-referencea-href11asup" id="定理-25-stanley-1986sup-classfootnote-referencea-href11asup">定理 25 [Stanley 1986]<sup class="footnote-reference"><a href="#1">1</a></sup></a></h3>
+<h3 id="定理-25-stanley-1986sup-classfootnote-referencea-href11asup"><a class="header" href="#定理-25-stanley-1986sup-classfootnote-referencea-href11asup">定理 25 [Stanley 1986]<sup class="footnote-reference"><a href="#1">1</a></sup></a></h3>
 <p>對於任何偏序集。\(\mathcal{C}(P)\) 的體積與 \(\mathcal{O}(P)\) 的體積相等。</p>
-<h3><a class="header" href="#證明" id="證明">證明</a></h3>
+<h3 id="證明"><a class="header" href="#證明">證明</a></h3>
 <p>還記得我們說過多胞形的 Ehrhart 多項式嗎？如果把 \(\mathbb{R}^n\) 空間中，每一個座標軸放大整數倍 \(k\)，那麼多胞形內部的格子點（所有座標都是整數的點）的數量會以 \(\Theta(k^n)\) 的速度成長，而這個點數可以被一個 \(n\) 次多項式表示之。</p>
 <p>換句話說，如果我們有辦法證明 \(\mathcal{C}(P)\) 與 \(\mathcal{O}(P)\)，在座標軸放大任意整數倍之後，格子點數仍然相同，那麼很顯然它們有一模一樣的 Ehrhart 多項式（任何一個 \(n\) 次單變數多項式可以被 \(n+1\) 個取值唯一決定。）</p>
 <p>而這個整數點格子數量的結論顯然是正確的：在放大 \(k\) 倍之後，若 \(kz = (kz_1, kz_2, \ldots, kz_n)\) 是格子點，那麼根據 \(\varphi\) 的定義，在變換之後 \(\varphi(kz) = kz'\) 也會是格子點。反之亦然。於是，我們就得證啦～</p>
@@ -231,17 +212,13 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../sorting/order-polytope-and-ehrhart-polynomial.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../sorting/poset-sort5.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -249,24 +226,18 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../sorting/order-polytope-and-ehrhart-polynomial.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../sorting/poset-sort5.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -283,34 +254,24 @@
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>

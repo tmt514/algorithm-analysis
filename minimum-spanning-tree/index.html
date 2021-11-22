@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>最小生成樹 - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,35 +145,35 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#最小生成樹" id="最小生成樹">最小生成樹</a></h1>
+                        <h1 id="最小生成樹"><a class="header" href="#最小生成樹">最小生成樹</a></h1>
 <p>最小生成樹是圖論裡頭，經典演算法的其中之一。
 由於該題目有著太多適用於貪婪演算法的美好性質，這個問題也時常被拿來當作經典貪婪演算法的例題。
 最小生成樹的演算法有三大流派：Dijkstra-Jarník-Prim (1959, 1930, 1957)、Kruskal (1956)、以及 Borůvka (1926) 這三種作法。
 在說說這些演算法之前，我們先來好好地定義一下最小生成樹問題，以及描述最小生成樹的一些性質。</p>
-<h2><a class="header" href="#最小生成樹問題" id="最小生成樹問題">最小生成樹問題</a></h2>
+<h2 id="最小生成樹問題"><a class="header" href="#最小生成樹問題">最小生成樹問題</a></h2>
 <blockquote>
 <p>給定一個<strong>連通</strong>無向有權圖 \(G=(V, E)\)、每條邊有權重 \(w:E\to \mathbb{R}\)。找出一個生成樹 \(F\)，使得它上面所有邊權重的總和最小。</p>
 </blockquote>
 <p>要如何找出最小生成樹呢？以下的定義可以讓我們好好地刻畫出關於最小生成樹中，邊的性質。</p>
-<h2><a class="header" href="#定義safe-edge" id="定義safe-edge">定義（Safe Edge）</a></h2>
+<h2 id="定義safe-edge"><a class="header" href="#定義safe-edge">定義（Safe Edge）</a></h2>
 <p>對於一條邊 \(e=(u, v)\)，若存在子集合 \(S\subseteq V\)，使得 \(u\in S, v\notin S\)，並且 \(w(e)\) 是所有從集合 \(S\) 連出去的邊當中，權重最小的一個（即 \(w(e)=\min_{x\in \partial(S)} w(x)\)），
 那麼我們說 \(e\) 是一條<strong>安全邊</strong> <em>safe edge</em>。</p>
-<h2><a class="header" href="#定理-mst1" id="定理-mst1">定理 MST.1</a></h2>
+<h2 id="定理-mst1"><a class="header" href="#定理-mst1">定理 MST.1</a></h2>
 <p>假定圖 \(G\) 上所有邊權重<strong>皆不相同</strong>，那麼該圖上所有的安全邊，恰好形成一棵最小生成樹。</p>
-<h3><a class="header" href="#定理-mst1-的證明" id="定理-mst1-的證明">定理 MST.1 的證明</a></h3>
+<h3 id="定理-mst1-的證明"><a class="header" href="#定理-mst1-的證明">定理 MST.1 的證明</a></h3>
 <p>定義 \(E'\) 為所有安全邊所形成的集合。令 \(T\) 為圖 \(G\) 上任何一棵最小生成樹（事實上我們最終能得出最小生成樹是唯一的結論）。我們要證明的敘述便是 \(E'=E(T)\)。</p>
-<h3><a class="header" href="#part-1-esubseteq-t" id="part-1-esubseteq-t">Part 1: \(E'\subseteq T\)</a></h3>
+<h3 id="part-1-esubseteq-t"><a class="header" href="#part-1-esubseteq-t">Part 1: \(E'\subseteq T\)</a></h3>
 <p>對於任何一條安全邊 \(e=(u, v)\in E'\)，如果這條邊不在最小生成樹上面 \(e\notin T\)，由於 \(T\) 是連通的，那麼 \(T\) 上面存在一條從 \(u\) 到 \(v\) 的路徑 \(P\)。
 此時，根據安全邊的定義，我們令 \(e\) 是從集合 \(S\) 當中外連權重最小的一條邊，並不妨假設 \(u\in S\) 且 \(v\notin S\)。
 依此假設我們得知路徑 \(P\) 上面至少有一條邊 \(f\) 跨越了 \(S\)。這條邊的權重根據安全邊的定義，必定有 \(w(f) &gt; w(e)\)。
 也就是說，當我們考慮 \(T+e-f\) 的時候，得到一個總權重更小的生成樹，與 \(T\) 之選取矛盾！</p>
-<h3><a class="header" href="#part-2-tsubseteq-e" id="part-2-tsubseteq-e">Part 2: \(T\subseteq E'\)</a></h3>
+<h3 id="part-2-tsubseteq-e"><a class="header" href="#part-2-tsubseteq-e">Part 2: \(T\subseteq E'\)</a></h3>
 <p>接下來我們只要說，所有最小生成樹上的邊都是安全邊就行了。對於一條樹上的邊 \(e\in T\)，它可以將樹分成兩個連通部分，對應到的點集合分別寫作 \(S\) 與 \(V\setminus S\)。
 我們宣稱 \(e\) 此時必定是集合 \(S\) (或 \(V\setminus S\)) 外連的邊中權重最小的一個。
 若不然，存在另一條權重更小的邊 \(w(f) &lt; w(e)\)，使得 \(T-e+f\) 的總權重更小，與 \(T\) 為最小生成樹的假設矛盾。由此得知 \(e\in E'\)，證畢。</p>
-<h2><a class="header" href="#係理-mst2" id="係理-mst2">係理 MST.2</a></h2>
+<h2 id="係理-mst2"><a class="header" href="#係理-mst2">係理 MST.2</a></h2>
 <p>假定一張圖上所有邊權重皆不相同，那麼該圖有著<strong>唯一</strong>的最小生成樹。</p>
-<h2><a class="header" href="#參考資料" id="參考資料">參考資料</a></h2>
+<h2 id="參考資料"><a class="header" href="#參考資料">參考資料</a></h2>
 <ul>
 <li>https://jeffe.cs.illinois.edu/teaching/algorithms/book/07-mst.pdf</li>
 </ul>
@@ -201,17 +182,13 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../sorting/sorting-network-correctness.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../minimum-spanning-tree/prims-mst.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -219,24 +196,18 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../sorting/sorting-network-correctness.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../minimum-spanning-tree/prims-mst.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -253,34 +224,24 @@
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>

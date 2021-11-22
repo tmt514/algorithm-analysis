@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Kruskal&#x27;s 演算法 - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,7 +145,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#最小生成樹的-kruskals-演算法" id="最小生成樹的-kruskals-演算法">最小生成樹的 Kruskal's 演算法</a></h1>
+                        <h1 id="最小生成樹的-kruskals-演算法"><a class="header" href="#最小生成樹的-kruskals-演算法">最小生成樹的 Kruskal's 演算法</a></h1>
 <p>在 Prim 推出演算法的數年之前，在普林斯頓大學取得博士學位不久的 Kruskal 就已經從翻譯後的 Borůvka 演算法獲得靈感，催生出了更簡單的最小生成樹演算法。Kruskal's 演算法步驟如下：</p>
 <ol>
 <li>將所有 \(E\) 中的邊依照長度由小至大排序。令排序後的邊為 \(e_1, e_2, \ldots, e_m\)。</li>
@@ -177,36 +158,31 @@
 </ol>
 <p>因為今天沒什麼篇幅，就畫一張示意圖表示 Kruskal's 演算法跑到一半的結果吧：</p>
 <p><img src="./mst30-24-1.png" alt="" /></p>
-<h2><a class="header" href="#定理-mst4" id="定理-mst4">定理 MST.4</a></h2>
+<h2 id="定理-mst4"><a class="header" href="#定理-mst4">定理 MST.4</a></h2>
 <p>若輸入之圖 \(G\) 為連通，且所有邊權重皆不相等，那麼執行完 Kruskal's 演算法後，\(E'=E_{\textit{safe}}\) 包含圖 \(G\) 上所有的安全邊。</p>
-<h3><a class="header" href="#定理-mst4-的證明" id="定理-mst4-的證明">定理 MST.4 的證明</a></h3>
+<h3 id="定理-mst4-的證明"><a class="header" href="#定理-mst4-的證明">定理 MST.4 的證明</a></h3>
 <p>首先說明 \(E'\subseteq E_{\textit{safe}}\)。對於每一條被加入 \(E'\) 的邊 \(e_i\)，我們考慮當 \(e_i\) 加入 \(E'\) 的時候的圖 \((V, E')\)。假設 \(e_i=(u, v)\)，定義此時包含 \(u\) 之連通元件對應的點集合為 \(S\)。此時我們宣稱 \(w(e_i) = \min_{e\in \partial S} w(e)\)：這是因為，若在 \(e_i\) 之前有某條邊從集合 \(S\) 連了出去，我們考慮<strong>第一條</strong>從 \(S\) 連出去的邊 \(e_j=(x, y)\)，假設 \(j &lt; i\)、\(x\in S\) 且 \(y\notin S\)。由於 \(e_j\) 是第一條從 \(S\) 連出去的邊，所以此時 \(x\) 所在的連通元件 \(S_x\subseteq S\)，因此根據演算法的第 3 步，\(e_j\) 一定會被加入 \(E'\) 中。但這時由於 \(j &lt; i\)，當 \(e_i\) 被考慮到的時候，\(S\) 是連通的，因此存在一條路徑從 \(u\) 走到 \(x\)、再透過 \(e_j\) 走到 \(y\)，於是有 \(y\in S\)，矛盾。因此 \(e_i\) 是一條安全邊。</p>
 <p>此外，對於任何一條安全邊 \(e\in E_{\textit{safe}}\)，它一定會被演算法在某個時刻考慮到。根據安全邊的定義，存在一個點集合 \(S\) 使得 \(w(e)=\min_{f\in \partial S} w(f)\)。令這條安全邊 \(e=(u, v)\) 且 \(u\in S\)、\(v\notin S\)。當 \(e\) 被演算法考慮到的時候，加上 \(e\) 不會形成圈，因此一定會被加入 \(E'\) 中。於是有 \(E'=E_{\textit{safe}}\)，得證。
 <span style="float:right">\(\square\)</span></p>
-<h2><a class="header" href="#kruskals-演算法的實作" id="kruskals-演算法的實作">Kruskal's 演算法的實作</a></h2>
+<h2 id="kruskals-演算法的實作"><a class="header" href="#kruskals-演算法的實作">Kruskal's 演算法的實作</a></h2>
 <p>檢查某條邊加入 \(E'\) 後會不會形成圈，如果是很直接地使用 DFS/BFS 實作的話，最直接的估計可能會花上 \(O(\vert E'\vert ) = O(n)\) 的時間，因此整體時間複雜度會變成 \(O(mn)\)。</p>
 <p>如果我們將當前 \(E'\) 的連通狀況以<a href="https://en.wikipedia.org/wiki/Disjoint-set_data_structure">併查集（disjoint sets）</a>資料結構來表示的話，整體的時間複雜度就會變成 \(O(m\log m + m\alpha(n))\)，其中 \(\alpha(n)\) 是<a href="https://en.wikipedia.org/wiki/Ackermann_function#Inverse">反阿克曼函數</a>，演算法的時間瓶頸便會落在第一步的排序上頭。</p>
-<h2><a class="header" href="#參考資料" id="參考資料">參考資料</a></h2>
+<h2 id="參考資料"><a class="header" href="#參考資料">參考資料</a></h2>
 <ul>
 <li>Joseph Kruskal, <a href="https://www.ams.org/journals/proc/1956-007-01/S0002-9939-1956-0078686-7/S0002-9939-1956-0078686-7.pdf"><em>On The Shortest Spanning Subtree of a Graph and the Traveling Salesman Problem</em></a>, AMS 1956.</li>
-<li></li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../minimum-spanning-tree/prims-mst.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../minimum-spanning-tree/boruvka-mst.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -214,24 +190,18 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../minimum-spanning-tree/prims-mst.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../minimum-spanning-tree/boruvka-mst.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -248,34 +218,24 @@
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>

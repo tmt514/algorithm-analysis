@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>20/01/10 - 隨機快速排序法（一） - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,7 +145,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#隨機快速排序法" id="隨機快速排序法">隨機快速排序法</a></h1>
+                        <h1 id="隨機快速排序法"><a class="header" href="#隨機快速排序法">隨機快速排序法</a></h1>
 <p>如果我們允許演算法使用隨機數產生器，那麼快速排序法會變得更有效率！</p>
 <!--
 ## 隨機演算法
@@ -182,12 +163,12 @@
   QuickSort(A, n);     // 呼叫原本的快速排序法。
 }
 </code></pre>
-<h2><a class="header" href="#定理-13" id="定理-13">定理 13</a></h2>
+<h2 id="定理-13"><a class="header" href="#定理-13">定理 13</a></h2>
 <p>假設 <code>RandomPermute</code> 可以均勻地產生隨機排列，那麼隨機快速排序法的期望時間複雜度為 \(O(n\log n)\)。</p>
-<h3><a class="header" href="#開始證明之前" id="開始證明之前">開始證明之前</a></h3>
+<h3 id="開始證明之前"><a class="header" href="#開始證明之前">開始證明之前</a></h3>
 <p>大家還記不記得<a href="https://zh.wikipedia.org/wiki/%E6%9C%9F%E6%9C%9B%E5%80%BC">期望值的可加性</a>呢？簡單來說，如果有兩個隨機變數（Random Variable） \(X, Y\)，那麼 \(X+Y\) 的期望值便滿足
 \(\E[X+Y] = \E[X] + \E[Y]\)。我們把這個觀念應用在分析演算法的期望時間複雜度上面，可以把它想成：若這個演算法分成前後兩個步驟 \(A\) 和 \(B\)，兩個步驟的執行時間分別可以用隨機變數 \(T_A\) 與 \(T_B\) 表示。那麼整個演算法的執行時間就可以寫成 \(T_A+T_B\)，而這個隨機變數的期望值就可以利用期望值的可加性寫得 \(\E[T_A+T_B] = \E[T_A]+\E[T_B]\)。也就是說，我們只要分別分析兩個步驟的期望執行時間，加起來，就會等於整個演算法的期望時間複雜度了。</p>
-<h3><a class="header" href="#證明一遞迴方法" id="證明一遞迴方法">證明一：遞迴方法</a></h3>
+<h3 id="證明一遞迴方法"><a class="header" href="#證明一遞迴方法">證明一：遞迴方法</a></h3>
 <p>我們定義 \(f(n)\) 為對 \(n\) 筆資料進行隨機快速排序的期望時間複雜度。我們想證明的是 \(f(n) = O(n\log n)\)。
 首先，我們可以簡單地說明 \(f(n)\) 是非遞減的：多一筆資料，要排好序總得花更多力氣。
 根據快速排序法的定義，我們選擇第一個數字作為 pivot，然後把整組資料拆成小於、等於、大於三個部分，再把小於 pivot、大於 pivot 這兩組資料分別遞迴下去排序。</p>
@@ -202,7 +183,7 @@ O(1) &amp; \text{ if } n \le 1,\\
 \end{cases}
 \]</p>
 <p>要怎麼證明這個遞迴式解出來會是 \(O(n\log n)\) 呢？最好用的證明工具當然就是數學歸納法囉！</p>
-<h4><a class="header" href="#數學歸納法" id="數學歸納法">數學歸納法</a></h4>
+<h4 id="數學歸納法"><a class="header" href="#數學歸納法">數學歸納法</a></h4>
 <p>我們想要證明 \(f(n) = cn\log n\)，其中 \(c\) 是某個待定的常數。
 假設選定 pivot 以後比較與分組所花費的時間為 \(\le c_0n\)，於是遞迴式會長這樣：</p>
 <p>\[
@@ -235,17 +216,13 @@ f(n) &amp;\le c_0n + \frac{2}{n}\sum_{i=1}^{n-1} f(i)\\
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../sorting/quick-sort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../sorting/randomized-quicksort2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -253,24 +230,18 @@ f(n) &amp;\le c_0n + \frac{2}{n}\sum_{i=1}^{n-1} f(i)\\
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../sorting/quick-sort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../sorting/randomized-quicksort2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -287,34 +258,24 @@ f(n) &amp;\le c_0n + \frac{2}{n}\sum_{i=1}^{n-1} f(i)\\
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>

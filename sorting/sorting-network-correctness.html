@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>21/01/04 - 驗證排序網路 - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,30 +145,30 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#驗證排序網路" id="驗證排序網路">驗證排序網路</a></h1>
+                        <h1 id="驗證排序網路"><a class="header" href="#驗證排序網路">驗證排序網路</a></h1>
 <p>給定一個排序網路，我們有沒有什麼樣的演算法可以檢驗這個排序網路能否正確排序呢？
 假設我們要排序的資料數量有 \(n\) 筆、排序網路的總工作量為 \(m\) 次比較。
 顯然我們有個 \(O(m\cdot n!)\) 時間的演算法：枚舉所有 \(n!\) 種排列，並且實際丟進去排序看看。</p>
-<h2><a class="header" href="#0-1-法則-zero-one-principle" id="0-1-法則-zero-one-principle">0-1 法則 Zero-One Principle</a></h2>
+<h2 id="0-1-法則-zero-one-principle"><a class="header" href="#0-1-法則-zero-one-principle">0-1 法則 Zero-One Principle</a></h2>
 <p>一個值得提及的觀察是，我們不一定需要枚舉所有的 \(n!\) 種排列。如果對於任何 \(k\)，只要該排序網路都能夠分得出前 \(k\) 小的資料、與剩下的 \(n-k\) 筆資料，就能夠保證排好所有資料了。有了這個觀察，我們可以將 \(n!\) 種排列的檢驗過程，精簡至 \(2^n-n-1\) 種輸入即可：只要能夠對所有長度為 \(n\) 的任意亂序 0-1 序列排序，就能保證排序網路的正確性。</p>
-<h2><a class="header" href="#0-1-法則的限制" id="0-1-法則的限制">0-1 法則的限制</a></h2>
+<h2 id="0-1-法則的限制"><a class="header" href="#0-1-法則的限制">0-1 法則的限制</a></h2>
 <p>真的需要檢查所有的 \(2^n-n-1\) 種 0-1 序列（任意未按順序排列之 0-1 序列）才能保證排序網路的正確性嗎？很遺憾地，是的，我們可以藉由以下引理得知，如果我們採用 0-1 序列作為排序網路的測試，我們至少需要 \(2^n-n-1\) 種不同的輸入才行。</p>
-<h3><a class="header" href="#引理-44-chung-ravikumar-1990" id="引理-44-chung-ravikumar-1990">引理 44 [Chung-Ravikumar 1990]</a></h3>
+<h3 id="引理-44-chung-ravikumar-1990"><a class="header" href="#引理-44-chung-ravikumar-1990">引理 44 [Chung-Ravikumar 1990]</a></h3>
 <p>令 \(\sigma\) 是一個長度為 \(n\) 的亂序 0-1 序列，那麼存在一個排序網路 \(H_\sigma\)，可以排好所有 \(\sigma\) 以外的 0-1 序列，唯獨 \(\sigma\) 無法被正確排序。</p>
-<h3><a class="header" href="#引理-44-的證明" id="引理-44-的證明">引理 44 的證明</a></h3>
+<h3 id="引理-44-的證明"><a class="header" href="#引理-44-的證明">引理 44 的證明</a></h3>
 <p>萬能的數學歸納法是你的好朋友。我們可以對序列長度 \(n\) 進行歸納：當 \(n=2\) 的時候，唯一的亂序序列是 \(\tt{10}\)，一個空的排序網路就能夠達到我們的需求。當 \(n=3\) 的時候，我們可以針對每一種亂序序列繪製出如下圖所示的排序網路<sup class="footnote-reference"><a href="#1">1</a></sup>：</p>
 <p><img src="./sorting-networks-2-1.png" alt="" /></p>
 <p>從上圖可以發現，對於任何指定的亂序 0-1 序列 \(\sigma\)，設計出來的 \(H_\sigma\) 確實可以排好除了 \(\sigma\) 以外的所有序列，厲害吧！下一步我們要做的事情，就是把 \(n=3\) 推廣到所有更大的 \(n\)。</p>
-<h4><a class="header" href="#歸納假設假定-n-搞定了n1-呢" id="歸納假設假定-n-搞定了n1-呢">歸納假設：假定 \(n\) 搞定了，\(n+1\) 呢？</a></h4>
+<h4 id="歸納假設假定-n-搞定了n1-呢"><a class="header" href="#歸納假設假定-n-搞定了n1-呢">歸納假設：假定 \(n\) 搞定了，\(n+1\) 呢？</a></h4>
 <p>現在我們考慮任何一個長度為 \(n+1\) 的亂序 0-1 序列 \(\sigma\)。我們令前 \(n\) 個位元為 \(\sigma' = \sigma[0..n-1]\)。現在有三種可能的情形：</p>
 <ul>
 <li>情形一：\(\sigma'\) 是亂序且 \(\sigma[n]=\mathtt{0}\)、</li>
 <li>情形二：\(\sigma'\) 是亂序且 \(\sigma[n]=\mathtt{1}\)、</li>
 <li>情形三：\(\sigma'\) 已排序（此時 \(\sigma[n]\) 必定是 \(\mathtt{0}\)）</li>
 </ul>
-<h2><a class="header" href="#關於驗證排序網路這個問題" id="關於驗證排序網路這個問題">關於驗證排序網路這個問題</a></h2>
+<h2 id="關於驗證排序網路這個問題"><a class="header" href="#關於驗證排序網路這個問題">關於驗證排序網路這個問題</a></h2>
 <p>這個問題其實是 \(\mathsf{coNP}\)-完備的。</p>
-<h3><a class="header" href="#參考資料" id="參考資料">參考資料</a></h3>
+<h3 id="參考資料"><a class="header" href="#參考資料">參考資料</a></h3>
 <ul>
 <li><a href="https://cs.stackexchange.com/questions/44748/how-do-i-tell-if-a-comparison-network-sorts">StackExchange 上面的提問</a></li>
 <li>Ian Parberry, <a href="https://link.springer.com/chapter/10.1007%2F978-3-662-25209-3_18">On the Computational Compexity of Optimal Sorting Network Verification</a>, PPAL'91.</li>
@@ -202,17 +183,13 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../sorting/sorting-network.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../minimum-spanning-tree/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -220,24 +197,18 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../sorting/sorting-network.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../minimum-spanning-tree/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -254,34 +225,24 @@
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>

@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>20/01/08 - 快速排序法 - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,7 +145,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#快速排序法" id="快速排序法">快速排序法</a></h1>
+                        <h1 id="快速排序法"><a class="header" href="#快速排序法">快速排序法</a></h1>
 <p>另一個利用分而治之達成的排序方法，是快速排序法（Quick Sort）。</p>
 <p>如果我們能將輸入的數值分成兩組，並且保證某一組的所有數字都不超過另一組的所有數字。
 那麼，把這兩組數字分別遞迴下去排序，再接起來就可以了。
@@ -191,18 +172,18 @@
   QuickSort(A + now, n - now); // 嚴格大於 pivot 的元素們。
 }
 </code></pre>
-<h2><a class="header" href="#最差時間複雜度" id="最差時間複雜度">最差時間複雜度</a></h2>
-<h3><a class="header" href="#引理-12" id="引理-12">引理 12</a></h3>
+<h2 id="最差時間複雜度"><a class="header" href="#最差時間複雜度">最差時間複雜度</a></h2>
+<h3 id="引理-12"><a class="header" href="#引理-12">引理 12</a></h3>
 <p>快速排序法的時間複雜度為 \(O(n^2)\)。</p>
-<h3><a class="header" href="#證明" id="證明">證明</a></h3>
+<h3 id="證明"><a class="header" href="#證明">證明</a></h3>
 <p>注意到，對於任何一筆資料，在所有 QuickSort 函式的呼叫中最多只有一次會被當作 pivot 拿來比較。
 而 QuickSort 的執行時間正比於：\(n\le 1\) 情形的遞迴呼叫次數、以及拿 pivot 出來跟別人比較的總次數。
 前者是 \(O(n)\) 次函式呼叫，後者每個元素至多被拿來當作一次 pivot，每次 pivot 至多會跟 \(O(n)\) 個元素進行比較。
 因此時間複雜度為 \(O(n^2)\)。</p>
 <p>另一方面，考慮 \((n, n-1, n-2, \ldots, 1)\) 這個逆序的序列。每一次遞迴都會把最大的數字推到最右邊，因此每一層遞迴要處理的資料量依序為 \(n, n-1, \ldots, 1\)。這樣加起來就是 \(\Theta(n^2)\)。</p>
-<h3><a class="header" href="#快速排序法不是原地演算法" id="快速排序法不是原地演算法">快速排序法不是原地演算法</a></h3>
+<h3 id="快速排序法不是原地演算法"><a class="header" href="#快速排序法不是原地演算法">快速排序法不是原地演算法</a></h3>
 <p>雖然上面把資料分堆的部分，看起來只需要 \(O(1)\) 的記憶體空間。但遞迴呼叫會在使用呼叫堆疊（Call Stack），在最糟情形下仍會使用 \(O(n)\) 的額外記憶體空間。相當慘烈。此外，要把快速排序法改成非遞迴的形式，其實就有點痛苦了，不像是合併排序法那樣可以輕易地變成 bottom-up 的迭代形式。</p>
-<h2><a class="header" href="#Ďurian-快速排序法" id="Ďurian-快速排序法">Ďurian 快速排序法</a></h2>
+<h2 id="Ďurian-快速排序法"><a class="header" href="#Ďurian-快速排序法">Ďurian 快速排序法</a></h2>
 <p>一般來說，把一個遞迴函式無腦改成非遞迴函式，最簡單的方式就是手動模擬呼叫堆疊的行為。
 但事實上，今天來跟大家分享一個捷克學生 Branislav Ďurian 在 1986 年提出的改編版快速排序法。
 其核心想法是利用 pivot 當作擋板，找出目前遞迴到的子問題邊界。這麼一來，就不需要使用堆疊來存放邊界了！</p>
@@ -225,7 +206,7 @@
 <hr />
 <p>快速排序法的最差情形是 \(O(n^2)\)，乍看之下很沒有效率啊。
 但其實這個演算法相當有用啊，不致於這麼差吧──大家平常在說的快速排序法可以做到 \(O(n\log n)\) 是怎麼一回事？</p>
-<h3><a class="header" href="#參考資料" id="參考資料">參考資料</a></h3>
+<h3 id="參考資料"><a class="header" href="#參考資料">參考資料</a></h3>
 <ul>
 <li>郭至軒的（厲害而詳盡的）筆記：https://blog.kuoe0.tw/posts/2013/03/15/sort-about-quick-sort/</li>
 <li>非遞迴、不堆疊的快速排序法：https://link.springer.com/chapter/10.1007/BFb0016252</li>
@@ -235,17 +216,13 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../sorting/in-place-mergesort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../sorting/randomized-quicksort.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -253,24 +230,18 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../sorting/in-place-mergesort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../sorting/randomized-quicksort.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -287,34 +258,24 @@
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>

@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>20/03/08 - 謝耳排序法（三） - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,12 +145,12 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#謝耳排序法三" id="謝耳排序法三">謝耳排序法（三）</a></h1>
+                        <h1 id="謝耳排序法三"><a class="header" href="#謝耳排序法三">謝耳排序法（三）</a></h1>
 <p>利用湊郵票問題（引理 34、係理 35）的性質，我們可以專注在 \(2\)-sorted 和 \(3\)-sorted 上面，
 並且推廣它：</p>
-<h3><a class="header" href="#引理-37" id="引理-37">引理 37</a></h3>
+<h3 id="引理-37"><a class="header" href="#引理-37">引理 37</a></h3>
 <p>令 \(h\) 為一個正整數。若一個長度為 \(N\) 的陣列 \(A\) 已經滿足 \(2h\)-sorted 且為 \(3h\)-sorted，那麼將陣列整理成 \(h\)-sorted，僅需要花費 \(O(N)\) 的時間。</p>
-<h3><a class="header" href="#引理-37-的證明" id="引理-37-的證明">引理 37 的證明</a></h3>
+<h3 id="引理-37-的證明"><a class="header" href="#引理-37-的證明">引理 37 的證明</a></h3>
 <p>因為陣列已經是 \(2h\)-sorted 與 \(3h\)-sorted 的關係，
 如果要把它整理成 \(h\)-sorted，對於任何註標 \(i\)，我們只需要考慮 \(A[i]\) 與 \(A[i\pm h]\) 之間的大小關係就好。
 也就是說，對於 <code>h_sort</code> 的第二層進行插入排序的迴圈，總是跑了常數次就會停下來。因此整體時間複雜度是 \(O(N)\)。
@@ -180,10 +161,10 @@
 <p><img src="./shell-sort-3-2.png" alt="" /></p>
 <p>只要按照上圖中所有出現過形如 \(2^a3^b &lt; N\) 的數字，從大到小依序 <code>h_sort</code> 一遍，就能夠保證每一次 <code>h_sort</code> 都僅花費 \(O(N)\) 的時間。
 總共有多少個這樣的數字呢？從這張「二維」表格看起來，我們能輕易得到一個上界：至多只有 \(\log_2N\log_3N=\Theta(\log^2N)\) 個數字滿足條件。因此，我們能得到以下結論：</p>
-<h3><a class="header" href="#定理-38-pratt-1972" id="定理-38-pratt-1972">定理 38 [Pratt 1972]</a></h3>
+<h3 id="定理-38-pratt-1972"><a class="header" href="#定理-38-pratt-1972">定理 38 [Pratt 1972]</a></h3>
 <p>使用所有形如 \(2^a3^b\) 的整數作為步長序列，其謝耳排序法的時間複雜度為 \(O(N\log^2 N)\)。
 <span style="float:right">\(\square\)</span></p>
-<h3><a class="header" href="#題外話之一" id="題外話之一">題外話之一</a></h3>
+<h3 id="題外話之一"><a class="header" href="#題外話之一">題外話之一</a></h3>
 <p>假設步長序列的長度為 \(m\)，我們可以在 \(O(m)\) 時間內，產生出所有必要的步長，並且由小到大排好順序。
 方法與霍夫曼編碼、或合併排序法的合併概念相當類似：我們只要把所有產生出來的步長依照大小順序塞入兩個有序數列即可。</p>
 <pre><code class="language-cpp">// 由小到大找出所有小於 N、且質因數只有 2 和 3 的所有正整數。
@@ -205,9 +186,9 @@ vector&lt;int&gt; generate_steps(int N) {
 };
 </code></pre>
 <hr />
-<h3><a class="header" href="#題外話之二" id="題外話之二">題外話之二</a></h3>
+<h3 id="題外話之二"><a class="header" href="#題外話之二">題外話之二</a></h3>
 <p>關於謝耳排序法的正確性，其實用到了一個重要的非顯然性質，描述如下：</p>
-<h3><a class="header" href="#性質-39" id="性質-39">性質 39</a></h3>
+<h3 id="性質-39"><a class="header" href="#性質-39">性質 39</a></h3>
 <p>令 \(h\) 和 \(h'\) 為兩個正整數，且 \(h &gt; h'\)。假設陣列 \(A\) 已經是 \(h\)-sorted，那麼對較小的步長 \(h'\) 呼叫 <code>h_sort</code> 重新整理後，這個陣列仍然是 \(h\)-sorted 的。
 換句話說，在謝耳排序法之中，若一個陣列已經是 \(h\)-sorted 了，那麼它終生都是 \(h\)-sorted<sup class="footnote-reference"><a href="#1">1</a></sup>。
 各位朋友有興趣的話可以證明看看唷。</p>
@@ -226,17 +207,13 @@ vector&lt;int&gt; generate_steps(int N) {
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../sorting/shell-sort2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../sorting/shell-sort4.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -244,24 +221,18 @@ vector&lt;int&gt; generate_steps(int N) {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../sorting/shell-sort2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../sorting/shell-sort4.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -278,34 +249,24 @@ vector&lt;int&gt; generate_steps(int N) {
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>

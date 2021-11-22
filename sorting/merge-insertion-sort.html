@@ -4,25 +4,17 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>20/01/22 - 合併插入排序 - 演算法的分析與證明</title>
-        
-        
 
 
         <!-- Custom HTML head -->
-        
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,14 +30,10 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../styles/mdbook.css">
-        
 
-        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -106,7 +92,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -123,11 +108,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">演算法的分析與證明</h1>
@@ -136,14 +119,13 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -151,7 +133,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,11 +145,11 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#合併插入排序" id="合併插入排序">合併插入排序</a></h1>
+                        <h1 id="合併插入排序"><a class="header" href="#合併插入排序">合併插入排序</a></h1>
 <p>Lester Ford, Jr. 以及 Selmer Johnson 把 <a href="https://www.uidaho.edu/engr/departments/ece/our-people/emeriti/howard-demuth">Howard B. Demuth</a> 的 1957 年博士論文裡面提到的 5 筆資料排序方法進行推廣，最終獲得一個用謹慎的方法試圖減少比較次數的排序方法──<strong>合併插入排序 Merge Insertion Sort</strong>。
 這個排序法的名字是高德納教授（Donald Knuth）在他撰寫的《The Art of Computer Programming》裡面取的。
 附帶一提，最近 MIT 教授 Lex Fridman 釋出了一段與 Knuth 的訪談<sup class="footnote-reference"><a href="#1">1</a></sup>：https://www.youtube.com/watch?v=2BdBfsXbST8 大家有興趣可以聽聽看。</p>
-<h2><a class="header" href="#如何避免大量的天花板" id="如何避免大量的天花板">如何避免大量的天花板</a></h2>
+<h2 id="如何避免大量的天花板"><a class="header" href="#如何避免大量的天花板">如何避免大量的天花板</a></h2>
 <p>演算法的核心概念是這樣的：如果看到一個長度為 \(2^k-1\) 元素的序列，那麼此時將一個新的元素插入其中，是最不會浪費「資訊」的。因為資訊理論下界 \(\ceil{\log_2 ((2^k-1)+1)}\) 無論有沒有天花板，其數值都是一樣的，得花費恰巧 \(k\) 次才能夠找出新元素的落點。</p>
 <p>如果長度不到 \(2^k-1\) 的序列怎麼辦？盡量讓這件事情不要發生就好了！
 乍看之下很困難啊──但是 Ford-Johnson <strong>盡量</strong>做到了，最重要的想法可以透過下面這張圖來傳達：</p>
@@ -176,7 +157,7 @@
 <p>假設我們能夠經過若干次比較之後，把所有元素的大小關係描述成上面這張圖。其中 \(x\to y\) 代表經過比較以後，我們得出了 \(x &lt; y\) 這項結論。
 上圖黃色框線內共有 7 個元素，若我們想將紅色元素插入上面長鏈中，此時恰好達到資訊理論下界的 \(\log_2(7+1) = 3\) 次。因此可以得到結論是：此時優先將紅色元素插入長鏈、再將左邊的藍色元素插入長鏈。其需要的比較次數至多是 \(\log_2(7+1) + \log_2(7+1) = 6\) 次。相反地，若我們先插入藍色元素，再插入紅色元素，在最壞情形下我們得花費 \(\log_2(7+1) + \ceil{\log_2(8+1)} = 7\) 次比較才能達到效果。</p>
 <p>行文至此，不難發現，如果我們有辦法把輸入資料的大小關係，表達成上圖這種牙刷形狀，再依照最不浪費比較次數的方式進行二分插入，說不定可以得到較佳（比較次數較小）的排序演算法。</p>
-<h2><a class="header" href="#合併插入排序的第一步" id="合併插入排序的第一步">合併插入排序的第一步</a></h2>
+<h2 id="合併插入排序的第一步"><a class="header" href="#合併插入排序的第一步">合併插入排序的第一步</a></h2>
 <p>要怎麼生出牙刷呢？
 首先，在分而治之的部分，我們先將資料隨意地兩兩分成一組，並且花費 \(\floor{n/2}\) 次比較。
 如果有多出來的元素，就先放在旁邊吧。
@@ -210,9 +191,9 @@ G(\ceil{n/2}) &amp;= \sum_{i=1}^{k-1} i (t_i-t_{i-1}) + k(\ceil{n/2} - t_{k-1}) 
 \]</p>
 <p>令 \(w_k = t_0+t_1+\cdots + t_{k-1} = \floor{2^{k+1}/3}\)。
 現在來證明今天最重要的一個結論：</p>
-<h3><a class="header" href="#引理-22" id="引理-22">引理 22</a></h3>
+<h3 id="引理-22"><a class="header" href="#引理-22">引理 22</a></h3>
 <p>\( F(n) - F(n-1) = k \) 若且唯若 \(w_k &lt; n \le w_{k+1}\)。</p>
-<h3><a class="header" href="#證明" id="證明">證明</a></h3>
+<h3 id="證明"><a class="header" href="#證明">證明</a></h3>
 <p>我們可以用數學歸納法。Base Case 很顯然，所以就不寫了。Inductive Case 的部分可以利用 \(n\) 的奇偶性分別討論：如果 \(n\) 是偶數，那麼 \(F(n)-F(n-1) = 1+F(n/2)-F(n/2-1)\)，後半部的數值等於 \(k-1\) 若且唯若 \(w_{k-1} &lt; \floor{n/2} \le w_{k}\)。而由 \(w_k\) 之定義可知 </p>
 <p>\[
 \begin{aligned}
@@ -241,7 +222,7 @@ A(n) = \ceil{\log n!}  \approx n\log_2 n - 1.443 n + O(\log_2 n)
 B(n) = \sum_{i=1}^n \ceil{\log i} \approx n\log_2 n - 0.915 n + O(\log_2 n)
 \]</p>
 <p>不難發現 \(F(n)\) 比起二分插入法得到的比較次數 \(B(n)\)，更接近資訊理論下界 \(A(n)\) 了呢！</p>
-<h3><a class="header" href="#結論" id="結論">結論</a></h3>
+<h3 id="結論"><a class="header" href="#結論">結論</a></h3>
 <p>後話就是，在 1979 年 Manacher<sup class="footnote-reference"><a href="#3">3</a></sup> 用了混合方法，把 Hwang-Lin<sup class="footnote-reference"><a href="#5">4</a></sup> 的兩序列合併演算法考慮進去並且在某些情形下改良，同時改進了 Ford-Johnson 演算法，並且證明了<strong>存在無窮多個</strong> \(n\)，其最少比較排序的比較次數比 \(F(n)\) 嚴格來得小，該方法贏過 FJ 的最小值是 \(n=189\)。然後到了 1985 年 Bui 和 Thanh<sup class="footnote-reference"><a href="#4">5</a></sup> 再次修改了 Manacher 演算法，得出在絕大多數的 \(n\) 時，FJ 演算法不是最優的。而且也得出了最小反例出現在 \(n=47\)（到 2007 年為止，Peczarski<sup class="footnote-reference"><a href="#6">6</a></sup> 聲稱 FJ 演算法在 \(n&lt;47\) 的時候是最佳解，Peczarski 證明了利用某一類型的分而治之演算法無法在 \(n\le 46\) 的時候贏過 FJ 演算法。）</p>
 <p>然後 \(F(n)\) 其實有封閉形式（Closed Form，俗稱公式解）：
 \[
@@ -250,7 +231,7 @@ F(n) = n\ceil{\log_2 \frac{3}{4} n} + \floor{\frac13 2^{\floor{\log_2 6n}}} + \f
 <p>最後，大家要多多刷牙喔 ^_&lt;。</p>
 <hr />
 <p>合併插入排序法中間的分析，利用到了「如何從排序到一半的東西，利用盡量少比較次數完成排序」的特性。我們是否可以把這個概念推廣一下呢？排序到一半的東西，可以被表示成一個叫做 <strong>偏序集（Partial Ordered Set）</strong> 的東西。我們能否從偏序集獲得一些排序知識呢？</p>
-<h3><a class="header" href="#推薦閱讀" id="推薦閱讀">推薦閱讀</a></h3>
+<h3 id="推薦閱讀"><a class="header" href="#推薦閱讀">推薦閱讀</a></h3>
 <ul>
 <li>維基百科：https://en.wikipedia.org/wiki/Merge-insertion_sort</li>
 <li>Ford-Johnson 演算法當年的論文：https://www.jstor.org/stable/pdf/2308750.pdf</li>
@@ -278,17 +259,13 @@ F(n) = n\ceil{\log_2 \frac{3}{4} n} + \floor{\frac13 2^{\floor{\log_2 6n}}} + \f
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../sorting/minimum-comparison-sort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../sorting/poset-efficiency.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -296,24 +273,18 @@ F(n) = n\ceil{\log_2 \frac{3}{4} n} + \floor{\frac13 2^{\floor{\log_2 6n}}} + \f
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../sorting/minimum-comparison-sort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../sorting/poset-efficiency.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
@@ -330,34 +301,24 @@ F(n) = n\ceil{\log_2 \frac{3}{4} n} + \floor{\frac13 2^{\floor{\log_2 6n}}} + \f
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="../mathjax-config.js"></script>
-        
 
-        
 
     </body>
 </html>
