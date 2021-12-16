@@ -34,10 +34,10 @@
 Kronrod 注意到，假設 $|A|$ 的長度比 $|B|$ 短。如果我們將 $A$ 搬到左邊，使得 $A$ 與 $B$ 之間空出 $|A|$ 個暫存空間。
 這個時候，我們就可以安心地使用這塊空間當作合併排序的暫存空間了！就算合併時碰到了原本屬於 $B$ 區段的空間也沒有關係，因為可以保證不會重疊到 $B$ 目前的工作區間。（證明略）
 
-使用這個想法，我們可以得出像是 Katajianen-Pasanen-Teuhola 的原地演算法。
+使用這個想法，我們可以得出像是 Katajainen-Pasanen-Teuhola 的原地演算法。
 
 
-## Katajianen-Pasanen-Teuhola 的原地類合併排序法
+## Katajainen-Pasanen-Teuhola 的原地類合併排序法
 
 假設輸入的陣列為 $A[0..n-1]$ 其中 $n=2^k$。這個排序演算法總共分成三個部分。
 
@@ -87,6 +87,6 @@ $$
 <!-- * 交大黃光明教授和 S. Lin 當年在貝爾實驗室發表的合併演算法：https://epubs.siam.org/doi/abs/10.1137/0201004 -->
 
 [^1]: 實作上如果資料本身很大，通常也可以對「註標」進行排序就好。這樣雖然可以避免搬移資料，但是在比較大小時會產生一些記憶體隨機存取的操作，可能會產生出很多 Cache Miss。
-[^2]: [Practical In-Place Mergesort, J. Katajianen, T. Pasanen, and J. Teuhola, Nordic Journal of Computing 1996.](https://pdfs.semanticscholar.org/9de9/2ae68f76c040c40fad4bb3aabb7146cb8c3d.pdf)
+[^2]: [Practical In-Place Mergesort, J. Katajainen, T. Pasanen, and J. Teuhola, Nordic Journal of Computing 1996.](https://pdfs.semanticscholar.org/9de9/2ae68f76c040c40fad4bb3aabb7146cb8c3d.pdf)
 [^3]: https://stackoverflow.com/questions/2571049/how-to-sort-in-place-using-the-merge-sort-algorithm
 [^4]: 這裡的「常數」要仰賴計算模型而定。一般來說為了支援隨機記憶體存取(RAM Model)，我們必須讓一單位的記憶體放得下對應資料的記憶體位址。也就是說，當輸入有 $n$ 筆資料時，原地演算法允許我們使用 $O(\log n)$-bit 的額外記憶體空間。

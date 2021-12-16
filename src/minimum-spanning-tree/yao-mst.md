@@ -100,4 +100,4 @@ Yao's 演算法所需的時間複雜度為 $O(m\log\log n)$。
 
 [^2]: 近乎排序 (nearly sorted) 又稱為大致排序 (roughly sorted)、k-排序 (k-sorted)、k-幾乎排序 (k-almost sorted)。[維基百科](https://en.wikipedia.org/wiki/K-sorted_sequence)
 
-[^3]: [Yao 的演算法](https://archive.org/details/oeloglogvalgorit691yaoa/page/n13/mode/2up)裡面，Yao 使用的 $k$ 實際上是這篇內容的 $m/nk$。此外，Yao 的演算法將每一個鄰邊的陣列不分青紅皂白地直接拆分成 $m/nk$ 等分大小的群組，並將群組與群組之間由小到大排列。在預處理的分析上會多一項 $+O(m\log \frac{m}{nk})$ 出來。
+[^3]: [Yao 的演算法](https://archive.org/details/oeloglogvalgorit691yaoa/page/n13/mode/2up)裡面，Yao 使用的 $k$ 實際上是這篇內容的 $m/nk$。此外，Yao 的演算法將每一個鄰邊的陣列不分青紅皂白地直接拆分成 $m/nk$ 等分大小的群組，並將群組與群組之間由小到大排列。在預處理的分析上會多一項 $+O(m\log \frac{m}{nk})$ 出來。不過這麼做的好處就是不需要使用延森不等式了。
