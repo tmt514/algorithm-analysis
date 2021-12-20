@@ -39,6 +39,7 @@
   * [Borůvka-Prim 演算法](minimum-spanning-tree/boruvka-prim.md)
   * [Yao's 演算法](minimum-spanning-tree/yao-mst.md)
   * [Borůvka 樹分治（一）](minimum-spanning-tree/boruvka-steps-on-tree.md)
+  * [Borůvka 樹分治（二）](minimum-spanning-tree/boruvka-steps-on-tree2.md)
   * [Karger-Klein-Tarjan 演算法](minimum-spanning-tree/karger-klein-tarjan.md)
 * [動態圖論資料結構](dynamic-graph/README.md)
   * [無向圖的連通問題 Connectivity](dynamic-graph/connectivity/README.md)

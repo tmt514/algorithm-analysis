@@ -32,6 +32,7 @@
 ## 參考資料
 
 * https://www.cs.cmu.edu/~anupamg/advalgos17/scribes/lec01.pdf
+* [CMU Advanced Algorithms Fall 2020 課程講義，第一章](http://www.cs.cmu.edu/~15850/notes/cmu850-f20.pdf)
 * Gregory Bint, [Minimum Spanning Tree Verification](http://people.scs.carleton.ca/~maheshwa/courses/5703COMP/Notes/MST/comp5703mstv.pdf), Lecture Notes, 2013.
 
 [^1]: Andrew Chi-chih Yao, [An $O(|E|\log\log |V|)$ algorithm for finding minimum spanning trees](https://www.sciencedirect.com/science/article/abs/pii/0020019075900563), Information Processing Letters, 1975.
