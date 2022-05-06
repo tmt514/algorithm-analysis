@@ -22,7 +22,7 @@
 * Tarjan 1979. $O(m\alpha(m, n))$ [Applications of path compressions on balanced trees](https://www.cs.princeton.edu/courses/archive/fall03/cs528/handouts/applications%20of%20path%20compression.pdf)
 * Komlós 1985. 給出了只需要 $O(m)$ 次邊權比較的演算法  [Linear Verification for Spanning Trees](https://www.cs.princeton.edu/courses/archive/fall09/cos521/Handouts/linear.pdf), Combinatorica 1985.
 * Dixon-Rauch-Tarjan 1992. 利用查表實作 Komlós 演算法得到 $O(m)$ [Verification and Sensitivity Analysis of Minimum Spanning Trees in Linear Time.](https://epubs.siam.org/doi/abs/10.1137/0221070?journalCode=smjcat)
-* King 1993. 簡化了查表、給出有趣的樹分治結構 $O(m)$ [A Simpler Minimum Spanning Tree Verification Algorithm](https://www.cs.princeton.edu/courses/archive/fall03/cs528/handouts/A%20Simpler%20Minimum%20Spanning.pdf), Algorithmica, 1997.
+* King 1995. 簡化了查表、給出有趣的樹分治結構 $O(m)$ [A Simpler Minimum Spanning Tree Verification Algorithm](https://www.cs.princeton.edu/courses/archive/fall03/cs528/handouts/A%20Simpler%20Minimum%20Spanning.pdf), Algorithmica, 1997.
 * Hagerup 2009. 簡化了 King 的演算法當中對輕重邊的編碼部分 $O(m)$ [An Even Simpler Linear-Time Algorithm for Verifying Minimum Spanning Trees](https://link.springer.com/chapter/10.1007/978-3-642-11409-0_16), Graph Theoretic Concepts in Computer Science, 2009.
 
 ### 近似最小生成樹
