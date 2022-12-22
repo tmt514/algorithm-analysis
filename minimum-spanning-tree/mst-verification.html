@@ -211,7 +211,7 @@ Komlós 在 1985 年給出了一個超酷的定理，若你只在乎從每個點
 &amp;\le \log\left[\left(\frac{m_v+n_v}{n_v}\right)^{c_{h-1}\ n_v+1+\log_2n_v}\right]\ \ \ (\text{利用 } m_v\ge n_v \text{ 所以底數至少是 } 2)
 \end{aligned}
 \]</p>
-<p>重點來啦～由於 \(B\) 是一個完滿分叉樹，因此我們知道高度是 \(h\) 的樹，其節點數量至少有 \(2^h\) 這麼多個。
+<p>重點來啦～由於 \(B\) 是一個完滿分叉樹，因此我們知道高度是 \(h\) 的樹，其節點數量至少有 \(2^h-1\) 這麼多個。
 因此，我們可以隨意估計：存在一個絕對的常數 \(\hat{c}\ge 100\)，使得對於所有的 \(h\)，皆有 \(1+\log_2 n_v \le \frac{\hat{c}}{h^2}n_v\)。
 於是我們可以定義 \(c_h = \hat{c}(\frac{1}{1^2} + \frac{1}{2^2} + \cdots + \frac{1}{h^2}) = \Theta(1)\)，
 這麼一來便有 \(c_{h-1}n_v + 1 + \log_2 n_v \le c_hn_v\)，滿足數學歸納法的要求，所以就得證啦。</p>
@@ -228,6 +228,7 @@ Komlós 在 1985 年給出了一個超酷的定理，若你只在乎從每個點
 <h3 id="參考資料"><a class="header" href="#參考資料">參考資料</a></h3>
 <ul>
 <li>Valerie King 的投影片 <a href="http://www.cs.technion.ac.il/%7Eidddo/mstverif.pdf">http://www.cs.technion.ac.il/~idddo/mstverif.pdf</a></li>
+<li>Uri Zwick 的授課筆記 <a href="http://www.cs.tau.ac.il/%7Ezwick/grad-algo-0910/mst-verify.pdf">http://www.cs.tau.ac.il/~zwick/grad-algo-0910/mst-verify.pdf</a></li>
 </ul>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>János Komlós, <a href="https://www.cs.princeton.edu/courses/archive/fall09/cos521/Handouts/linear.pdf">Linear Verification for Spanning Trees</a>, Combinatorica 1985.</p>
