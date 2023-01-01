@@ -51,3 +51,5 @@
   * [最大流最小割定理](max-flow/max-flow-min-cut-theorem.md)
 * [乘法權重更新法](mwu/README.md)
   * [分數包裝問題](mwu/fractiona-packing-problem.md)
+* [趣味雜題集錦](fun/README.md)
+  * [1 外卡匹配問題](fun/1-sliding-window-matching.md)

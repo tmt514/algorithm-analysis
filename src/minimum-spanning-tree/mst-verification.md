@@ -76,7 +76,7 @@ $$
 \end{aligned}
 $$
 
-重點來啦～由於 $B$ 是一個完滿分叉樹，因此我們知道高度是 $h$ 的樹，其節點數量至少有 $2^h$ 這麼多個。
+重點來啦～由於 $B$ 是一個完滿分叉樹，因此我們知道高度是 $h$ 的樹，其節點數量至少有 $2^h-1$ 這麼多個。
 因此，我們可以隨意估計：存在一個絕對的常數 $\hat{c}\ge 100$，使得對於所有的 $h$，皆有 $1+\log_2 n_v \le \frac{\hat{c}}{h^2}n_v$。
 於是我們可以定義 $c_h = \hat{c}(\frac{1}{1^2} + \frac{1}{2^2} + \cdots + \frac{1}{h^2}) = \Theta(1)$，
 這麼一來便有 $c_{h-1}n_v + 1 + \log_2 n_v \le c_hn_v$，滿足數學歸納法的要求，所以就得證啦。
@@ -99,6 +99,7 @@ $$
 ### 參考資料
 
 * Valerie King 的投影片 [http://www.cs.technion.ac.il/~idddo/mstverif.pdf](http://www.cs.technion.ac.il/~idddo/mstverif.pdf)
+* Uri Zwick 的授課筆記 [http://www.cs.tau.ac.il/~zwick/grad-algo-0910/mst-verify.pdf](http://www.cs.tau.ac.il/~zwick/grad-algo-0910/mst-verify.pdf)
 
 [^1]: János Komlós, [Linear Verification for Spanning Trees](https://www.cs.princeton.edu/courses/archive/fall09/cos521/Handouts/linear.pdf), Combinatorica 1985.
 
