@@ -14,7 +14,7 @@
 
 ## 範例
 
-若 $T={\texttt{ab?ac?ab?b?a?ca}}$、$P={\texttt{a?b}}$，那麼 $P$ 出現在 $T$ 中 5 次。
+若 $T={\texttt{ab?ac?ab?b?a?ca}}$、$P={\texttt{a?b}}$，那麼 $P$ 出現在 $T$ 中 6 次。
 
 ## 方法一：直截了當地暴力比對
 
