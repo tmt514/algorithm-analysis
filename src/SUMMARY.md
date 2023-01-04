@@ -53,3 +53,4 @@
   * [分數包裝問題](mwu/fractiona-packing-problem.md)
 * [趣味雜題集錦](fun/README.md)
   * [1 外卡匹配問題](fun/1-sliding-window-matching.md)
+  * [2 兩數之和問題](fun/2-two-sum.md)
