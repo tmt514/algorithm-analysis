@@ -1,0 +1,270 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>2 兩數之和問題 - 演算法的分析與證明</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NT8GYBTL15"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NT8GYBTL15');
+</script>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../styles/mdbook.css">
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">2020 新計劃</a></li><li class="chapter-item expanded "><a href="../GLOSSARY.html">Glossary</a></li><li class="chapter-item expanded "><a href="../sorting/index.html">排序 Sorting</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../sorting/bubble-sort.html">20/01/02 - 泡沫排序法</a></li><li class="chapter-item expanded "><a href="../sorting/cocktail-sort.html">20/01/03 - 雞尾酒排序法</a></li><li class="chapter-item expanded "><a href="../sorting/inversions.html">20/01/04 - 逆序數對</a></li><li class="chapter-item expanded "><a href="../sorting/merge-sort.html">20/01/05 - 合併排序法</a></li><li class="chapter-item expanded "><a href="../sorting/in-place-mergesort.html">20/01/06 - 原地演算法</a></li><li class="chapter-item expanded "><a href="../sorting/quick-sort.html">20/01/08 - 快速排序法</a></li><li class="chapter-item expanded "><a href="../sorting/randomized-quicksort.html">20/01/10 - 隨機快速排序法（一）</a></li><li class="chapter-item expanded "><a href="../sorting/randomized-quicksort2.html">20/01/12 - 隨機快速排序法（二）</a></li><li class="chapter-item expanded "><a href="../sorting/randomized-quicksort3.html">20/01/13 - 隨機快速排序法（三）</a></li><li class="chapter-item expanded "><a href="../sorting/heapsort.html">20/01/16 - 堆積排序法</a></li><li class="chapter-item expanded "><a href="../sorting/comparison-based-sorting.html">20/01/18 - 比較排序下界</a></li><li class="chapter-item expanded "><a href="../sorting/minimum-comparison-sort.html">20/01/20 - 最少比較排序</a></li><li class="chapter-item expanded "><a href="../sorting/merge-insertion-sort.html">20/01/22 - 合併插入排序</a></li><li class="chapter-item expanded "><a href="../sorting/poset-efficiency.html">20/01/25 - 偏序集排序（一）</a></li><li class="chapter-item expanded "><a href="../sorting/linear-extensions.html">20/01/26 - 偏序集排序（二）</a></li><li class="chapter-item expanded "><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">20/01/27 - 偏序集排序（三）</a></li><li class="chapter-item expanded "><a href="../sorting/chain-polytope-and-graph-entropy.html">20/02/01 - 偏序集排序（四）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort5.html">20/02/03 - 偏序集排序（五）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort6.html">20/02/07 - 偏序集排序（六）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort7.html">20/02/14 - 偏序集排序（七）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort8.html">20/02/17 - 偏序集排序（八）</a></li><li class="chapter-item expanded "><a href="../sorting/poset-sort9.html">20/02/21 - 偏序集排序（九）</a></li><li class="chapter-item expanded "><a href="../sorting/shell-sort1.html">20/02/26 - 謝耳排序法（一）</a></li><li class="chapter-item expanded "><a href="../sorting/shell-sort2.html">20/02/28 - 謝耳排序法（二）</a></li><li class="chapter-item expanded "><a href="../sorting/shell-sort3.html">20/03/08 - 謝耳排序法（三）</a></li><li class="chapter-item expanded "><a href="../sorting/shell-sort4.html">20/10/12 - 謝耳排序法（四）</a></li><li class="chapter-item expanded "><a href="../sorting/sorting-network.html">21/01/03 - 排序網路</a></li><li class="chapter-item expanded "><a href="../sorting/sorting-network-correctness.html">21/01/04 - 驗證排序網路</a></li></ol></li><li class="chapter-item expanded "><a href="../minimum-spanning-tree/index.html">最小生成樹</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../minimum-spanning-tree/list.html">各式演算法</a></li><li class="chapter-item expanded "><a href="../minimum-spanning-tree/prims-mst.html">Prim's 演算法</a></li><li class="chapter-item expanded "><a href="../minimum-spanning-tree/kruskal-mst.html">Kruskal's 演算法</a></li><li class="chapter-item expanded "><a href="../minimum-spanning-tree/boruvka-mst.html">Borůvka's 演算法</a></li><li class="chapter-item expanded "><a href="../minimum-spanning-tree/boruvka-prim.html">Borůvka-Prim 演算法</a></li><li class="chapter-item expanded "><a href="../minimum-spanning-tree/yao-mst.html">Yao's 演算法</a></li><li class="chapter-item expanded "><a href="../minimum-spanning-tree/boruvka-steps-on-tree.html">Borůvka 樹分治（一）</a></li><li class="chapter-item expanded "><a href="../minimum-spanning-tree/boruvka-steps-on-tree2.html">Borůvka 樹分治（二）</a></li><li class="chapter-item expanded "><a href="../minimum-spanning-tree/mst-verification.html">驗證最小生成樹</a></li><li class="chapter-item expanded "><a href="../minimum-spanning-tree/karger-klein-tarjan.html">Karger-Klein-Tarjan 演算法</a></li></ol></li><li class="chapter-item expanded "><a href="../matching/index.html">圖匹配</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../matching/list.html">各式演算法</a></li></ol></li><li class="chapter-item expanded "><a href="../dynamic-graph/index.html">動態圖論資料結構</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dynamic-graph/connectivity/index.html">無向圖的連通問題 Connectivity</a></li><li class="chapter-item expanded "><a href="../dynamic-graph/reachability/index.html">有向圖的連通問題 Reachability</a></li></ol></li><li class="chapter-item expanded "><a href="../max-flow/index.html">最大網路流</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../max-flow/max-flow-min-cut-theorem.html">最大流最小割定理</a></li></ol></li><li class="chapter-item expanded "><a href="../mwu/index.html">乘法權重更新法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mwu/fractiona-packing-problem.html">分數包裝問題</a></li></ol></li><li class="chapter-item expanded "><a href="../fun/index.html">趣味雜題集錦</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../fun/1-sliding-window-matching.html">1 外卡匹配問題</a></li><li class="chapter-item expanded "><a href="../fun/2-two-sum.html" class="active">2 兩數之和問題</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">演算法的分析與證明</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="2-兩數之和問題-two-sum"><a class="header" href="#2-兩數之和問題-two-sum">2 兩數之和問題 Two Sum</a></h1>
+<p>在單調序列上頭使用雙指標技巧 (two pointers) 的題目中，最經典的大概就屬 Two Sum 了。</p>
+<blockquote>
+<p><strong>Two Sum 問題</strong>：給定一個長度為 \(n\) 的整數陣列 \(A[0..n-1]\) 以及一個目標整數 \(\mathit{target}\)，請設計一個演算法判斷是否存在兩個數字之和恰好為 \(\mathit{target}\)。輸入保證所有整數介於 \(-U\) 與 \(U\) 之間，為了方便起見我們<strong>允許</strong>兩數字重複選取。</p>
+</blockquote>
+<h2 id="範例"><a class="header" href="#範例">範例</a></h2>
+<p>若 \(A=[2, 3, -4, 5, 1, 4]\) 且 \(\mathit{target}=0\)，那麼答案為 \(\tt{YES}\)。</p>
+<h2 id="往下看之前"><a class="header" href="#往下看之前">往下看之前</a></h2>
+<p>可以先想看看，能不能設計出以下目標時間/空間複雜度的演算法？</p>
+<table><thead><tr><th style="text-align: center">時間</th><th style="text-align: center">額外空間</th><th style="text-align: center">可否使用隨機數</th></tr></thead><tbody>
+<tr><td style="text-align: center">\(O(n\log n)\)</td><td style="text-align: center">\(O(1)\)</td><td style="text-align: center">No</td></tr>
+<tr><td style="text-align: center">\(O(n\log\log n)\)</td><td style="text-align: center">\(O(n)\)</td><td style="text-align: center">No</td></tr>
+<tr><td style="text-align: center">\(O(n)\)</td><td style="text-align: center">\(O(n)\)</td><td style="text-align: center">Yes</td></tr>
+<tr><td style="text-align: center">\(O(n)\)</td><td style="text-align: center">\(O(1)\)</td><td style="text-align: center">Yes</td></tr>
+<tr><td style="text-align: center">\(O(n)\)</td><td style="text-align: center">\(O(1)\)</td><td style="text-align: center">No</td></tr>
+</tbody></table>
+<h2 id="方法一排序以後使用雙指標"><a class="header" href="#方法一排序以後使用雙指標">方法一：排序以後使用雙指標</a></h2>
+<p>雙指標 (two pointers) 其實泛指一類長相類似的演算法們，大家根據這些演算法的行為觀察後給予的一個稱呼。
+在這些演算法之中，比較常見的便是應用在已排序陣列中，利用陣列內容的單調性 (monotonicity)，進行搜尋或比較的一系列小技巧。
+比方說：快速排序法裡頭將陣列依照支點 \(\mathit{pivot}\) 值分成兩半的副程式 (subroutine)、合併排序法裡頭合併兩個已排序陣列的副程式等。
+本題 Two Sum 在陣列排序後，也能夠使用雙指標小技巧唷！</p>
+<p>如果陣列 \(A\) 中的元素已經由小排到大了，那麼我們就可以維護兩個註標 \(i\) 與 \(j\)（分別初始化為 \(i=0\) 與 \(j=n-1\)），接著我們可以依據當前的 \(A[i]+A[j]\) 之值決定如何更新我們的搜尋：若 \(A[i]+A[j] &gt; \mathit{target}\)，那麼我們便令 \(j\gets j-1\)；若 \(A[i]+A[j] &lt; \mathit{target}\) 那我們令 \(i\gets i+1\)。重複這個操作直到 \(A[i]+A[j]=\mathit{target}\) 或 \(i &gt; j\) 為止。由於 \(i\) 只會增加、\(j\) 只會減少，這個部分需要花費的時間是 \(O(n)\) 的。</p>
+<h3 id="起手砸個排序"><a class="header" href="#起手砸個排序">起手砸個排序</a></h3>
+<p>至於排序的部分，我們可以依據可使用的額外空間需求設計排序演算法：</p>
+<ul>
+<li>使用基於比較的排序方法可以輕鬆做到 \(O(n\log n)\) 時間以及 \(O(1)\) 額外空間（比如堆積排序法）。</li>
+<li>使用基於整數的排序方法可以做到 \(O(n\log_{1/\epsilon} U)\) 時間以及 \(O(U^\epsilon)\) 額外空間（比如基數排序法），其中 \(\epsilon\) 可以是任意小的整數。</li>
+<li>如果有 \(O(n)\) 的空間，那麼使用較複雜的 Han-Thorup 整數排序法可以做到 \(O(n\log\log n)\) 確定性時間，或者是 \(O(n\sqrt{\log\log n})\) 期望時間。</li>
+</ul>
+<p>目前還不確定整數排序是否能真的做到線性時間。</p>
+<h2 id="不是方法二的方法二使用雜湊方法"><a class="header" href="#不是方法二的方法二使用雜湊方法">不是方法二的方法二：使用雜湊方法</a></h2>
+<p>總之可以建立一個 <a href="https://www.w3schools.com/java/java_hashmap.asp"><code>HashMap</code></a> / <a href="https://wiki.python.org/moin/TimeComplexity">Python <code>set</code></a> / <a href="https://en.cppreference.com/w/cpp/container/unordered_set">C++ <code>unordered_set</code></a> 然後把 \(A\) 中所有數字丟進去，然後對每一筆資料 \(x\in A\)，檢查 \(\mathit{target}-x\) 是否也出現在該資料結構內即可。</p>
+<p>『時間與空間複雜度理所當然就是 \(O(n)\)。』</p>
+<p>細心的朋友們一定發現了，這樣的回答非常非常不嚴謹。上述這些資料結構，由於預設為固定亂數種子的關係，在最壞情況下，其表現可能是非常非常糟糕的。</p>
+<h2 id="方法二使用雜湊函數與雜湊表"><a class="header" href="#方法二使用雜湊函數與雜湊表">方法二：使用雜湊函數與雜湊表</a></h2>
+<p>如果要設計基於隨機與雜湊的演算法，就一定得提及 (1) 雜湊族 (hash family) 的選取與 (2) 雜湊表 (hash table) 資料結構的選擇。</p>
+<p>如果有 \(O(n)\) 的額外空間，那麼使用已知的雜湊表如 Hashing with Chaining (Linear Hashing)、Cuckoo Hashing、Linear Probing 等，都可以在 \(O(n)\) 期望/最差時間內將 \(n\) 個不同鍵值存放至不同地方。這些雜湊表搭配常見的<a href="https://en.wikipedia.org/wiki/Universal_hashing">通用雜湊函數族 (universal hash function family)</a> 都相當有效。
+因此，對於每一筆資料 \(x\in A\)，我們只需要檢查 \(\mathit{target}-x\) 是否出現在陣列 \(A\) 之中即可。</p>
+<hr />
+<p>現在我們試著利用通用雜湊函數族的特性，將額外空間降至 \(O(1)\)。</p>
+<p>考慮通用雜湊函數族 \(\mathcal{H}\)，其中的函數們 \(h: \{-U,\ldots, U\}\to\{0, 1, \ldots, n-1\}\)。
+根據通用函數族的定義，兩筆鍵值碰撞的機率是</p>
+<p>\[
+\Pr_{h\in \mathcal{H}}(h(x)=h(y)) \le \frac1m.
+\]</p>
+<p>上面這個式子告訴我們，如果從通用雜湊函數族隨機挑選一個雜湊函數出來，並將 \(n\) 筆鍵值透過 \(h\) 映射至 \(\{0, 1, \ldots, n-1\}\) 的話，期望的總碰撞對數不超過 \({n\choose 2}/n = (n-1)/2\) 的。利用這點，我們可以從中得到一個有用的散佈性質：</p>
+<h3 id="引理散佈性質"><a class="header" href="#引理散佈性質">引理（散佈性質）</a></h3>
+<p>若一個 \(\mathcal{H}:  \{-U,\ldots, U\}\to \{0, 1, \ldots, n-1\}\) 是一個通用雜湊函數族，那麼『\(n\) 筆相異鍵值被映射至至少 \(0.1n\) 個相異雜湊值』這個事件發生的機率至少為 \(9/10\)。 </p>
+<h3 id="證明"><a class="header" href="#證明">證明</a></h3>
+<p>令隨機變數 \(X\) 為總碰撞次數，從前述觀察我們有 \(\mathbb{E}[X]\le(n-1)/2\)。
+根據馬可夫不等式 (Markov's Inequality)，我們得知
+\[
+\Pr(X \ge 5.5n) \le \frac{\mathbb{E}[X]}{5.5n} &lt; \frac{1}{10}
+\]</p>
+<p>但是，當 \(n\) 筆相異鍵值被映射至至多 \(0.1n\) 個相異雜湊值時，至少會出現 \(55\times 0.1n=5.5n\) 次碰撞。根據上式，我們得出這樣的壞事件，出現的機率不超過 \(1/10\)，換句話說，成功的機率至少有 \(9/10\)。</p>
+<hr />
+<p>上面這個散佈性質的引理有什麼用途呢？對於每一個不同的雜湊值，我們可以只選第一次遇到的鍵值當作比對的對象（並將該鍵值交換至對應的陣列位置）。換句話說，經過一輪雜湊加上比對以後，有九成的機率我們可以排除至少一成的資料。當我們發現沒排除一成的資料的時候，我們可以視為雜湊失敗並重新雜湊。
+於是，我們可以在<strong>期望</strong>\(O(n)\) 的時間內<strong>保證</strong>排除一成資料。
+也就是說，『每一輪』的雜湊比對，能夠花期望 \(O(n)\) 的時間進行比對，讓剩餘沒有被比對過的資料數降至 \(\le 0.9n\)。利用期望值的可加性，這個演算法解決 Two Sum 問題的總期望時間是</p>
+<p>\[n + 0.9n + (0.9)^2n + \cdots = O(n).\]</p>
+<h2 id="備註"><a class="header" href="#備註">備註</a></h2>
+<p>不曉得有沒有 \(O(n)\) 時間、\(O(1)\) 額外空間的確定性演算法？</p>
+<h2 id="參考資料"><a class="header" href="#參考資料">參考資料</a></h2>
+<ul>
+<li>Leetcode 1 - <a href="https://leetcode.com/problems/two-sum/">Two Sum</a></li>
+<li><a href="https://www.cs.cornell.edu/courses/cs312/2008sp/lectures/lec21.html">(Cornell 課程筆記) 為什麼不該假設雜湊函數總是 Uniform 的呢</a></li>
+<li><a href="http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html">Chiu CC 的網誌：Hash Table 簡介</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../fun/1-sliding-window-matching.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../fun/1-sliding-window-matching.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../mathjax-config.js"></script>
+
+
+    </body>
+</html>
