@@ -54,3 +54,4 @@
 * [趣味雜題集錦](fun/README.md)
   * [1 外卡匹配問題](fun/1-sliding-window-matching.md)
   * [2 兩數之和問題](fun/2-two-sum.md)
+  * [3 骨牌鋪磚問題](fun/3-domino-tiling.md)
