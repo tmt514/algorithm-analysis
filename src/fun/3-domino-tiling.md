@@ -321,7 +321,8 @@ $$\prod_{j=1}^m\prod_{k=1}^n \left(4\cos^2\frac{j\pi}{m+1}+4\cos^2\frac{k\pi}{n+
       spandom.innerHTML = '$(k=' + (cuttingIndex) + ',邊界=' + (boundaryStateExpression.join('+')) + '=' + (boundaryStateValue) + ')$';
     else
       spandom.innerHTML = '$(k=' + (cuttingIndex) + ',邊界=0)$';
-    MathJax.Hub.Typeset(spandom);
+    if (window.MathJax !== undefined)
+      MathJax.Hub.Typeset(spandom);
   }
   function change_cuttingIndex() {
     cuttingIndex = Math.floor(Math.random() * (N-1)) + 2;
@@ -346,16 +347,29 @@ $$\prod_{j=1}^m\prod_{k=1}^n \left(4\cos^2\frac{j\pi}{m+1}+4\cos^2\frac{k\pi}{n+
 與其一口氣關注一整行，如果一次只考慮一格的動態規劃設計，在遞迴轉移的時候反而變得更單純些，實作上也變得相當精簡。這個方法的時間複雜度也是 $O(mn2^m)$。
 由於筆者稍微偷懶了一下的關係，不介意的話還請大家參考筆者曾經寫過的 [透過鋪磚塊問題來看看動態規劃可運用之處！](https://ithelp.ithome.com.tw/articles/10227405) 鐵人賽文章。
 
-## 方法三：平面圖完美匹配計數系列
+## 方法三：使用圖論轉化問題
 
+我們可以使用圖論的想法來解決這個問題！
+簡單來說，我們可以讓每一個棋盤上的沒有障礙物的格子都變成圖上的一個點、並且將相鄰的格子連上一條邊。
+這樣建立出來的圖為 $G$，其點數恰好為空格的數量、而每條邊就對應著可以放置骨牌的位置。
+一個成功的骨牌鋪法，便對應了圖 $G$ 上面的一組**完美匹配** (perfect matching)。
 
+而尋求骨牌鋪磚的鋪法數量，就可以轉化到圖 $G$ 上面完美匹配的數量了。
+對於一般的圖 $G$，這個問題其實在計算上是非常困難的 ([♯P-Complete](https://en.wikipedia.org/wiki/%E2%99%AFP-complete))。
+不過呢，我們建立出來的這個圖 $G$，是個平面圖 (planar graph)，在平面圖上則有個相當美妙的 Fischer-Kasteleyn-Temperley (FKT) 演算法來計算完美匹配的數量。
+
+### Fischer-Kasteleyn-Temperley 演算法
 
 ## 參考資料
 
-* 精簡的證明 [https://joshuahhh.com/projects/counting-domino-tilings.pdf](https://joshuahhh.com/projects/counting-domino-tilings.pdf)
 * 精美的投影片 [https://www.math.cmu.edu/~bwsulliv/domino-tilings.pdf](https://www.math.cmu.edu/~bwsulliv/domino-tilings.pdf)
 * 精妙的各種鋪磚結果 Federico Ardila and Richard P. Stanley, 《Tilings》 [https://math.mit.edu/~rstan/papers/tilings.pdf](https://math.mit.edu/~rstan/papers/tilings.pdf)
+* 平面圖上的完美匹配介紹 [https://people.maths.bris.ac.uk/~csxam/presentations/matchings.pdf](https://people.maths.bris.ac.uk/~csxam/presentations/matchings.pdf)
+* 線代啟示錄，[《特殊矩陣 (13)：反對稱矩陣》](https://ccjou.wordpress.com/2010/08/27/%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%99%A313%EF%BC%9A%E5%8F%8D%E5%B0%8D%E7%A8%B1%E7%9F%A9%E9%99%A3/), 2010.
+* 偶數階反對稱方陣的 Pfaffian 值證明 Walter Ledermann, [A Note on Skew-Symmetric Determinants](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/043C555E8C291D0E6E803E627A78930D/S0013091500018423a.pdf/note_on_skewsymmetric_determinants.pdf), 1991.
+* 更多 Pfaffian 值的證明 [http://scipp.ucsc.edu/~haber/webpage/pfaffian2.pdf](http://scipp.ucsc.edu/~haber/webpage/pfaffian2.pdf)
 * 圖譜論 Spectral Graph Theory 介紹與導讀 Jiaqi Jiang,《An Introduction to Spectral Graph Theory》 [https://math.uchicago.edu/~may/REU2012/REUPapers/JiangJ.pdf](https://math.uchicago.edu/~may/REU2012/REUPapers/JiangJ.pdf)
+* Kasteleyn's Theorem [https://www.theoremoftheday.org/MathPhysics/Kasteleyn/TotDKasteleyn.pdf](https://www.theoremoftheday.org/MathPhysics/Kasteleyn/TotDKasteleyn.pdf)
 
 
 
