@@ -144,6 +144,7 @@ function path2d_cross(i, j, canvasoffset) {
 }
 
 function drawcanvas() {
+  w=30;
 var can = document.getElementById('canvas1');
 var ctx = can.getContext('2d');
 ctx.reset();
@@ -260,6 +261,7 @@ $$\prod_{j=1}^m\prod_{k=1}^n \left(4\cos^2\frac{j\pi}{m+1}+4\cos^2\frac{k\pi}{n+
     return s;
   }
   function drawcanvas2() {
+    w=30;
     var can = document.getElementById('canvas2');
     var ctx = can.getContext('2d');
     ctx.reset();
@@ -354,11 +356,576 @@ $$\prod_{j=1}^m\prod_{k=1}^n \left(4\cos^2\frac{j\pi}{m+1}+4\cos^2\frac{k\pi}{n+
 這樣建立出來的圖為 $G$，其點數恰好為空格的數量、而每條邊就對應著可以放置骨牌的位置。
 一個成功的骨牌鋪法，便對應了圖 $G$ 上面的一組**完美匹配** (perfect matching)。
 
+<canvas id="canvas3" width="600" height="220"></canvas>
+<script>
+  function drawcanvas3() {
+    w=30;
+var can = document.getElementById('canvas3');
+var ctx = can.getContext('2d');
+ctx.reset();
+ctx.fillStyle='rgb(255,255,255)';
+var bg = new Path2D();
+bg.rect(0, 0, w*N+w, w*M+w);
+ctx.fill(bg);
+ctx.strokeStyle=`rgb(244,244,244)`;
+ctx.fillStyle=`rgb(244,244,244)`;
+var s = '';
+var reds = [];
+var i, j;
+for(i=0;i<M;i++) for(j=0;j<N;j++) {
+  if(table[i][j]===0) {
+    s += path2d_domino(i, j, 0);
+  } else if (table[i][j] === 2) {
+    s += path2d_domino(i, j, 2);
+  } else if (table[i][j]===-1) {    
+    reds.push(path2d_cross(i, j));
+  }
+}
+  var path = new Path2D(s);
+  ctx.stroke(path);
+  ctx.fill(path);
+  for (rs of reds) {
+    ctx.stroke(new Path2D(rs));
+  }
+  ctx.strokeStyle='#000000';
+  ctx.lineWidth=2;
+  for(i=0;i<M;i++) for(j=0;j<N;j++) {
+    if(table[i][j]!==-1 && j+1<N && table[i][j+1] !==-1) {
+      ctx.lineWidth=1;
+      ctx.strokeStyle='#CCCCCC';
+      ctx.beginPath();
+      ctx.moveTo(w*j+w,w*i+w);
+      ctx.lineTo(w*j+w+w,w*i+w);
+      ctx.stroke();
+    }
+    if(table[i][j]!==-1 && i+1<M && table[i+1][j] !==-1) {
+      ctx.lineWidth=1;
+      ctx.strokeStyle='#CCCCCC';
+      ctx.beginPath();
+      ctx.moveTo(w*j+w,w*i+w);
+      ctx.lineTo(w*j+w,w*i+w+w);
+      ctx.stroke();
+    }
+    if(table[i][j]===0) {
+      ctx.strokeStyle='#999999';
+      ctx.lineWidth=6;
+      ctx.beginPath();
+      ctx.moveTo(w*j+w,w*i+w);
+      ctx.lineTo(w*j+w+w,w*i+w);
+      ctx.stroke();
+      ctx.strokeStyle='#000000';
+      ctx.lineWidth=2;
+      ctx.beginPath();
+      ctx.moveTo(w*j+w,w*i+w);
+      ctx.lineTo(w*j+w+w,w*i+w);
+      ctx.stroke();
+    }
+    if(table[i][j]===2) {
+      ctx.strokeStyle='#999999';
+      ctx.lineWidth=6;
+      ctx.beginPath();
+      ctx.moveTo(w*j+w,w*i+w);
+      ctx.lineTo(w*j+w,w*i+w+w);
+      ctx.stroke();
+      ctx.strokeStyle='#000000';
+      ctx.lineWidth=2;
+      ctx.beginPath();
+      ctx.moveTo(w*j+w,w*i+w);
+      ctx.lineTo(w*j+w,w*i+w+w);
+      ctx.stroke();
+    }
+  }
+  for(i=0;i<M;i++) for(j=0;j<N;j++) if(table[i][j] !== -1) {
+    ctx.fillStyle='rgb(244,244,244)';
+    ctx.strokeStyle='#000000';
+    ctx.lineWidth=2;
+      ctx.beginPath();
+      ctx.arc(w*j+w/2+w/2,w*i+w/2+w/2,4,0,2*Math.PI);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(w*j+w/2+w/2,w*i+w/2+w/2,4,0,2*Math.PI);
+      ctx.stroke();
+    }
+}
+</script>
+
 而尋求骨牌鋪磚的鋪法數量，就可以轉化到圖 $G$ 上面完美匹配的數量了。
 對於一般的圖 $G$，這個問題其實在計算上是非常困難的 ([♯P-Complete](https://en.wikipedia.org/wiki/%E2%99%AFP-complete))。
 不過呢，我們建立出來的這個圖 $G$，是個平面圖 (planar graph)，在平面圖上則有個相當美妙的 Fischer-Kasteleyn-Temperley (FKT) 演算法來計算完美匹配的數量。
 
 ### Fischer-Kasteleyn-Temperley 演算法
+
+這個在平面圖上計算完美匹配數量的 FKT 演算法意外地酷炫而且單純，但是要證明它的正確性需要一些有趣的線性代數小知識。
+因此我們首先介紹這個演算法的步驟，然後再試圖證明它。
+
+* 第一步：先把圖 $G$ 繪製在平面上，找出每一個面 (face)。
+  * 此時我們可以先把『必定匹配的那些邊和點暫時拔掉』，所以剩下的每條邊都身處環中。
+* 第二步：找出圖 $G$ 的任意一個生成樹 (spanning tree)，並且對生成樹上的所有邊隨意**定向** (orientation)。
+* 第三步：重複以下步驟直到所有的邊都被定向為止：
+  * 找出一個面，使得構成這個面的邊們，恰好只剩下一條邊 $e$ 還沒被定向。
+  * 定向這條邊，使得沿著這個面順時針走訪時，恰好有**奇數條**順向的邊。
+* 經過第三步以後，我們得到一個有向圖 $G$。我們建構一個帶有正負號的鄰接矩陣 ($(-1, 1, 0)$-adjacency matrix) $A$，矩陣內 $(i, j)$ 位置的值根據邊 $(i, j)$ 的方向來決定：順向為 $1$、反向為 $-1$、沒有邊的時候是 $0$。
+* 我們要找的答案就是 $A$ 的[行列式值](https://en.wikipedia.org/wiki/Determinant)開平方根：$\sqrt{\det(A)}$。
+
+
+<script>
+var vertexID = [], vn = 0;
+var vinfo = [];
+var adj = [];
+var edges = [];
+var reversedEdge = {};
+var disabledvertices = {};
+var faces = [];
+var faceids = [];
+var missingeids = [];
+var LTR=1, RTL=2, NOTORIENTED=0, EDGEDISABLEDMATCH=3, EDGEDISABLEDEMPTY=4;
+var spanningtreeedges = [];
+function build_graph_from_table() {
+  // reset graph
+  adj = [];
+  edges = [];
+  reversedEdge = {};
+  faces = [];
+  vertexID = [];
+  vinfo = [];
+  vn = 0;
+  var i, j;
+  for(i=0;i<M;i++) {
+    vertexID.push([]);
+    for(j=0;j<N;j++) vertexID[i].push(-1);
+  }
+  // Vertex IDs.
+  for(i=0;i<M;i++) for(j=0;j<N;j++) {
+    if (table[i][j] !== -1) {
+      vertexID[i][j] = vn;
+      vn++;
+      adj.push([]);
+      vinfo.push([i, j]);
+    }
+  }
+  // Edges.
+  for(i=0;i<M;i++) for(j=0;j<N;j++) {
+    if(table[i][j] === -1) continue;
+    function addEdge(u, v) {
+      edges.push([u, v, NOTORIENTED]);
+      adj[u].push(edges.length-1);
+      adj[v].push(edges.length-1);
+      reversedEdge[u+","+v] = edges.length-1;
+      reversedEdge[v+","+u] = edges.length-1;
+    };
+    if(i+1<M && table[i+1][j] !== -1) addEdge(vertexID[i][j], vertexID[i+1][j]);
+    if (j+1<N && table[i][j+1] !== -1) addEdge(vertexID[i][j], vertexID[i][j+1]);
+  }
+  // Remove deg 1 leaves and its matching.
+  disabledvertices = {};
+  var changed=true;
+  while (changed === true) {
+    changed=false;
+    for (v=0;v<vn;v++) {
+      if (disabledvertices[v] === true) continue;
+      var nbrcnt=0, vvnote=0, einote=0;
+      for (ei of adj[v]) {
+        var vv = edges[ei][0]+edges[ei][1]-v;
+        if (disabledvertices[vv] !== true) {
+          ++nbrcnt;
+          vvnote=vv;
+          einote=ei;
+        }
+      }
+      if (nbrcnt === 1) {
+        changed=true;
+        disabledvertices[v] = true;
+        disabledvertices[vvnote] = true;
+        edges[einote][2] = EDGEDISABLEDMATCH;
+        for (ei of adj[v]) if (edges[ei][2] === NOTORIENTED) edges[ei][2] = EDGEDISABLEDEMPTY;
+        for (ei of adj[vvnote]) if (edges[ei][2] === NOTORIENTED) edges[ei][2] = EDGEDISABLEDEMPTY;
+      }
+    }
+  }
+  // Spanning Trees.
+  var vs = [];
+  for (v=0;v<vn;v++) vs.push(v);
+  for (v=0;v<vn;v++) {
+    var vi = Math.floor(Math.random() * (vn-v))+v;
+    [vs[v], vs[vi]] = [vs[vi], vs[v]];
+  }
+  var vused = {};
+  spanningtreeedges = [];
+  for (vi=0;vi<vn;vi++) {
+    var v = vs[vi];
+    if (vused[v] === true || disabledvertices[v] === true) continue;
+    vused[v] = true;
+    var que = [v], qb=0, qe=1;
+    while (qb < qe) {
+      v = que[qb];
+      qb++;
+      for (eid of adj[v]) {
+        vv = edges[eid][0] + edges[eid][1] - v;
+        if (vused[vv] === true || disabledvertices[vv] === true) continue;
+        vused[vv] = true;
+        que[qe] = vv;
+        qe++;
+        spanningtreeedges.push(eid);
+        edges[eid][2] = (edges[eid][0] === v? LTR:RTL);
+      }
+    }
+  }
+  // Faces.
+  faces = [];
+  var visitedcell = {};
+  for(i=1;i<M;i++) for(j=1;j<N;j++) {
+    if(visitedcell[i+","+j]===true) continue;
+    visitedcell[i+","+j]=true;
+    var que = [[i, j]], qb = 0, qe = 1;
+    var freeworld = false;
+    while (qb < qe) {
+      [x, y] = que[qb];
+      qb++;
+      function testedge(x, y, coor) {
+        u = vertexID[coor[0]][coor[1]];
+        v = vertexID[coor[2]][coor[3]];
+        var canwalkthrough = false;
+        if (u === -1 || v === -1) canwalkthrough = true;
+        else if (disabledvertices[u] === true || disabledvertices[v] === true) canwalkthrough = true;
+        else {
+          eid = reversedEdge[u+","+v];
+          if (edges[eid][2] === EDGEDISABLEDMATCH || edges[eid][2] === EDGEDISABLEDEMPTY)
+            canwalkthrough = true;
+        }
+        if (canwalkthrough === true) {
+          if (x <= 0 || x >= M || y <= 0 || y >= N) return true;
+          if (visitedcell[x+","+y] ===true) return false;
+          visitedcell[x+","+y] = true;
+          que.push([x, y]);
+          qe++;
+        }
+        return false;
+      };
+      freeworld ||= testedge(x-1, y, [x-1, y-1, x-1, y]);
+      freeworld ||= testedge(x, y+1, [x-1, y, x, y]);
+      freeworld ||= testedge(x+1, y, [x, y, x, y-1]);
+      freeworld ||= testedge(x, y-1, [x, y-1, x-1, y-1]);
+    }
+    if (freeworld === false) {
+      faces.push(que); // store entire que.
+    }
+  }
+  // Re-order all faces.
+  var nfaces = faces.length;
+  var visitedfaces = {};
+  faceids = [];
+  missingeids = [];
+  for (nf = 0; nf < nfaces; nf++) {
+    for (i = 0; i < nfaces; i++) {
+      if (visitedfaces[i] === true) continue;
+      var clockwisecnt = 0;
+      var alreadyEdge = {};
+      var unknownedgecnt = 0, unknowneid = 0, shouldbe = NOTORIENTED;
+      function consideredge(sx, sy, tx, ty) {
+        u = vertexID[sx][sy];
+        v = vertexID[tx][ty];
+        if (u === -1 || v === -1) return 0;
+        if (disabledvertices[u] === true || disabledvertices[v] === true) return 0;
+        eid = reversedEdge[u+","+v];
+        if (edges[eid][2] === EDGEDISABLEDMATCH || edges[eid][2] === EDGEDISABLEDEMPTY) return 0;
+        if (alreadyEdge[eid] === true) return 0;
+        alreadyEdge[eid] = true;
+        if (edges[eid][2] === NOTORIENTED) {
+          ++unknownedgecnt;
+          unknowneid = eid;
+          if (edges[eid][0] === u) shouldbe = LTR;
+          if (edges[eid][0] === v) shouldbe = RTL;
+          return 0;
+        }
+        if (edges[eid][0] === u && edges[eid][2] === LTR) return 1;
+        if (edges[eid][0] === v && edges[eid][2] === RTL) return 1;
+        return 0;
+      }
+      for ([x, y] of faces[i]) {
+        clockwisecnt += consideredge(x-1, y-1, x-1, y);
+        clockwisecnt += consideredge(x-1, y, x, y);
+        clockwisecnt += consideredge(x, y, x, y-1);
+        clockwisecnt += consideredge(x, y-1, x-1, y-1);
+      }
+      if (unknownedgecnt === 1) {
+        faceids.push(i);
+        missingeids.push(unknowneid);
+        if (clockwisecnt % 2 !== 0) shouldbe = (LTR+RTL-shouldbe);
+        edges[unknowneid][2] = shouldbe;
+        visitedfaces[i] = true;
+        break;
+      }
+    }
+  }
+}
+</script>
+
+<button onClick='javascript:startanimation(0)'>第一步：繪製圖 $G$ 然後把其中端點度數為 $1$、必須匹配的邊拔光光</button><br/>
+<button onClick='javascript:startanimation(1)'>第二步：找一個生成樹，並且將生成樹的邊隨意定向</button><br/>
+<button onClick='javascript:startanimation(2)'>第三步：每次找個有唯一缺口的面，並決定那條缺口上的邊的方向</button><br/>
+<canvas id="canvas4" width="600" height="290"></canvas>
+
+<script>
+var animationStartTime = null;
+var previousTimestamp = null;
+var currentRequestID = null;
+
+function ctxdrawvertex(ctx, cx, cy, isdisabled) {
+  ctx.fillStyle='rgb(244,244,244)';
+  if (isdisabled === true) {
+    ctx.fillStyle='rgb(0,0,0)';
+  }
+  ctx.strokeStyle='#000000';
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.arc(cx,cy,4,0,2*Math.PI);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(cx,cy,4,0,2*Math.PI);
+  ctx.stroke();
+}
+
+function ctxreset(ctx) {
+  ctx.reset();
+  ctx.fillStyle='rgb(255,255,255)';
+  var bg = new Path2D();
+  bg.rect(0, 0, w*N+w, w*M+w);
+  ctx.fill(bg);
+}
+
+function ctxdrawgraph(ctx, edgecounts) {
+  var showedvertices = {};
+  for (e=0;e<edgecounts && e<edges.length;e++) {
+    x = edges[e][0];
+    y = edges[e][1];
+    [ix, jx] = [vinfo[x][0], vinfo[x][1]];
+    [iy, jy] = [vinfo[y][0], vinfo[y][1]];
+    showedvertices[x] = true;
+    showedvertices[y] = true;
+    ctx.lineWidth=1;
+    ctx.strokeStyle='#CCCCCC';
+    if (edges[e][2] === EDGEDISABLEDMATCH) {
+      ctx.strokeStyle='#333333';
+      ctx.lineWidth=3;
+    }
+    if (edges[e][2] === EDGEDISABLEDEMPTY) {
+      continue;
+    }
+    ctx.beginPath();
+    ctx.moveTo(w*jx+w,w*ix+w);
+    ctx.lineTo(w*jy+w,w*iy+w);
+    ctx.stroke();
+  }
+  for (v=0;v<vn;v++) {
+    if (v in showedvertices) {
+      [i, j] = [vinfo[v][0], vinfo[v][1]];
+      var cx = w*j+w/2+w/2;
+      var cy = w*i+w/2+w/2;
+      ctxdrawvertex(ctx, cx, cy, disabledvertices[v]);
+    }
+  }
+}
+
+function ctxdrawarrow(arrowtip, ctx, sx, sy, tx, ty) {
+  var dx = (sx - tx);
+  var dy = (sy - ty);
+  var dx5 = dx * 5.0 / Math.sqrt(dx*dx+dy*dy);
+  var dy5 = dy * 5.0 / Math.sqrt(dx*dx+dy*dy);
+  ctx.beginPath();
+  ctx.moveTo(sx, sy);
+  ctx.lineTo(tx+dx5, ty+dy5);
+  if (arrowtip === true) {
+    var theta = Math.PI/7;
+    var vx = (dx*Math.cos(theta)-dy*Math.sin(theta)) * 0.35;
+    var vy = (dx*Math.sin(theta)+dy*Math.cos(theta)) * 0.35;
+    var vvx = (dx*Math.cos(theta)+dy*Math.sin(theta)) * 0.35;
+    var vvy = (-dx*Math.sin(theta)+dy*Math.cos(theta)) * 0.35;
+    ctx.lineTo(tx+vx, ty+vy);
+    ctx.moveTo(tx+dx5, ty+dy5);
+    ctx.lineTo(tx+vvx, ty+vvy);
+  }
+  ctx.stroke();
+}
+
+function ctxdrawspanningtree(ctx, est, estdir) {
+  for (ei = 0; ei < est && ei < spanningtreeedges.length; ei++) {
+    x = edges[spanningtreeedges[ei]][0];
+    y = edges[spanningtreeedges[ei]][1];
+    dirs = edges[spanningtreeedges[ei]][2];
+    if (dirs === RTL) [x, y] = [y, x];
+    [ix, jx] = [vinfo[x][0], vinfo[x][1]];
+    [iy, jy] = [vinfo[y][0], vinfo[y][1]];
+    ctx.lineWidth=2;
+    ctx.strokeStyle='#EE3333';
+    if (ei < estdir)
+      ctxdrawarrow(/*arrowtip=*/true, ctx, w*jx+w, w*ix+w, w*jy+w, w*iy+w);
+    else
+      ctxdrawarrow(false, ctx, w*jx+w, w*ix+w, w*jy+w, w*iy+w);
+  }
+}
+
+function ctxdrawfaces(ctx, fcnt) {
+  for (fi = 0; fi < fcnt && fi < faceids.length; fi++) {
+    for ([x, y] of faces[faceids[fi]]) {
+      if (fi === Math.floor(fcnt)) {
+        ctx.fillStyle='rgb(200,200,255)';
+      } else {
+        ctx.fillStyle='rgb(244,244,255)';
+      }
+      ctx.fillRect(w*y, w*x, w, w);
+    }
+  }
+  for (fi = 0; fi < fcnt && fi < faceids.length; fi++) {
+    for ([x, y] of faces[faceids[fi]]) {
+      ctx.strokeStyle='#3333FF';
+      ctx.lineWidth=2;
+      u = edges[missingeids[fi]][0];
+      v = edges[missingeids[fi]][1];
+      dirs = edges[missingeids[fi]][2];
+      if (dirs === RTL) [u, v] = [v, u];
+      [ix, jx] = [vinfo[u][0], vinfo[u][1]];
+      [iy, jy] = [vinfo[v][0], vinfo[v][1]];
+      ctxdrawarrow(true, ctx, w*jx+w, w*ix+w, w*jy+w, w*iy+w);
+    }
+  }
+}
+
+function animate(timestamp) {
+  currentRequestID = null;
+  var alreadydone = false;
+  if (animationStartTime === null) {
+    animationStartTime = timestamp;
+    previousTimestamp = timestamp;
+  }
+  var elapsed = timestamp - animationStartTime;
+  if (timestamp - previousTimestamp < 20) {
+    currentRequestID = requestAnimationFrame(animate);
+    return;
+  }
+
+  var canvas = document.getElementById('canvas4');
+  var ctx = canvas.getContext('2d');
+  var edgecounts = edges.length * elapsed / 1000;
+  ctxreset(ctx);
+  ctxdrawgraph(ctx, edgecounts);
+
+  if (elapsed >= 1000) alreadydone = true;
+  previousTimestamp = timestamp;
+  if (!alreadydone)
+    currentRequestID = requestAnimationFrame(animate);
+}
+
+function animate1(timestamp) {
+  currentRequestID = null;
+  var alreadydone = false;
+  if (animationStartTime === null) {
+    animationStartTime = timestamp;
+    previousTimestamp = timestamp;
+  }
+  var elapsed = timestamp - animationStartTime;
+  if (timestamp - previousTimestamp < 20) {
+    currentRequestID = requestAnimationFrame(animate1);
+    return;
+  }
+
+  var canvas = document.getElementById('canvas4');
+  var ctx = canvas.getContext('2d');
+  ctxreset(ctx);
+  ctxdrawgraph(ctx, edges.length);
+
+  var est = spanningtreeedges.length * elapsed / 1000;
+  var estdir = spanningtreeedges.length * (Math.max(0, elapsed-1000)) / 1000;
+  ctxdrawspanningtree(ctx, est, estdir);
+
+  // draw vertices again.
+  for (v=0;v<vn;v++) {
+    [i, j] = [vinfo[v][0], vinfo[v][1]];
+    var cx = w*j+w/2+w/2;
+    var cy = w*i+w/2+w/2;
+    ctxdrawvertex(ctx, cx, cy, disabledvertices[v]);
+  }
+  
+  if (elapsed >= 2000) alreadydone = true;
+
+  previousTimestamp = timestamp;
+  if (!alreadydone)
+    currentRequestID = requestAnimationFrame(animate1);
+}
+
+function animate2(timestamp) {
+  currentRequestID = null;
+  var alreadydone = false;
+  if (animationStartTime === null) {
+    animationStartTime = timestamp;
+    previousTimestamp = timestamp;
+  }
+  var elapsed = timestamp - animationStartTime;
+  if (timestamp - previousTimestamp < 20) {
+    currentRequestID = requestAnimationFrame(animate2);
+    return;
+  }
+
+  var canvas = document.getElementById('canvas4');
+  var ctx = canvas.getContext('2d');
+  ctxreset(ctx);
+
+  var fcnt = faceids.length * elapsed / 1000;
+  ctxdrawfaces(ctx, fcnt);
+  ctxdrawgraph(ctx, edges.length);
+  ctxdrawspanningtree(ctx, spanningtreeedges.length, spanningtreeedges.length);
+
+  // draw vertices again.
+  for (v=0;v<vn;v++) {
+    [i, j] = [vinfo[v][0], vinfo[v][1]];
+    var cx = w*j+w/2+w/2;
+    var cy = w*i+w/2+w/2;
+    ctxdrawvertex(ctx, cx, cy, disabledvertices[v]);
+  }
+  
+  if (elapsed >= 1000) alreadydone = true;
+
+  previousTimestamp = timestamp;
+  if (!alreadydone)
+    currentRequestID = requestAnimationFrame(animate2);
+}
+
+function startanimation(animatetype) {
+  w=40;
+  animationStartTime = null;
+  previousTimestamp = null;
+  if (currentRequestID !== null) {
+    cancelAnimationFrame(currentRequestID);
+  }
+  if (animatetype === 0) {
+    currentRequestID = requestAnimationFrame(animate);
+  } else if (animatetype === 1) {
+    currentRequestID = requestAnimationFrame(animate1);
+  } else if (animatetype === 2) {
+    currentRequestID = requestAnimationFrame(animate2);
+  }
+}
+
+function drawcanvas4() {
+  var canvas = document.getElementById('canvas4');
+  var ctx = canvas.getContext('2d');
+  w=40;
+  ctxreset(ctx);
+  ctxdrawfaces(ctx, faceids.length);
+  ctxdrawgraph(ctx, edges.length);
+  ctxdrawspanningtree(ctx, spanningtreeedges.length, spanningtreeedges.length);
+  // draw vertices again.
+  for (v=0;v<vn;v++) {
+    [i, j] = [vinfo[v][0], vinfo[v][1]];
+    var cx = w*j+w/2+w/2;
+    var cy = w*i+w/2+w/2;
+    ctxdrawvertex(ctx, cx, cy, disabledvertices[v]);
+  }
+  w=30;
+}
+</script>
+
+這樣定義出來的矩陣 $A$，是一個斜對稱矩陣 (skew-symmetric)，在斜對稱矩陣上，其行列式值 $\det(A)$ 恰好會等於普法夫值 (Pfaffian) $\mathrm{pf}(A)$ 的平方。而根據每個面周圍的邊定向的情形，可以得知 $A$ 的普法夫值的**絕對值**恰好等於圖 $G$ 中完美匹配的數量。
+上面的證明大家可以參考[這份講義](http://scipp.ucsc.edu/~haber/webpage/pfaffian2.pdf)以及下面參考資料的投影片們囉！
 
 ## 參考資料
 
@@ -368,22 +935,26 @@ $$\prod_{j=1}^m\prod_{k=1}^n \left(4\cos^2\frac{j\pi}{m+1}+4\cos^2\frac{k\pi}{n+
 * 線代啟示錄，[《特殊矩陣 (13)：反對稱矩陣》](https://ccjou.wordpress.com/2010/08/27/%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%99%A313%EF%BC%9A%E5%8F%8D%E5%B0%8D%E7%A8%B1%E7%9F%A9%E9%99%A3/), 2010.
 * 偶數階反對稱方陣的 Pfaffian 值證明 Walter Ledermann, [A Note on Skew-Symmetric Determinants](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/043C555E8C291D0E6E803E627A78930D/S0013091500018423a.pdf/note_on_skewsymmetric_determinants.pdf), 1991.
 * 更多 Pfaffian 值的證明 [http://scipp.ucsc.edu/~haber/webpage/pfaffian2.pdf](http://scipp.ucsc.edu/~haber/webpage/pfaffian2.pdf)
-* 圖譜論 Spectral Graph Theory 介紹與導讀 Jiaqi Jiang,《An Introduction to Spectral Graph Theory》 [https://math.uchicago.edu/~may/REU2012/REUPapers/JiangJ.pdf](https://math.uchicago.edu/~may/REU2012/REUPapers/JiangJ.pdf)
 * Kasteleyn's Theorem [https://www.theoremoftheday.org/MathPhysics/Kasteleyn/TotDKasteleyn.pdf](https://www.theoremoftheday.org/MathPhysics/Kasteleyn/TotDKasteleyn.pdf)
+* 《Kasteleyn cokernels》 [https://arxiv.org/pdf/math/0108150.pdf](https://arxiv.org/pdf/math/0108150.pdf)
 
 
 
 <script>
   var i_bad_style = true;
   function resetboard(reset) {
+    w = 30;
     if (reset === 1) generateboard();
     if (reset === 0) randomrotate();
     if (reset === 514) partiallyrandom();
     drawcanvas();
     drawcanvas2();
+    drawcanvas3();
+    build_graph_from_table();
+    drawcanvas4();
     if (reset !== 514) updatestateencode();
     if(i_bad_style === true) {
-      console.log('這份 javascript 寫得很糟...還請各位先進同好鞭小力一點 Q_____Q');
+      console.log('這份 javascript 寫得很糟...還請各位先進同好多多指教，鞭小力一點 Q_____Q');
       i_bad_style = false;
     }
   }

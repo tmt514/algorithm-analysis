@@ -58,4 +58,4 @@
   * [1 外卡匹配問題](fun/1-sliding-window-matching.md)
   * [2 兩數之和問題](fun/2-two-sum.md)
   * [3 骨牌鋪磚問題](fun/3-domino-tiling.md)
-    * [骨牌鋪磚的證明](fun/3a-domino-tiling-proof.md)
+    * [關於空棋盤骨牌鋪磚公式](fun/3a-domino-tiling-proof.md)
