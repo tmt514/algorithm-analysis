@@ -1,0 +1,272 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>關於空棋盤骨牌鋪磚公式 - 演算法的分析與證明</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NT8GYBTL15"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NT8GYBTL15');
+</script>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../styles/mdbook.css">
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">2020 新計劃</a></li><li class="chapter-item expanded "><a href="../GLOSSARY.html">Glossary</a></li><li class="chapter-item expanded "><a href="../sorting/index.html">排序 Sorting</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../sorting/bubble-sort.html">泡沫排序法</a></li><li class="chapter-item "><a href="../sorting/cocktail-sort.html">雞尾酒排序法</a></li><li class="chapter-item "><a href="../sorting/inversions.html">逆序數對</a></li><li class="chapter-item "><a href="../sorting/merge-sort.html">合併排序法</a></li><li class="chapter-item "><a href="../sorting/in-place-mergesort.html">原地演算法</a></li><li class="chapter-item "><a href="../sorting/quick-sort.html">快速排序法</a></li><li class="chapter-item "><a href="../sorting/randomized-quicksort.html">隨機快速排序法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../sorting/randomized-quicksort.html">隨機快速排序法（一）</a></li><li class="chapter-item "><a href="../sorting/randomized-quicksort2.html">隨機快速排序法（二）</a></li><li class="chapter-item "><a href="../sorting/randomized-quicksort3.html">隨機快速排序法（三）</a></li></ol></li><li class="chapter-item "><a href="../sorting/heapsort.html">堆積排序法</a></li><li class="chapter-item "><a href="../sorting/comparison-based-sorting.html">比較排序下界</a></li><li class="chapter-item "><a href="../sorting/minimum-comparison-sort.html">最少比較排序</a></li><li class="chapter-item "><a href="../sorting/merge-insertion-sort.html">合併插入排序</a></li><li class="chapter-item "><a href="../sorting/poset-efficiency.html">偏序集排序</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../sorting/poset-efficiency.html">偏序集排序（一）</a></li><li class="chapter-item "><a href="../sorting/linear-extensions.html">偏序集排序（二）</a></li><li class="chapter-item "><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">偏序集排序（三）</a></li><li class="chapter-item "><a href="../sorting/chain-polytope-and-graph-entropy.html">偏序集排序（四）</a></li><li class="chapter-item "><a href="../sorting/poset-sort5.html">偏序集排序（五）</a></li><li class="chapter-item "><a href="../sorting/poset-sort6.html">偏序集排序（六）</a></li><li class="chapter-item "><a href="../sorting/poset-sort7.html">偏序集排序（七）</a></li><li class="chapter-item "><a href="../sorting/poset-sort8.html">偏序集排序（八）</a></li><li class="chapter-item "><a href="../sorting/poset-sort9.html">偏序集排序（九）</a></li></ol></li><li class="chapter-item "><a href="../sorting/shell-sort1.html">謝耳排序法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../sorting/shell-sort1.html">謝耳排序法（一）</a></li><li class="chapter-item "><a href="../sorting/shell-sort2.html">謝耳排序法（二）</a></li><li class="chapter-item "><a href="../sorting/shell-sort3.html">謝耳排序法（三）</a></li><li class="chapter-item "><a href="../sorting/shell-sort4.html">謝耳排序法（四）</a></li></ol></li><li class="chapter-item "><a href="../sorting/sorting-network.html">排序網路</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../sorting/sorting-network-correctness.html">驗證排序網路</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../minimum-spanning-tree/index.html">最小生成樹</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../minimum-spanning-tree/list.html">各式演算法</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/prims-mst.html">Prim's 演算法</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/kruskal-mst.html">Kruskal's 演算法</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/boruvka-mst.html">Borůvka's 演算法</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/boruvka-prim.html">Borůvka-Prim 演算法</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/yao-mst.html">Yao's 演算法</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/boruvka-steps-on-tree.html">Borůvka 樹分治（一）</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/boruvka-steps-on-tree2.html">Borůvka 樹分治（二）</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/mst-verification.html">驗證最小生成樹</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/karger-klein-tarjan.html">Karger-Klein-Tarjan 演算法</a></li></ol></li><li class="chapter-item expanded "><a href="../matching/index.html">圖匹配</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../matching/list.html">各式演算法</a></li></ol></li><li class="chapter-item expanded "><a href="../dynamic-graph/index.html">動態圖論資料結構</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../dynamic-graph/connectivity/index.html">無向圖的連通問題 Connectivity</a></li><li class="chapter-item "><a href="../dynamic-graph/reachability/index.html">有向圖的連通問題 Reachability</a></li></ol></li><li class="chapter-item expanded "><a href="../max-flow/index.html">最大網路流</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../max-flow/max-flow-min-cut-theorem.html">最大流最小割定理</a></li></ol></li><li class="chapter-item expanded "><a href="../mwu/index.html">乘法權重更新法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mwu/fractiona-packing-problem.html">分數包裝問題</a></li></ol></li><li class="chapter-item expanded "><a href="../fun/index.html">趣味雜題集錦</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../fun/1-sliding-window-matching.html">1 外卡匹配問題</a></li><li class="chapter-item "><a href="../fun/2-two-sum.html">2 兩數之和問題</a></li><li class="chapter-item expanded "><a href="../fun/3-domino-tiling.html">3 骨牌鋪磚問題</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../fun/3a-domino-tiling-proof.html" class="active">關於空棋盤骨牌鋪磚公式</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">演算法的分析與證明</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="關於空棋盤骨牌鋪磚公式-formula-for-domino-tilings"><a class="header" href="#關於空棋盤骨牌鋪磚公式-formula-for-domino-tilings">關於空棋盤骨牌鋪磚公式 Formula for Domino Tilings</a></h1>
+<p>（這篇文章並不完整，如果想要看完整的證明還請您直接滑到最下面查看參考資料～）</p>
+<p>這個公式幾乎是同時間被 Temperley 以及 Fisher <sup class="footnote-reference"><a href="#1">1</a></sup> 與 Kasteleyn <sup class="footnote-reference"><a href="#2">2</a></sup> 在 1961 年相繼提出。
+這邊給出的證明是使用 Kasteleyn Matrix 的技巧，雖然 Kasteleyn Matrix 本身只能使用在沒有洞的格子點上，並不能直接推廣到平面圖，但中間使用圖譜論的計算方法還是滿有意思的。</p>
+<h2 id="定理"><a class="header" href="#定理">定理</a></h2>
+<p>給定正整數 \(m\) 與 \(n\)。那麼，使用 \(1\times 2\) 骨牌恰好鋪滿 \(m\times n\) 大小的棋盤的方法數恰有</p>
+<p>\[\prod_{j=1}^m\prod_{k=1}^n \left(4\cos^2\frac{j\pi}{m+1}+4\cos^2\frac{k\pi}{n+1}\right)^{1/4}\]</p>
+<p>這麼多種。</p>
+<h2 id="kasteleyn-矩陣"><a class="header" href="#kasteleyn-矩陣">Kasteleyn 矩陣</a></h2>
+<p>首先我們可以將 \(m\times n\) 棋盤做黑白染色。
+若我們將黑格與白格分別當作二分圖的兩邊，那麼我們可以透過一個方陣來描述哪些格子是相鄰的。
+而 Kasteleyn 矩陣 \(K\in\mathbb{C}^{\frac{mn}{2}\times \frac{mn}{2}}\) 就是對這個方陣的值進行特殊的賦權。其定義如下：</p>
+<p>\[K(b, w) = \left\{\begin{aligned}
+1 &amp; \ \ \ \ \text{ 若黑格 } b \text{ 與白格 } w \text{ 水平相鄰；}\\
+i &amp; \ \ \ \ \text{ 若黑格 } b \text{ 與白格 } w \text{ 垂直相鄰；}\\
+0 &amp; \ \ \ \ \text{ 其他。}
+\end{aligned}\right.\]</p>
+<p>其中 \(i=\sqrt{-1}\)。</p>
+<h3 id="kasteleyn-矩陣的行列式值"><a class="header" href="#kasteleyn-矩陣的行列式值">Kasteleyn 矩陣的行列式值</a></h3>
+<p>我們用 \(\sigma\) 來描述一個 \(1,2,\ldots, \frac{mn}{2}\) 的排列。
+將所有黑格與白格依照任意順序編號後，根據行列式的定義，我們可以把 \(\det(K)\) 寫成：</p>
+<p>\[
+\det(K)=\sum_{\sigma} (-1)^\sigma \prod_{i=1}^{mn/2} K(i, \sigma(i))
+\]</p>
+<p>其中 \((-1)^\sigma\) 代表該排列的奇偶性。
+從上面的式子可以看出，每一個排列 \(\sigma\) 對應的就是一組可能的白格、黑格的配對。
+而且那些 \(\prod_{i} K(i, \sigma(i))\neq 0\) 非零的項，代表了棋盤上的一組完美匹配。
+因此我們只需要證明任意兩組完美匹配 \(M, M'\) 對應之排列 \(\sigma_M, \sigma'_M\) 不會互相消掉即可。如果互相消掉的話可能就相消玉殞了。</p>
+<h3 id="kasteleyn-定理-1961"><a class="header" href="#kasteleyn-定理-1961">Kasteleyn 定理 [1961]</a></h3>
+<p>對於任意兩組完美匹配 \(M\) 與 \(M'\)，</p>
+<p>\[
+(-1)^{\sigma_M}\prod_{i=1}^{mn/2} K(i,\sigma_M(i)) = (-1)^{\sigma'_M}\prod_{i=1}^{mn/2} K(i, \sigma'_M(i)).
+\]</p>
+<p>而從上可以得出 \(|\det(A)\vert \) 恰為完美匹配的數量的結論。</p>
+<h3 id="kasteleyn-定理大概的證明"><a class="header" href="#kasteleyn-定理大概的證明">Kasteleyn 定理大概的證明</a></h3>
+<p>若 \(M\) 與 \(M'\) 是兩組完美匹配，那麼考慮其對稱差 (symmetric difference) \(M\Delta M'\)：它將會由若干個不相交的環所構成。
+因此，我們只需要考慮簡化後的版本，不妨假設 \(M\Delta M'\) 恰好是一個環 \(C\)。
+由於是格子點，因此要構成一個環，其環的長度一定是偶數。令 \(2k\) 為環的長度且 \(\ell\) 為被 \(C\) 包圍住的內部格子點的數量。
+若我們將奇數位置的邊 \(M\cap C\) 與偶數位置的邊 \(M'\cap C\) 分開計算，那麼只要證明以下引理，便能使定理成立：</p>
+<p>\[(-1)^{k+\ell-1} = \prod_{e\in (M\cap C)} K(e) \bigg/ \prod_{e \in(M'\cap C)} K(e).\]</p>
+<p>稍微整理一下兩邊，可以發現我們需要的是 \((-1)^{k+\ell-1} = (-1)^{\sigma_M} / (-1)^{\sigma'_M}\)。
+由於 \(M\) 與 \(M'\) 是兩個完美匹配、因此內部格子點的數量必定是偶數（否則把這個 cycle 拿掉後內部與外部就分開了，內部根本沒辦法形成一個完美匹配）。於是我們知道 \(\ell\) 是偶數。此外，從 \(\sigma_M\) 的確是可以透過 \(k-1\) 次置換變成 \(\sigma'_M\) (證明略)。因此定理成立。</p>
+<h3 id="非常粗略的引理證明"><a class="header" href="#非常粗略的引理證明">非常粗略的引理證明</a></h3>
+<p>這邊可以使用的是歸納法！這邊推薦的是 <a href="https://pi.math.cornell.edu/%7Elevine/18.312/alg-comb-lecture-17.pdf">Cornell 講義</a>給出的證明。該證明是對總環長與內部格子數進行歸納。Base Case 是兩條重合的邊，結論顯然成立。Inductive Case 是考慮環的某個角落，並且將之往內推進一格。此時可能會有三種推進一格的情形，而三種情形都恰好可以被處理乾乾淨淨 ：）</p>
+<h2 id="擴充成鄰接矩陣"><a class="header" href="#擴充成鄰接矩陣">擴充成鄰接矩陣</a></h2>
+<p>上述定義的卡斯德林 Kasteleyn 矩陣其實並非圖 \(G\) 的鄰接矩陣。
+但其實我們可以把它拓展成鄰接矩陣：</p>
+<p>\(A=\begin{bmatrix}
+0 &amp; K \\
+K^\top &amp; 0 \\
+\end{bmatrix}\)</p>
+<p>而經過某些線性代數計算後我們得知 \(\det(A) = \det(K)^2\)。
+若我們的目標是 \(m\times n\) 大小的棋盤上的完美匹配數量，我們只要求得其鄰接矩陣 (某些項為 \(i\)、某些項為 \(1\)) 之行列式值的公式即可！</p>
+<h3 id="特殊的圖有著特殊的行列式值"><a class="header" href="#特殊的圖有著特殊的行列式值">特殊的圖有著特殊的行列式值</a></h3>
+<p>要算出行列式值，也可以透過把所有特徵值通通乘起來得到它。於是我們的目標就是要找出所有矩陣 \(A\) 的特徵值！
+這邊我們可以利用圖譜論加上有趣的笛卡爾乘積圖 (或張量分解) 來解決它。
+細節可以參考<a href="https://math.uchicago.edu/%7Emay/REU2012/REUPapers/JiangJ.pdf">圖譜論 Spectral Graph Theory 介紹與導讀</a>與<a href="http://pi.math.cornell.edu/%7Elevine/18.312/alg-comb-lecture-18.pdf">Cornell 講義的後半段</a>。</p>
+<h2 id="參考資料"><a class="header" href="#參考資料">參考資料</a></h2>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>H. N. V. Temperley &amp; Michael E. Fisher (1961) <a href="https://www.tandfonline.com/doi/abs/10.1080/14786436108243366">Dimer problem in statistical mechanics-an exact result</a>, The Philosophical Magazine: A Journal of Theoretical Experimental and Applied Physics, 6:68, 1061-1063.</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>P.W.Kasteleyn (1961) <a href="https://www.sciencedirect.com/science/article/abs/pii/0031891461900635">The statistics of dimers on a lattice: I. The number of dimer arrangements on a quadratic lattice</a>, Physica, 27:12, 1209-1225.</p>
+</div>
+<ul>
+<li>精簡的證明，感覺有點簡化過頭了，很多地方其實沒交代地太清楚。 <a href="https://joshuahhh.com/projects/counting-domino-tilings.pdf">https://joshuahhh.com/projects/counting-domino-tilings.pdf</a></li>
+<li>最重要的是 Lemma 12: <a href="https://pi.math.cornell.edu/%7Elevine/18.312/alg-comb-lecture-17.pdf">https://pi.math.cornell.edu/~levine/18.312/alg-comb-lecture-17.pdf</a></li>
+<li>這個也很精簡。<a href="http://pi.math.cornell.edu/%7Elevine/18.312/alg-comb-lecture-18.pdf">http://pi.math.cornell.edu/~levine/18.312/alg-comb-lecture-18.pdf</a></li>
+<li>圖譜論 Spectral Graph Theory 介紹與導讀 Jiaqi Jiang,《An Introduction to Spectral Graph Theory》 <a href="https://math.uchicago.edu/%7Emay/REU2012/REUPapers/JiangJ.pdf">https://math.uchicago.edu/~may/REU2012/REUPapers/JiangJ.pdf</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../fun/3-domino-tiling.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../fun/3-domino-tiling.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../mathjax-config.js"></script>
+
+
+    </body>
+</html>
