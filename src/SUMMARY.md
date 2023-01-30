@@ -45,7 +45,7 @@
   * [Borůvka 樹分治（二）](minimum-spanning-tree/boruvka-steps-on-tree2.md)
   * [驗證最小生成樹](minimum-spanning-tree/mst-verification.md)
   * [Karger-Klein-Tarjan 演算法](minimum-spanning-tree/karger-klein-tarjan.md)
-* [圖匹配](matching/README.md)
+* [圖論中的匹配](matching/README.md)
   * [各式演算法](matching/list.md)
 * [動態圖論資料結構](dynamic-graph/README.md)
   * [無向圖的連通問題 Connectivity](dynamic-graph/connectivity/README.md)
@@ -59,3 +59,4 @@
   * [2 兩數之和問題](fun/2-two-sum.md)
   * [3 骨牌鋪磚問題](fun/3-domino-tiling.md)
     * [關於空棋盤骨牌鋪磚公式](fun/3a-domino-tiling-proof.md)
+  * [4 輾轉相除法的應用](fun/4-gcd-applications.md)

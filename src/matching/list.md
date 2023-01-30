@@ -31,6 +31,23 @@
 |:---------:|:--------:|:--------:|:-----------:|:-----:|
 |  |  | 確定性 | $O(m+n\log n)$ | |
 
+## 動態近似匹配 Dynamic Approximate Maximum Matching
+
+| 演算法文獻 | <nobr>圖的種類</nobr> | <nobr>近似值</nobr> | 更新時間 Update Time | 備註 |
+|:---------:|:--------:|:--------:|:-----------:|:-----:|
+| Ivković-Lloyd 1994 | 一般圖 | $2$ | 均攤 $O((m+n)^{\sqrt{2}/2})$ | 無權重 |
+| Onak-Rubinfield 2010 | 一般圖 | $O(1)$ | 高機率均攤 $O(\log^2 n)$ | 無權重 |
+| Gupta-Peng 2012 | 一般圖 | $1-\epsilon$ | $O(\sqrt{m}\epsilon^{-2})$ | 無權重 |
+| Gupta-Peng 2012 | 一般圖 | $1/3-\epsilon$ | $O(\sqrt{m}\epsilon^{-3}\log W)$ | 帶權 |
+| Gupta-Peng 2012 | 一般圖 | $1-\epsilon$ | $O(\sqrt{m}\epsilon^{-2-O(1/\epsilon)}\log W)$ | 帶權 |
+| Berstein-Stein 2016 | 一般圖 | $2/3-\epsilon$ | $O(m^{1/4}\epsilon^{-2.5})$ | 帶權 |
+
+* Gupta and Peng 2012. [https://arxiv.org/pdf/1304.0378.pdf](https://arxiv.org/pdf/1304.0378.pdf)
+* Berstein and Stein SODA 2016. [https://aaronbernstein.cs.rutgers.edu/wp-content/uploads/sites/43/2018/12/SODA_2016.pdf](https://aaronbernstein.cs.rutgers.edu/wp-content/uploads/sites/43/2018/12/SODA_2016.pdf)
+* Behnezhad and Khanna SODA 2022. [https://arxiv.org/pdf/2201.02905v1.pdf](https://arxiv.org/pdf/2201.02905v1.pdf)
+* Zoran Ivković & Errol L. Lloyd. [https://link.springer.com/chapter/10.1007/3-540-57899-4_44](https://link.springer.com/chapter/10.1007/3-540-57899-4_44)
+* Onak and Rubinfield, STOC 2010. [Maintaining a Large Matching and a Small Vertex Cover](https://onak.pl/papers/stoc_2010-maintaining_large_matching.html)
+
 
 ## 參考資料
 
