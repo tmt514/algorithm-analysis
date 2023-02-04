@@ -1,0 +1,377 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>4 輾轉相除法的應用 - 演算法的分析與證明</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NT8GYBTL15"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-NT8GYBTL15');
+        </script>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../styles/mdbook.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">2020 新計劃</a></li><li class="chapter-item expanded "><a href="../GLOSSARY.html">Glossary</a></li><li class="chapter-item expanded "><a href="../sorting/index.html">排序 Sorting</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../sorting/bubble-sort.html">泡沫排序法</a></li><li class="chapter-item "><a href="../sorting/cocktail-sort.html">雞尾酒排序法</a></li><li class="chapter-item "><a href="../sorting/inversions.html">逆序數對</a></li><li class="chapter-item "><a href="../sorting/merge-sort.html">合併排序法</a></li><li class="chapter-item "><a href="../sorting/in-place-mergesort.html">原地演算法</a></li><li class="chapter-item "><a href="../sorting/quick-sort.html">快速排序法</a></li><li class="chapter-item "><a href="../sorting/randomized-quicksort.html">隨機快速排序法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../sorting/randomized-quicksort.html">隨機快速排序法（一）</a></li><li class="chapter-item "><a href="../sorting/randomized-quicksort2.html">隨機快速排序法（二）</a></li><li class="chapter-item "><a href="../sorting/randomized-quicksort3.html">隨機快速排序法（三）</a></li></ol></li><li class="chapter-item "><a href="../sorting/heapsort.html">堆積排序法</a></li><li class="chapter-item "><a href="../sorting/comparison-based-sorting.html">比較排序下界</a></li><li class="chapter-item "><a href="../sorting/minimum-comparison-sort.html">最少比較排序</a></li><li class="chapter-item "><a href="../sorting/merge-insertion-sort.html">合併插入排序</a></li><li class="chapter-item "><a href="../sorting/poset-efficiency.html">偏序集排序</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../sorting/poset-efficiency.html">偏序集排序（一）</a></li><li class="chapter-item "><a href="../sorting/linear-extensions.html">偏序集排序（二）</a></li><li class="chapter-item "><a href="../sorting/order-polytope-and-ehrhart-polynomial.html">偏序集排序（三）</a></li><li class="chapter-item "><a href="../sorting/chain-polytope-and-graph-entropy.html">偏序集排序（四）</a></li><li class="chapter-item "><a href="../sorting/poset-sort5.html">偏序集排序（五）</a></li><li class="chapter-item "><a href="../sorting/poset-sort6.html">偏序集排序（六）</a></li><li class="chapter-item "><a href="../sorting/poset-sort7.html">偏序集排序（七）</a></li><li class="chapter-item "><a href="../sorting/poset-sort8.html">偏序集排序（八）</a></li><li class="chapter-item "><a href="../sorting/poset-sort9.html">偏序集排序（九）</a></li></ol></li><li class="chapter-item "><a href="../sorting/shell-sort1.html">謝耳排序法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../sorting/shell-sort1.html">謝耳排序法（一）</a></li><li class="chapter-item "><a href="../sorting/shell-sort2.html">謝耳排序法（二）</a></li><li class="chapter-item "><a href="../sorting/shell-sort3.html">謝耳排序法（三）</a></li><li class="chapter-item "><a href="../sorting/shell-sort4.html">謝耳排序法（四）</a></li></ol></li><li class="chapter-item "><a href="../sorting/sorting-network.html">排序網路</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../sorting/sorting-network-correctness.html">驗證排序網路</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../minimum-spanning-tree/index.html">最小生成樹</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../minimum-spanning-tree/list.html">各式演算法</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/prims-mst.html">Prim's 演算法</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/kruskal-mst.html">Kruskal's 演算法</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/boruvka-mst.html">Borůvka's 演算法</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/boruvka-prim.html">Borůvka-Prim 演算法</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/yao-mst.html">Yao's 演算法</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/boruvka-steps-on-tree.html">Borůvka 樹分治（一）</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/boruvka-steps-on-tree2.html">Borůvka 樹分治（二）</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/mst-verification.html">驗證最小生成樹</a></li><li class="chapter-item "><a href="../minimum-spanning-tree/karger-klein-tarjan.html">Karger-Klein-Tarjan 演算法</a></li></ol></li><li class="chapter-item expanded "><a href="../matching/index.html">圖論中的匹配</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../matching/list.html">各式演算法</a></li></ol></li><li class="chapter-item expanded "><a href="../dynamic-graph/index.html">動態圖論資料結構</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../dynamic-graph/connectivity/index.html">無向圖的連通問題 Connectivity</a></li><li class="chapter-item "><a href="../dynamic-graph/reachability/index.html">有向圖的連通問題 Reachability</a></li></ol></li><li class="chapter-item expanded "><a href="../max-flow/index.html">最大網路流</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../max-flow/max-flow-min-cut-theorem.html">最大流最小割定理</a></li></ol></li><li class="chapter-item expanded "><a href="../mwu/index.html">乘法權重更新法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mwu/fractiona-packing-problem.html">分數包裝問題</a></li></ol></li><li class="chapter-item expanded "><a href="../fun/index.html">趣味雜題集錦</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../fun/1-sliding-window-matching.html">1 外卡匹配問題</a></li><li class="chapter-item "><a href="../fun/2-two-sum.html">2 兩數之和問題</a></li><li class="chapter-item "><a href="../fun/3-domino-tiling.html">3 骨牌鋪磚問題</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../fun/3a-domino-tiling-proof.html">關於空棋盤骨牌鋪磚公式</a></li></ol></li><li class="chapter-item expanded "><a href="../fun/4-gcd-applications.html" class="active">4 輾轉相除法的應用</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../fun/4a-water.html">應用：倒水問題</a></li><li class="chapter-item "><a href="../fun/4b-inbetween-fraction.html">應用：夾在中間的分數</a></li><li class="chapter-item "><a href="../fun/4c-mod-p-polynomials.html">應用：多項式的解數</a></li><li class="chapter-item "><a href="../fun/4d-lattice-points-in-triangle.html">應用：三角形格子點問題</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">演算法的分析與證明</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="輾轉相除法的應用-applications-of-euclidean-algorithm"><a class="header" href="#輾轉相除法的應用-applications-of-euclidean-algorithm">輾轉相除法的應用 Applications of Euclidean Algorithm</a></h1>
+<ul>
+<li><a href="#%E9%97%9C%E6%96%BC%E8%BC%BE%E8%BD%89%E7%9B%B8%E9%99%A4%E6%B3%95">關於輾轉相除法</a>
+<ul>
+<li><a href="#%E8%A7%80%E5%AF%9F">觀察</a></li>
+<li><a href="#the-binary-gcd-algorithm">The Binary GCD Algorithm</a></li>
+<li><a href="#stehl%C3%A9-zimmermann-%E6%BC%94%E7%AE%97%E6%B3%95-%E7%84%A1%E7%B4%B0%E7%AF%80">Stehlé-Zimmermann 演算法 (無細節)</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E8%A6%8B%E4%B8%94%E9%87%8D%E8%A6%81%E7%9A%84%E6%87%89%E7%94%A8">常見且重要的應用</a></li>
+<li><a href="#%E6%87%89%E7%94%A8%E5%95%8F%E9%A1%8C-1%E5%80%92%E6%B0%B4%E5%95%8F%E9%A1%8C">應用問題 1：倒水問題</a></li>
+<li><a href="#%E6%87%89%E7%94%A8%E5%95%8F%E9%A1%8C-2%E5%A4%BE%E5%9C%A8%E4%B8%AD%E9%96%93%E7%9A%84%E5%88%86%E6%95%B8">應用問題 2：夾在中間的分數</a></li>
+<li><a href="#%E6%87%89%E7%94%A8%E5%95%8F%E9%A1%8C-3%E6%A8%A1-p-%E5%A4%9A%E9%A0%85%E5%BC%8F%E7%9A%84%E8%A7%A3%E6%95%B8">應用問題 3：模 (p) 多項式的解數</a></li>
+<li><a href="#%E6%87%89%E7%94%A8%E5%95%8F%E9%A1%8C-4%E4%B8%89%E8%A7%92%E5%BD%A2%E5%8D%80%E5%9F%9F%E4%B8%AD%E7%9A%84%E6%A0%BC%E5%AD%90%E9%BB%9E">應用問題 4：三角形區域中的格子點</a></li>
+</ul>
+<h2 id="關於輾轉相除法"><a class="header" href="#關於輾轉相除法">關於輾轉相除法</a></h2>
+<p>歐幾里得的<a href="https://zh.wikipedia.org/wiki/%E8%BC%BE%E8%BD%89%E7%9B%B8%E9%99%A4%E6%B3%95">輾轉相除法</a>可謂之最古早被記錄下來的演算法。對於任何兩個正整數 \(a, b\)，輾轉相除法能夠幫助我們快速找到<a href="https://zh.m.wikipedia.org/wiki/%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E6%95%B8">最大公因數</a> \(d=\gcd(a, b)\)。即最大的正整數 \(d\) 同時整除 \(a\) 與 \(b\)。利用最大公因數的特性 \(\gcd(a, b) = \gcd(b, \vert a-b\vert )\) 我們能夠設計出以下超級沒有效率的輾轉相除法：</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">fn abs(a: i32) -&gt; i32 { if a &lt; 0 {-a} else {a} }
+</span>fn gcd(a: i32, b: i32) -&gt; i32 {
+  match a {
+    0 =&gt; b,
+    _ =&gt; gcd(b, abs(a-b)),
+  }
+}
+<span class="boring">fn main() {
+</span><span class="boring">  let a = 123;
+</span><span class="boring">  let b = 456;
+</span><span class="boring">  println!(&quot;gcd({a}, {b}) = {}&quot;, gcd(a, b));
+</span><span class="boring">}</span></code></pre></pre>
+<p>如果我們被允許使用乘法與除法，那麼我們可以利用取餘數的方法，避免 \(a, b\) 兩數差距懸殊時多餘的重複計算。
+其正確性當然是源自 \(\gcd(a, b) = \gcd(b, (a\bmod b))\)。</p>
+<pre><pre class="playground"><code class="language-rust">fn gcd(a: i32, b: i32) -&gt; i32 {
+  match (a, b) {
+    (0, _) =&gt; b,
+    (_, 0) =&gt; a,
+    (_, _) =&gt; gcd(b, a%b),
+  }
+}
+<span class="boring">fn main() {
+</span><span class="boring">  let a = 514;
+</span><span class="boring">  let b = 999;
+</span><span class="boring">  println!(&quot;gcd({a}, {b}) = {}&quot;, gcd(a, b));
+</span><span class="boring">}</span></code></pre></pre>
+<p>要分析輾轉相除法的 \(O(\log (a+b))\) 時間複雜度，可以透過以下觀察：</p>
+<h3 id="觀察"><a class="header" href="#觀察">觀察</a></h3>
+<p>原本之輸入 \((a, b)\) 經過遞迴兩次以後得到的 \((a'', b'')\)，必定有 \(a''+b'' &lt; \frac23(a+b)\)。</p>
+<h4 id="觀察的證明"><a class="header" href="#觀察的證明">觀察的證明</a></h4>
+<p>對於輸入 \((a, b)\)，我們令第一次遞迴時傳入的參數是 \((a', b')\)、第二次遞迴時傳入的參數為 \((a'', b'')\)。
+顯然運算過程中兩數之和不會變大，即 \(a''+b''\le a'+b' \le a+b\)。</p>
+<ul>
+<li>若 \(a \ge b\)，那麼第一次遞迴呼叫時：
+<ul>
+<li>當 \(b &gt; a/2\) 時我們有 \((a\bmod b) = a - b\)；<br />
+於是 \(a'+b' = b + (a-b) = a &lt; \frac23(a+b)\)</li>
+<li>當 \(b \le a/2\) 時我們有 \((a\bmod b) &lt; b\)；<br />
+於是 \(a'+b' &lt; b + b \le \frac23(a+b)\)。</li>
+</ul>
+</li>
+<li>若 \(a &lt; b\)，那麼第一次遞迴呼叫相當於兩數交換，第二次遞迴呼叫時就能套用上述分析得證了。</li>
+</ul>
+<h4 id="備註"><a class="header" href="#備註">備註</a></h4>
+<p>看到這個『嚴格小於』就知道，這樣的分析其實是很不緊的。事實上，我們能證明遞迴次數不超過 \(2+\lceil\log_\varphi\max(a, b)\rceil\) 次，其中 \(\varphi\approx 1.618...\) 是黃金比例。至於這費事的證明就留給聰明的讀者您囉～</p>
+<h3 id="the-binary-gcd-algorithm"><a class="header" href="#the-binary-gcd-algorithm">The Binary GCD Algorithm</a></h3>
+<p>使用乘除法其實相當地昂貴，實作上如此、從計算理論中的 circuit complexity 角度來看<a href="https://www.csa.iisc.ac.in/~chandan/courses/arithmetic_circuits/notes/lec5.pdf">更是如此</a>。因此，我們能提出一個兼具理論與實作上相當有意思的問題：是否存在僅使用 \(O(\log (a+b))\) 次加減法及位元計算 (特別地指『除以 2』這種右移運算) 就能算出最大公因數呢？答案是可行的。利用到當 \(a, b\) 皆為偶數時，\(\gcd(a, b)=2\gcd(a/2,b/2)\)、以及其中一者為偶數時可以直接把它除以 \(2\)，就能設計出一個理想的輾轉相除法。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">use std::cmp::min;
+</span><span class="boring">fn abs(x: i32) -&gt; i32 { if x &lt; 0 {-x} else {x} }
+</span>fn binary_gcd(a: i32, b: i32) -&gt; i32 {
+  match (a, b, a%2, b%2) {
+    (0, ..) | (_, 0, ..) =&gt; a+b,
+    (.., 0, 0) =&gt; 2*binary_gcd(a/2, b/2),
+    (.., 0, _) =&gt; binary_gcd(a/2, b),
+    (.., _, 0) =&gt; binary_gcd(a, b/2),
+    (.., _, _) =&gt; binary_gcd(abs(a-b), min(a, b)),
+  }
+}
+<span class="boring">fn main() {
+</span><span class="boring">  let a = 514;
+</span><span class="boring">  let b = 999;
+</span><span class="boring">  println!(&quot;gcd({a}, {b}) = {}&quot;, binary_gcd(a, b));
+</span><span class="boring">}</span></code></pre></pre>
+<h4 id="備註-1"><a class="header" href="#備註-1">備註</a></h4>
+<p>Knuth 在他撰寫的《The Art of Computer Programming Vol. 2》巨著中指出，這個二元歐幾里德演算法，被學者們公認由 Silver 和 Terzian (1961) 與 Stein (1967) 這兩組人馬相繼提出。不過，Knuth 提及，相同的演算法其實可以追溯到漢代的《九章算術》，在<a href="https://zh.wikisource.org/wiki/%E4%B9%9D%E7%AB%A0%E7%AE%97%E8%A1%93">維基文庫</a>找到的原文是這樣說的：</p>
+<p>『術曰：可半者半之；不可半者，副置分母、子之數，以少減多，<strong>更相減損</strong>，求其等也。以等數約之。』</p>
+<p>文中提及可以用更相減損的方式化簡 \(\frac{49}{91}\) 這個分數，翻譯成現代演算法語言正是二元歐幾里德演算法！更多有趣的故事可以參考：</p>
+<ul>
+<li>澳洲國立大學的 Richard P. Brent 教授撰寫的<a href="https://maths-people.anu.edu.au/~brent/pd/rpb183pr.pdf">《Twenty year's analysis of the Binary Euclidean Algorithm》</a> 以及<a href="https://apps.dtic.mil/sti/pdfs/ADA029130.pdf">《Analysis of Binary Euclidean Algorithm》</a>。</li>
+<li>國家圖書館的演講<a href="https://www.ncl.edu.tw/downloadfile2_297_333.html">東西數學風格比較：《九章算術》vs.《幾何原本》</a>，台師大的洪萬生教授主講。</li>
+<li>台大 2020 年 DSA 課程作業一 <a href="https://www.csie.ntu.edu.tw/~htlin/course/dsa20spring/hw1/">https://www.csie.ntu.edu.tw/~htlin/course/dsa20spring/hw1/</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Binary_GCD_algorithm">維基百科</a></li>
+</ul>
+<h3 id="stehlé-zimmermann-演算法-無細節"><a class="header" href="#stehlé-zimmermann-演算法-無細節">Stehlé-Zimmermann 演算法 (無細節)</a></h3>
+<p>你可能會覺得，上面描述的輾轉相除法，已經可以做到 \(O(\log(a+b))\) 時間，應該已經很快了吧！其實不然。這邊的『時間複雜度』，指的是在特定計算模型底下對該演算法的分析。而我們在這個計算模型中，假設了加減法與位元運算可以在常數時間內做到。這對於一般的 32-位元、或是 64-位元整數來說是成立的。但是當數字變得超大，例如 \(10^5\) 位元的時候，現實與理論就會脫勾：因為當位元數 \(\kappa\) 非定數時，我們沒有辦法在常數時間內精確地算出任意兩個整數的差。</p>
+<p>若計算 \(\kappa\) 位元整數的加減法，需要花費 \(O(\kappa)\) 的時間，那麼前面提及的二元歐幾里德演算法，所花費的時間會是 \(O(\kappa^2)=O(\log^2(a+b))\)。Knuth 與 Schönhage 在 1971 年，在這個較為貼近現實的計算模型中，相繼提出了更快速的歐幾里德演算法，其時間複雜度分別為 \(O(\kappa\log^5\kappa\log\log\kappa)\) 與 \(O(\kappa\log^2\kappa\log\log \kappa)\)。Knuth 與 Schönhage 演算法在實作或證明上都有一定程度的複雜性。</p>
+<p>而 2004 年由兩位法國電腦科學家 <a href="http://perso.ens-lyon.fr/damien.stehle/">Damien Stehlé</a> 與 <a href="https://en.wikipedia.org/wiki/Paul_Zimmermann_(mathematician)">Paul Zimmermann</a> 提出了將 Knuth-Schönhage 演算法簡化後的 <a href="https://link.springer.com/chapter/10.1007/978-3-540-24847-7_31">Generalized Binary Euclidean Algorithm</a>(<a href="https://perso.ens-lyon.fr/damien.stehle/BINARY.html">勘誤</a>)，其時間複雜度也是 \(O(\kappa\log^2\kappa\log\log \kappa)\)，但作者們號稱無論在實作或證明上都比 Knuth-Schönhage 演算法簡單一些。</p>
+<p>詳情可以參考<a href="https://malb.io/">倫敦大學 Martin R. Albrecht 教授</a>的<a href="https://martinralbrecht.wordpress.com/2020/03/21/the-approximate-gcd-problem/">網誌</a>。簡單的 Half-GCD 的想法也可以在這份<a href="http://people.csail.mit.edu/madhu/ST12/scribe/lect06.pdf">講義</a>找到。</p>
+<h2 id="常見且重要的應用"><a class="header" href="#常見且重要的應用">常見且重要的應用</a></h2>
+<ul>
+<li>擴展的歐幾里德演算法 Extended Euclidean Algorithm。這個擴展的輾轉相除法可以用來解出<a href="https://zh.wikipedia.org/wiki/%E8%B2%9D%E7%A5%96%E7%AD%89%E5%BC%8F">貝祖定理 (Bézout's Lemma)</a>需要的整數係數。這在解決一類<a href="https://math.libretexts.org/Courses/Mount_Royal_University/MATH_2150%3A_Higher_Arithmetic/5%3A_Diophantine_Equations/5.1%3A_Linear_Diophantine_Equations">線性丟番圖問題</a>是相當有用的，而且在程式比賽中也常常出現！除了<a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">維基百科</a>以外，還可以參考這篇<a href="https://hackmd.io/@Koios/rJ_lER719">林禾堃同學的文章</a>、以及 <a href="https://cp-algorithms.com/algebra/extended-euclid-algorithm.html#algorithm">CP-Algorithms</a>。</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">fn gcd(a: i32, b: i32) -&gt; i32 {
+</span><span class="boring">  match (a, b) {
+</span><span class="boring">    (0, _) =&gt; b,
+</span><span class="boring">    (_, 0) =&gt; a,
+</span><span class="boring">    (_, _) =&gt; gcd(b, a%b),
+</span><span class="boring">  }
+</span><span class="boring">}
+</span>/// 這個函數會回傳兩個係數 x 和 y 使得 x*a + y*b = gcd(a, b)。
+fn ext_gcd(a: i32, b: i32) -&gt; (i32, i32) {
+  match (a, b) {
+    (0, _) =&gt; (0, 1),
+    (_, 0) =&gt; (1, 0),
+    (_, _) =&gt; {
+      let (x, y) = ext_gcd(b, a%b); // x*b + y*(a%b) = GCD
+      (y, x-y*(a/b))                // ?*a + ?*b     = GCD
+    },
+  }
+}
+<span class="boring">fn main() {
+</span><span class="boring">  let a = 514;
+</span><span class="boring">  let b = 999;
+</span><span class="boring">  let (x, y) = ext_gcd(a, b);
+</span><span class="boring">  println!(&quot;({x}) * {a} + ({y}) * {b} = {}&quot;, gcd(a, b));
+</span><span class="boring">}</span></code></pre></pre>
+<ul>
+<li>擴展的歐幾里德演算法可以被運用在尋找模 \(p\) 底下的乘法反元素，這在比如 <a href="https://crypto.stackexchange.com/questions/22490/rsa-key-generation-how-is-multiplicative-inverse-computed">RSA 等加密演算法</a> 以及<a href="https://zh.m.wikipedia.org/wiki/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86">中國剩餘定理</a>裡頭相當有用。</li>
+<li>此外，輾轉相除法在<a href="https://en.wikipedia.org/wiki/Pollard%27s_rho_algorithm">因數分解</a>等數論演算法來說也佔有一席之地。</li>
+</ul>
+<h2 id="應用問題-1倒水問題"><a class="header" href="#應用問題-1倒水問題">應用問題 1：倒水問題</a></h2>
+<blockquote>
+<p><strong>倒水問題</strong>：你有兩個無刻度、容量分別為 \(A\) 毫升與 \(B\) 毫升的空杯子，已知 \(\gcd(A, B)=1\)。給定一個目標容量 \(C\) 毫升，其中 \(A\le C\le B\)。每一次你可以將某個杯子裡的水清空、斟滿、或是傾倒於另一個杯子直到某個杯子滿了或某個杯子空了為止。請問至少需要幾次操作才能在容量為 \(B\) 毫升的杯子內置入恰好 \(C\) 毫升的水？</p>
+</blockquote>
+<div style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
+<img src="https://i.imgur.com/BnbQoCA.png" style="max-width:400px" alt="倒水問題在遊戲中的範例"/>
+<span>▲倒水問題是個很經典的益智遊戲。圖片節錄自《地下城物語》這款遊戲。</span>
+</div>
+<ul>
+<li><a href="./4a-water.html">想法與解題參考</a></li>
+</ul>
+<h2 id="應用問題-2夾在中間的分數"><a class="header" href="#應用問題-2夾在中間的分數">應用問題 2：夾在中間的分數</a></h2>
+<blockquote>
+<p><strong>中分問題</strong>：給你兩個分數 \(a/b\) 與 \(c/d\)，請你找出<b>分母最小</b>的分數 \(p/q\)，使得
+\[\frac{a}{b} &lt; \frac{p}{q} &lt; \frac{c}{d}。\]</p>
+</blockquote>
+<p>我真的覺得這題雖然不難但是超酷。</p>
+<ul>
+<li><a href="./4b-inbetween-fraction.html">想法與解題參考</a></li>
+</ul>
+<h2 id="應用問題-3模-p-多項式的解數"><a class="header" href="#應用問題-3模-p-多項式的解數">應用問題 3：模 \(p\) 多項式的解數</a></h2>
+<blockquote>
+<p><strong>模 \(p\) 多項式問題</strong>：給定一個整係數多項式 \(f(x) = a_nx^n+a_{n-1}x^{n-1}+\cdots + a_0\)，以及一個質數 \(p\)。問從 \(0\) 到 \(p-1\) 之間有多少個整數 \(t\) 能讓 \(f(t)\equiv 0 \ (\text{mod } p)\)？</p>
+</blockquote>
+<ul>
+<li><a href="https://twitter.com/americaotogamer/status/1619931484760195073">題源參考</a></li>
+<li><a href="./4c-mod-p-polynomials.html">想法與解題參考</a></li>
+</ul>
+<h2 id="應用問題-4三角形區域中的格子點"><a class="header" href="#應用問題-4三角形區域中的格子點">應用問題 4：三角形區域中的格子點</a></h2>
+<blockquote>
+<p><strong>格子點問題</strong>：給一條過原點的直線 \(y=\frac{a}{b}x\) 以及一個正整數 \(n\)。問由 \((0, 0), (n, 0), (n, \frac{a}{b}n)\) 這三個點圍成的三角形內部有多少個格子點？</p>
+</blockquote>
+<p>我真的覺得這題酷到爆炸。</p>
+<ul>
+<li><a href="./4d-lattice-points-in-triangle.html">想法與解題參考</a></li>
+</ul>
+<h4 id="備註-2"><a class="header" href="#備註-2">備註</a></h4>
+<p>當 \(\frac{a}{b}n\) 是整數的時候，可以使用<a href="https://en.wikipedia.org/wiki/Pick%27s_theorem">皮克公式</a>。但當 \(\frac{a}{b}n\) 不是整數的時候，恐怕就沒辦法直接使用皮克公式了。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../fun/3a-domino-tiling-proof.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../fun/4a-water.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../fun/3a-domino-tiling-proof.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../fun/4a-water.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js"></script>
+        <script src="../editor.js"></script>
+        <script src="../mode-rust.js"></script>
+        <script src="../theme-dawn.js"></script>
+        <script src="../theme-tomorrow_night.js"></script>
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../mathjax-config.js"></script>
+
+
+    </body>
+</html>
