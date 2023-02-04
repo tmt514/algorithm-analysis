@@ -60,3 +60,7 @@
   * [3 骨牌鋪磚問題](fun/3-domino-tiling.md)
     * [關於空棋盤骨牌鋪磚公式](fun/3a-domino-tiling-proof.md)
   * [4 輾轉相除法的應用](fun/4-gcd-applications.md)
+    * [應用：倒水問題](fun/4a-water.md)
+    * [應用：夾在中間的分數](fun/4b-inbetween-fraction.md)
+    * [應用：多項式的解數](fun/4c-mod-p-polynomials.md)
+    * [應用：三角形格子點問題](fun/4d-lattice-points-in-triangle.md)

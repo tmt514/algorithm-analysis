@@ -4,7 +4,7 @@
 
 ## 關於輾轉相除法
 
-歐幾里得的[輾轉相除法](https://zh.wikipedia.org/wiki/%E8%BC%BE%E8%BD%89%E7%9B%B8%E9%99%A4%E6%B3%95)可謂之最古早被記錄下來的演算法。對於任何兩個正整數 $a, b$，輾轉相除法能夠幫助我們快速找到最大公因數 $d=\gcd(a, b)$。即最大的正整數 $d$ 同時整除 $a$ 與 $b$。利用最大公因數的特性 $\gcd(a, b) = \gcd(b, |a-b|)$ 我們能夠設計出以下超級沒有效率的輾轉相除法：
+歐幾里得的[輾轉相除法](https://zh.wikipedia.org/wiki/%E8%BC%BE%E8%BD%89%E7%9B%B8%E9%99%A4%E6%B3%95)可謂之最古早被記錄下來的演算法。對於任何兩個正整數 $a, b$，輾轉相除法能夠幫助我們快速找到[最大公因數](https://zh.m.wikipedia.org/wiki/%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E6%95%B8) $d=\gcd(a, b)$。即最大的正整數 $d$ 同時整除 $a$ 與 $b$。利用最大公因數的特性 $\gcd(a, b) = \gcd(b, |a-b|)$ 我們能夠設計出以下超級沒有效率的輾轉相除法：
 
 ```rust
 # fn abs(a: i32) -> i32 { if a < 0 {-a} else {a} }
@@ -44,7 +44,7 @@ fn gcd(a: i32, b: i32) -> i32 {
 ### 觀察
 原本之輸入 $(a, b)$ 經過遞迴兩次以後得到的 $(a'', b'')$，必定有 $a''+b'' < \frac23(a+b)$。
 
-### 觀察的證明
+#### 觀察的證明
 
 對於輸入 $(a, b)$，我們令第一次遞迴時傳入的參數是 $(a', b')$、第二次遞迴時傳入的參數為 $(a'', b'')$。
 顯然運算過程中兩數之和不會變大，即 $a''+b''\le a'+b' \le a+b$。
@@ -93,16 +93,17 @@ Knuth 在他撰寫的《The Art of Computer Programming Vol. 2》巨著中指出
 * 澳洲國立大學的 Richard P. Brent 教授撰寫的[《Twenty year's analysis of the Binary Euclidean Algorithm》](https://maths-people.anu.edu.au/~brent/pd/rpb183pr.pdf) 以及[《Analysis of Binary Euclidean Algorithm》](https://apps.dtic.mil/sti/pdfs/ADA029130.pdf)。
 * 國家圖書館的演講[東西數學風格比較：《九章算術》vs.《幾何原本》](https://www.ncl.edu.tw/downloadfile2_297_333.html)，台師大的洪萬生教授主講。
 * 台大 2020 年 DSA 課程作業一 [https://www.csie.ntu.edu.tw/~htlin/course/dsa20spring/hw1/](https://www.csie.ntu.edu.tw/~htlin/course/dsa20spring/hw1/)
+* [維基百科](https://en.wikipedia.org/wiki/Binary_GCD_algorithm)
 
 ### Stehlé-Zimmermann 演算法 (無細節)
 
-你可能會覺得，上面描述的輾轉相除法，已經可以做到 $O(\log(a+b))$ 時間，應該已經很快了吧！其實不然。這邊的『時間複雜度』，指的是在特定計算模型底下對該演算法的分析。而我們在這個計算模型中，假設了加減法與位元運算可以在常數時間內做到。這對於一般的 32-位元、或是 64-位元整數來說是成立的。但是當數字變得超大，例如 $10^5$ 位元的時候，現實與理論就會脫勾：因為我們沒有辦法在常數時間內精確地算出任意兩個整數的差。
+你可能會覺得，上面描述的輾轉相除法，已經可以做到 $O(\log(a+b))$ 時間，應該已經很快了吧！其實不然。這邊的『時間複雜度』，指的是在特定計算模型底下對該演算法的分析。而我們在這個計算模型中，假設了加減法與位元運算可以在常數時間內做到。這對於一般的 32-位元、或是 64-位元整數來說是成立的。但是當數字變得超大，例如 $10^5$ 位元的時候，現實與理論就會脫勾：因為當位元數 $\kappa$ 非定數時，我們沒有辦法在常數時間內精確地算出任意兩個整數的差。
 
 若計算 $\kappa$ 位元整數的加減法，需要花費 $O(\kappa)$ 的時間，那麼前面提及的二元歐幾里德演算法，所花費的時間會是 $O(\kappa^2)=O(\log^2(a+b))$。Knuth 與 Schönhage 在 1971 年，在這個較為貼近現實的計算模型中，相繼提出了更快速的歐幾里德演算法，其時間複雜度分別為 $O(\kappa\log^5\kappa\log\log\kappa)$ 與 $O(\kappa\log^2\kappa\log\log \kappa)$。Knuth 與 Schönhage 演算法在實作或證明上都有一定程度的複雜性。
 
-而 2004 年由兩位法國電腦科學家 [Damien Stehlé](http://perso.ens-lyon.fr/damien.stehle/) 與 [Paul Zimmermann](https://en.wikipedia.org/wiki/Paul_Zimmermann_(mathematician)) 提出了將 Knuth-Schönhage 演算法簡化後的 [Generalized Binary Euclidean Algorithm](https://link.springer.com/chapter/10.1007/978-3-540-24847-7_31)([勘誤](https://perso.ens-lyon.fr/damien.stehle/BINARY.html))，其時間複雜度也是 $O(\kappa\log^2\kappa\log\log \kappa)$，但號稱無論在實作或證明上都比 Knuth-Schönhage 演算法簡單一些。
+而 2004 年由兩位法國電腦科學家 [Damien Stehlé](http://perso.ens-lyon.fr/damien.stehle/) 與 [Paul Zimmermann](https://en.wikipedia.org/wiki/Paul_Zimmermann_(mathematician)) 提出了將 Knuth-Schönhage 演算法簡化後的 [Generalized Binary Euclidean Algorithm](https://link.springer.com/chapter/10.1007/978-3-540-24847-7_31)([勘誤](https://perso.ens-lyon.fr/damien.stehle/BINARY.html))，其時間複雜度也是 $O(\kappa\log^2\kappa\log\log \kappa)$，但作者們號稱無論在實作或證明上都比 Knuth-Schönhage 演算法簡單一些。
 
-詳情可以參考[倫敦大學 Martin R. Albrecht 教授](https://malb.io/)的[網誌](https://martinralbrecht.wordpress.com/2020/03/21/the-approximate-gcd-problem/)。
+詳情可以參考[倫敦大學 Martin R. Albrecht 教授](https://malb.io/)的[網誌](https://martinralbrecht.wordpress.com/2020/03/21/the-approximate-gcd-problem/)。簡單的 Half-GCD 的想法也可以在這份[講義](http://people.csail.mit.edu/madhu/ST12/scribe/lect06.pdf)找到。
 
 ## 常見且重要的應用
 
@@ -141,11 +142,39 @@ fn ext_gcd(a: i32, b: i32) -> (i32, i32) {
 
 ## 應用問題 1：倒水問題
 
+> **倒水問題**：你有兩個無刻度、容量分別為 $A$ 毫升與 $B$ 毫升的空杯子，已知 $\gcd(A, B)=1$。給定一個目標容量 $C$ 毫升，其中 $A\le C\le B$。每一次你可以將某個杯子裡的水清空、斟滿、或是傾倒於另一個杯子直到某個杯子滿了或某個杯子空了為止。請問至少需要幾次操作才能在容量為 $B$ 毫升的杯子內置入恰好 $C$ 毫升的水？
+
 <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
 <img src="https://i.imgur.com/BnbQoCA.png" style="max-width:400px" alt="倒水問題在遊戲中的範例"/>
 <span>▲倒水問題是個很經典的益智遊戲。圖片節錄自《地下城物語》這款遊戲。</span>
 </div>
 
+* [想法與解題參考](./4a-water.md)
+
 ## 應用問題 2：夾在中間的分數
 
-## 應用問題 3：
+> **中分問題**：給你兩個分數 $a/b$ 與 $c/d$，請你找出<b>分母最小</b>的分數 $p/q$，使得
+$$\frac{a}{b} < \frac{p}{q} < \frac{c}{d}。$$
+
+我真的覺得這題雖然不難但是超酷。
+
+* [想法與解題參考](./4b-inbetween-fraction.md)
+
+## 應用問題 3：模 $p$ 多項式的解數
+
+> **模 $p$ 多項式問題**：給定一個整係數多項式 $f(x) = a_nx^n+a_{n-1}x^{n-1}+\cdots + a_0$，以及一個質數 $p$。問從 $0$ 到 $p-1$ 之間有多少個整數 $t$ 能讓 $f(t)\equiv 0 \ (\text{mod } p)$？
+
+* [題源參考](https://twitter.com/americaotogamer/status/1619931484760195073)
+* [想法與解題參考](./4c-mod-p-polynomials.md)
+
+## 應用問題 4：三角形區域中的格子點
+
+> **格子點問題**：給一條過原點的直線 $y=\frac{a}{b}x$ 以及一個正整數 $n$。問由 $(0, 0), (n, 0), (n, \frac{a}{b}n)$ 這三個點圍成的三角形內部有多少個格子點？
+
+我真的覺得這題酷到爆炸。
+
+* [想法與解題參考](./4d-lattice-points-in-triangle.md)
+
+#### 備註
+
+當 $\frac{a}{b}n$ 是整數的時候，可以使用[皮克公式](https://en.wikipedia.org/wiki/Pick%27s_theorem)。但當 $\frac{a}{b}n$ 不是整數的時候，恐怕就沒辦法直接使用皮克公式了。
