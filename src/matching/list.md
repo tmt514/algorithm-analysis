@@ -9,15 +9,23 @@
 | Gabow 1976[^5] | 一般圖 | 確定性 | $O(n^3)$ | |
 | Lawler 1976 |  一般圖 | 確定性 | $O(mn)$ | |
 | Karzanov 1976 | 一般圖 | 確定性 | $O(mn)$ | | 
+| Hopcroft-Karp 1973[^11] | 二分圖 | 確定性 | $O(m\sqrt{n})$ | |
+| Feder-Motwani 1995[^12] | 二分圖 | 確定性 | $O(m\sqrt{n}/f(n, m))$ | |
 
+* $f(n, m) = \log n / \log (n^2/m)$
 
 ## 最大帶權匹配演算法 Maximum Weighted Matching
 
 | 演算法文獻 | <nobr>圖的種類</nobr> | <nobr>演算法類型</nobr> | 時間複雜度 | 備註 |
 |:---------:|:--------:|:--------:|:-----------:|:-----:|
-|  |  | 確定性 | $O(m+n\log n)$ | |
+| Kuan 1955[^7] | 二分圖 | 確定性 | $O(n^3)$ | 匈牙利演算法 |
+| Fredman-Tarjan 1984[^8] | 二分圖 | 確定性 | $O(n(m+n\log n))$ | Fibonacci Heaps |
+| Gabow 1985[^9] | 二分圖 | 確定性 | $O(n^{3/4}m\log W)$ | Scaling |
+| Gabow-Tarjan 1989[^10] | 二分圖 | 確定性 | $O(\sqrt{n}m\log(nW))$ | |
+| Kao-Lam-Sung-Ting 1999[^6] | 二分圖 | 確定性 | $O(\sqrt{n}S/f(n, S/W))$ | |
 
-
+* $S$ 是所有邊權重總和。$W$ 是最大整數邊權。
+* $f(n, m) = \log n / \log (n^2/m)$
 
 ## 近似最大匹配
 
@@ -63,3 +71,23 @@
 
 [^5]: Harold N. Gabow, [An Efficient Implementation of Edmonds' Algorithm for Maximum Matching on Graphs](https://web.eecs.umich.edu/~pettie/matching/Gabow-general-matching-1976.pdf). (also in [Gabow's 1974 PhD Thesis](https://books.google.com/books/about/Implementation_of_Algorithms_for_Maximum.html?id=x9A-AAAAIAAJ))
 
+[^9]: H. N. Gabow, Scaling algorithms for network problems, Journal of Computer and System
+Sciences, 31 (1985), pp. 148–168.
+
+[^6]: Ming-Yang Kao, Tak Wah Lam, Wing-Kin Sung, and Hing-Fung Ting.
+[A Decomposition Theorem for Maximum Weight Bipartite Matchings](https://arxiv.org/pdf/cs/0011015.pdf). J, ACM 2001 and ESA 1999.
+
+[^7]: H. W. Kuan. The Hungarian method for the assignment problem, Naval Research Logistics
+Quarterly, 2 (1955), pp. 83–97.
+
+[^8]: M. L. Fredman and R. E. Tarjan. Fibonacci heaps and their uses in improved network
+optimization algorithms, Journal of the ACM, 34 (1987), pp. 596–615. FOCS 1984
+
+[^10]: H. N. Gabow and R. E. Tarjan, Faster scaling algorithms for network problems, SIAM
+Journal on Computing, 18 (1989), pp. 1013–1036. (also STOC 1988)
+
+[^11]: J. E. Hopcroft and R. M. Karp, An $n^{5/2}$ algorithm for maximum matching in bipartite
+graphs, SIAM Journal on Computing, 2 (1973), pp. 225–231
+
+[^12]: T. Feder and R. Motwani, Clique partitions, graph compression and speeding-up algorithms,
+Journal of Computer and System Sciences, 51 (1995), pp. 261–272
