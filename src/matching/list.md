@@ -9,7 +9,10 @@
 | Gabow 1976[^5] | 一般圖 | 確定性 | $O(n^3)$ | |
 | Lawler 1976 |  一般圖 | 確定性 | $O(mn)$ | |
 | Karzanov 1976 | 一般圖 | 確定性 | $O(mn)$ | | 
-| Hopcroft-Karp 1973[^11] | 二分圖 | 確定性 | $O(m\sqrt{n})$ | |
+| Hopcroft-Karp 1971[^11] | 二分圖 | 確定性 | $O(m\sqrt{n})$ | |
+| Dinitz-Karzanov 1973[^13] | 二分圖 | 確定性 | $O(m\sqrt{n})$ | Max Flow |
+| Micali-Vazirani 1980 | 一般圖 | 確定性 | $O(m\sqrt{n})$ | Vazirani 2014 |
+| Gabow-Tarjan 1991 | 一般圖 | 確定性 | $O(m\sqrt{n})$ | |
 | Feder-Motwani 1995[^12] | 二分圖 | 確定性 | $O(m\sqrt{n}/f(n, m))$ | |
 
 * $f(n, m) = \log n / \log (n^2/m)$
@@ -91,3 +94,5 @@ graphs, SIAM Journal on Computing, 2 (1973), pp. 225–231
 
 [^12]: T. Feder and R. Motwani, Clique partitions, graph compression and speeding-up algorithms,
 Journal of Computer and System Sciences, 51 (1995), pp. 261–272
+
+[^13]: Shimon Even, [The Max Flow Algorithm of Dinic and Karzanov: An Exposition](http://publications.csail.mit.edu/lcs/pubs/pdf/MIT-LCS-TM-080.pdf), 1976.
