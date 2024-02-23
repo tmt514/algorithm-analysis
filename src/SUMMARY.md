@@ -65,3 +65,4 @@
     * [應用：多項式的解數](fun/4c-mod-p-polynomials.md)
     * [應用：三角形格子點問題](fun/4d-lattice-points-in-triangle.md)
   * [5 XOR-三元組問題](fun/5-xor-triples.md)
+  * [6 TREE(3)](fun/6-tree3.md)

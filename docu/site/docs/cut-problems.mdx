@@ -1,0 +1,40 @@
+---
+sidebar_position: 1
+---
+
+# Graph Cuts
+
+## Linear Arrangment of Vertices
+
+:::info[Minimum Cut Linear Arrangment Problem]
+
+Given an undirected unweighted grpah $G=(V, E)$, find a permutation $\sigma$ of all vertices $\sigma(1), \sigma(2), \ldots, \sigma(n)$,
+such that $\max_{i=1}^{n-1} |\partial X_i|$ is minimized, where $X_i := \{\sigma(1), \ldots, \sigma(i)\}$.
+
+:::
+
+### Intractability
+
+First, this problem is NP-hard.
+
+### Exact Algorithms
+
+* Naive algorithm: $O(n\cdot n!)$.
+* Straightforward Dynamic Programming: $O(m2^n)$, can be improved to $O(m+n2^n)$.
+
+### Approximate Algorithms
+
+:::tip[Leighton-Rao 1988]
+
+1. Find a $\rho$-approximate solution $(V_1, V_2)$ to the minimum bisection problem.
+2. Recurse on $G[V_1]$ and $G[V_2]$.
+
+:::
+
+The above algorithm returns an $O(\rho\log n)$-approximate solution to the minimum cut linear arrangement problem.
+
+
+## References
+
+1. https://people.orie.cornell.edu/shmoys/pdf/multicut.pdf
+2. Leighton and Rao [LR88]
