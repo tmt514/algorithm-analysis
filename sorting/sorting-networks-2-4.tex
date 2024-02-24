@@ -1,0 +1,41 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{ifthen}
+\usepackage{concmath}
+\usepackage{xstring}
+\usepackage{mathdots}
+\usetikzlibrary{calc,arrows.meta}
+\usetikzlibrary{decorations.pathreplacing,calligraphy}
+
+
+\begin{document}
+\begin{tikzpicture}[scale=0.5]
+\foreach \x in {0,1,2,3,6} {
+  \draw[thick] (0, \x) -- (12, \x);
+}
+\draw[fill=white,thick] (0.8, 0.5) rectangle (4, 6.5);
+%\draw[fill=white,thick] (6, 0.5) rectangle (9, 4.5);
+\node at ({0.5*(0.8+4)},{(0.5+6.5)*0.5}) {$H_{x}$};
+\foreach \x/\y/\v in {5/0/1,6/1/2,7/2/3,8/3/4,11/5/5} {
+\node[circle,fill=black,minimum size=5pt, inner sep=0pt](A\v) at (\x, \y) {};
+\node[circle,fill=black,minimum size=5pt, inner sep=0pt](B\v) at (\x, \y+1) {};
+\draw[thick] (A\v)--(B\v);
+}
+\fill[white] (7.5,3.7) rectangle (11.5,5.3);
+\node at ({(7.5+11.5)*0.5}, {(3.7+5.3)*0.5+0.3}) {$\iddots$};
+
+
+% \draw (-0.3, 1) edge[decorate,
+% decoration = {brace, amplitude=5pt}, thick] node[anchor=east,xshift=-3pt] {$\sigma'$} (-0.3, 6);
+% \node at (-0.3, 0)  {$0$};
+\node[anchor=east] at (0, 0) {$a[n-1]$};
+\node[anchor=east] at (0, 1) {$a[n-2]$};
+\node[anchor=east] at (0, 2) {$a[n-3]$};
+\node[anchor=east] at (-0.3, 3.5) {$\vdots$};
+\node[anchor=east] at (0, 6) {$a[0]$};
+%\draw[fill=white,thick] (10.5, 1.5) rectangle (15, 6.5);
+%\node at (7.5, 2.5) {$H_{\texttt{100}}$};
+%\node at (12.75, 4) {$S_{n-1}$};
+\end{tikzpicture}
+\end{document}
