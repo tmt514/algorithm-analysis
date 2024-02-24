@@ -116,13 +116,13 @@ Chung 與 Ravikumar 在提出了測試排序網路的論文後，在同一年間
 * Moon Jung Chung and B. Ravikumar, [Bounds on the size of test sets for sorting and related networks](https://www.sciencedirect.com/science/article/pii/0012365X9090173F?via%3Dihub), Discrete Mathematics 1990. (Conference version: International Conference on Parallel Processing, 1987.)
 * 0-1 法則參見 CLRS 演算法課本中題目 Problem 8-7 _The 0-1 sorting lemma_，而這個稱呼最早似乎是由 Knuth 在他的著作 _The art of computer programming_ [Knuth 1973] 裡面提及的。
 * UIUC 任教的 Sariel Har-Peled 教授的上課講義 [https://sarielhp.org/teach/2004/b/webpage/lec/14_sortnet_notes.pdf](https://sarielhp.org/teach/2004/b/webpage/lec/14_sortnet_notes.pdf)
-* Knuth 的 TAOCP Vol. 3, page 244, 習題 56 （解答在 page 673)。
+* Knuth 的 TAOCP Vol. 3, page 244, 習題 56 （解答在 page 673）。
 
 [^1]: Ian Parberry, [On the Computational Compexity of Optimal Sorting Network Verification](https://link.springer.com/chapter/10.1007%2F978-3-662-25209-3_18), PPAL'91.
 
 [^4]: David S. Johnson, [The NP-Completeness Column: An Ongoing Guide](https://www.sciencedirect.com/science/article/abs/pii/0196677482900268), J. Algorithms, 1982.
 
-[^5]: Knuth 的 TAOCP Vol. 3, page 242, 習題 52 （解答在 page 672)。
+[^5]: Knuth 的 TAOCP Vol. 3, page 242, 習題 52 （解答在 page 672）。
 
 [^2]: Moon Jung Chung and B. Ravikumar, [Strong nondeterministic Turing reduction - a technique for proving intractability](https://www.sciencedirect.com/science/article/pii/0022000089900172), J. Computer and System Sciences, 1989. (Conference version: Annual Conference on Structure in Complexity Theory, 1987.)
 
