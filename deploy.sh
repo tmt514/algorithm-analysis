@@ -1,1 +1,1 @@
-yarn run gh-pages -d book
+npx gh-pages -d book

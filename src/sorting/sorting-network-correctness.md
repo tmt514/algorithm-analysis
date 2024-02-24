@@ -77,7 +77,7 @@ $\sigma=\texttt{0}y$ 且 $y$ 為亂序
 <tr>
 <td>
 
-**Case 3**<br/>
+**Case 4**<br/>
 $\sigma=\texttt{1}y$ 且 $y$ 為亂序
 
 </td>
@@ -104,8 +104,8 @@ $\sigma=\texttt{1}y$ 且 $y$ 為亂序
 
 不過呢，很可惜地，這個問題其實是 $\mathsf{coNP}$-完備的。一般來說可以從著名的 $\mathsf{coNP}$-完備問題 『恆真問題』(Tautology) 轉化之。
 早在 1980 年，[Rabin](https://en.wikipedia.org/wiki/Michael_O._Rabin) 提出了從『三維匹配』轉化到『測試排序網路』的證明 ([Johnson](https://en.wikipedia.org/wiki/David_S._Johnson) 說是 private communication，那就是 private communication)。
-而這個問題也被收錄在 1982 年由 Johnson 把各種 NP 和 coNP 完備問題蒐整的專欄[^4]當中。在 Knuth 的書中[^5]也鉅細彌遺地給出了轉化方式。
-Chung 與 Ravikumar 在提出了測試排序網路的論文後，在同一年間他們也證明了這個問題是 $\mathsf{coNP}$-完備的[^2] (他們強調在論文中使用了新的轉化方法，能夠證明更多問題是 $\mathsf{NP}$-完備或 $\mathsf{coNP}$-完備的，不只是測試排序網路問題。
+而這個問題也被收錄在 1982 年由 Johnson 把各種 NP 和 coNP 完備問題蒐整的專欄[^4]當中。在 Knuth 的書中[^5]也鉅細彌遺地給出了從『恆真問題』來的轉化方式。
+Chung 與 Ravikumar 在提出了測試排序網路的論文後，在同一年間他們也證明了這個問題是 $\mathsf{coNP}$-完備的[^2]（他們強調在論文中使用了新的轉化方法，能夠證明更多問題是 $\mathsf{NP}$-完備或 $\mathsf{coNP}$-完備的，不只是測試排序網路問題）。
 後續如 [Ian Parberry](https://ianparberry.com/) 提出了更淺的構造方法[^3]，讓這個問題在各種更自然的設定底下都是 $\mathsf{coNP}$-完備的。
 
 如果你能夠設計出一個多項式時間的演算法，測試一個排序網路是否總能正確排序，那麼事情就大條了(稱讚意味)！
